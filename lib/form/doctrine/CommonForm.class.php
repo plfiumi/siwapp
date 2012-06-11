@@ -47,7 +47,9 @@ class CommonForm extends BaseCommonForm
                              'contact_person'=> 'Contact Person',
                              'invoicing_address'=> 'Invoicing Address',
                              'shipping_address'=> 'Shipping Address',
-                             'customer_email'=> 'Client Email Address'
+                             'customer_email'=> 'Client Email Address',
+                             'customer_phone'=> 'Client Phone',
+                             'customer_fax'=> 'Client Fax'
                              );
 
     $this->widgetSchema->setHelps(array_merge($this->widgetSchema->getHelps(),$common_defaults));

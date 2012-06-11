@@ -10,6 +10,10 @@
       <span class="_50"><?php echo render_tag($invoiceForm['customer_email'])?></span>
     </li>
     <li>
+      <span class="_50"><?php echo render_tag($invoiceForm['customer_phone'])?></span>
+      <span class="_50"><?php echo render_tag($invoiceForm['customer_fax'])?></span>
+    </li>
+    <li>
       <span class="_50"><?php echo render_tag($invoiceForm['invoicing_address'])?></span>
       <span class="_50"><?php echo render_tag($invoiceForm['shipping_address'])?></span>
     </li>

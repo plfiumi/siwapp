@@ -63,6 +63,8 @@ class estimatesActions extends sfActions
                           'contact_person'=> $i18n->__('Contact Person'),
                           'invoicing_address'=> $i18n->__('Invoicing Address'),
                           'shipping_address'=> $i18n->__('Shipping Address'),
+                          'customer_phone'=> $i18n->__('Client Phone'),
+                          'customer_fax'=> $i18n->__('Client Fax'),
                           'customer_email'=> $i18n->__('Client Email Address')
                           ));
     $this->estimateForm = new EstimateForm($estimate, array('culture'=>$this->culture));

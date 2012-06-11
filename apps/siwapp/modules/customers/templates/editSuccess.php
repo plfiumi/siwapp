@@ -28,8 +28,15 @@ $customer = $customerForm->getObject();
       <span class="_50"><?php echo render_tag($customerForm['email'])?></span>
     </li>
     <li>
+      <span class="_50"><?php echo render_tag($customerForm['phone'])?></span>
+      <span class="_50"><?php echo render_tag($customerForm['fax'])?></span>
+    </li>
+    <li>
       <span class="_50"><?php echo render_tag($customerForm['invoicing_address'])?></span>
       <span class="_50"><?php echo render_tag($customerForm['shipping_address'])?></span>
+    </li>
+    <li>
+      <span class="_75"><?php echo render_tag($customerForm['comments'])?></span>
     </li>
   </ul>
 </div>

@@ -20,7 +20,10 @@ class CustomerForm extends BaseCustomerForm
                              'contact_person'=> 'Contact Person',
                              'invoicing_address' => 'Invoicing Address',
                              'shipping_address'=> 'Shipping Address',
-                             'email'=> 'Client Email Address'
+                             'email'=> 'Client Email Address',
+                             'phone'=> 'Client Phone',
+                             'fax'=> 'Client Fax',
+                             'comments'=> 'Comments',
                              );
 
     $this->widgetSchema->setHelps($common_defaults);

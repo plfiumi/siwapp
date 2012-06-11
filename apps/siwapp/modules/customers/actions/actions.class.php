@@ -61,6 +61,9 @@ class customersActions extends sfActions
                           'contact_person'=> $i18n->__('Contact Person'),
                           'invoicing_address'=> $i18n->__('Invoicing Address'),
                           'shipping_address'=> $i18n->__('Shipping Address'),
+                          'phone'=> $i18n->__('Client Phone'),
+                          'fax'=> $i18n->__('Client Fax'),
+                          'comments'=> $i18n->__('Comments'),
                           'email'=> $i18n->__('Client Email')
                           ));
     $this->customerForm = new CustomerForm($customer, array('culture'=>$this->culture));

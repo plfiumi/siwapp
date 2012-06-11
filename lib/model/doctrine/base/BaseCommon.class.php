@@ -10,6 +10,8 @@
  * @property string $customer_name
  * @property string $customer_identification
  * @property string $customer_email
+ * @property string $customer_phone
+ * @property string $customer_fax
  * @property clob $invoicing_address
  * @property clob $shipping_address
  * @property string $contact_person
@@ -48,6 +50,8 @@
  * @method string              getCustomerName()            Returns the current record's "customer_name" value
  * @method string              getCustomerIdentification()  Returns the current record's "customer_identification" value
  * @method string              getCustomerEmail()           Returns the current record's "customer_email" value
+ * @method string              getCustomerPhone()           Returns the current record's "customer_phone" value
+ * @method string              getCustomerFax()             Returns the current record's "customer_fax" value
  * @method clob                getInvoicingAddress()        Returns the current record's "invoicing_address" value
  * @method clob                getShippingAddress()         Returns the current record's "shipping_address" value
  * @method string              getContactPerson()           Returns the current record's "contact_person" value
@@ -85,6 +89,8 @@
  * @method Common              setCustomerName()            Sets the current record's "customer_name" value
  * @method Common              setCustomerIdentification()  Sets the current record's "customer_identification" value
  * @method Common              setCustomerEmail()           Sets the current record's "customer_email" value
+ * @method Common              setCustomerPhone()           Sets the current record's "customer_phone" value
+ * @method Common              setCustomerFax()             Sets the current record's "customer_fax" value
  * @method Common              setInvoicingAddress()        Sets the current record's "invoicing_address" value
  * @method Common              setShippingAddress()         Sets the current record's "shipping_address" value
  * @method Common              setContactPerson()           Sets the current record's "contact_person" value
@@ -145,6 +151,14 @@ abstract class BaseCommon extends sfDoctrineRecord
         $this->hasColumn('customer_email', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('customer_phone', 'string', 20, array(
+             'type' => 'string',
+             'length' => 20,
+             ));
+        $this->hasColumn('customer_fax', 'string', 20, array(
+             'type' => 'string',
+             'length' => 20,
              ));
         $this->hasColumn('invoicing_address', 'clob', null, array(
              'type' => 'clob',
