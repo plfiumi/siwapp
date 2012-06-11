@@ -29,7 +29,7 @@
 
   <tfoot id="global_calculations">
     <tr>
-      <td colspan="<?php echo ($sf_user->has_module('products'))?'5':'4'?>" rowspan="5" class="noborder top">
+      <td colspan="<?php echo ($sf_user->has_module('products'))?'5':'4'?>" rowspan="25" class="noborder top">
         <div id="addItem">
           <?php 
             $addItemOptions = array(
@@ -73,8 +73,14 @@
         <?php echo format_currency($invoice->getRoundedAmount('net'), $currency)?>
       </td>
     </tr>
+    <?php foreach ($invoice->getTaxDetails() as $name => $amount): ?>
+      <tr>
+        <td><?php echo __('Total')." ".$name ?></td>
+        <td class="taxes right"><?php echo format_currency($amount,$currency)?></td>
+      <tr>
+    <?php endforeach ?>
     <tr>
-      <td><?php echo __('Taxes') ?></td>
+      <td><?php echo __('Taxes Total') ?></td>
       <td class="taxes right">
         <?php echo format_currency($invoice->getRoundedAmount('tax'), $currency)?>
       </td>

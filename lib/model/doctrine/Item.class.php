@@ -79,6 +79,19 @@ class Item extends BaseItem
     return $total;
   }
 
+  public function getTaxesDetail($tax_names = null)
+  {
+    $detail = array();
+    foreach($this->Taxes as $tax)
+    {
+      {
+        $detail[$tax->getName()] = $this->getTaxAmount($tax->getName());
+      }
+    }
+
+    return $detail;
+  }
+
   public function getQuantity()
   {
     return (float) $this->_get('quantity');

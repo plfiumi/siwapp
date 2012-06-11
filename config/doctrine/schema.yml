@@ -20,7 +20,7 @@ Customer:
     cstm_slug:
       fields: [name_slug]
       type: unique
-
+      
 Common:
   actAs:
     Timestampable:
@@ -31,6 +31,8 @@ Common:
     customer_name: string(100)
     customer_identification: string(50)
     customer_email: string(100)
+    customer_phone: string(20)
+    customer_fax: string(20)
     invoicing_address: clob
     shipping_address: clob
     contact_person: string(100)

@@ -83,4 +83,25 @@ class Common extends BaseCommon
     
     return $this;
   }
+
+  public function getTaxDetails()
+  {
+    $result = array();
+    foreach ($this->getItems() as $item)
+    {
+      foreach ( $item->getTaxesDetail() as $name => $ammount)
+      {
+        if (isset($result[$name]))
+        {
+          $result[$name] += $ammount;
+        }
+        else
+        {
+          $result[$name] = $ammount;
+        }
+      }
+    }
+
+    return $result;
+  }
 }
