@@ -213,28 +213,40 @@ form.payments-form a.xit { margin:0.5em 0.5em 0 0; }
 form.payments-form .buttons { margin:0; padding:0; }
 
 /* INVOICE EDITING */
-#invoice-container, #customer-container, #product-container        { display:block; }
-#invoice-container .block, #customer-container .block, #product-container .block { display:block; overflow:visible; padding:0 0 1.5em; margin:0 3.846em 0 1em; }
+#invoice-container, #customer-container, #supplier-container, #product-container        
+{ display:block; }
+#invoice-container .block, #customer-container .block,#supplier-container .block, #product-container .block
+{ display:block; overflow:visible; padding:0 0 1.5em; margin:0 3.846em 0 1em; }
 
-#invoice-container ul.inline, #customer-container ul.inline, #product-container ul.inline            { margin:0; }
-#invoice-container ul.inline li, #customer-container ul.inline li, #product-container ul.inline li         { position:relative; }
+#invoice-container ul.inline, #customer-container ul.inline,#supplier-container ul.inline, #product-container ul.inline
+{ margin:0; }
+#invoice-container ul.inline li, #customer-container ul.inline li, 
+#supplier-container ul.inline li, #product-container ul.inline li         { position:relative; }
 #invoice-container ul.inline .error_list, #customer-container ul.inline .error_list, #product-container ul.inline .error_list  { position:absolute; left:0; bottom:-1.2em; display:inline; }
 
 #invoice-container input,
 #invoice-container textarea, 
 #customer-container input, 
 #customer-container textarea,
+#supplier-container input, 
+#supplier-container textarea,
 #product-container input,
-#product-container textarea   { border:0px solid #DCDCDC; border-bottom-width:1px; }
+#product-container textarea   
+{ border:0px solid #DCDCDC; border-bottom-width:1px; }
 #invoice-container input,
 #customer-container input,
-#product-container input { padding:0; margin:0; outline-width:0; }
+#supplier-container input,
+#product-container input 
+{ padding:0; margin:0; outline-width:0; }
 #invoice-container textarea:focus,
 #invoice-container input:focus,
 #customer-container textarea:focus,
 #customer-container input:focus,
+#supplier-container textarea:focus,
+#supplier-container input:focus,
 #product-container textarea:focus,
-#product-container input:focus { border-style:dotted; outline-width:0; }
+#product-container input:focus 
+{ border-style:dotted; outline-width:0; }
 
 #invoice-container li ._25,
 #invoice-container li ._50,
@@ -242,22 +254,28 @@ form.payments-form .buttons { margin:0; padding:0; }
 #customer-container li ._25,
 #customer-container li ._50,
 #customer-container li ._75,
+#supplier-container li ._25,
+#supplier-container li ._50,
+#supplier-container li ._75,
 #product-container li ._25,
 #product-container li ._50,
 #product-container li ._75 { display:block; float:left; margin-right:1.5%; line-height:1em; vertical-align:middle;}
-#invoice-container li ._25, #customer-container li ._25, #product-container li ._25  { width:23.5%; }
-#invoice-container li ._50, #customer-container li ._50, #product-container li ._50  { width:48.5%; }
-#invoice-container li ._75, #customer-container li ._75, #product-container li ._75 { width:73.5%; }
-#invoice-container li ._last, #customer-container li ._last, #product-container li ._last { margin-right:0; clear:right; }
+#invoice-container li ._25, #customer-container li ._25,  #supplier-container li ._25, #product-container li ._25  { width:23.5%; }
+#invoice-container li ._50, #customer-container li ._50, #supplier-container li ._50, #product-container li ._50  { width:48.5%; }
+#invoice-container li ._75, #customer-container li ._75, #supplier-container li ._75, #product-container li ._75 { width:73.5%; }
+#invoice-container li ._last, #customer-container li ._last, #supplier-container li ._last, #product-container li ._last { margin-right:0; clear:right; }
 #invoice-container li label._25,
 #invoice-container li label._50,
 #customer-container li label._25,
 #customer-container li label._50,
+#supplier-container li label._25,
+#supplier-container li label._50,
 #product-container li label._25,
 #product-container li label._50 { line-height:1.5em; }
 
 /* "show" mode */
 #invoice-container .show #customer-data label { display:block; margin-bottom:5px; font-size:0.8em;}
+#invoice-container .show #supplier-data label { display:block; margin-bottom:5px; font-size:0.8em;}
 #invoice-container .show li ._25,
 #invoice-container .show li ._50,
 #invoice-container .show li ._75 {
@@ -283,32 +301,42 @@ form.payments-form .buttons { margin:0; padding:0; }
 #invoice-container .ui-datepicker-trigger { margin-left:0.5em; }
 #invoice-container #addItem { margin-bottom:1em; }
 
-#invoice-container div.global-data, #customer-container div.global-data, #product-container div.global-data     { overflow:hidden; }
-#invoice-container div.global-data ul, #customer-container div.global-data ul, #product-container div.global-data ul { margin:0 250px 0 0; list-style-type:none; }
+#invoice-container div.global-data, #customer-container div.global-data,
+#supplier-container div.global-data,#product-container div.global-data     
+{ overflow:hidden; }
+#invoice-container div.global-data ul, #customer-container div.global-data ul,
+#supplier-container div.global-data ul, #product-container div.global-data ul 
+{ margin:0 250px 0 0; list-style-type:none; }
 #invoice-container div.global-data textarea,
 #invoice-container div.global-data input,
 #customer-container div.global-data textarea,
 #customer-container div.global-data input,
+#supplier-container div.global-data textarea,
+#supplier-container div.global-data input,
 #product-container div.global-data textarea,
 #product-container div.global-data input
 { width:100%; }
 #invoice-container div.global-data input.short, #customer-container div.global-data input.short,
-#product-container div.global-data input.short
+#supplier-container div.global-data input.short, #product-container div.global-data input.short
 { width:3em;}
 #invoice-container div.global-data span.clear, #customer-container  div.global-data span.clear,
-#product-container  div.global-data span.clear
+#supplier-container  div.global-data span.clear,#product-container  div.global-data span.clear
 { display:block; height:0.5em; }
 
 #customer-data  input[type="text"],
 #customer-data textarea,
+#supplier-data  input[type="text"],
+#supplier-data textarea,
 #product-data  input[type="text"],
 #product-data textarea
 { padding:0; }
 
-#customer-data ul li, #product-data ul li { margin-bottom:1em; height:1em;}
+#supplier-data ul li,#customer-data ul li, #product-data ul li 
+{ margin-bottom:1em; height:1em;}
 
-#customer-data ul.error_list li, #product-data ul.error_list li  { float:right; clear:both; text-align:right; }
-#customer-data ul.error_list, #product-data ul.error_list{ margin:0; }
+#supplier-data ul.error_list li,#customer-data ul.error_list li, #product-data ul.error_list li  
+{ float:right; clear:both; text-align:right; }
+#supplier-data ul.error_list,#customer-data ul.error_list, #product-data ul.error_list{ margin:0; }
 
 #invoice-container #terms-data textarea { display:block; width:100%; margin:0 0 1em; }
 
@@ -347,7 +375,7 @@ form.payments-form .buttons { margin:0; padding:0; }
 #invoice-container table.listing tbody .taxes span input + input { margin-left:0.5em; }
 
 #invoice-container label.tip,
-#customer-data label.tip,
+#customer-data label.tip, #supplier-data label.tip,
 #product-data label.tip {
   position:absolute;
   font-size:10px;

@@ -70,6 +70,22 @@ customers_edit:
   url:   /customers/edit/:id
   param:  { module: customers, action: edit, tab: customers, searchForm: false }
 
+supplier:
+  url:   /suppliers
+  param:  { module: suppliers, action: index, tab: suppliers, searchForm: true, searchNamespace: suppliers }
+
+suppliers:
+  url:   /suppliers
+  param:  { module: suppliers, action: index, tab: suppliers, searchForm: true, searchNamespace: suppliers }
+
+suppliers_new:
+  url:   /suppliers/new
+  param:  { module: suppliers, action: new, tab: suppliers, searchForm: false }
+
+suppliers_edit:
+  url:   /suppliers/edit/:id
+  param:  { module: suppliers, action: edit, tab: suppliers, searchForm: false }
+
 products:
   url:   /products
   param:  { module: products, action: index, tab: products, searchForm: true, searchNamespace: products }

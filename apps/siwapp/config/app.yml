@@ -40,6 +40,10 @@ all:
         verbose_name: 'Customers Module'
         tab_name: 'Customers'
         new_button_name: 'New Customer'
+      suppliers:
+        verbose_name: 'Suppliers Module'
+        tab_name: 'Suppliers'
+        new_button_name: 'New Supplier'
       estimates:
         verbose_name: 'Estimates Module'
         tab_name: 'Estimates'

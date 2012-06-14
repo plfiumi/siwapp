@@ -20,7 +20,27 @@ Customer:
     cstm_slug:
       fields: [name_slug]
       type: unique
-      
+
+Supplier:
+  columns:
+    name: string(100)
+    name_slug: string(100)
+    identification: string(50)
+    email: string(100)
+    contact_person: string(100)
+    invoicing_address: clob
+    shipping_address: clob
+    phone: string(20)
+    fax: string(20)
+    comments: clob
+  indexes:
+    cstm:
+      fields: [name]
+      type: unique
+    cstm_slug:
+      fields: [name_slug]
+      type: unique
+
 Common:
   actAs:
     Timestampable:
@@ -33,6 +53,12 @@ Common:
     customer_email: string(100)
     customer_phone: string(20)
     customer_fax: string(20)
+    supplier_id: integer
+    supplier_name: string(100)
+    supplier_identification: string(50)
+    supplier_email: string(100)
+    supplier_phone: string(20)
+    supplier_fax: string(20)
     invoicing_address: clob
     shipping_address: clob
     contact_person: string(100)
@@ -49,6 +75,12 @@ Common:
     Customer:
       foreignAlias: Commons
       local: customer_id
+      foreign: id
+      type: one
+      onDelete: SET NULL
+    Supplier:
+      foreignAlias: Commons
+      local: supplier_id
       foreign: id
       type: one
       onDelete: SET NULL

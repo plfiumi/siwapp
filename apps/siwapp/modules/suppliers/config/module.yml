@@ -1,0 +1,7 @@
+all:
+  urls:
+    include: ['search']
+    variables:
+      editRow:          suppliers/edit
+      showInvoices:     suppliers/showInvoices
+      

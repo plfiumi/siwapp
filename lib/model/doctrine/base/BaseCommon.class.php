@@ -12,6 +12,12 @@
  * @property string $customer_email
  * @property string $customer_phone
  * @property string $customer_fax
+ * @property integer $supplier_id
+ * @property string $supplier_name
+ * @property string $supplier_identification
+ * @property string $supplier_email
+ * @property string $supplier_phone
+ * @property string $supplier_fax
  * @property clob $invoicing_address
  * @property clob $shipping_address
  * @property string $contact_person
@@ -42,6 +48,7 @@
  * @property date $finishing_date
  * @property date $last_execution_date
  * @property Customer $Customer
+ * @property Supplier $Supplier
  * @property Series $Series
  * @property Doctrine_Collection $Items
  * 
@@ -52,6 +59,12 @@
  * @method string              getCustomerEmail()           Returns the current record's "customer_email" value
  * @method string              getCustomerPhone()           Returns the current record's "customer_phone" value
  * @method string              getCustomerFax()             Returns the current record's "customer_fax" value
+ * @method integer             getSupplierId()              Returns the current record's "supplier_id" value
+ * @method string              getSupplierName()            Returns the current record's "supplier_name" value
+ * @method string              getSupplierIdentification()  Returns the current record's "supplier_identification" value
+ * @method string              getSupplierEmail()           Returns the current record's "supplier_email" value
+ * @method string              getSupplierPhone()           Returns the current record's "supplier_phone" value
+ * @method string              getSupplierFax()             Returns the current record's "supplier_fax" value
  * @method clob                getInvoicingAddress()        Returns the current record's "invoicing_address" value
  * @method clob                getShippingAddress()         Returns the current record's "shipping_address" value
  * @method string              getContactPerson()           Returns the current record's "contact_person" value
@@ -82,6 +95,7 @@
  * @method date                getFinishingDate()           Returns the current record's "finishing_date" value
  * @method date                getLastExecutionDate()       Returns the current record's "last_execution_date" value
  * @method Customer            getCustomer()                Returns the current record's "Customer" value
+ * @method Supplier            getSupplier()                Returns the current record's "Supplier" value
  * @method Series              getSeries()                  Returns the current record's "Series" value
  * @method Doctrine_Collection getItems()                   Returns the current record's "Items" collection
  * @method Common              setSeriesId()                Sets the current record's "series_id" value
@@ -91,6 +105,12 @@
  * @method Common              setCustomerEmail()           Sets the current record's "customer_email" value
  * @method Common              setCustomerPhone()           Sets the current record's "customer_phone" value
  * @method Common              setCustomerFax()             Sets the current record's "customer_fax" value
+ * @method Common              setSupplierId()              Sets the current record's "supplier_id" value
+ * @method Common              setSupplierName()            Sets the current record's "supplier_name" value
+ * @method Common              setSupplierIdentification()  Sets the current record's "supplier_identification" value
+ * @method Common              setSupplierEmail()           Sets the current record's "supplier_email" value
+ * @method Common              setSupplierPhone()           Sets the current record's "supplier_phone" value
+ * @method Common              setSupplierFax()             Sets the current record's "supplier_fax" value
  * @method Common              setInvoicingAddress()        Sets the current record's "invoicing_address" value
  * @method Common              setShippingAddress()         Sets the current record's "shipping_address" value
  * @method Common              setContactPerson()           Sets the current record's "contact_person" value
@@ -121,6 +141,7 @@
  * @method Common              setFinishingDate()           Sets the current record's "finishing_date" value
  * @method Common              setLastExecutionDate()       Sets the current record's "last_execution_date" value
  * @method Common              setCustomer()                Sets the current record's "Customer" value
+ * @method Common              setSupplier()                Sets the current record's "Supplier" value
  * @method Common              setSeries()                  Sets the current record's "Series" value
  * @method Common              setItems()                   Sets the current record's "Items" collection
  * 
@@ -157,6 +178,29 @@ abstract class BaseCommon extends sfDoctrineRecord
              'length' => 20,
              ));
         $this->hasColumn('customer_fax', 'string', 20, array(
+             'type' => 'string',
+             'length' => 20,
+             ));
+        $this->hasColumn('supplier_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('supplier_name', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
+        $this->hasColumn('supplier_identification', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('supplier_email', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
+        $this->hasColumn('supplier_phone', 'string', 20, array(
+             'type' => 'string',
+             'length' => 20,
+             ));
+        $this->hasColumn('supplier_fax', 'string', 20, array(
              'type' => 'string',
              'length' => 20,
              ));
@@ -321,6 +365,11 @@ abstract class BaseCommon extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Customer', array(
              'local' => 'customer_id',
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
+
+        $this->hasOne('Supplier', array(
+             'local' => 'supplier_id',
              'foreign' => 'id',
              'onDelete' => 'SET NULL'));
 
