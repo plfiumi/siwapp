@@ -12,7 +12,13 @@ Formulario para entrar gastos que funcionaria así.
 - desplegable tipo de gasto
 - cumplimentar fecha, número factura, concepto, Base, IVA, Retención, Total
 - Posibilidad de subir factura escaneda.
+6. Los presupuestos que se han pasado a factura guardar el número de factura para hacer seguimiento. A ser possible que quede un registro de quien lo hizo y cuando lo hizo. 
 
+Seguridad: 
+- Obligar a cambiar la contraseña según paràmetro (por defecto 3 meses)
+- Obligar a seleccionar una contraseña fuerte: longitud mínima, mayuculas y minúsculas, números y caracteres especiales.
+- Registrar la fecha en que se entró por última vez. Mostrarlo en la parte superior derecha de la pantalla. 
+- Registro d'acciones realizadas por usuario.
 
 Cosas secundarias que serian interesantes:
 1. Detalle de tipos de IVA en una factura con diferentes tipos de IVA. (falta añadir en PDF)
