@@ -165,6 +165,9 @@ class configurationActions extends sfActions
       case 'seriess':
         $subform = new FormsContainer(array($index=>new SeriesForm()),'SeriesForm');
         break;
+      case 'expenses':
+        $subform = new FormsContainer(array($index=>new ExpenseTypeForm()),'ExpenseTypeForm');
+        break;
     }
     $configForm->embedForm($to, $subform);
     return $this->renderText($configForm[$to][$index]);

@@ -68,8 +68,26 @@
         <?php echo __('The initial value will only be used for the first saved invoice of the series if there are no invoices assigned.') ?>
       </small>
     </fieldset>
-    
-    <fieldset class="left">
+
+     <fieldset class="expenses taxseries">
+      <h3><?php echo __('Expenses Type') ?></h3>
+      <div id="expenses">
+        <ul class="head">
+          <a href="#" class="xit"></a>
+          <li class="name"><strong><?php echo __('Name')?></strong></li>
+          <li class="active"><strong><?php echo __('Enabled')?></strong></li>
+        </ul>
+        <?php foreach ($form['expenses'] as $s): ?>
+        <?php echo $s?>
+        <?php endforeach ?>
+      </div>
+      <div class="clear"></div>
+      <small>
+        <a id="addNewExpenses" href="#" class="to:expenses"><?php echo __('Add a new expense type') ?></a><br/>
+      </small>
+    </fieldset>
+
+    <fieldset class="right">
       <h3><?php echo __('PDF Settings') ?></h3>
       <ul>
         <?php echo $form['pdf_size']->renderRow(array('class' => error_class($form['pdf_size']))) ?>

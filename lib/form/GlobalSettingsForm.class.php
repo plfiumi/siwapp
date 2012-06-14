@@ -85,6 +85,8 @@ class GlobalSettingsForm extends FormsContainer
     /* TAXES & SERIES*/
     $this->embedForm('taxes',new TaxesForm());
     $this->embedForm('seriess',new SeriessForm());
+    /* Expenses Type */
+    $this->embedForm('expenses',new ExpensesTypeForm());
 
     $this->validatorSchema->setPostValidator(new sfValidatorAnd(
         array(
@@ -97,6 +99,11 @@ class GlobalSettingsForm extends FormsContainer
               'callback' => array($this, 'validateSeries')
             ), array(
               'invalid' => 'Some series have not been deleted because they are currently in use: <strong>%invalid_series%</strong>.'
+            )),
+          new sfValidatorCallback(array(
+              'callback' => array($this, 'validateExpense')
+            ), array(
+              'invalid' => 'Some expenses have not been deleted because they are currently in use: <strong>%invalid_expenses%</strong>.'
             )),
           new sfValidatorCallBack(
               array('callback'  => array($this,'checkLogo')),
@@ -153,6 +160,7 @@ class GlobalSettingsForm extends FormsContainer
           break;
         case 'seriess':
         case 'taxes':
+        case 'expenses':
           break;
         default:
           PropertyTable::set($key, $value);
@@ -253,6 +261,55 @@ class GlobalSettingsForm extends FormsContainer
                                                               'invalid',
                                                               array(
                                                                 'invalid_series'=>
+                                                                implode(', ',$invalid)))));
+    }
+
+    return $values;
+  }
+
+/**
+   * Finds the expensesType to be deleted and if they are still linked to Common instances throws
+   * a global error to tell it to the user.
+   */
+  public function validateExpense(sfValidatorBase $validator, $values, $arguments)
+  {
+    $deleted_ids = array();
+    foreach($values['expenses'] as $key => $expense)
+    {
+      if($expense['remove'])
+      {
+        $deleted_ids[] = $expense['id'];
+      }
+    }
+    if(!count($deleted_ids))
+    {
+      return $values;
+    }
+
+    return $values;
+    /*
+        TODO: Add validation when adding the field into Common.
+    */
+    $toDelete = Doctrine_Core::getTable('ExpenseType')
+      ->createQuery()
+      ->from('ExpenseType s')
+      ->innerJoin('s.Common c')
+      ->addWhere('s.id IN (?)',implode(',',$deleted_ids))->execute();
+
+    if(count($toDelete))
+    {
+      $invalid = array();
+      foreach($toDelete as $k => $expense)
+      {
+        $this->taintedValues['seriess']['old_'.$expense->id]['remove'] = '';
+        $invalid[] = $expense->name;
+      }
+      throw new sfValidatorErrorSchema($validator,
+                                       array(
+                                         new sfValidatorError($validator,
+                                                              'invalid',
+                                                              array(
+                                                                'invalid_expenses'=>
                                                                 implode(', ',$invalid)))));
     }
 

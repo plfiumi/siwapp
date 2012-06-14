@@ -298,3 +298,11 @@ Product:
     reference: {type: string(100), notnull: true}
     description: clob
     price: {type: decimal(53), scale: 15, notnull: true, default: 0}
+
+ExpenseType:
+  columns:
+    name:   string(255)
+    enabled:
+      type: boolean
+      default: true
+

@@ -3,7 +3,7 @@
 jQuery(function($) {
   
   // What happens when you "remove" key/value items like taxes or series?
-  $('#settings-wrapper #taxes ul a.remove, #settings-wrapper #seriess ul a.remove').live('click', function(e){
+  $('#settings-wrapper #taxes ul a.remove, #settings-wrapper #taxes ul a.remove, #settings-wrapper #expenses ul a.remove').live('click', function(e){
     e.preventDefault();
     // Find item
     var item = $(this).parents('ul:first');
@@ -13,7 +13,7 @@ jQuery(function($) {
     item.hide();
   });
   
-  $('#addNewTax, #addNewSeries').click(function(e){
+  $('#addNewTax, #addNewSeries , #addNewExpenses').click(function(e){
     e.preventDefault();
     var a = $(this);
     // Find target element
