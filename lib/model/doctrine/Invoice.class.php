@@ -48,6 +48,10 @@ class Invoice extends BaseInvoice
     {
       return $this->calculate($name, true);
     }
+    if($name == 'tax_details')
+    {
+      return $this->getTaxDetails();
+    }
     return parent::__get($name);
   }
 
@@ -71,7 +75,7 @@ class Invoice extends BaseInvoice
 
   public function __isset($name)
   {
-    if($name == 'due_amount')
+    if($name == 'due_amount' || $name == 'tax_details')
     {
       return true;
     }

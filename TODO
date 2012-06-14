@@ -1,5 +1,3 @@
-- Recargo de equivalencia.
-(importante para que el programa lo sea valido para profesionales, agricultores, alquileres y autónomos).
 - Remesas bancarias.
 Comporta crear campo Número de cuenta en la ficha de configuraciónde la empresa y en la ficha de clientes.
 (ejemplo de creación de fichero con norma 19 para remesas)
@@ -21,7 +19,6 @@ Seguridad:
 - Registro d'acciones realizadas por usuario.
 
 Cosas secundarias que serian interesantes:
-1. Detalle de tipos de IVA en una factura con diferentes tipos de IVA. (falta añadir en PDF)
 2. Formas de pago. Poder especificar al realizar una factura que forma de pago tendrá (Giro bancario, pagaré, cheque, transferencia, efectivo, ...
 3. Hacer categorías de productos.
 4. En el resumen añadir información de gastos.

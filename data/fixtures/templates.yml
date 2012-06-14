@@ -183,6 +183,13 @@ Template:
                   <th class="right">Subtotal</th>
                   <td class="td_subtotal right">{{invoice.net_amount|currency}}</td>
                 </tr>
+                {% for name,ammount in invoice.tax_details %}
+                  <tr>
+                    <td class="bottomleft" colspan="{% if invoice.discount_amount %}4{% else %}3{% endif %}"></td>
+                    <th class="right">{{name}}</th>
+                    <td class="td_subtotal right">{{ammount|currency}}</td>
+                  </tr>  
+                {% endfor %}
                 <tr>
                   <td class="bottomleft" colspan="{% if invoice.discount_amount %}4{% else %}3{% endif %}"></td>
                   <th class="right">Taxes</th>
@@ -395,6 +402,13 @@ Template:
                  <th class="right">Subtotal</th>
                  <td class="td_subtotal right">{{invoice.net_amount|currency}}</td>
                </tr>
+               {% for name,ammount in invoice.tax_details %}
+                 <tr>
+                   <td class="bottomleft" colspan="{% if invoice.discount_amount %}4{% else %}3{% endif %}"></td>
+                   <th class="right">{{name}}</th>
+                   <td class="td_subtotal right">{{ammount|currency}}</td>
+                 </tr>  
+               {% endfor %}
                <tr>
                  <td class="bottomleft" colspan="{% if invoice.discount_amount %}5{% else %}4{% endif %}"></td>
                  <th class="right">Taxes</th>
@@ -603,6 +617,13 @@ Template:
                   <th class="right">Subtotal</th>
                   <td class="td_subtotal right">{{estimate.net_amount|currency}}</td>
                 </tr>
+                {% for name,ammount in invoice.tax_details %}
+                  <tr>
+                    <td class="bottomleft" colspan="{% if invoice.discount_amount %}4{% else %}3{% endif %}"></td>
+                    <th class="right">{{name}}</th>
+                    <td class="td_subtotal right">{{ammount|currency}}</td>
+                  </tr>  
+                {% endfor %}
                 <tr>
                   <td class="bottomleft" colspan="{% if estimate.discount_amount %}4{% else %}3{% endif %}"></td>
                   <th class="right">Taxes</th>
