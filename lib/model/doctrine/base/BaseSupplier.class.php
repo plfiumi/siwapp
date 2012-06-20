@@ -15,6 +15,8 @@
  * @property string $phone
  * @property string $fax
  * @property clob $comments
+ * @property integer $expense_type_id
+ * @property ExpenseType $ExpenseType
  * @property Doctrine_Collection $Commons
  * 
  * @method string              getName()              Returns the current record's "name" value
@@ -27,6 +29,8 @@
  * @method string              getPhone()             Returns the current record's "phone" value
  * @method string              getFax()               Returns the current record's "fax" value
  * @method clob                getComments()          Returns the current record's "comments" value
+ * @method integer             getExpenseTypeId()     Returns the current record's "expense_type_id" value
+ * @method ExpenseType         getExpenseType()       Returns the current record's "ExpenseType" value
  * @method Doctrine_Collection getCommons()           Returns the current record's "Commons" collection
  * @method Supplier            setName()              Sets the current record's "name" value
  * @method Supplier            setNameSlug()          Sets the current record's "name_slug" value
@@ -38,6 +42,8 @@
  * @method Supplier            setPhone()             Sets the current record's "phone" value
  * @method Supplier            setFax()               Sets the current record's "fax" value
  * @method Supplier            setComments()          Sets the current record's "comments" value
+ * @method Supplier            setExpenseTypeId()     Sets the current record's "expense_type_id" value
+ * @method Supplier            setExpenseType()       Sets the current record's "ExpenseType" value
  * @method Supplier            setCommons()           Sets the current record's "Commons" collection
  * 
  * @package    siwapp
@@ -87,6 +93,9 @@ abstract class BaseSupplier extends sfDoctrineRecord
         $this->hasColumn('comments', 'clob', null, array(
              'type' => 'clob',
              ));
+        $this->hasColumn('expense_type_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
 
 
         $this->index('cstm', array(
@@ -109,6 +118,11 @@ abstract class BaseSupplier extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('ExpenseType', array(
+             'local' => 'expense_type_id',
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
+
         $this->hasMany('Common as Commons', array(
              'local' => 'id',
              'foreign' => 'supplier_id'));

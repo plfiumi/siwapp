@@ -40,6 +40,14 @@ $supplier = $supplierForm->getObject();
     </li>
   </ul>
 </div>
+<div id="expense-type-data" class="global-data block">  
+  <h3><?php echo __('Expense Type') ?></h3>
+  <ul>
+     <li>
+      <span class="_50"><?php echo render_tag($supplierForm['expense_type_id'])?></span>
+    </li>
+  </ul> 
+</div>
   <div id="saving-options" class="block">
     <?php
     if ($supplier->getId()) {

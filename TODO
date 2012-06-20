@@ -2,8 +2,6 @@
 Comporta crear campo Número de cuenta en la ficha de configuraciónde la empresa y en la ficha de clientes.
 (ejemplo de creación de fichero con norma 19 para remesas)
 http://www.php-hispano.net/foros/PHP/38067-crear-archivo-norma-19-para-remesas
-4. Tabla Tipos de Gastos
-Que sólo contenga estos 10 tipos: Alquileres, Reparación, Servicios Profesionales, Transportes, Seguros, Servicios Bancarios, Publicidad, Suministros, Impuestos, Otros.
 5. Módulo Gastos
 Formulario para entrar gastos que funcionaria así.
 - Seleccionar proveedor

@@ -26,6 +26,7 @@ abstract class BaseSupplierForm extends BaseFormDoctrine
       'phone'             => new sfWidgetFormInputText(),
       'fax'               => new sfWidgetFormInputText(),
       'comments'          => new sfWidgetFormTextarea(),
+      'expense_type_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -40,6 +41,7 @@ abstract class BaseSupplierForm extends BaseFormDoctrine
       'phone'             => new sfValidatorString(array('max_length' => 20, 'required' => false)),
       'fax'               => new sfValidatorString(array('max_length' => 20, 'required' => false)),
       'comments'          => new sfValidatorString(array('required' => false)),
+      'expense_type_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'), 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(

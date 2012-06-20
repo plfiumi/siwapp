@@ -33,6 +33,7 @@ Supplier:
     phone: string(20)
     fax: string(20)
     comments: clob
+    expense_type_id: integer
   indexes:
     cstm:
       fields: [name]
@@ -40,7 +41,13 @@ Supplier:
     cstm_slug:
       fields: [name_slug]
       type: unique
-
+  relations:
+    ExpenseType:
+      foreignAlias: Supplier
+      local: expense_type_id
+      foreign: id
+      type: one
+      onDelete: SET NULL
 Common:
   actAs:
     Timestampable:

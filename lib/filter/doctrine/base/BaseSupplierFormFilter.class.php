@@ -23,6 +23,7 @@ abstract class BaseSupplierFormFilter extends BaseFormFilterDoctrine
       'phone'             => new sfWidgetFormFilterInput(),
       'fax'               => new sfWidgetFormFilterInput(),
       'comments'          => new sfWidgetFormFilterInput(),
+      'expense_type_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -36,6 +37,7 @@ abstract class BaseSupplierFormFilter extends BaseFormFilterDoctrine
       'phone'             => new sfValidatorPass(array('required' => false)),
       'fax'               => new sfValidatorPass(array('required' => false)),
       'comments'          => new sfValidatorPass(array('required' => false)),
+      'expense_type_id'   => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('ExpenseType'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('supplier_filters[%s]');
@@ -66,6 +68,7 @@ abstract class BaseSupplierFormFilter extends BaseFormFilterDoctrine
       'phone'             => 'Text',
       'fax'               => 'Text',
       'comments'          => 'Text',
+      'expense_type_id'   => 'ForeignKey',
     );
   }
 }
