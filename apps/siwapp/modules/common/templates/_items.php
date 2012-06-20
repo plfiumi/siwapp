@@ -1,25 +1,35 @@
 <?php use_helper('JavascriptBase'); ?>
+
 <table class="listing">
   <thead>
     <tr>
-      <?php if($sf_user->has_module('products')):?>
-      <th><?php echo __('Product') ?></th>
-      <?php endif?>
-      <th><?php echo __('Description') ?></th>
-      <th class="right"><?php echo __('Unit Cost') ?></th>
-      <th class="right"><?php echo __('Qty') ?></th>
-      <th class="right"><?php echo __('Taxes') ?></th>
-      <th class="right"><?php echo __('Discount') ?></th>
-      <th class="right"><?php echo __('Price') ?></th>
+      <?php if($expense) : ?>
+          <th><?php echo __('Description') ?></th>
+          <th class="right"><?php echo __('Expense Type') ?></th>
+          <th class="right"><?php echo __('Amount') ?></th>
+          <th class="right"><?php echo __('Taxes') ?></th>
+          <th class="right"><?php echo __('Price') ?></th>
+      <?php else: ?>
+          <?php if($sf_user->has_module('products')) :?>
+          <th><?php echo __('Product') ?></th>
+          <?php endif?>
+          <th><?php echo __('Description') ?></th>
+          <th class="right"><?php echo __('Unit Cost') ?></th>
+          <th class="right"><?php echo __('Qty') ?></th>
+          <th class="right"><?php echo __('Taxes') ?></th>
+          <th class="right"><?php echo __('Discount') ?></th>
+          <th class="right"><?php echo __('Price') ?></th>
+      <?php endif; ?>
     </tr>
   </thead>
 
   <tbody id="tbody_invoice_items">
+    <?php $partial = $expense ? 'common/expenseRow' : 'common/invoiceRow' ?> 
     <?php $invoiceItemsGlobalErrors = array(); ?>
     <?php foreach($invoiceForm['Items'] as $rowId => $invoiceItemForm):?>
     <?php if($invoiceItemForm['remove']->getValue() != '1'):?>
     <?php if (strlen($tmp = $invoiceItemForm->renderError())) $invoiceItemsGlobalErrors[] = $tmp; ?>
-    <?php include_partial('common/invoiceRow', array(
+    <?php include_partial($partial, array(
       'invoiceItemForm' => $invoiceItemForm,
       'rowId'           => $rowId
     ))?>
@@ -29,11 +39,16 @@
 
   <tfoot id="global_calculations">
     <tr>
-      <td colspan="<?php echo ($sf_user->has_module('products'))?'5':'4'?>" rowspan="25" class="noborder top">
+      <?php $colspan = '4'; 
+            if ($expense) $colspan = '3'; 
+            else if ($sf_user->has_module('products')) $colspan='5' ?>
+      <td colspan="<?php echo $colspan ?>" rowspan="25" class="noborder top">
         <div id="addItem">
+          <?php  ?> 
           <?php 
+            $addItemURL = $expense ? 'common/ajaxAddExpenseItem' : 'common/ajaxAddInvoiceItem';
             $addItemOptions = array(
-              'url'      => 'common/ajaxAddInvoiceItem',
+              'url'      => $addItemURL,
               'position' => 'bottom',
               'method'   => 'post',
               'with'     => "{invoice_id: $('#invoice_id').val()}",

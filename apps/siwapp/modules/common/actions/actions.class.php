@@ -96,6 +96,28 @@ class commonActions extends sfActions
     return $this->renderPartial('invoiceRow', $params);
   }
   
+   /**
+   * AJAX action to add new invoice items
+   * @param sfWebRequest $request
+   * @return unknown_type
+   */
+  public function executeAjaxAddExpenseItem(sfWebRequest $request)
+  {
+    $index = 'new_item_invoice_'.time();
+    $item = new Item();
+    $item->common_id = $request->getParameter('expense_id');
+    $form = new sfForm();
+    $form->getWidgetSchema()->setNameFormat('expense[%s]');
+    $form->embedForm('Items', new FormsContainer(array($index=>new ItemForm($item)), 'ItemForm'));
+    $params = array(
+                    'invoiceItemForm' => $form['Items'][$index],
+                    'item'            => $item,
+                    'isNew'           => true,
+                    'rowId'           => $index
+                    );
+    return $this->renderPartial('expenseRow', $params);
+  }
+  
   public function executeAjaxAddInvoiceItemTax($request)
   {
     $taxIndex = $request->getParameter('item_tax_index');
@@ -137,6 +159,22 @@ class commonActions extends sfActions
     $this->getResponse()->setContentType('application/json');
     $q = $request->getParameter('q');
     $items = Doctrine::getTable('Customer')
+      ->retrieveForSelect($request->getParameter('q'), $request->getParameter('limit'));
+
+    return $this->renderText(json_encode($items));
+  }
+  
+    /**
+   * ajax action for supplier name autocompletion
+   *
+   * @return JSON
+   * @author Sergi Almacellas
+   **/
+  public function executeAjaxSupplierAutocomplete(sfWebRequest $request)
+  {
+    $this->getResponse()->setContentType('application/json');
+    $q = $request->getParameter('q');
+    $items = Doctrine::getTable('Supplier')
       ->retrieveForSelect($request->getParameter('q'), $request->getParameter('limit'));
 
     return $this->renderText(json_encode($items));

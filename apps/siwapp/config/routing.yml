@@ -22,6 +22,26 @@ invoices_print:
   url:    /invoices/print/:action
   param:  { module: print, model: Invoice }
 
+expenses:
+  url:   /expenses
+  param:  { module: expenses, action: index, tab: expenses, searchForm: true, searchNamespace: expenses }
+
+expenses_new:
+  url:   /expenses/new
+  param:  { module: expenses, action: new, tab: expenses, searchForm: false }
+
+expenses_show:
+  url:   /expenses/show/:id
+  param:  { module: expenses, action: show, tab: expenses, searchForm: false }
+
+expenses_edit:
+  url:   /expenses/edit/:id
+  param:  { module: expenses, action: edit, tab: expenses, searchForm: false }
+
+expenses_print:
+  url:    /expenses/print/:action
+  param:  { module: print, model: Expense }
+
 estimates_print:
   url:    /estimates/print/:action
   param:  { module: print, model: Estimate }

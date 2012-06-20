@@ -131,6 +131,33 @@ Invoice:
       foreignAlias: Invoices
       type: one
       onDelete: SET NULL
+
+Expense:
+  inheritance:
+    extends: Common
+    type: column_aggregation
+  columns:
+    draft:
+      type: boolean
+      default: true
+    # if the user wants to force the close status
+    closed:
+      type: boolean
+      default: false
+    sent_by_email:
+      type: boolean
+      default: false
+    number: integer(4)
+    recurring_invoice_id: integer
+    issue_date: date
+    due_date: date
+  relations:
+    RecurringInvoice:
+      local: recurring_invoice_id
+      foreign: id
+      foreignAlias: Invoices
+      type: one
+      onDelete: SET NULL
       
 Estimate:
   inheritance:

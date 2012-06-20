@@ -349,6 +349,10 @@ abstract class BaseCommon extends sfDoctrineRecord
              array(
               'type' => 'Invoice',
              ),
+             'Expense' => 
+             array(
+              'type' => 'Expense',
+             ),
              'Estimate' => 
              array(
               'type' => 'Estimate',
