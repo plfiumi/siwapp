@@ -1,10 +1,10 @@
 <?php use_helper('Text') ?>
 
-<div id="expense-container" class="content">
+<div id="invoice-container" class="content">
   
-  <h2><?php echo __("Expense") . ' ' . $expense ?></h2>
+  <h2><?php echo __("Expense") . ' ' . $invoice ?></h2>
 
-  <div class="expense show">
+  <div class="invoice show">
 
     <div id="customer-data" class="global-data block">
       <h3><?php echo __('Supplier info') ?></h3>
@@ -13,11 +13,11 @@
           <span>
             <span class="_50">
               <label><?php echo __('Supplier') ?>:</label>
-              <?php echo $expense->getSupplierName() ?>
+              <?php echo $invoice->getSupplierName() ?>
             </span>
             <span class="_50 _last">
               <label><?php echo __('Supplier identification') ?>:</label>
-              <?php echo $expense->getSupplierIdentification() ?>
+              <?php echo $invoice->getSupplierIdentification() ?>
             </span>
           </span>
           <span class="clear"></span>
@@ -26,11 +26,24 @@
           <span>
             <span class="_50">
               <label><?php echo __('Contact person') ?>:</label>
-              <?php echo $expense->getContactPerson() ?>
+              <?php echo $invoice->getContactPerson() ?>
             </span>
             <span class="_50 _last">
               <label><?php echo __('Email') ?>:</label>
-              <?php echo $expense->getSupplierEmail() ?>
+              <?php echo $invoice->getSupplierEmail() ?>
+            </span>
+          </span>
+          <span class="clear"></span>
+        </li>
+        <li>
+          <span>
+            <span class="_50">
+              <label><?php echo __('Supplier Phone') ?>:</label>
+              <?php echo $invoice->getSupplierPhone() ?>
+            </span>
+            <span class="_50 _last">
+              <label><?php echo __('Supplier Fax') ?>:</label>
+              <?php echo $invoice->getSupplierFax() ?>
             </span>
           </span>
           <span class="clear"></span>
@@ -39,10 +52,10 @@
           <span>
             <span class="_50">
               <label><?php echo __('Invoicing address') ?>:</label>
-              <?php echo simple_format_text($expense->getInvoicingAddress()) ?></span>
+              <?php echo simple_format_text($invoice->getInvoicingAddress()) ?></span>
             <span class="_50 _last">
               <label><?php echo __('Shipping address') ?>:</label>
-              <?php echo simple_format_text($expense->getShippingAddress()) ?>
+              <?php echo simple_format_text($invoice->getShippingAddress()) ?>
             </span>
           </span>
           <span class="clear"></span>
@@ -52,21 +65,21 @@
 
     <div id="payment-data" class="block">
       <h3><?php echo __('Payment details') ?></h3>
-      <p><label><?php echo __('Issued at') ?>:</label> <?php echo $expense->getIssueDate() ?> <label><?php echo __('will become overdue at') ?>:</label> <?php echo $expense->getDueDate() ?></p>
+      <p><label><?php echo __('Issued at') ?>:</label> <?php echo $invoice->getIssueDate() ?> <label></p>
+      <p><label><?php echo __('Supplier reference') ?>:</label> <?php echo $invoice->getSupplierReference() ?> <label></p>
 
       <table class="listing">
         <thead>
           <tr>
-            <th><?php echo __('Description') ?></th>
-            <th class="right" width="100"><?php echo __('Unit cost') ?></th>
-            <th class="right" width="60"><?php echo __('Qty') ?></th>
-            <th class="right" width="100"><?php echo __('Taxes') ?></th>
-            <th class="right" width="60"><?php echo __('Discount') ?></th>
-            <th class="right" width="150"><?php echo __('Price') ?></th>
+          <th><?php echo __('Description') ?></th>
+          <th class="right"><?php echo __('Expense Type') ?></th>
+          <th class="right"><?php echo __('Amount') ?></th>
+          <th class="right"><?php echo __('Taxes') ?></th>
+          <th class="right"><?php echo __('Price') ?></th>
           </tr>
         </thead>
-        <tbody id="tbody_expense_items">
-          <?php if (!count($expense->getItems())): ?>
+        <tbody id="tbody_invoice_items">
+          <?php if (!count($invoice->getItems())): ?>
 
             <tr>
               <td></td>
@@ -79,7 +92,7 @@
 
           <?php else: ?>
 
-            <?php foreach($expense->getItems() as $item): ?>
+            <?php foreach($invoice->getItems() as $item): ?>
               <?php include_partial('expenses/expenseRowShow', array('item' => $item, 'currency' => $currency)); ?>
             <?php endforeach ?>
 
@@ -87,58 +100,31 @@
         </tbody>
         <tfoot id="global_calculations">
           <tr>
-            <td colspan="4" rowspan="4" class="noborder"></td>
+            <td colspan="3" rowspan="4" class="noborder"></td>
             <td><?php echo __('Subtotal') ?></td>
             <td id="td_subtotal" class="right">
-              <?php echo format_currency($expense->getNetAmount(), $currency) ?>
+              <?php echo format_currency($invoice->getNetAmount(), $currency) ?>
             </td>
           </tr>
           <tr>
             <td><?php echo __('Taxes') ?></td>
             <td id="td_total_taxes" class="right">
-              <?php echo format_currency($expense->getTaxAmount(), $currency) ?>
-            </td>
-          </tr>
-          <tr>
-            <td><?php echo __('Discount') ?></td>
-            <td id="td_global_discount" class="right">
-              <?php echo format_currency($expense->getDiscountAmount(), $currency) ?>
+              <?php echo format_currency($invoice->getTaxAmount(), $currency) ?>
             </td>
           </tr>
           <tr class="strong">
             <td><?php echo __('Total') ?></td>
             <td id="td_total" class="right">
-              <?php echo format_currency($expense->getGrossAmount(), $currency) ?>
+              <?php echo format_currency($invoice->getGrossAmount(), $currency) ?>
             </td>
           </tr>
         </tfoot>
       </table>
     </div>  <!-- div#payment-data -->
 
-    <div id="terms-data">
-
-      <?php if (strlen($expense->getTerms())): ?>
-        <div class="block">
-          <h3><?php echo __('Terms & Conditions') ?></h3>
-          <div class="textarea">
-            <?php echo $expense->getTerms() ?>
-          </div>
-        </div>
-      <?php endif ?>
-
-      <?php if (strlen($expense->getNotes())): ?>
-        <div class="block">
-          <h3><?php echo __('Notes') ?></h3>
-          <div class="textarea">
-            <?php echo $expense->getNotes() ?>
-          </div>
-        </div>
-      <?php endif ?>
-
-    </div>
 
     <?php
-      $tags  = $expense->getTags();
+      $tags  = $invoice->getTags();
       $ctags = count($tags);
       $i     = 0;
     ?>
@@ -156,10 +142,9 @@
   </div>
 
   <div id="saving-options">
-    <?php echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$expense->getId()."')", 'class=action print') ?>
-    <?php echo gButton_to_function(__('Save PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$expense->getId()."'", 'class=action pdf') ?>
-    <?php echo gButton_to(__('Send'), 'expenses/send?id=' .$expense->getId(), 'class=action send') ?>
-    <?php echo gButton_to(__('Edit'), 'expenses/edit?id=' .$expense->getId(), 'class=action edit');  ?>
+    <?php echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$invoice->getId()."')", 'class=action print') ?>
+    <?php echo gButton_to_function(__('Save PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$invoice->getId()."'", 'class=action pdf') ?>
+    <?php echo gButton_to(__('Edit'), 'expenses/edit?id=' .$invoice->getId(), 'class=action edit');  ?>
   </div>
   
 </div>
