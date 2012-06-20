@@ -93,14 +93,14 @@ class SupplierTable extends Doctrine_Table
     foreach ($items as $item)
     {
       $res[$i]['id'] = $item->getId();
-      $res[$i]['Supplier'] = $item->getName();
-      $res[$i]['Supplier_identification'] = $item->getIdentification();
-      $res[$i]['Supplier_email'] = $item->getEmail();
+      $res[$i]['supplier'] = $item->getName();
+      $res[$i]['supplier_identification'] = $item->getIdentification();
+      $res[$i]['supplier_email'] = $item->getEmail();
       $res[$i]['contact_person'] = $item->getContactPerson();
       $res[$i]['invoicing_address'] = $item->getInvoicingAddress();
       $res[$i]['shipping_address'] = $item->getShippingAddress();
-      $res[$i]['phone'] = $item->getPhone();
-      $res[$i]['fax'] = $item->getFax();
+      $res[$i]['supplier_phone'] = $item->getPhone();
+      $res[$i]['supplier_fax'] = $item->getFax();
       $res[$i]['comments'] = $item->getComments();
 
       $i++;

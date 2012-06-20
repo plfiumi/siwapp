@@ -26,7 +26,6 @@ class ExpenseTable extends CommonTable
   {
     $found = $this->createQuery()
       ->where('Draft = ?', 0)
-      ->andWhere('series_id = ?', $series_id)
       ->execute()
       ->count();
     
@@ -35,14 +34,13 @@ class ExpenseTable extends CommonTable
       $rs = $this->createQuery()
         ->select('MAX(number) AS max_number')
         ->where('Draft = ?', 0)
-        ->andWhere('series_id = ?', $series_id)
         ->fetchOne();
       
       return intval($rs->getMaxNumber()) + 1;
     }
     else
     {
-      return Doctrine::getTable('Series')->find($series_id)->getFirstNumber();
+      return 1;
     }
   }
 }
