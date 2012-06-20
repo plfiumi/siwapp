@@ -9,33 +9,39 @@
  * @property decimal $discount
  * @property integer $common_id
  * @property integer $product_id
+ * @property integer $expense_type_id
  * @property string $description
  * @property decimal $unitary_cost
  * @property Common $Common
  * @property Doctrine_Collection $Taxes
  * @property Product $Product
+ * @property ExpenseType $ExpenseType
  * @property Doctrine_Collection $ItemTax
  * 
- * @method decimal             getQuantity()     Returns the current record's "quantity" value
- * @method decimal             getDiscount()     Returns the current record's "discount" value
- * @method integer             getCommonId()     Returns the current record's "common_id" value
- * @method integer             getProductId()    Returns the current record's "product_id" value
- * @method string              getDescription()  Returns the current record's "description" value
- * @method decimal             getUnitaryCost()  Returns the current record's "unitary_cost" value
- * @method Common              getCommon()       Returns the current record's "Common" value
- * @method Doctrine_Collection getTaxes()        Returns the current record's "Taxes" collection
- * @method Product             getProduct()      Returns the current record's "Product" value
- * @method Doctrine_Collection getItemTax()      Returns the current record's "ItemTax" collection
- * @method Item                setQuantity()     Sets the current record's "quantity" value
- * @method Item                setDiscount()     Sets the current record's "discount" value
- * @method Item                setCommonId()     Sets the current record's "common_id" value
- * @method Item                setProductId()    Sets the current record's "product_id" value
- * @method Item                setDescription()  Sets the current record's "description" value
- * @method Item                setUnitaryCost()  Sets the current record's "unitary_cost" value
- * @method Item                setCommon()       Sets the current record's "Common" value
- * @method Item                setTaxes()        Sets the current record's "Taxes" collection
- * @method Item                setProduct()      Sets the current record's "Product" value
- * @method Item                setItemTax()      Sets the current record's "ItemTax" collection
+ * @method decimal             getQuantity()        Returns the current record's "quantity" value
+ * @method decimal             getDiscount()        Returns the current record's "discount" value
+ * @method integer             getCommonId()        Returns the current record's "common_id" value
+ * @method integer             getProductId()       Returns the current record's "product_id" value
+ * @method integer             getExpenseTypeId()   Returns the current record's "expense_type_id" value
+ * @method string              getDescription()     Returns the current record's "description" value
+ * @method decimal             getUnitaryCost()     Returns the current record's "unitary_cost" value
+ * @method Common              getCommon()          Returns the current record's "Common" value
+ * @method Doctrine_Collection getTaxes()           Returns the current record's "Taxes" collection
+ * @method Product             getProduct()         Returns the current record's "Product" value
+ * @method ExpenseType         getExpenseType()     Returns the current record's "ExpenseType" value
+ * @method Doctrine_Collection getItemTax()         Returns the current record's "ItemTax" collection
+ * @method Item                setQuantity()        Sets the current record's "quantity" value
+ * @method Item                setDiscount()        Sets the current record's "discount" value
+ * @method Item                setCommonId()        Sets the current record's "common_id" value
+ * @method Item                setProductId()       Sets the current record's "product_id" value
+ * @method Item                setExpenseTypeId()   Sets the current record's "expense_type_id" value
+ * @method Item                setDescription()     Sets the current record's "description" value
+ * @method Item                setUnitaryCost()     Sets the current record's "unitary_cost" value
+ * @method Item                setCommon()          Sets the current record's "Common" value
+ * @method Item                setTaxes()           Sets the current record's "Taxes" collection
+ * @method Item                setProduct()         Sets the current record's "Product" value
+ * @method Item                setExpenseType()     Sets the current record's "ExpenseType" value
+ * @method Item                setItemTax()         Sets the current record's "ItemTax" collection
  * 
  * @package    siwapp
  * @subpackage model
@@ -65,6 +71,9 @@ abstract class BaseItem extends sfDoctrineRecord
              'type' => 'integer',
              ));
         $this->hasColumn('product_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('expense_type_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('description', 'string', 255, array(
@@ -104,6 +113,11 @@ abstract class BaseItem extends sfDoctrineRecord
 
         $this->hasOne('Product', array(
              'local' => 'product_id',
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
+
+        $this->hasOne('ExpenseType', array(
+             'local' => 'expense_type_id',
              'foreign' => 'id',
              'onDelete' => 'SET NULL'));
 

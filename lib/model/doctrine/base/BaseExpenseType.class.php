@@ -8,13 +8,16 @@
  * @property string $name
  * @property boolean $enabled
  * @property Doctrine_Collection $Supplier
+ * @property Doctrine_Collection $Items
  * 
  * @method string              getName()     Returns the current record's "name" value
  * @method boolean             getEnabled()  Returns the current record's "enabled" value
  * @method Doctrine_Collection getSupplier() Returns the current record's "Supplier" collection
+ * @method Doctrine_Collection getItems()    Returns the current record's "Items" collection
  * @method ExpenseType         setName()     Sets the current record's "name" value
  * @method ExpenseType         setEnabled()  Sets the current record's "enabled" value
  * @method ExpenseType         setSupplier() Sets the current record's "Supplier" collection
+ * @method ExpenseType         setItems()    Sets the current record's "Items" collection
  * 
  * @package    siwapp
  * @subpackage model
@@ -42,6 +45,10 @@ abstract class BaseExpenseType extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasMany('Supplier', array(
+             'local' => 'id',
+             'foreign' => 'expense_type_id'));
+
+        $this->hasMany('Item as Items', array(
              'local' => 'id',
              'foreign' => 'expense_type_id'));
     }

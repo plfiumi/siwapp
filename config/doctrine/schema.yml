@@ -140,17 +140,10 @@ Expense:
     draft:
       type: boolean
       default: true
-    # if the user wants to force the close status
-    closed:
-      type: boolean
-      default: false
-    sent_by_email:
-      type: boolean
-      default: false
     number: integer(4)
     recurring_invoice_id: integer
     issue_date: date
-    due_date: date
+    supplier_reference: string(50)
   relations:
     RecurringInvoice:
       local: recurring_invoice_id
@@ -180,6 +173,7 @@ Item:
     discount: { type: decimal(53), scale: 2, notnull: true, default: 0 }
     common_id: integer
     product_id: integer
+    expense_type_id: integer
     description: string(255)
     unitary_cost: { type: decimal(53), scale: 15, notnull: true, default: 0 }
   relations:
@@ -200,6 +194,12 @@ Item:
       foreignAlias: Items
       type: one
       onDelete: SET NULL
+    ExpenseType:
+      local: expense_type_id
+      foreign: id
+      foreignAlias: Items
+      type: one
+      onDelete: SET NULL  
   indexes:
     desc:
       fields: [description]

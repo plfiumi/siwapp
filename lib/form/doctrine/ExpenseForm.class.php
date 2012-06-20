@@ -51,6 +51,9 @@ class ExpenseForm extends CommonForm
     //Override validations: 
     $this->validatorSchema['customer_email'] = new sfValidatorString(array('max_length' => 100, 'required' => false));
     $this->validatorSchema['customer_name']  =  new sfValidatorString(array('max_length' => 100, 'required' => false));
+    $this->validatorSchema['series_id'] = new sfValidatorDoctrineChoice(
+            array('model' => $this->getRelatedModelName('Series'), 
+            'required' => false));
   }
 
   public function getModelName()

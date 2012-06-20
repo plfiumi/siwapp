@@ -38,6 +38,7 @@
  * @property integer $recurring_invoice_id
  * @property date $issue_date
  * @property date $due_date
+ * @property string $supplier_reference
  * @property integer $days_to_due
  * @property boolean $enabled
  * @property integer $max_occurrences
@@ -85,6 +86,7 @@
  * @method integer             getRecurringInvoiceId()      Returns the current record's "recurring_invoice_id" value
  * @method date                getIssueDate()               Returns the current record's "issue_date" value
  * @method date                getDueDate()                 Returns the current record's "due_date" value
+ * @method string              getSupplierReference()       Returns the current record's "supplier_reference" value
  * @method integer             getDaysToDue()               Returns the current record's "days_to_due" value
  * @method boolean             getEnabled()                 Returns the current record's "enabled" value
  * @method integer             getMaxOccurrences()          Returns the current record's "max_occurrences" value
@@ -131,6 +133,7 @@
  * @method Common              setRecurringInvoiceId()      Sets the current record's "recurring_invoice_id" value
  * @method Common              setIssueDate()               Sets the current record's "issue_date" value
  * @method Common              setDueDate()                 Sets the current record's "due_date" value
+ * @method Common              setSupplierReference()       Sets the current record's "supplier_reference" value
  * @method Common              setDaysToDue()               Sets the current record's "days_to_due" value
  * @method Common              setEnabled()                 Sets the current record's "enabled" value
  * @method Common              setMaxOccurrences()          Sets the current record's "max_occurrences" value
@@ -282,6 +285,10 @@ abstract class BaseCommon extends sfDoctrineRecord
              ));
         $this->hasColumn('due_date', 'date', null, array(
              'type' => 'date',
+             ));
+        $this->hasColumn('supplier_reference', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
              ));
         $this->hasColumn('days_to_due', 'integer', 3, array(
              'type' => 'integer',

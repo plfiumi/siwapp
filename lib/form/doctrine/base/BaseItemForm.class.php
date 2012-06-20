@@ -15,25 +15,27 @@ abstract class BaseItemForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'           => new sfWidgetFormInputHidden(),
-      'quantity'     => new sfWidgetFormInputText(),
-      'discount'     => new sfWidgetFormInputText(),
-      'common_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'add_empty' => true)),
-      'product_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Product'), 'add_empty' => true)),
-      'description'  => new sfWidgetFormInputText(),
-      'unitary_cost' => new sfWidgetFormInputText(),
-      'taxes_list'   => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Tax')),
+      'id'              => new sfWidgetFormInputHidden(),
+      'quantity'        => new sfWidgetFormInputText(),
+      'discount'        => new sfWidgetFormInputText(),
+      'common_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'add_empty' => true)),
+      'product_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Product'), 'add_empty' => true)),
+      'expense_type_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'), 'add_empty' => true)),
+      'description'     => new sfWidgetFormInputText(),
+      'unitary_cost'    => new sfWidgetFormInputText(),
+      'taxes_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Tax')),
     ));
 
     $this->setValidators(array(
-      'id'           => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'quantity'     => new sfValidatorNumber(array('required' => false)),
-      'discount'     => new sfValidatorNumber(array('required' => false)),
-      'common_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'required' => false)),
-      'product_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Product'), 'required' => false)),
-      'description'  => new sfValidatorString(array('max_length' => 255, 'required' => false)),
-      'unitary_cost' => new sfValidatorNumber(array('required' => false)),
-      'taxes_list'   => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Tax', 'required' => false)),
+      'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'quantity'        => new sfValidatorNumber(array('required' => false)),
+      'discount'        => new sfValidatorNumber(array('required' => false)),
+      'common_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'required' => false)),
+      'product_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Product'), 'required' => false)),
+      'expense_type_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'), 'required' => false)),
+      'description'     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'unitary_cost'    => new sfValidatorNumber(array('required' => false)),
+      'taxes_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Tax', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('item[%s]');
