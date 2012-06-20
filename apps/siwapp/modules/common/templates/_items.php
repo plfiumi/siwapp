@@ -76,12 +76,14 @@
         <?php echo format_currency($invoice->getRoundedAmount('base'), $currency) ?>
       </td>
     </tr>
+    <?php if(!$expense) :?>
     <tr>
       <td><?php echo __('Discount') ?></td>
       <td class="discount right">
         <?php echo format_currency($invoice->getRoundedAmount('discount'), $currency)?>
       </td>
     </tr>
+    <?php endif; ?>
     <tr>
       <td><?php echo __('Subtotal') ?></td>
       <td class="net right">

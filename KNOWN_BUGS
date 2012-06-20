@@ -3,4 +3,3 @@ Expenses:
 - Add Tag button doesn't work. 
 - Taxes are not added to the expense line. 
 - There isn't any template for printing expenses invoices.
-- On the edit View, in the totals the the discount is shown, but it isn't applicable on expenses invoices. 
