@@ -106,8 +106,14 @@
               <?php echo format_currency($invoice->getNetAmount(), $currency) ?>
             </td>
           </tr>
+         <?php foreach ($invoice->getTaxDetails() as $name => $amount): ?>
           <tr>
-            <td><?php echo __('Taxes') ?></td>
+            <td><?php echo __('Total')." ".$name ?></td>
+            <td class="right"><?php echo format_currency($amount,$currency)?></td>
+          </tr>
+          <?php endforeach ?>
+          <tr>
+            <td><?php echo __('Taxes Total') ?></td>
             <td id="td_total_taxes" class="right">
               <?php echo format_currency($invoice->getTaxAmount(), $currency) ?>
             </td>
