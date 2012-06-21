@@ -102,6 +102,7 @@ class SupplierTable extends Doctrine_Table
       $res[$i]['supplier_phone'] = $item->getPhone();
       $res[$i]['supplier_fax'] = $item->getFax();
       $res[$i]['comments'] = $item->getComments();
+      $res[$i]['expense_type'] = $item->getExpenseType()->getId();
 
       $i++;
     }

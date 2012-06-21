@@ -38,6 +38,7 @@ echo javascript_tag("
             data[key].shipping_address,
             data[key].supplier_phone,
             data[key].supplier_fax,
+            data[key].expense_type,
           ], value: data[key].supplier, result: data[key].supplier };
         }
         return parsed;
@@ -46,6 +47,7 @@ echo javascript_tag("
       matchContains: true
     }))
     .result(function(event, item) {
+
       $('#".$invoiceForm['supplier_identification']->renderId()."').val(item[1]);
       $('#".$invoiceForm['contact_person']->renderId()."').val(item[2]);
       $('#".$invoiceForm['supplier_email']->renderId()."').val(item[3]);
@@ -53,6 +55,14 @@ echo javascript_tag("
       $('#".$invoiceForm['shipping_address']->renderId()."').val(item[5]);
       $('#".$invoiceForm['supplier_phone']->renderId()."').val(item[6]);
       $('#".$invoiceForm['supplier_fax']->renderId()."').val(item[7]);
+      //Change al the expenses types that are not assigned
+      $('#tbody_invoice_items select').each(function(idx,elem){
+        if(elem.id.indexOf('expense_type_id')>0)
+        {
+          if(!$(elem).val())
+            $(elem).val(item[8]);
+        }
+      });
     });
 ");
 
