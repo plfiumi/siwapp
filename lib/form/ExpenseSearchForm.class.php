@@ -50,7 +50,7 @@ class ExpenseSearchForm extends BaseForm
     $this->widgetSchema['supplier_id']->setOption('renderer_class', 'sfWidgetFormJQueryAutocompleter');
     $this->widgetSchema['supplier_id']->setOption('renderer_options', array(
       'url'   => url_for('search/ajaxSupplierAutocomplete'),
-      'value_callback' => 'CustomerTable::getCustomerName'
+      'value_callback' => 'SupplierTable::getSupplierName'
     ));
     
     $this->widgetSchema->setNameFormat('search[%s]');
