@@ -132,10 +132,10 @@ class SupplierTable extends Doctrine_Table
     return $res;
   }
   
-  public function getNonDraftInvoices($Supplier_id,$date_range = array()) {
+  public function getNonDraftInvoices($supplier_id,$date_range = array()) {
 
-    $search = array_merge(array('Supplier_id'=>$Supplier_id),$date_range);
-    $q = InvoiceQuery::create()->search($search)->andWhere('i.draft = 0');
+    $search = array_merge(array('supplier_id'=>$supplier_id),$date_range);
+    $q = ExpenseQuery::create()->search($search)->andWhere('i.draft = 0');
     return $q->execute();
   }
   
