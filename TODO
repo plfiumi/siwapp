@@ -3,10 +3,6 @@ Comporta crear campo Número de cuenta en la ficha de configuraciónde la empres
 (ejemplo de creación de fichero con norma 19 para remesas)
 http://www.php-hispano.net/foros/PHP/38067-crear-archivo-norma-19-para-remesas
 5. Módulo Gastos
-Formulario para entrar gastos que funcionaria así.
-- Seleccionar proveedor
-- desplegable tipo de gasto
-- cumplimentar fecha, número factura, concepto, Base, IVA, Retención, Total
 - Posibilidad de subir factura escaneda.
 6. Los presupuestos que se han pasado a factura guardar el número de factura para hacer seguimiento. A ser possible que quede un registro de quien lo hizo y cuando lo hizo. 
 
