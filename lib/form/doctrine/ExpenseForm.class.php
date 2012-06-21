@@ -48,15 +48,6 @@ class ExpenseForm extends CommonForm
     $this->widgetSchema->setNameFormat('expense[%s]');
     
     parent::configure();
-    //Override Status to show as a drop-down
-    $statusChoises = array();
-    $statusChoises[0] = 'draft';
-    $statusChoises[2] = 'opened';
-    $statusChoises[1] = 'closed';
-
-    $this->widgetSchema['status'] = new sfWidgetFormSelect(array(
-      'choices' => $statusChoises ));
-
     //Override validations: 
     $this->validatorSchema['customer_email'] = new sfValidatorString(array('max_length' => 100, 'required' => false));
     $this->validatorSchema['customer_name']  =  new sfValidatorString(array('max_length' => 100, 'required' => false));

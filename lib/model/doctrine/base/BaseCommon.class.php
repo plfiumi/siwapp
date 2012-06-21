@@ -52,6 +52,7 @@
  * @property Supplier $Supplier
  * @property Series $Series
  * @property Doctrine_Collection $Items
+ * @property Doctrine_Collection $Payments
  * 
  * @method integer             getSeriesId()                Returns the current record's "series_id" value
  * @method integer             getCustomerId()              Returns the current record's "customer_id" value
@@ -100,6 +101,7 @@
  * @method Supplier            getSupplier()                Returns the current record's "Supplier" value
  * @method Series              getSeries()                  Returns the current record's "Series" value
  * @method Doctrine_Collection getItems()                   Returns the current record's "Items" collection
+ * @method Doctrine_Collection getPayments()                Returns the current record's "Payments" collection
  * @method Common              setSeriesId()                Sets the current record's "series_id" value
  * @method Common              setCustomerId()              Sets the current record's "customer_id" value
  * @method Common              setCustomerName()            Sets the current record's "customer_name" value
@@ -147,6 +149,7 @@
  * @method Common              setSupplier()                Sets the current record's "Supplier" value
  * @method Common              setSeries()                  Sets the current record's "Series" value
  * @method Common              setItems()                   Sets the current record's "Items" collection
+ * @method Common              setPayments()                Sets the current record's "Payments" collection
  * 
  * @package    siwapp
  * @subpackage model
@@ -392,6 +395,10 @@ abstract class BaseCommon extends sfDoctrineRecord
         $this->hasMany('Item as Items', array(
              'local' => 'id',
              'foreign' => 'common_id'));
+
+        $this->hasMany('Payment as Payments', array(
+             'local' => 'id',
+             'foreign' => 'invoice_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $taggable0 = new Taggable();

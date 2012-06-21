@@ -21,7 +21,7 @@ $invoice = $invoiceForm->getObject();
     echo $invoiceForm['supplier_id'];
   ?>
   <ul id="status">
-    <li><?php echo __('Status')?>:<?php echo $invoiceForm['status']; ?><li>
+    <li><?php echo __('Status')?>: <span class="status <?php echo ($stat = $invoice->getStatusString()) ?>"><?php echo __($stat)?></span></li>
   </ul>
   
   <?php 

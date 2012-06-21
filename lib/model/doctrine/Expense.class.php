@@ -107,7 +107,22 @@ class Expense extends BaseExpense
    **/
   public function checkStatus()
   {
-    //Nothing to do here, the status is managed by the user.
+    if($this->getDraft())
+    {
+      $this->setStatus(Expense::DRAFT);
+    }
+    else
+    {
+      if($this->getClosed() || $this->getDueAmount() == 0)
+      {
+        $this->setStatus(Invoice::CLOSED);
+      }
+      else
+      {
+        $this->setStatus(Expense::CLOSED);
+      }
+    }
+    
     return $this;
   }
   
@@ -138,7 +153,7 @@ class Expense extends BaseExpense
   public function setAmounts()
   {
     parent::setAmounts();
-    
+    $this->setPaidAmount($this->calculate('paid_amount'));
     return $this;
   }
 

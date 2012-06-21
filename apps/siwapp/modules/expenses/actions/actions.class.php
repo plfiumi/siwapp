@@ -90,8 +90,8 @@ class expensesActions extends sfActions
   {
     $invoice = $this->getExpense($request);
 
-    // if the invoice is closed, forward to the show action unless the referer is edit or show
-    if($invoice->status == Expense::CLOSED)
+    // if the invoice is not a draft, forward to the show action unless the referer is edit or show
+    if($invoice->status != Expense::DRAFT)
     {
       $comes_from_edit = substr_count($request->getReferer(), '/edit') > 0 ? true : false;
       $this->forwardIf(!$comes_from_edit, 'expenses', 'show');

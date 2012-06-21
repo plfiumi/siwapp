@@ -17,7 +17,7 @@ $csrf     = new sfForm();
         
         <thead>
           <tr>
-            <td colspan="5" class="listing-options noborder">
+            <td colspan="4" class="listing-options noborder">
               <?php include_partial('batchActions')?>
             </td>
             <td class="strong noborder"><?php echo __('Total') ?></td>

@@ -27,7 +27,7 @@ class paymentsActions extends sfActions
       {
         $form->save();
         // now recalculate totals
-        $invoice = Doctrine::getTable('Invoice')->find($request->getParameter('invoice_id'));
+        $invoice = Doctrine::getTable('Common')->find($request->getParameter('invoice_id'));
         $invoice->refresh(true)->setAmounts()->save();
         $this->getUser()->info($i18n->__('Payments were saved successfully.'));
       }
@@ -43,7 +43,7 @@ class paymentsActions extends sfActions
     }
     else
     {
-      $this->forward404Unless($invoice = Doctrine::getTable('Invoice')->find($request->getParameter('invoice_id')));
+      $this->forward404Unless($invoice = Doctrine::getTable('Common')->find($request->getParameter('invoice_id')));
       
       $form = new PaymentsForm($request->getParameter('invoice_id'), array(
         'culture' => $this->getUser()->getCulture()

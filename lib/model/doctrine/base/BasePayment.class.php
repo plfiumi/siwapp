@@ -9,18 +9,18 @@
  * @property date $date
  * @property decimal $amount
  * @property clob $notes
- * @property Invoice $Invoice
+ * @property Common $Common
  * 
  * @method integer getInvoiceId()  Returns the current record's "invoice_id" value
  * @method date    getDate()       Returns the current record's "date" value
  * @method decimal getAmount()     Returns the current record's "amount" value
  * @method clob    getNotes()      Returns the current record's "notes" value
- * @method Invoice getInvoice()    Returns the current record's "Invoice" value
+ * @method Common  getCommon()     Returns the current record's "Common" value
  * @method Payment setInvoiceId()  Sets the current record's "invoice_id" value
  * @method Payment setDate()       Sets the current record's "date" value
  * @method Payment setAmount()     Sets the current record's "amount" value
  * @method Payment setNotes()      Sets the current record's "notes" value
- * @method Payment setInvoice()    Sets the current record's "Invoice" value
+ * @method Payment setCommon()     Sets the current record's "Common" value
  * 
  * @package    siwapp
  * @subpackage model
@@ -53,7 +53,7 @@ abstract class BasePayment extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Invoice', array(
+        $this->hasOne('Common', array(
              'local' => 'invoice_id',
              'foreign' => 'id',
              'onDelete' => 'cascade'));
