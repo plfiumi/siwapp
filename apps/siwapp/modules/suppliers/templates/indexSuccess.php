@@ -60,7 +60,7 @@ $csrf     = new sfForm();
                <?php echo format_currency($supplier->getGrossAmount($sf_data->getRaw('date_range')), $currency)  ?>
               </td>
               <td class="action payments">
-                <?php echo gButton(__("Invoices"), array('id'=>'load-invoices-for-'.$id,'type'=>'button', 'class'=>'invoices action-clear','href'=>'@invoices?search[supplier_id]='.$id)) ?>
+                <?php echo gButton(__("Expenses"), array('id'=>'load-invoices-for-'.$id,'type'=>'button', 'class'=>'invoices action-clear','href'=>'@expenses?search[supplier_id]='.$id)) ?>
               </td>
             </tr>
           <?php endforeach; ?>

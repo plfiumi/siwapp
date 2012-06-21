@@ -44,6 +44,10 @@ all:
         verbose_name: 'Suppliers Module'
         tab_name: 'Suppliers'
         new_button_name: 'New Supplier'
+      expenses:
+        verbose_name: 'Expenses Module'
+        tab_name: 'Expenses'
+        new_button_name: 'New Expense'  
       estimates:
         verbose_name: 'Estimates Module'
         tab_name: 'Estimates'

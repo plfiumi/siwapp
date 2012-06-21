@@ -55,8 +55,15 @@ class Common extends BaseCommon
   public function preSave($event)
   {
     $this->checkStatus();
-    // check for customer matching
-    Doctrine::getTable('Customer')->updateCustomer($this);
+    // check for customer/supplier matching
+    if($this->getType() != 'Expense')
+    {
+      Doctrine::getTable('Customer')->updateCustomer($this);
+    }
+    else
+    {
+      Doctrine::getTable('Supplier')->updateSupplier($this);
+    }
   }
   
   public function postDelete($event)

@@ -38,6 +38,7 @@
  * @property integer $recurring_invoice_id
  * @property date $issue_date
  * @property date $due_date
+ * @property string $supplier_reference
  * @property integer $days_to_due
  * @property boolean $enabled
  * @property integer $max_occurrences
@@ -51,6 +52,7 @@
  * @property Supplier $Supplier
  * @property Series $Series
  * @property Doctrine_Collection $Items
+ * @property Doctrine_Collection $Payments
  * 
  * @method integer             getSeriesId()                Returns the current record's "series_id" value
  * @method integer             getCustomerId()              Returns the current record's "customer_id" value
@@ -85,6 +87,7 @@
  * @method integer             getRecurringInvoiceId()      Returns the current record's "recurring_invoice_id" value
  * @method date                getIssueDate()               Returns the current record's "issue_date" value
  * @method date                getDueDate()                 Returns the current record's "due_date" value
+ * @method string              getSupplierReference()       Returns the current record's "supplier_reference" value
  * @method integer             getDaysToDue()               Returns the current record's "days_to_due" value
  * @method boolean             getEnabled()                 Returns the current record's "enabled" value
  * @method integer             getMaxOccurrences()          Returns the current record's "max_occurrences" value
@@ -98,6 +101,7 @@
  * @method Supplier            getSupplier()                Returns the current record's "Supplier" value
  * @method Series              getSeries()                  Returns the current record's "Series" value
  * @method Doctrine_Collection getItems()                   Returns the current record's "Items" collection
+ * @method Doctrine_Collection getPayments()                Returns the current record's "Payments" collection
  * @method Common              setSeriesId()                Sets the current record's "series_id" value
  * @method Common              setCustomerId()              Sets the current record's "customer_id" value
  * @method Common              setCustomerName()            Sets the current record's "customer_name" value
@@ -131,6 +135,7 @@
  * @method Common              setRecurringInvoiceId()      Sets the current record's "recurring_invoice_id" value
  * @method Common              setIssueDate()               Sets the current record's "issue_date" value
  * @method Common              setDueDate()                 Sets the current record's "due_date" value
+ * @method Common              setSupplierReference()       Sets the current record's "supplier_reference" value
  * @method Common              setDaysToDue()               Sets the current record's "days_to_due" value
  * @method Common              setEnabled()                 Sets the current record's "enabled" value
  * @method Common              setMaxOccurrences()          Sets the current record's "max_occurrences" value
@@ -144,6 +149,7 @@
  * @method Common              setSupplier()                Sets the current record's "Supplier" value
  * @method Common              setSeries()                  Sets the current record's "Series" value
  * @method Common              setItems()                   Sets the current record's "Items" collection
+ * @method Common              setPayments()                Sets the current record's "Payments" collection
  * 
  * @package    siwapp
  * @subpackage model
@@ -283,6 +289,10 @@ abstract class BaseCommon extends sfDoctrineRecord
         $this->hasColumn('due_date', 'date', null, array(
              'type' => 'date',
              ));
+        $this->hasColumn('supplier_reference', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
         $this->hasColumn('days_to_due', 'integer', 3, array(
              'type' => 'integer',
              'length' => 3,
@@ -349,6 +359,10 @@ abstract class BaseCommon extends sfDoctrineRecord
              array(
               'type' => 'Invoice',
              ),
+             'Expense' => 
+             array(
+              'type' => 'Expense',
+             ),
              'Estimate' => 
              array(
               'type' => 'Estimate',
@@ -381,6 +395,10 @@ abstract class BaseCommon extends sfDoctrineRecord
         $this->hasMany('Item as Items', array(
              'local' => 'id',
              'foreign' => 'common_id'));
+
+        $this->hasMany('Payment as Payments', array(
+             'local' => 'id',
+             'foreign' => 'invoice_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $taggable0 = new Taggable();

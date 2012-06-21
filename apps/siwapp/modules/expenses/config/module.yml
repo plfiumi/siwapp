@@ -1,0 +1,6 @@
+all:
+  urls:
+    include: ['payments', 'search']
+    variables:
+      editRow:          expenses/edit
+      calculateInvoice: common/calculate

@@ -9,6 +9,12 @@ class searchComponents extends sfComponents
     $this->form = new InvoiceSearchForm($this->search, array('culture'=>$this->getUser()->getCulture()));
   }
 
+  public function executeExpenseForm(sfWebRequest $request)
+  {
+    $this->getStuff($request);
+    $this->form = new ExpenseSearchForm($this->search, array('culture'=>$this->getUser()->getCulture()));
+  }
+
   public function executeRecurringForm(sfWebRequest $request)
   {
     $this->getStuff($request);

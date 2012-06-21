@@ -5,7 +5,7 @@ class SupplierQuery extends Doctrine_Query
   public static function create($conn = null, $class = null)
   {
     $q = new SupplierQuery($conn);
-    $q->from("Supplier s, s.Commons i WITH i.type= 'Invoice'")
+    $q->from("Supplier s, s.Commons i WITH i.type= 'Expense'")
       ->orderBy('s.name asc')
       ->groupBy('id');
     

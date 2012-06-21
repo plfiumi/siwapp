@@ -58,7 +58,8 @@ $invoice = $invoiceForm->getObject();
       <?php include_partial('common/items', array(
         'invoice' => $invoice,
         'invoiceForm' => $invoiceForm,
-        'currency' => $currency
+        'currency' => $currency, 
+        'expense' => $false
         ));?>
     </div>
 

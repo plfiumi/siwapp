@@ -38,7 +38,8 @@ $estimate = $estimateForm->getObject();
     <?php include_partial('common/items', array(
       'invoice' => $estimate,
       'invoiceForm' => $estimateForm,
-      'currency' => $currency
+      'currency' => $currency, 
+      'expense' => false,
       ));?>
   </div>  <!-- div#payment-data -->
 

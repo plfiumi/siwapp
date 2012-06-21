@@ -24,6 +24,7 @@ class CommonInvoiceQuery extends Doctrine_Query
       if(isset($search['query']))       $this->textSearch($search['query']);
       if(isset($search['series_id']))   $this->series($search['series_id']);
       if(isset($search['customer_id'])) $this->customer($search['customer_id']);
+      if(isset($search['supplier_id'])) $this->supplier($search['supplier_id']);
       if(isset($search['tags']))        $this->withTags($search['tags']);
       if(isset($search['status']))      $this->status($search['status']);
       if(isset($search['period_type']) && $search['period_type']) 
@@ -75,7 +76,7 @@ class CommonInvoiceQuery extends Doctrine_Query
     {
       $this->andWhere("i.series_id = ?", $series_id);
     }
-    
+
     return $this;
   }
   
@@ -84,6 +85,16 @@ class CommonInvoiceQuery extends Doctrine_Query
     if($customer_id)
     {
       $this->andWhere("i.customer_id = ?", $customer_id);
+    }
+    
+    return $this;
+  }
+
+  public function supplier($supplier_id = null)
+  {
+    if($supplier_id)
+    {
+      $this->andWhere("i.supplier_id = ?", $supplier_id);
     }
     
     return $this;
