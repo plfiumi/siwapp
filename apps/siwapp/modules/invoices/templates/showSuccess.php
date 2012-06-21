@@ -38,6 +38,19 @@
         <li>
           <span>
             <span class="_50">
+              <label><?php echo __('Customer Phone') ?>:</label>
+              <?php echo $invoice->getCustomerPhone() ?>
+            </span>
+            <span class="_50 _last">
+              <label><?php echo __('Customer Fax') ?>:</label>
+              <?php echo $invoice->getCustomerFax() ?>
+            </span>
+          </span>
+          <span class="clear"></span>
+        </li>
+        <li>
+          <span>
+            <span class="_50">
               <label><?php echo __('Invoicing address') ?>:</label>
               <?php echo simple_format_text($invoice->getInvoicingAddress()) ?></span>
             <span class="_50 _last">
@@ -87,14 +100,20 @@
         </tbody>
         <tfoot id="global_calculations">
           <tr>
-            <td colspan="4" rowspan="4" class="noborder"></td>
+            <td colspan="4" rowspan="25" class="noborder"></td>
             <td><?php echo __('Subtotal') ?></td>
             <td id="td_subtotal" class="right">
               <?php echo format_currency($invoice->getNetAmount(), $currency) ?>
             </td>
           </tr>
+          <?php foreach ($invoice->getTaxDetails() as $name => $amount): ?>
           <tr>
-            <td><?php echo __('Taxes') ?></td>
+            <td><?php echo __('Total')." ".$name ?></td>
+            <td class="right"><?php echo format_currency($amount,$currency)?></td>
+          </tr>
+          <?php endforeach ?>
+          <tr>
+            <td><?php echo __('Taxes Total') ?></td>
             <td id="td_total_taxes" class="right">
               <?php echo format_currency($invoice->getTaxAmount(), $currency) ?>
             </td>
