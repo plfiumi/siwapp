@@ -119,7 +119,7 @@ class Expense extends BaseExpense
       }
       else
       {
-        $this->setStatus(Expense::CLOSED);
+        $this->setStatus(Expense::OPENED);
       }
     }
     
