@@ -107,29 +107,7 @@ class Expense extends BaseExpense
    **/
   public function checkStatus()
   {
-    if($this->getDraft())
-    {
-      $this->setStatus(Expense::DRAFT);
-    }
-    else
-    {
-      if($this->getClosed() || $this->getDueAmount() == 0)
-      {
-        $this->setStatus(Expense::CLOSED);
-      }
-      else
-      {
-        if($this->getDueDate() > sfDate::getInstance()->format('Y-m-d'))
-        {
-          $this->setStatus(Expense::OPENED);
-        }
-        else
-        {
-          $this->setStatus(Expense::OVERDUE);
-        }
-      }
-    }
-    
+    //Nothing to do here, the status is managed by the user.
     return $this;
   }
   

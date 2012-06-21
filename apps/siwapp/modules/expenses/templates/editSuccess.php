@@ -21,9 +21,7 @@ $invoice = $invoiceForm->getObject();
     echo $invoiceForm['customer_id'];
   ?>
   <ul id="status">
-    <li><?php echo __('Status')?>: <span class="status <?php echo ($stat = $invoice->getStatusString()) ?>"><?php echo __($stat)?></span></li>
-    <?php echo $invoiceForm['closed']->renderRow(); ?>
-    <?php echo $invoiceForm['sent_by_email']->renderRow() ?>
+    <li><?php echo __('Status')?>:<?php echo $invoiceForm['status']; ?><li>
   </ul>
   
   <?php 
