@@ -39,13 +39,13 @@ $currency = $sf_user->getAttribute('currency');
         ");
         echo jq_link_to_remote(__("Add"), array(
         'update'=>$rowId.'_taxes',
-        'url'=>'common/ajaxAddInvoiceItemTax',
+        'url'=>'common/ajaxAddExpenseItemTax',
         'position'=>'bottom',
         'method'=>'post',
         'with'=>"{item_tax_index: new_item_tax_index++, invoice_item_key: '$rowId'}"
         ));
         foreach($item_taxes as $taxId):
-        include_partial('common/taxSpan',array('taxKey'=>$taxId,'rowId'=>$rowId,'err'=>$err));
+        include_partial('common/taxExpenseSpan',array('taxKey'=>$taxId,'rowId'=>$rowId,'err'=>$err));
         endforeach?>
 
       <?php
@@ -61,7 +61,7 @@ $currency = $sf_user->getAttribute('currency');
                    jq_remote_function(
                      array(
                        'update'=> $rowId.'_taxes',
-                       'url'  => 'common/ajaxAddInvoiceItemTax',
+                       'url'  => 'common/ajaxAddExpenseItemTax',
                        'position' => 'bottom',
                        'method'   => 'post',
                        'with'     => "{

@@ -130,6 +130,19 @@ class commonActions extends sfActions
     
     return 'Span';
   }
+
+  public function executeAjaxAddExpenseItemTax($request)
+  {
+    $taxIndex = $request->getParameter('item_tax_index');
+    $invoiceItemKey = $request->getParameter('invoice_item_key');
+    $selected_tax   = $request->getParameter('selected_tax',null);
+    $this->taxKey = $selected_tax ? $selected_tax : 'new_'.$taxIndex;
+
+    $this->rowId  = $invoiceItemKey;
+    $this->setTemplate('_taxExpense');
+
+    return 'Span';
+  }
   
   /**
    * ajax action for invoice items autocompletion
