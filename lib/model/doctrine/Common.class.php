@@ -108,6 +108,11 @@ class Common extends BaseCommon
         }
       }
     }
+    //Round the items so we get no diferencies.
+    foreach ( $result as $key => $val)
+    {
+      $result[$key] = round($val,$this->getDecimals());
+    }
 
     return $result;
   }
