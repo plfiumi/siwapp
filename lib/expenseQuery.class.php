@@ -28,16 +28,16 @@ class ExpenseQuery extends CommonInvoiceQuery
 
     return $this;
   }
-  
+
   public function orderBy($order)
   {
     // if $order contains due_amount
     if(strlen(strstr($order, 'due_amount')) > 0)
       $this->addSelect("i.*, i.gross_amount-i.paid_amount AS due_amount");
-    
+
     return parent::orderBy($order);
   }
-  
+
   public function total($field)
   {
     $other = parent::total($field);
@@ -52,14 +52,6 @@ class ExpenseQuery extends CommonInvoiceQuery
     return $other->select("sum(it.quantity*it.unitary_cost*(1-it.discount/100)*tx.value/100) as total_tax")->addFrom('i.Items it,it.Taxes tx')->addWhere('tx.id = ?', $tax_id)->addWhere('i.draft = 0')->limit(0)->fetchOne()->getTotalTax();
   }
 
-  
-  public function sent($sent)
-  {
-    if(trim($sent)=='') return $this;
-    $this->andWhere('i.sent_by_email = ?', $sent);
-    
-    return $this;
-  }
   
   /**
    * Limits the results to those invoices issued in a date greater or equal than that

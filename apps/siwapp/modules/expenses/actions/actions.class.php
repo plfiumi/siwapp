@@ -131,45 +131,6 @@ class expensesActions extends sfActions
     $this->redirect('expenses/index');
   }
   
-  public function executeSend(sfWebRequest $request)
-  {
-    $invoice = $this->getExpense($request);
-
-    if($this->sendEmail($invoice))
-    {
-      $this->getUser()->info($this->getContext()->getI18N()->__('The invoice was successfully sent.'));
-    }
-    else
-    {
-      $this->getUser()->error($this->getContext()->getI18N()->__('The invoice could not be sent due to an error.'));
-    }
-    $dest = $request->getReferer() ? $request->getReferer() : 'expenses/edit?id='.$invoice->id;
-    $this->redirect($dest);
-  }
-  
-  protected function sendEmail(Expense $invoice)
-  {
-    $i18n = $this->getContext()->getI18N();
-    $result  = false;
-    try {
-      $message = new ExpenseMessage($invoice);
-      if($message->getReadyState())
-      {
-        $result = $this->getMailer()->send($message);
-        if($result)
-        {
-          $invoice->setSentByEmail(true);
-          $invoice->save();
-        }
-      }
-    } catch (Exception $e) {
-      $message = sprintf($i18n->__('There is a problem with invoice %s'), $invoice).': '.$e->getMessage();
-      $this->getUser()->error($message);
-    }
-    
-    return $result;
-  }
-  
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
     $i18n = $this->getContext()->getI18N();
@@ -182,19 +143,7 @@ class expensesActions extends sfActions
       $invoice->save();
       // update totals with saved values
       $invoice->refresh(true)->setAmounts()->save();
-      
-      if ($request->getParameter('send_email'))
-      {
-        if ($this->sendEmail($invoice))
-        {
-          $this->getUser()->info($i18n->__('The invoice was successfully sent.'));
-        }
-        else
-        {
-          $this->getUser()->
-            warn($i18n->__('The invoice could not be sent due to an error.'));
-        }
-      }
+
       $this->getUser()->info($i18n->__('The invoice was successfully saved.'));
       $this->redirect('expenses/edit?id='.$invoice->id);
     }
@@ -231,9 +180,6 @@ class expensesActions extends sfActions
             case 'delete':
               if ($invoice->delete()) $n++;
               break;
-            case 'email':
-              if ($this->sendEmail($invoice)) $n++;
-              break;
           }
         }
       }
@@ -241,9 +187,6 @@ class expensesActions extends sfActions
       {
         case 'delete':
           $this->getUser()->info(sprintf($i18n->__('%d expenses were successfully deleted.'), $n));
-          break;
-        case 'email':
-          $this->getUser()->info(sprintf($i18n->__('%d expenses were successfully sent.'), $n));
           break;
       }
     }
