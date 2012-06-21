@@ -36,7 +36,6 @@ $csrf     = new sfForm();
                 'number'        => array('Number', 'desc'),
                 'supplier_name' => array('Supplier Name', 'asc'),
                 'issue_date'    => array('Date', 'desc'),
-                'due_date'      => array('Due Date', 'asc'),
                 'status'        => array('Status', 'asc'),
                 'due_amount'    => array('Due', 'desc'),
                 'gross_amount'  => array('Total', 'desc')
@@ -58,7 +57,6 @@ $csrf     = new sfForm();
               <td><?php echo $expense ?></td>
               <td class="<?php echo $expense->getSentByEmail() ? 'sent' : null ?>"><?php echo $expense->getSupplierName() ?></td>
               <td><?php echo format_date($expense->getIssueDate()) ?></td>
-              <td><?php echo format_date($expense->getDueDate()) ?></td>
               <td>
                 <span class="status <?php echo ($stat = $expense->getStatusString()) ?>">
                   <?php echo __($stat) ?>
@@ -70,6 +68,9 @@ $csrf     = new sfForm();
                   <span class="draftAmount" title="<?php echo __('This amount is not reflected in the total') ?>"></span>
                 <?php endif?>
                 <?php echo format_currency($expense->getGrossAmount(), $currency)  ?>
+              </td>
+              <td class="action payments">
+                <?php echo gButton(__("Payments"), "id=load-payments-for-$id type=button rel=payments:show class=payment action-clear {$expense->getStatus()}") ?>
               </td>
             </tr>
           <?php endforeach; ?>

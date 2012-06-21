@@ -26,6 +26,7 @@ class CommonForm extends BaseCommonForm
       unset($this[$extra]);
     }
     $this->widgetSchema['customer_id'] = new sfWidgetFormInputHidden();
+    $this->widgetSchema['supplier_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['recurring_invoice_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['tags']  = new sfWidgetFormInputHidden();
 

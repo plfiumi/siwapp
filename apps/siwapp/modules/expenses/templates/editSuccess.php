@@ -18,7 +18,7 @@ $invoice = $invoiceForm->getObject();
     echo $invoiceForm['_csrf_token'];
     echo $invoiceForm['type'];
     echo $invoiceForm['recurring_invoice_id'];
-    echo $invoiceForm['customer_id'];
+    echo $invoiceForm['supplier_id'];
   ?>
   <ul id="status">
     <li><?php echo __('Status')?>:<?php echo $invoiceForm['status']; ?><li>

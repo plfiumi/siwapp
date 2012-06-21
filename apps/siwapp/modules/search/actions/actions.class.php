@@ -39,4 +39,20 @@ class searchActions extends sfActions
 
     return $this->renderText(json_encode($items));
   }
+
+ /**
+   * ajax action for supplier name autocompletion
+   *
+   * @return JSON
+   * @author Sergi Almacellas
+   **/
+  public function executeAjaxSupplierAutocomplete(sfWebRequest $request)
+  {
+    $this->getResponse()->setContentType('application/json');
+    $q = $request->getParameter('q');
+    $items = Doctrine::getTable('Supplier')->simpleRetrieveForSelect($request->getParameter('q'),
+      $request->getParameter('limit'));
+
+    return $this->renderText(json_encode($items));
+  }
 }
