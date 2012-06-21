@@ -2,5 +2,4 @@ Expenses:
 
 - Add Tag button doesn't work. 
 - There isn't any template for printing expenses invoices.
-- Supplier id is not saved on the database.
 - Search by supplier doesn't work. It searches by customer.
