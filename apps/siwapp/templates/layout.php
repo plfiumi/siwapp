@@ -26,6 +26,9 @@
       <li><?php echo __('Welcome, [1]!', array('[1]' => $sf_user->getUsername())) ?> |</li>
       <!--<li><?php // echo link_to(__('Help'), '@homepage') ?> |</li>-->
       <li><?php echo link_to(__('Settings'), 'configuration/settings', array('accesskey' => "s")) ?> |</li>
+      <li><?php echo link_to('Users', '@sf_guard_user') ?> |</li>
+      <li><?php echo link_to('Groups', '@sf_guard_group') ?> |</li>
+      <li><?php echo link_to('Permissions', '@sf_guard_permission') ?> |</li>
       <li><?php echo link_to(__('Logout'), '@sf_guard_signout') ?></li>
     </ul>
     
