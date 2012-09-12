@@ -6,6 +6,11 @@ http://www.php-hispano.net/foros/PHP/38067-crear-archivo-norma-19-para-remesas
 - Posibilidad de subir factura escaneda.
 6. Los presupuestos que se han pasado a factura guardar el número de factura para hacer seguimiento. A ser possible que quede un registro de quien lo hizo y cuando lo hizo. 
 
+Miscelànea: 
+- Acabar traducciones.
+- Encajar factura en una sola pagina. 
+- Poner la pestaña presupostos antes de facturas.
+
 Seguridad: 
 - Obligar a cambiar la contraseña según paràmetro (por defecto 3 meses)
 - Obligar a seleccionar una contraseña fuerte: longitud mínima, mayuculas y minúsculas, números y caracteres especiales.
