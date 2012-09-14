@@ -53,41 +53,6 @@ class configurationActions extends sfActions
     }
     $this->form = $form;
   }
-
-  /**
-   * undocumented function
-   *
-   * @return void
-   * @author JoeZ99 <jzarate@gmail.com>
-   **/
-  public function executeSiwappModules(sfWebRequest $request)
-  {
-    $user = $this->getUser();
-    $i18n = $this->getContext()->getI18N();
-    $form = new SiwappModulesForm();
-    if($request->isMethod('post'))
-    {
-      $form->bind($request->getParameter($form->getName()));
-      if($form->isValid())
-      {
-        $config = $request->getParameter($form->getName());
-        if(!(isset($config['siwapp_modules']) and 
-             $smodules = $config['siwapp_modules']))
-        {
-          $smodules = array();
-        }
-        PropertyTable::set('siwapp_modules',$smodules);
-        $user->info($i18n->__('Your settings were successfully saved.'));
-        $user->loadUserSettings();
-        $this->redirect('@siwapp_modules');
-      }
-      else
-      {
-        $user->error($i18n->__('Settings could not be saved'),false);
-      }
-    }
-    $this->form = $form;
-  }
   
   public function executeProfile(sfWebRequest $request)
   {

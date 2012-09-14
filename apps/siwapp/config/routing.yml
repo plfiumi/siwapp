@@ -134,10 +134,6 @@ templates:
   url:   /settings/templates/:action
   param:  { module: printTemplates, action: index, searchForm: false, tab: templates }
 
-siwapp_modules:
-  url:  /settings/modules
-  param: { module: configuration, action: siwappModules, searchForm: false, tab: siwapp_modules }
-
 password_recovery:
   url: /password_recovery
   param: {module: sfGuardAuth, action:passwordRecovery}
