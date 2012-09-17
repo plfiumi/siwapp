@@ -87,6 +87,7 @@ class GlobalSettingsForm extends FormsContainer
     $this->embedForm('seriess',new SeriessForm());
     /* Expenses Type */
     $this->embedForm('expenses',new ExpensesTypeForm());
+    $this->embedForm('payments',new PaymentsTypeForm());
 
     $this->validatorSchema->setPostValidator(new sfValidatorAnd(
         array(
@@ -105,6 +106,11 @@ class GlobalSettingsForm extends FormsContainer
             ), array(
               'invalid' => 'Some expenses have not been deleted because they are currently in use: <strong>%invalid_expenses%</strong>.'
             )),
+         new sfValidatorCallback(array(
+              'callback' => array($this, 'validatePayments')
+            ), array(
+              'invalid' => 'Some payments have not been deleted because they are currently in use: <strong>%invalid_payments%</strong>.'
+            )),  
           new sfValidatorCallBack(
               array('callback'  => array($this,'checkLogo')),
               array('invalid'   => "Can't upload the logo")
@@ -161,6 +167,7 @@ class GlobalSettingsForm extends FormsContainer
         case 'seriess':
         case 'taxes':
         case 'expenses':
+        case 'payments':
           break;
         default:
           PropertyTable::set($key, $value);
@@ -315,6 +322,54 @@ class GlobalSettingsForm extends FormsContainer
 
     return $values;
   }
+  
+  /**
+   * Finds the PaymentType to be deleted and if they are still linked to Common instances throws
+   * a global error to tell it to the user.
+   */
+  public function validatePayments(sfValidatorBase $validator, $values, $arguments)
+  {
+    $deleted_ids = array();
+    foreach($values['payment'] as $key => $expense)
+    {
+      if($expense['remove'])
+      {
+        $deleted_ids[] = $expense['id'];
+      }
+    }
+    if(!count($deleted_ids))
+    {
+      return $values;
+    }
+
+    return $values;
+
+    $toDelete = Doctrine_Core::getTable('PaymentType')
+      ->createQuery()
+      ->from('PaymentType s')
+      ->innerJoin('s.Common c')
+      ->addWhere('s.id IN (?)',implode(',',$deleted_ids))->execute();
+
+    if(count($toDelete))
+    {
+      $invalid = array();
+      foreach($toDelete as $k => $expense)
+      {
+        $this->taintedValues['payment']['old_'.$expense->id]['remove'] = '';
+        $invalid[] = $expense->name;
+      }
+      throw new sfValidatorErrorSchema($validator,
+                                       array(
+                                         new sfValidatorError($validator,
+                                                              'invalid',
+                                                              array(
+                                                                'invalid_payments'=>
+                                                                implode(', ',$invalid)))));
+    }
+
+    return $values;
+  }
+  
 
   public function checkLogo(sfValidatorBase $validator, $values)
   {

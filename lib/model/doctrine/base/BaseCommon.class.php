@@ -30,6 +30,7 @@
  * @property decimal $paid_amount
  * @property decimal $tax_amount
  * @property integer $status
+ * @property integer $payment_type_id
  * @property string $type
  * @property boolean $draft
  * @property boolean $closed
@@ -52,6 +53,7 @@
  * @property Customer $Customer
  * @property Supplier $Supplier
  * @property Series $Series
+ * @property PaymentType $PaymentType
  * @property Doctrine_Collection $Items
  * @property Doctrine_Collection $Payments
  * 
@@ -80,6 +82,7 @@
  * @method decimal             getPaidAmount()              Returns the current record's "paid_amount" value
  * @method decimal             getTaxAmount()               Returns the current record's "tax_amount" value
  * @method integer             getStatus()                  Returns the current record's "status" value
+ * @method integer             getPaymentTypeId()           Returns the current record's "payment_type_id" value
  * @method string              getType()                    Returns the current record's "type" value
  * @method boolean             getDraft()                   Returns the current record's "draft" value
  * @method boolean             getClosed()                  Returns the current record's "closed" value
@@ -102,6 +105,7 @@
  * @method Customer            getCustomer()                Returns the current record's "Customer" value
  * @method Supplier            getSupplier()                Returns the current record's "Supplier" value
  * @method Series              getSeries()                  Returns the current record's "Series" value
+ * @method PaymentType         getPaymentType()             Returns the current record's "PaymentType" value
  * @method Doctrine_Collection getItems()                   Returns the current record's "Items" collection
  * @method Doctrine_Collection getPayments()                Returns the current record's "Payments" collection
  * @method Common              setSeriesId()                Sets the current record's "series_id" value
@@ -129,6 +133,7 @@
  * @method Common              setPaidAmount()              Sets the current record's "paid_amount" value
  * @method Common              setTaxAmount()               Sets the current record's "tax_amount" value
  * @method Common              setStatus()                  Sets the current record's "status" value
+ * @method Common              setPaymentTypeId()           Sets the current record's "payment_type_id" value
  * @method Common              setType()                    Sets the current record's "type" value
  * @method Common              setDraft()                   Sets the current record's "draft" value
  * @method Common              setClosed()                  Sets the current record's "closed" value
@@ -151,6 +156,7 @@
  * @method Common              setCustomer()                Sets the current record's "Customer" value
  * @method Common              setSupplier()                Sets the current record's "Supplier" value
  * @method Common              setSeries()                  Sets the current record's "Series" value
+ * @method Common              setPaymentType()             Sets the current record's "PaymentType" value
  * @method Common              setItems()                   Sets the current record's "Items" collection
  * @method Common              setPayments()                Sets the current record's "Payments" collection
  * 
@@ -262,6 +268,9 @@ abstract class BaseCommon extends sfDoctrineRecord
         $this->hasColumn('status', 'integer', 1, array(
              'type' => 'integer',
              'length' => 1,
+             ));
+        $this->hasColumn('payment_type_id', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('type', 'string', 255, array(
              'type' => 'string',
@@ -397,6 +406,11 @@ abstract class BaseCommon extends sfDoctrineRecord
              'local' => 'series_id',
              'foreign' => 'id',
              'onDelete' => 'set null'));
+
+        $this->hasOne('PaymentType', array(
+             'local' => 'payment_type_id',
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $this->hasMany('Item as Items', array(
              'local' => 'id',

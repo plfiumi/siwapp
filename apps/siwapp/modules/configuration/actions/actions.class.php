@@ -166,6 +166,9 @@ class configurationActions extends sfActions
       case 'expenses':
         $subform = new FormsContainer(array($index=>new ExpenseTypeForm()),'ExpenseTypeForm');
         break;
+      case 'payments':
+        $subform = new FormsContainer(array($index=>new PaymentTypeForm()),'PaymentTypeForm');
+        break;  
       case 'categories':
         $configForm->getWidgetSchema()->setNameFormat('product_categories[%s]');
         $subform = new FormsContainer(array($index=>new ProductCategoryForm()),'ProductCategoryForm');

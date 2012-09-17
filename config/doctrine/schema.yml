@@ -78,6 +78,7 @@ Common:
     paid_amount:     { type: decimal(53), scale: 15 }
     tax_amount:      { type: decimal(53), scale: 15 }
     status: integer(1)
+    payment_type_id: integer
   relations:
     Customer:
       foreignAlias: Commons
@@ -95,6 +96,12 @@ Common:
       local: series_id
       foreign: id
       onDelete: set null
+    PaymentType:
+      local: payment_type_id
+      foreign: id
+      foreignAlias: PaymentType
+      type: one
+      onDelete: SET NULL  
   indexes:
     cstnm:
       fields: [customer_name]
@@ -359,3 +366,9 @@ ExpenseType:
       type: boolean
       default: true
 
+PaymentType:
+  columns:
+    name:   string(255)
+    enabled:
+      type: boolean
+      default: true
