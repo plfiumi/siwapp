@@ -53,6 +53,39 @@ class configurationActions extends sfActions
     }
     $this->form = $form;
   }
+
+  /**
+   * undocumented function
+   *
+   * @return void
+   * @author Sergi Almacellas  <sergi.almacellas@btactic.com>
+   **/
+  public function executeProductCategories(sfWebRequest $request)
+  {
+    $user = $this->getUser();
+    $i18n = $this->getContext()->getI18N();
+    
+    $form = new ProductCategoryList(array(),null, array('culture' => $user->getCulture()));
+    if ($request->isMethod('post'))
+    {
+  
+      $form->bind($request->getParameter($form->getName()));
+
+      if ($form->isValid())
+      {
+        $form->save();
+        
+        $user->info($i18n->__('Your settings were successfully saved.'));
+        
+        //$this->redirect('@categories');
+      }
+      else
+      {
+        $user->error($i18n->__('Settings could not be saved. Please, check entered values and try to correct them.'), false);
+      }
+    }
+    $this->form = $form;
+  }
   
   public function executeProfile(sfWebRequest $request)
   {
@@ -133,6 +166,10 @@ class configurationActions extends sfActions
       case 'expenses':
         $subform = new FormsContainer(array($index=>new ExpenseTypeForm()),'ExpenseTypeForm');
         break;
+      case 'categories':
+        $configForm->getWidgetSchema()->setNameFormat('product_categories[%s]');
+        $subform = new FormsContainer(array($index=>new ProductCategoryForm()),'ProductCategoryForm');
+        break;  
     }
     $configForm->embedForm($to, $subform);
     return $this->renderText($configForm[$to][$index]);

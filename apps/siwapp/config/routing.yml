@@ -125,6 +125,10 @@ settings:
 profile:
   url:   /settings/profile
   param:  { module: configuration, action: profile, searchForm: false, tab: profile }
+ 
+categories:
+  url:   /settings/categories
+  param:  { module: configuration, action: productCategories, searchForm: false, tab: categories }
 
 templates_edit:
   url:   /settings/templates/edit/:id

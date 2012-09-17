@@ -4,7 +4,8 @@ CREATE TABLE expense_type (id BIGINT AUTO_INCREMENT, name VARCHAR(255), enabled 
 CREATE TABLE item (id BIGINT AUTO_INCREMENT, quantity DECIMAL(53, 15) DEFAULT 1 NOT NULL, discount DECIMAL(53, 2) DEFAULT 0 NOT NULL, common_id BIGINT, product_id BIGINT, expense_type_id BIGINT, description VARCHAR(255), unitary_cost DECIMAL(53, 15) DEFAULT 0 NOT NULL, INDEX desc_idx (description), INDEX common_id_idx (common_id), INDEX product_id_idx (product_id), INDEX expense_type_id_idx (expense_type_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
 CREATE TABLE item_tax (item_id BIGINT, tax_id BIGINT, PRIMARY KEY(item_id, tax_id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
 CREATE TABLE payment (id BIGINT AUTO_INCREMENT, invoice_id BIGINT, date DATE, amount DECIMAL(53, 15), notes LONGTEXT, INDEX invoice_id_idx (invoice_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
-CREATE TABLE product (id BIGINT AUTO_INCREMENT, reference VARCHAR(100) NOT NULL, description LONGTEXT, price DECIMAL(53, 15) DEFAULT 0 NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
+CREATE TABLE product (id BIGINT AUTO_INCREMENT, reference VARCHAR(100) NOT NULL, description LONGTEXT, price DECIMAL(53, 15) DEFAULT 0 NOT NULL, category_id BIGINT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX category_id_idx (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
+CREATE TABLE product_category (id BIGINT AUTO_INCREMENT, name VARCHAR(100) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
 CREATE TABLE sf_guard_user_profile (id BIGINT AUTO_INCREMENT, sf_guard_user_id INT, first_name VARCHAR(50), last_name VARCHAR(50), email VARCHAR(100) UNIQUE, nb_display_results SMALLINT, language VARCHAR(3), country VARCHAR(2), search_filter VARCHAR(30), series VARCHAR(50), hash VARCHAR(50), INDEX sf_guard_user_id_idx (sf_guard_user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
 CREATE TABLE property (keey VARCHAR(50), value LONGTEXT, PRIMARY KEY(keey)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
 CREATE TABLE series (id BIGINT AUTO_INCREMENT, name VARCHAR(255), value VARCHAR(255), first_number INT DEFAULT 1, enabled TINYINT(1) DEFAULT '1', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
@@ -29,6 +30,7 @@ ALTER TABLE item ADD CONSTRAINT item_expense_type_id_expense_type_id FOREIGN KEY
 ALTER TABLE item ADD CONSTRAINT item_common_id_common_id FOREIGN KEY (common_id) REFERENCES common(id) ON DELETE CASCADE;
 ALTER TABLE item_tax ADD CONSTRAINT item_tax_item_id_item_id FOREIGN KEY (item_id) REFERENCES item(id) ON DELETE CASCADE;
 ALTER TABLE payment ADD CONSTRAINT payment_invoice_id_common_id FOREIGN KEY (invoice_id) REFERENCES common(id) ON DELETE CASCADE;
+ALTER TABLE product ADD CONSTRAINT product_category_id_product_category_id FOREIGN KEY (category_id) REFERENCES product_category(id) ON DELETE SET NULL;
 ALTER TABLE sf_guard_user_profile ADD CONSTRAINT sf_guard_user_profile_sf_guard_user_id_sf_guard_user_id FOREIGN KEY (sf_guard_user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;
 ALTER TABLE supplier ADD CONSTRAINT supplier_expense_type_id_expense_type_id FOREIGN KEY (expense_type_id) REFERENCES expense_type(id) ON DELETE SET NULL;
 ALTER TABLE sf_guard_group_permission ADD CONSTRAINT sf_guard_group_permission_permission_id_sf_guard_permission_id FOREIGN KEY (permission_id) REFERENCES sf_guard_permission(id) ON DELETE CASCADE;

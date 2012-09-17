@@ -325,6 +325,10 @@ Series:
       type: boolean
       default: true
 
+ProductCategory:
+  columns:
+    name: {type: string(100), notnull: true}
+
 Product:
   actAs:
     Timestampable:
@@ -332,6 +336,14 @@ Product:
     reference: {type: string(100), notnull: true}
     description: clob
     price: {type: decimal(53), scale: 15, notnull: true, default: 0}
+    category_id: integer
+  relations:
+    ProductCategory:
+      local: category_id
+      foreign: id
+      foreignAlias: ProductCategory
+      type: one
+      onDelete: SET NULL
 
 ExpenseType:
   columns:
