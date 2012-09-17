@@ -11,7 +11,7 @@ class ProductCategoriesForm extends FormsContainer
     {
       $forms['old_'.$product_category->getId()] = new ProductCategoryForm($product_category, $options, false);
     }
-    parent::__construct($forms, 'ProductCategoriesForm', $options, $CSRFSecret);
+    parent::__construct($forms, 'ProductCategoryForm', $options, $CSRFSecret);
   }
 
 }

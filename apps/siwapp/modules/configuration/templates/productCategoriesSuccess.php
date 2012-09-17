@@ -11,7 +11,7 @@
     <?php include_partial('common/globalErrors', array('form' => $form));?>
     <fieldset class="left categories taxseries">
       <h3><?php echo __('Product Categories') ?></h3>
-      <div id="categories">
+      <div id="product_categories">
         <ul class="head">
           <a href="#" class="xit"></a>
           <li class="name"><strong><?php echo __('Name')?></strong></li>
@@ -22,7 +22,7 @@
       </div>
       <div class="clear"></div>
       <small>
-        <a id="addNewCategory" href="#" class="to:categories"><?php echo __('Add a new category') ?></a>
+        <a id="addNewCategory" href="#" class="to:product_categories"><?php echo __('Add a new category') ?></a>
       </small>
     </fieldset>
     <?php include_partial('submit') ?>
