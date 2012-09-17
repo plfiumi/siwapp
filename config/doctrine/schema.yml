@@ -122,6 +122,7 @@ Invoice:
       default: false
     number: integer(4)
     recurring_invoice_id: integer
+    estimate_id: integer
     issue_date: date
     due_date: date
   relations:
@@ -129,6 +130,12 @@ Invoice:
       local: recurring_invoice_id
       foreign: id
       foreignAlias: Invoices
+      type: one
+      onDelete: SET NULL
+    Estimate:
+      local: estimate_id
+      foreign: id
+      foreignAlias: Estimate
       type: one
       onDelete: SET NULL
 

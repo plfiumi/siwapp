@@ -36,6 +36,7 @@
  * @property boolean $sent_by_email
  * @property integer $number
  * @property integer $recurring_invoice_id
+ * @property integer $estimate_id
  * @property date $issue_date
  * @property date $due_date
  * @property string $supplier_reference
@@ -85,6 +86,7 @@
  * @method boolean             getSentByEmail()             Returns the current record's "sent_by_email" value
  * @method integer             getNumber()                  Returns the current record's "number" value
  * @method integer             getRecurringInvoiceId()      Returns the current record's "recurring_invoice_id" value
+ * @method integer             getEstimateId()              Returns the current record's "estimate_id" value
  * @method date                getIssueDate()               Returns the current record's "issue_date" value
  * @method date                getDueDate()                 Returns the current record's "due_date" value
  * @method string              getSupplierReference()       Returns the current record's "supplier_reference" value
@@ -133,6 +135,7 @@
  * @method Common              setSentByEmail()             Sets the current record's "sent_by_email" value
  * @method Common              setNumber()                  Sets the current record's "number" value
  * @method Common              setRecurringInvoiceId()      Sets the current record's "recurring_invoice_id" value
+ * @method Common              setEstimateId()              Sets the current record's "estimate_id" value
  * @method Common              setIssueDate()               Sets the current record's "issue_date" value
  * @method Common              setDueDate()                 Sets the current record's "due_date" value
  * @method Common              setSupplierReference()       Sets the current record's "supplier_reference" value
@@ -281,6 +284,9 @@ abstract class BaseCommon extends sfDoctrineRecord
              'length' => 4,
              ));
         $this->hasColumn('recurring_invoice_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('estimate_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('issue_date', 'date', null, array(
