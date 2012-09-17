@@ -152,8 +152,13 @@ class Estimate extends BaseEstimate
     if ($invoice->trySave())
     {
       $invoice->refresh(true)->setAmounts()->save();
+      //Mark the estimate as APPROVED
+      $this->setStatus(Estimate::APPROVED)->save();
+
       return $invoice;
     }
+
+
     
     return false;
   }
