@@ -20,7 +20,7 @@ Company:
       fields: [name]
       type: unique
   relations:
-    User:
+    CompanyUser:
       class: sfGuardUser
       foreignAlias: Users
       refClass: CompanyUser

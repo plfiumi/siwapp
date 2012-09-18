@@ -17,7 +17,6 @@
  * @property clob $legal_terms
  * @property string $pdf_orientation
  * @property string $pdf_size
- * @property Doctrine_Collection $User
  * @property Doctrine_Collection $Company
  * 
  * @method string              getName()              Returns the current record's "name" value
@@ -32,7 +31,6 @@
  * @method clob                getLegalTerms()        Returns the current record's "legal_terms" value
  * @method string              getPdfOrientation()    Returns the current record's "pdf_orientation" value
  * @method string              getPdfSize()           Returns the current record's "pdf_size" value
- * @method Doctrine_Collection getUser()              Returns the current record's "User" collection
  * @method Doctrine_Collection getCompanyUser()       Returns the current record's "CompanyUser" collection
  * @method Doctrine_Collection getCompany()           Returns the current record's "Company" collection
  * @method Company             setName()              Sets the current record's "name" value
@@ -47,7 +45,6 @@
  * @method Company             setLegalTerms()        Sets the current record's "legal_terms" value
  * @method Company             setPdfOrientation()    Sets the current record's "pdf_orientation" value
  * @method Company             setPdfSize()           Sets the current record's "pdf_size" value
- * @method Company             setUser()              Sets the current record's "User" collection
  * @method Company             setCompanyUser()       Sets the current record's "CompanyUser" collection
  * @method Company             setCompany()           Sets the current record's "Company" collectionUser
  * @property Doctrine_Collection $Company
@@ -64,7 +61,6 @@
  * @method clob                getLegalTerms()        Returns the current record's "legal_terms" value
  * @method string              getPdfOrientation()    Returns the current record's "pdf_orientation" value
  * @method string              getPdfSize()           Returns the current record's "pdf_size" value
- * @method Doctrine_Collection getUser()              Returns the current record's "User" collection
  * @method Doctrine_Collection getCompanyUser()       Returns the current record's "CompanyUser" collection
  * @method Doctrine_Collection getCompany()           Returns the current record's "Company" collection
  * @method Company             setName()              Sets the current record's "name" value
@@ -79,7 +75,6 @@
  * @method Company             setLegalTerms()        Sets the current record's "legal_terms" value
  * @method Company             setPdfOrientation()    Sets the current record's "pdf_orientation" value
  * @method Company             setPdfSize()           Sets the current record's "pdf_size" value
- * @method Company             setUser()              Sets the current record's "User" collection
  * @method Company             setCompanyUser()       Sets the current record's "CompanyUser" collection
  * @method Company             setCompany()           Sets the current record's "Company" collection
  * 
@@ -153,14 +148,10 @@ abstract class BaseCompany extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('sfGuardUser as User', array(
+        $this->hasMany('sfGuardUser as CompanyUser', array(
              'refClass' => 'CompanyUser',
              'local' => 'company_id',
              'foreign' => 'sf_guard_user_id'));
-
-        $this->hasMany('CompanyUser', array(
-             'local' => 'id',
-             'foreign' => 'company_id'));
 
         $this->hasMany('Customer as Company', array(
              'local' => 'id',

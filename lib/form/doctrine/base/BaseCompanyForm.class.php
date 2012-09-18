@@ -28,7 +28,7 @@ abstract class BaseCompanyForm extends BaseFormDoctrine
       'legal_terms'       => new sfWidgetFormTextarea(),
       'pdf_orientation'   => new sfWidgetFormInputText(),
       'pdf_size'          => new sfWidgetFormInputText(),
-      'user_list'         => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser')),
+      'company_user_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser')),
     ));
 
     $this->setValidators(array(
@@ -45,7 +45,7 @@ abstract class BaseCompanyForm extends BaseFormDoctrine
       'legal_terms'       => new sfValidatorString(array('required' => false)),
       'pdf_orientation'   => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'pdf_size'          => new sfValidatorString(array('max_length' => 50, 'required' => false)),
-      'user_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser', 'required' => false)),
+      'company_user_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -70,28 +70,28 @@ abstract class BaseCompanyForm extends BaseFormDoctrine
   {
     parent::updateDefaultsFromObject();
 
-    if (isset($this->widgetSchema['user_list']))
+    if (isset($this->widgetSchema['company_user_list']))
     {
-      $this->setDefault('user_list', $this->object->User->getPrimaryKeys());
+      $this->setDefault('company_user_list', $this->object->CompanyUser->getPrimaryKeys());
     }
 
   }
 
   protected function doSave($con = null)
   {
-    $this->saveUserList($con);
+    $this->saveCompanyUserList($con);
 
     parent::doSave($con);
   }
 
-  public function saveUserList($con = null)
+  public function saveCompanyUserList($con = null)
   {
     if (!$this->isValid())
     {
       throw $this->getErrorSchema();
     }
 
-    if (!isset($this->widgetSchema['user_list']))
+    if (!isset($this->widgetSchema['company_user_list']))
     {
       // somebody has unset this widget
       return;
@@ -102,8 +102,8 @@ abstract class BaseCompanyForm extends BaseFormDoctrine
       $con = $this->getConnection();
     }
 
-    $existing = $this->object->User->getPrimaryKeys();
-    $values = $this->getValue('user_list');
+    $existing = $this->object->CompanyUser->getPrimaryKeys();
+    $values = $this->getValue('company_user_list');
     if (!is_array($values))
     {
       $values = array();
@@ -112,13 +112,13 @@ abstract class BaseCompanyForm extends BaseFormDoctrine
     $unlink = array_diff($existing, $values);
     if (count($unlink))
     {
-      $this->object->unlink('User', array_values($unlink));
+      $this->object->unlink('CompanyUser', array_values($unlink));
     }
 
     $link = array_diff($values, $existing);
     if (count($link))
     {
-      $this->object->link('User', array_values($link));
+      $this->object->link('CompanyUser', array_values($link));
     }
   }
 

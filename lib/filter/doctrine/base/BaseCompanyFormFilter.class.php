@@ -25,7 +25,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
       'legal_terms'       => new sfWidgetFormFilterInput(),
       'pdf_orientation'   => new sfWidgetFormFilterInput(),
       'pdf_size'          => new sfWidgetFormFilterInput(),
-      'user_list'         => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser')),
+      'company_user_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser')),
     ));
 
     $this->setValidators(array(
@@ -41,7 +41,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
       'legal_terms'       => new sfValidatorPass(array('required' => false)),
       'pdf_orientation'   => new sfValidatorPass(array('required' => false)),
       'pdf_size'          => new sfValidatorPass(array('required' => false)),
-      'user_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser', 'required' => false)),
+      'company_user_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('company_filters[%s]');
@@ -53,7 +53,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
     parent::setup();
   }
 
-  public function addUserListColumnQuery(Doctrine_Query $query, $field, $values)
+  public function addCompanyUserListColumnQuery(Doctrine_Query $query, $field, $values)
   {
     if (!is_array($values))
     {
@@ -92,7 +92,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
       'legal_terms'       => 'Text',
       'pdf_orientation'   => 'Text',
       'pdf_size'          => 'Text',
-      'user_list'         => 'ManyKey',
+      'company_user_list' => 'ManyKey',
     );
   }
 }

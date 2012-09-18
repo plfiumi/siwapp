@@ -5,9 +5,21 @@ class SiwappUser extends sfGuardSecurityUser
   public function signIn($user, $remember = false, $con = null)
   {
     parent::signIn($user, $remember, $con);
+    $this->loadCompany($user);
     $this->loadUserSettings();
   }
   
+  private function loadCompany($user)
+  {
+    $userid= $user->getId();
+    //Every time the user logs in we assign it to the default company.
+    $companyObject = new Company();
+    $companyObject=$companyObject->getDefaultCompany($userid);
+
+    $this->setAttribute('company_id',''.$companyObject->getId());
+    $this->setAttribute('company_name',$companyObject->getName());
+  }
+
   public function loadUserSettings()
   {
     $currency = PropertyTable::get('currency', 'USD');
