@@ -41,8 +41,7 @@
       $tab            = $sf_request->getParameter('tab');
       $active         = 'class="active"';
       $siwapp_modules = array();
-      $modules_info   = array_merge(sfConfig::get('app_modules_mandatory'),
-                                    sfConfig::get('app_modules_optional'));
+      $modules_info   = sfConfig::get('app_modules_mandatory');
       foreach($sf_user->getAttribute('siwapp_modules') as $sm) 
       { 
         $prps = $modules_info[$sm];

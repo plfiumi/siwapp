@@ -125,6 +125,10 @@ settings:
 profile:
   url:   /settings/profile
   param:  { module: configuration, action: profile, searchForm: false, tab: profile }
+ 
+categories:
+  url:   /settings/categories
+  param:  { module: configuration, action: productCategories, searchForm: false, tab: categories }
 
 templates_edit:
   url:   /settings/templates/edit/:id
@@ -133,10 +137,6 @@ templates_edit:
 templates:
   url:   /settings/templates/:action
   param:  { module: printTemplates, action: index, searchForm: false, tab: templates }
-
-siwapp_modules:
-  url:  /settings/modules
-  param: { module: configuration, action: siwappModules, searchForm: false, tab: siwapp_modules }
 
 password_recovery:
   url: /password_recovery

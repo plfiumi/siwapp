@@ -130,6 +130,8 @@ class Estimate extends BaseEstimate
     $invoice->setIssueDate(sfDate::getInstance()->format('Y-m-d'));
     $invoice->setDueDate(sfDate::getInstance()->addMonth()->format('Y-m-d'));
     
+    $invoice->setEstimate($this);
+    
     // Copy Items and taxes
     foreach ($this->Items as $item)
     {
@@ -150,8 +152,13 @@ class Estimate extends BaseEstimate
     if ($invoice->trySave())
     {
       $invoice->refresh(true)->setAmounts()->save();
+      //Mark the estimate as APPROVED
+      $this->setStatus(Estimate::APPROVED)->save();
+
       return $invoice;
     }
+
+
     
     return false;
   }

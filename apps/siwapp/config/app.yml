@@ -29,13 +29,16 @@ all:
       dashboard:
         tab_name: 'Dashboard'
         new_button_name: 'New Invoice'
+      estimates:
+        verbose_name: 'Estimates Module'
+        tab_name: 'Estimates'
+        new_button_name: 'New Estimate'
       invoices:
         tab_name: 'Invoices'
         new_button_name: 'New Invoice'
       recurring:
         tab_name: 'Recurring Invoices'
         new_button_name: 'New Recurring Invoice'
-    optional:
       customers:
         verbose_name: 'Customers Module'
         tab_name: 'Customers'
@@ -48,10 +51,6 @@ all:
         verbose_name: 'Expenses Module'
         tab_name: 'Expenses'
         new_button_name: 'New Expense'  
-      estimates:
-        verbose_name: 'Estimates Module'
-        tab_name: 'Estimates'
-        new_button_name: 'New Estimate'
       products:
         verbose_name: 'Products Module'
         tab_name: 'Products'

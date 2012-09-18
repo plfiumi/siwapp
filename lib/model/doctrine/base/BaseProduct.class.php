@@ -8,16 +8,22 @@
  * @property string $reference
  * @property clob $description
  * @property decimal $price
+ * @property integer $category_id
+ * @property ProductCategory $ProductCategory
  * @property Doctrine_Collection $Items
  * 
- * @method string              getReference()   Returns the current record's "reference" value
- * @method clob                getDescription() Returns the current record's "description" value
- * @method decimal             getPrice()       Returns the current record's "price" value
- * @method Doctrine_Collection getItems()       Returns the current record's "Items" collection
- * @method Product             setReference()   Sets the current record's "reference" value
- * @method Product             setDescription() Sets the current record's "description" value
- * @method Product             setPrice()       Sets the current record's "price" value
- * @method Product             setItems()       Sets the current record's "Items" collection
+ * @method string              getReference()       Returns the current record's "reference" value
+ * @method clob                getDescription()     Returns the current record's "description" value
+ * @method decimal             getPrice()           Returns the current record's "price" value
+ * @method integer             getCategoryId()      Returns the current record's "category_id" value
+ * @method ProductCategory     getProductCategory() Returns the current record's "ProductCategory" value
+ * @method Doctrine_Collection getItems()           Returns the current record's "Items" collection
+ * @method Product             setReference()       Sets the current record's "reference" value
+ * @method Product             setDescription()     Sets the current record's "description" value
+ * @method Product             setPrice()           Sets the current record's "price" value
+ * @method Product             setCategoryId()      Sets the current record's "category_id" value
+ * @method Product             setProductCategory() Sets the current record's "ProductCategory" value
+ * @method Product             setItems()           Sets the current record's "Items" collection
  * 
  * @package    siwapp
  * @subpackage model
@@ -44,6 +50,9 @@ abstract class BaseProduct extends sfDoctrineRecord
              'default' => 0,
              'length' => 53,
              ));
+        $this->hasColumn('category_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
 
         $this->option('charset', 'utf8');
     }
@@ -51,6 +60,11 @@ abstract class BaseProduct extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('ProductCategory', array(
+             'local' => 'category_id',
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
+
         $this->hasMany('Item as Items', array(
              'local' => 'id',
              'foreign' => 'product_id'));

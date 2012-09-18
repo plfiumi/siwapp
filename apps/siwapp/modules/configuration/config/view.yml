@@ -3,6 +3,9 @@ all:
 settingsSuccess:
   javascripts:
     - siwapp/settings/global.js
+productCategoriesSuccess:
+  javascripts:
+    - siwapp/settings/global.js
 profileSuccess:
   javascripts:
     - siwapp/lang.selector.js

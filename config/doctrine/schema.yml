@@ -78,6 +78,7 @@ Common:
     paid_amount:     { type: decimal(53), scale: 15 }
     tax_amount:      { type: decimal(53), scale: 15 }
     status: integer(1)
+    payment_type_id: integer
   relations:
     Customer:
       foreignAlias: Commons
@@ -95,6 +96,12 @@ Common:
       local: series_id
       foreign: id
       onDelete: set null
+    PaymentType:
+      local: payment_type_id
+      foreign: id
+      foreignAlias: PaymentType
+      type: one
+      onDelete: SET NULL  
   indexes:
     cstnm:
       fields: [customer_name]
@@ -122,6 +129,7 @@ Invoice:
       default: false
     number: integer(4)
     recurring_invoice_id: integer
+    estimate_id: integer
     issue_date: date
     due_date: date
   relations:
@@ -129,6 +137,12 @@ Invoice:
       local: recurring_invoice_id
       foreign: id
       foreignAlias: Invoices
+      type: one
+      onDelete: SET NULL
+    Estimate:
+      local: estimate_id
+      foreign: id
+      foreignAlias: Estimate
       type: one
       onDelete: SET NULL
 
@@ -325,6 +339,10 @@ Series:
       type: boolean
       default: true
 
+ProductCategory:
+  columns:
+    name: {type: string(100), notnull: true}
+
 Product:
   actAs:
     Timestampable:
@@ -332,6 +350,14 @@ Product:
     reference: {type: string(100), notnull: true}
     description: clob
     price: {type: decimal(53), scale: 15, notnull: true, default: 0}
+    category_id: integer
+  relations:
+    ProductCategory:
+      local: category_id
+      foreign: id
+      foreignAlias: ProductCategory
+      type: one
+      onDelete: SET NULL
 
 ExpenseType:
   columns:
@@ -340,3 +366,9 @@ ExpenseType:
       type: boolean
       default: true
 
+PaymentType:
+  columns:
+    name:   string(255)
+    enabled:
+      type: boolean
+      default: true

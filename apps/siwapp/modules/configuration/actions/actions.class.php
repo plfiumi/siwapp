@@ -58,32 +58,30 @@ class configurationActions extends sfActions
    * undocumented function
    *
    * @return void
-   * @author JoeZ99 <jzarate@gmail.com>
+   * @author Sergi Almacellas  <sergi.almacellas@btactic.com>
    **/
-  public function executeSiwappModules(sfWebRequest $request)
+  public function executeProductCategories(sfWebRequest $request)
   {
     $user = $this->getUser();
     $i18n = $this->getContext()->getI18N();
-    $form = new SiwappModulesForm();
-    if($request->isMethod('post'))
+    
+    $form = new ProductCategoryList(array(),null, array('culture' => $user->getCulture()));
+    if ($request->isMethod('post'))
     {
+  
       $form->bind($request->getParameter($form->getName()));
-      if($form->isValid())
+
+      if ($form->isValid())
       {
-        $config = $request->getParameter($form->getName());
-        if(!(isset($config['siwapp_modules']) and 
-             $smodules = $config['siwapp_modules']))
-        {
-          $smodules = array();
-        }
-        PropertyTable::set('siwapp_modules',$smodules);
+        $form->save();
+        
         $user->info($i18n->__('Your settings were successfully saved.'));
-        $user->loadUserSettings();
-        $this->redirect('@siwapp_modules');
+        
+        $this->redirect('@categories');
       }
       else
       {
-        $user->error($i18n->__('Settings could not be saved'),false);
+        $user->error($i18n->__('Settings could not be saved. Please, check entered values and try to correct them.'), false);
       }
     }
     $this->form = $form;
@@ -168,6 +166,13 @@ class configurationActions extends sfActions
       case 'expenses':
         $subform = new FormsContainer(array($index=>new ExpenseTypeForm()),'ExpenseTypeForm');
         break;
+      case 'payments':
+        $subform = new FormsContainer(array($index=>new PaymentTypeForm()),'PaymentTypeForm');
+        break;  
+      case 'product_categories':
+        $configForm->getWidgetSchema()->setNameFormat('product_categories[%s]');
+        $subform = new FormsContainer(array($index=>new ProductCategoryForm()),'ProductCategoryForm');
+        break;  
     }
     $configForm->embedForm($to, $subform);
     return $this->renderText($configForm[$to][$index]);

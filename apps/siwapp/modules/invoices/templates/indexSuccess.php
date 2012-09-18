@@ -39,7 +39,8 @@ $csrf     = new sfForm();
                 'due_date'      => array('Due Date', 'asc'),
                 'status'        => array('Status', 'asc'),
                 'due_amount'    => array('Due', 'desc'),
-                'gross_amount'  => array('Total', 'desc')
+                'gross_amount'  => array('Total', 'desc'),
+                'related_estimate'  => array('Estimate', 'asc')
                 ), $sf_data->getRaw('sort'), '@invoices');
             ?>
             <th class="noborder"></th>
@@ -71,6 +72,18 @@ $csrf     = new sfForm();
                 <?php endif?>
                 <?php echo format_currency($invoice->getGrossAmount(), $currency)  ?>
               </td>
+              <td><?php
+                        $rel = $invoice->getEstimate()->getId();
+                        if(isset($rel))
+                        {
+                           echo link_to(_('Go to Estimate'),'@estimates_edit?id='.$rel);
+                        }
+                        else
+                        {
+                           echo _('No related Estimate');
+                        }
+
+               ?></td>
               <td class="action payments">
                 <?php echo gButton(__("Payments"), "id=load-payments-for-$id type=button rel=payments:show class=payment action-clear {$invoice->getStatus()}") ?>
               </td>

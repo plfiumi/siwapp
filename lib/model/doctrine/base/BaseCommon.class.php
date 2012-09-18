@@ -30,12 +30,14 @@
  * @property decimal $paid_amount
  * @property decimal $tax_amount
  * @property integer $status
+ * @property integer $payment_type_id
  * @property string $type
  * @property boolean $draft
  * @property boolean $closed
  * @property boolean $sent_by_email
  * @property integer $number
  * @property integer $recurring_invoice_id
+ * @property integer $estimate_id
  * @property date $issue_date
  * @property date $due_date
  * @property string $supplier_reference
@@ -51,6 +53,7 @@
  * @property Customer $Customer
  * @property Supplier $Supplier
  * @property Series $Series
+ * @property PaymentType $PaymentType
  * @property Doctrine_Collection $Items
  * @property Doctrine_Collection $Payments
  * 
@@ -79,12 +82,14 @@
  * @method decimal             getPaidAmount()              Returns the current record's "paid_amount" value
  * @method decimal             getTaxAmount()               Returns the current record's "tax_amount" value
  * @method integer             getStatus()                  Returns the current record's "status" value
+ * @method integer             getPaymentTypeId()           Returns the current record's "payment_type_id" value
  * @method string              getType()                    Returns the current record's "type" value
  * @method boolean             getDraft()                   Returns the current record's "draft" value
  * @method boolean             getClosed()                  Returns the current record's "closed" value
  * @method boolean             getSentByEmail()             Returns the current record's "sent_by_email" value
  * @method integer             getNumber()                  Returns the current record's "number" value
  * @method integer             getRecurringInvoiceId()      Returns the current record's "recurring_invoice_id" value
+ * @method integer             getEstimateId()              Returns the current record's "estimate_id" value
  * @method date                getIssueDate()               Returns the current record's "issue_date" value
  * @method date                getDueDate()                 Returns the current record's "due_date" value
  * @method string              getSupplierReference()       Returns the current record's "supplier_reference" value
@@ -100,6 +105,7 @@
  * @method Customer            getCustomer()                Returns the current record's "Customer" value
  * @method Supplier            getSupplier()                Returns the current record's "Supplier" value
  * @method Series              getSeries()                  Returns the current record's "Series" value
+ * @method PaymentType         getPaymentType()             Returns the current record's "PaymentType" value
  * @method Doctrine_Collection getItems()                   Returns the current record's "Items" collection
  * @method Doctrine_Collection getPayments()                Returns the current record's "Payments" collection
  * @method Common              setSeriesId()                Sets the current record's "series_id" value
@@ -127,12 +133,14 @@
  * @method Common              setPaidAmount()              Sets the current record's "paid_amount" value
  * @method Common              setTaxAmount()               Sets the current record's "tax_amount" value
  * @method Common              setStatus()                  Sets the current record's "status" value
+ * @method Common              setPaymentTypeId()           Sets the current record's "payment_type_id" value
  * @method Common              setType()                    Sets the current record's "type" value
  * @method Common              setDraft()                   Sets the current record's "draft" value
  * @method Common              setClosed()                  Sets the current record's "closed" value
  * @method Common              setSentByEmail()             Sets the current record's "sent_by_email" value
  * @method Common              setNumber()                  Sets the current record's "number" value
  * @method Common              setRecurringInvoiceId()      Sets the current record's "recurring_invoice_id" value
+ * @method Common              setEstimateId()              Sets the current record's "estimate_id" value
  * @method Common              setIssueDate()               Sets the current record's "issue_date" value
  * @method Common              setDueDate()                 Sets the current record's "due_date" value
  * @method Common              setSupplierReference()       Sets the current record's "supplier_reference" value
@@ -148,6 +156,7 @@
  * @method Common              setCustomer()                Sets the current record's "Customer" value
  * @method Common              setSupplier()                Sets the current record's "Supplier" value
  * @method Common              setSeries()                  Sets the current record's "Series" value
+ * @method Common              setPaymentType()             Sets the current record's "PaymentType" value
  * @method Common              setItems()                   Sets the current record's "Items" collection
  * @method Common              setPayments()                Sets the current record's "Payments" collection
  * 
@@ -260,6 +269,9 @@ abstract class BaseCommon extends sfDoctrineRecord
              'type' => 'integer',
              'length' => 1,
              ));
+        $this->hasColumn('payment_type_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('type', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
@@ -281,6 +293,9 @@ abstract class BaseCommon extends sfDoctrineRecord
              'length' => 4,
              ));
         $this->hasColumn('recurring_invoice_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('estimate_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('issue_date', 'date', null, array(
@@ -391,6 +406,11 @@ abstract class BaseCommon extends sfDoctrineRecord
              'local' => 'series_id',
              'foreign' => 'id',
              'onDelete' => 'set null'));
+
+        $this->hasOne('PaymentType', array(
+             'local' => 'payment_type_id',
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $this->hasMany('Item as Items', array(
              'local' => 'id',

@@ -22,7 +22,8 @@ $product = $productForm->getObject();
     </li>
 
     <li>
-      <span class="_50"><?php echo render_tag($productForm['description'])?></span>     
+      <span class="_50"><?php echo __('Category: ').render_tag($productForm['category_id'])?></span>     
+      <span class="_50"><?php echo render_tag($productForm['description'])?></span>
     </li>
   </ul>
 </div>

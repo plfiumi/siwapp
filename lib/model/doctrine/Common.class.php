@@ -116,4 +116,25 @@ class Common extends BaseCommon
 
     return $result;
   }
+
+   /**
+   * Gets an Invoice by the Estimate ID
+   * @author: Sergi Almacellas Abellana <sergi.almacellas@btactic.com>
+   * @return Invoice
+   */
+   public function findByEstimate($estimateID)
+   {
+      $i = Doctrine_Query::create()
+            ->from('Invoice i')
+            ->where("i.estimate_id = ?", $estimateID)
+            ->limit(1)
+            ->execute();
+      return $i[0];
+   }
+
+  public function getRelatedInvoice()
+  {
+      $invoice = new Common();
+      return $invoice->findByEstimate($this->getId());
+  }
 }
