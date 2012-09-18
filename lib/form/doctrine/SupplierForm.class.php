@@ -27,6 +27,8 @@ class SupplierForm extends BaseSupplierForm
                              );
 
     $this->widgetSchema->setHelps($common_defaults);
+    
+    $this->widgetSchema['expense_type_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
 
     // validators
     $this->validatorSchema['email'] = new sfValidatorEmail(
@@ -44,6 +46,8 @@ class SupplierForm extends BaseSupplierForm
                               $this->validatorSchema['name_slug']->
                                 getMessages()
                               ));
+                              
+    /* TODO: Commented because it breaks 
     foreach($this->validatorSchema->getPostValidator()->getValidators() as $val)
     {
       if($val instanceOf sfValidatorDoctrineUnique and 
@@ -55,7 +59,7 @@ class SupplierForm extends BaseSupplierForm
                            );
         }
 
-    }
+    }*/
   }
 
   public function bind(array $taintedValues = null, array $taintedFiles = null)

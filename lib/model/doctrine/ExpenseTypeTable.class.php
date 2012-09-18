@@ -16,4 +16,14 @@ class ExpenseTypeTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('ExpenseType');
     }
+
+    public function getCurrentCompany()
+    {
+        $query = $this->createQuery('q')
+                ->where('q.company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
+                ->orderBy('name ASC');
+        $result = $query->execute();
+        return $result;
+    }
+    
 }

@@ -21,7 +21,8 @@ class ProductForm extends BaseProductForm
                              'description'=>'Product description',
                              'price'=> 'Product price'
                              );
-
+    //Filter categories to the ones that belong to the current company
+    $this->widgetSchema['category_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ProductCategory'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
     $this->widgetSchema->setHelps($common_defaults);
 
   }

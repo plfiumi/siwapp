@@ -44,7 +44,7 @@ class CustomerForm extends BaseCustomerForm
                               $this->validatorSchema['name_slug']->
                                 getMessages()
                               ));
-    foreach($this->validatorSchema->getPostValidator()->getValidators() as $val)
+    /*foreach($this->validatorSchema->getPostValidator()->getValidators() as $val)
     {
       if($val instanceOf sfValidatorDoctrineUnique and 
          $val->getOption('column')==array('name_slug') )
@@ -55,7 +55,7 @@ class CustomerForm extends BaseCustomerForm
                            );
         }
 
-    }
+    }*/
   }
 
   public function bind(array $taintedValues = null, array $taintedFiles = null)

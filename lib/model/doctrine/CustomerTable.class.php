@@ -84,6 +84,7 @@ class CustomerTable extends Doctrine_Table
   public function retrieveForSelect($q, $limit)
   {
     $items = $this->createQuery()
+      ->where('q.company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
       ->where('name_slug LIKE ?', '%'.CustomerTable::slugify($q).'%')
       ->limit($limit)
       ->execute();

@@ -23,6 +23,8 @@ class SeriesTable extends Doctrine_Table
       $finder->where('Enabled = ?', '1');
     }
     
+    $finder->where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'));
+    
     foreach ($finder->execute() as $s)
     {
       $series[$s->id] = $s->name;
