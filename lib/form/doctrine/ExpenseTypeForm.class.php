@@ -15,6 +15,11 @@ class ExpenseTypeForm extends BaseExpenseTypeForm
     unset($this['items_list']);
     $this->widgetSchema['name']->setAttribute('class', 'name');
     $this->widgetSchema['enabled']->setAttribute('class', 'active');
+    $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
+    $this->setDefaults(array(
+      'company_id' => sfContext::getInstance()->getUser()->getAttribute('company_id'),
+      ));
+    
     $this->widgetSchema->setFormFormatterName('Xit');
   }
 }

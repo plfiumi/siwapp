@@ -15,10 +15,18 @@ class Company extends BaseCompany
   public function getDefaultCompany($userid)
   {
     $company = $this->getTable()->createQuery('c')
-                  //->innerJoin('c.CompanyUser cu')
-                  //->where('cu.sf_guard_user_id = ?',$userid)
                  ->where('exists (select company_id from company_user cu where c.id = cu.company_id and cu.sf_guard_user_id = ?) ', $userid)
                  ->fetchOne();
     return $company;
+  }
+  
+  public function loadById($company_id)
+  {
+      $company = $this->getTable()->createQuery('c')
+                 ->where('c.id = ?',$company_id)
+                 ->fetchOne();
+    return $company;
+
+  
   }
 }

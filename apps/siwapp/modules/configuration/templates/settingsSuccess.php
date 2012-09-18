@@ -5,27 +5,28 @@
 <div id="settings-wrapper" class="content">
   <form action="<?php echo url_for('@settings') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
     <?php echo $form['_csrf_token'] ?>
+    <?php echo $form['company']['id'] ?>
     
     <?php include_partial('common/globalErrors', array('form' => $form));?>
     
     <fieldset class="left">
       <h3><?php echo __('Company') ?></h3>
       <ul>
-        <?php echo $form['company_name']->renderRow(array('class' => 'full '.error_class($form['company_name']))) ?>
-        <?php echo $form['company_address']->renderRow(array('class' => error_class($form['company_address']))) ?>
-        <?php echo $form['company_phone']->renderRow(array('class' => error_class($form['company_phone']))) ?>
-        <?php echo $form['company_fax']->renderRow(array('class' => error_class($form['company_fax']))) ?>
-        <?php echo $form['company_email']->renderRow(array('class' => 'full '.error_class($form['company_email']))) ?>
-        <?php echo $form['company_url']->renderRow(array('class' => 'full '.error_class($form['company_url']))) ?>
-        <?php echo $form['company_logo']->renderRow(array('class' => error_class($form['company_logo']))) ?>
-        <?php echo $form['currency']->renderRow(array('class' => error_class($form['currency']))) ?>
+        <?php echo $form['company']['name']->renderRow(array('class' => 'full '.error_class($form['company']['name']))) ?>
+        <?php echo $form['company']['address']->renderRow(array('class' => error_class($form['company']['address']))) ?>
+        <?php echo $form['company']['phone']->renderRow(array('class' => error_class($form['company']['phone']))) ?>
+        <?php echo $form['company']['fax']->renderRow(array('class' => error_class($form['company']['fax']))) ?>
+        <?php echo $form['company']['email']->renderRow(array('class' => 'full '.error_class($form['company']['email']))) ?>
+        <?php echo $form['company']['url']->renderRow(array('class' => 'full '.error_class($form['company']['url']))) ?>
+        <?php echo $form['company']['logo']->renderRow(array('class' => error_class($form['company']['logo']))) ?>
+        <?php echo $form['company']['currency']->renderRow(array('class' => error_class($form['company']['currency']))) ?>
       </ul>
     </fieldset>
     
     <fieldset>
       <h3><?php echo __('Legal texts') ?></h3>
       <ul>
-        <?php echo $form['legal_terms']->renderRow(array('class' => error_class($form['legal_terms']))) ?>
+        <?php echo $form['company']['legal_terms']->renderRow(array('class' => error_class($form['company']['legal_terms']))) ?>
       </ul>
     </fieldset>
     
@@ -108,8 +109,8 @@
     <fieldset class="left">
       <h3><?php echo __('PDF Settings') ?></h3>
       <ul>
-        <?php echo $form['pdf_size']->renderRow(array('class' => error_class($form['pdf_size']))) ?>
-        <?php echo $form['pdf_orientation']->renderRow(array('class' => error_class($form['pdf_orientation']))) ?>
+        <?php echo $form['company']['pdf_size']->renderRow(array('class' => error_class($form['company']['pdf_size']))) ?>
+        <?php echo $form['company']['pdf_orientation']->renderRow(array('class' => error_class($form['company']['pdf_orientation']))) ?>
       </ul>
     </fieldset>
     

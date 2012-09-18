@@ -18,6 +18,10 @@ class SeriesForm extends BaseSeriesForm
     $this->widgetSchema['name']->setAttribute('class','name');
     $this->widgetSchema['value']->setAttribute('class','value');
     $this->widgetSchema['first_number']->setAttribute('class','first_number');
+    $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
+    $this->setDefaults(array(
+      'company_id' => sfContext::getInstance()->getUser()->getAttribute('company_id'),
+      ));
     $this->widgetSchema->setFormFormatterName('Xit');
   }
 }

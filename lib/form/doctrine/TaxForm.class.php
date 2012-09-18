@@ -16,6 +16,10 @@ class TaxForm extends BaseTaxForm
     $this->widgetSchema['is_default']->setAttribute('class', 'is_default');
     $this->widgetSchema['name']->setAttribute('class', 'name');
     $this->widgetSchema['active']->setAttribute('class', 'active');
+    $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
+    $this->setDefaults(array(
+      'company_id' => sfContext::getInstance()->getUser()->getAttribute('company_id'),
+      ));
     $this->widgetSchema->setFormFormatterName('Xit');
   }
 }
