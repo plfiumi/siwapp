@@ -16,6 +16,7 @@ abstract class BaseSeriesForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'           => new sfWidgetFormInputHidden(),
+      'company_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
       'name'         => new sfWidgetFormInputText(),
       'value'        => new sfWidgetFormInputText(),
       'first_number' => new sfWidgetFormInputText(),
@@ -24,6 +25,7 @@ abstract class BaseSeriesForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'           => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'company_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'required' => false)),
       'name'         => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'value'        => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'first_number' => new sfValidatorInteger(array('required' => false)),

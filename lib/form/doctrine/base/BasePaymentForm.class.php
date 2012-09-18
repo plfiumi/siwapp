@@ -16,6 +16,7 @@ abstract class BasePaymentForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'         => new sfWidgetFormInputHidden(),
+      'company_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
       'invoice_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'add_empty' => true)),
       'date'       => new sfWidgetFormDate(),
       'amount'     => new sfWidgetFormInputText(),
@@ -24,6 +25,7 @@ abstract class BasePaymentForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'company_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'required' => false)),
       'invoice_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'required' => false)),
       'date'       => new sfValidatorDate(array('required' => false)),
       'amount'     => new sfValidatorNumber(array('required' => false)),

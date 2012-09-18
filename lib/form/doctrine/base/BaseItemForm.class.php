@@ -16,6 +16,7 @@ abstract class BaseItemForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'              => new sfWidgetFormInputHidden(),
+      'company_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
       'quantity'        => new sfWidgetFormInputText(),
       'discount'        => new sfWidgetFormInputText(),
       'common_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'add_empty' => true)),
@@ -28,6 +29,7 @@ abstract class BaseItemForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'company_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'required' => false)),
       'quantity'        => new sfValidatorNumber(array('required' => false)),
       'discount'        => new sfValidatorNumber(array('required' => false)),
       'common_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'required' => false)),

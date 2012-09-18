@@ -1,8 +1,56 @@
 options:
   charset: utf8
-  
+
+Company:
+  columns:
+    name: string(100)
+    address: string(500)
+    email: string(255)
+    phone: string(50)
+    fax: string(50)
+    url: string(255)
+    logo: clob
+    currency: string(10)
+    currency_decimals: integer
+    legal_terms: clob
+    pdf_orientation: string(50)
+    pdf_size: string(50)
+  indexes:
+    cst:
+      fields: [name]
+      type: unique
+  relations:
+    User:
+      class: sfGuardUser
+      foreignAlias: Users
+      refClass: CompanyUser
+      local: company_id
+      foreign: sf_guard_user_id    
+
+CompanyUser:
+  columns:
+    company_id:
+      type: integer
+      primary: true
+    sf_guard_user_id:
+      type: integer(4)
+      primary: true  
+  relations:
+    Company:
+      local: company_id
+      foreign:  id
+      foreignAlias: CompanyUser
+      onDelete: cascade
+    User:
+      class:  sfGuardUser
+      local: sf_guard_user_id
+      foreign:  id
+      foreignAlias: CompanyUser
+      onDelete:     cascade
+
 Customer:
   columns:
+    company_id: integer
     name: string(100)
     name_slug: string(100)
     identification: string(50)
@@ -15,14 +63,18 @@ Customer:
     comments: clob
   indexes:
     cstm:
-      fields: [name]
-      type: unique
-    cstm_slug:
-      fields: [name_slug]
-      type: unique
+      fields: [company_id,name]
+  relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
 
 Supplier:
   columns:
+    company_id: integer
     name: string(100)
     name_slug: string(100)
     identification: string(50)
@@ -36,12 +88,14 @@ Supplier:
     expense_type_id: integer
   indexes:
     cstm:
-      fields: [name]
-      type: unique
-    cstm_slug:
-      fields: [name_slug]
-      type: unique
+      fields: [company_id,name]
   relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
     ExpenseType:
       foreignAlias: Supplier
       local: expense_type_id
@@ -53,6 +107,7 @@ Common:
     Timestampable:
     Taggable:
   columns:
+    company_id: integer
     series_id: integer
     customer_id: integer
     customer_name: string(100)
@@ -80,6 +135,12 @@ Common:
     status: integer(1)
     payment_type_id: integer
   relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
     Customer:
       foreignAlias: Commons
       local: customer_id
@@ -103,14 +164,16 @@ Common:
       type: one
       onDelete: SET NULL  
   indexes:
+    compny:
+      fields: [company_id]
     cstnm:
-      fields: [customer_name]
+      fields: [company_id,customer_name]
     cstid:
-      fields: [customer_identification]
+      fields: [company_id,customer_identification]
     cstml:
-      fields: [customer_email]
+      fields: [company_id,customer_email]
     cntct:
-      fields: [contact_person]
+      fields: [company_id,contact_person]
   
 Invoice:
   inheritance:
@@ -183,6 +246,7 @@ Estimate:
 # ERRORS IN VIEWS (ARITHMETIC WITH NULL ALWAYS RETURN NULL)
 Item:
   columns:
+    company_id: integer
     quantity: { type: decimal(53), scale: 15, notnull: true, default: 1 }
     discount: { type: decimal(53), scale: 2, notnull: true, default: 0 }
     common_id: integer
@@ -191,6 +255,12 @@ Item:
     description: string(255)
     unitary_cost: { type: decimal(53), scale: 15, notnull: true, default: 0 }
   relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
     Common:
       local: common_id
       foreign: id
@@ -216,12 +286,13 @@ Item:
       onDelete: SET NULL  
   indexes:
     desc:
-      fields: [description]
+      fields: [company_id,description]
 
 # DEFAULT VALUES ARE MANDATORY IN ORDER TO AVOID CALCULATION
 # ERRORS IN VIEWS (ARITHMETIC WITH NULL ALWAYS RETURN NULL)
 Tax:
   columns:
+    company_id: integer
     name: string(50)
     value: { type: decimal(53), scale: 2 }
     active:
@@ -231,6 +302,12 @@ Tax:
       type: boolean
       default: false
   relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
     Items:
       class: Item
       local: tax_id
@@ -239,6 +316,7 @@ Tax:
 
 ItemTax:
   columns:
+    company_id: integer
     item_id: 
       type: integer
       primary: true
@@ -246,6 +324,12 @@ ItemTax:
       type: integer
       primary: true
   relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
     Item:
       local: item_id
       foreign: id
@@ -253,11 +337,18 @@ ItemTax:
 
 Payment:
   columns:
+    company_id: integer
     invoice_id: integer
     date: date
     amount: { type: decimal(53), scale: 15 }
     notes: clob
   relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
     Common:
       local: invoice_id
       foreign: id
@@ -267,10 +358,18 @@ Payment:
 
 Property:
   columns:
+    company_id: integer
     keey:   # I've used keey instead key because key gives problems with the sql
       type: string(50)
       primary: true
     value: clob
+  relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
 
 RecurringInvoice:
   inheritance:
@@ -324,12 +423,21 @@ Template:
       fields:     [name]
       canUpdate:  false
   columns:
+    company_id: integer
     name:         string(255)
     template:     clob
     models:        string(200)
+  relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
 
 Series:
   columns:
+    company_id: integer
     name:   string(255)
     value:  string(255)
     first_number:
@@ -338,20 +446,42 @@ Series:
     enabled:
       type: boolean
       default: true
+  relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
 
 ProductCategory:
   columns:
+    company_id: integer
     name: {type: string(100), notnull: true}
+  relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
 
 Product:
   actAs:
     Timestampable:
   columns:
+    company_id: integer
     reference: {type: string(100), notnull: true}
     description: clob
     price: {type: decimal(53), scale: 15, notnull: true, default: 0}
     category_id: integer
   relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
     ProductCategory:
       local: category_id
       foreign: id
@@ -361,14 +491,30 @@ Product:
 
 ExpenseType:
   columns:
+    company_id: integer
     name:   string(255)
     enabled:
       type: boolean
       default: true
+  relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
 
 PaymentType:
   columns:
+    company_id: integer
     name:   string(255)
     enabled:
       type: boolean
       default: true
+  relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE

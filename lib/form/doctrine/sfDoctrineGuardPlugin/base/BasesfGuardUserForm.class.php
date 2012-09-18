@@ -27,6 +27,7 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       'updated_at'       => new sfWidgetFormDateTime(),
       'groups_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup')),
       'permissions_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardPermission')),
+      'users_list'       => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Company')),
     ));
 
     $this->setValidators(array(
@@ -42,6 +43,7 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       'updated_at'       => new sfValidatorDateTime(),
       'groups_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup', 'required' => false)),
       'permissions_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardPermission', 'required' => false)),
+      'users_list'       => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Company', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -76,12 +78,18 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       $this->setDefault('permissions_list', $this->object->permissions->getPrimaryKeys());
     }
 
+    if (isset($this->widgetSchema['users_list']))
+    {
+      $this->setDefault('users_list', $this->object->Users->getPrimaryKeys());
+    }
+
   }
 
   protected function doSave($con = null)
   {
     $this->savegroupsList($con);
     $this->savepermissionsList($con);
+    $this->saveUsersList($con);
 
     parent::doSave($con);
   }
@@ -159,6 +167,44 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
     if (count($link))
     {
       $this->object->link('permissions', array_values($link));
+    }
+  }
+
+  public function saveUsersList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['users_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->Users->getPrimaryKeys();
+    $values = $this->getValue('users_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('Users', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('Users', array_values($link));
     }
   }
 

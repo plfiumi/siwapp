@@ -13,13 +13,15 @@ abstract class BaseExpenseTypeFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name'    => new sfWidgetFormFilterInput(),
-      'enabled' => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'company_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
+      'name'       => new sfWidgetFormFilterInput(),
+      'enabled'    => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
     ));
 
     $this->setValidators(array(
-      'name'    => new sfValidatorPass(array('required' => false)),
-      'enabled' => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'company_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Company'), 'column' => 'id')),
+      'name'       => new sfValidatorPass(array('required' => false)),
+      'enabled'    => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
     ));
 
     $this->widgetSchema->setNameFormat('expense_type_filters[%s]');
@@ -39,9 +41,10 @@ abstract class BaseExpenseTypeFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'      => 'Number',
-      'name'    => 'Text',
-      'enabled' => 'Boolean',
+      'id'         => 'Number',
+      'company_id' => 'ForeignKey',
+      'name'       => 'Text',
+      'enabled'    => 'Boolean',
     );
   }
 }

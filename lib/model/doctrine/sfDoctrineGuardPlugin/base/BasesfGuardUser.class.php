@@ -18,6 +18,8 @@
  * @property Doctrine_Collection $sfGuardUserPermission
  * @property Doctrine_Collection $sfGuardUserGroup
  * @property sfGuardRememberKey $RememberKeys
+ * @property Doctrine_Collection $Users
+ * @property Doctrine_Collection $CompanyUser
  * @property Profile $Profile
  * 
  * @method integer             getId()                    Returns the current record's "id" value
@@ -33,6 +35,8 @@
  * @method Doctrine_Collection getSfGuardUserPermission() Returns the current record's "sfGuardUserPermission" collection
  * @method Doctrine_Collection getSfGuardUserGroup()      Returns the current record's "sfGuardUserGroup" collection
  * @method sfGuardRememberKey  getRememberKeys()          Returns the current record's "RememberKeys" value
+ * @method Doctrine_Collection getUsers()                 Returns the current record's "Users" collection
+ * @method Doctrine_Collection getCompanyUser()           Returns the current record's "CompanyUser" collection
  * @method Profile             getProfile()               Returns the current record's "Profile" value
  * @method sfGuardUser         setId()                    Sets the current record's "id" value
  * @method sfGuardUser         setUsername()              Sets the current record's "username" value
@@ -47,6 +51,8 @@
  * @method sfGuardUser         setSfGuardUserPermission() Sets the current record's "sfGuardUserPermission" collection
  * @method sfGuardUser         setSfGuardUserGroup()      Sets the current record's "sfGuardUserGroup" collection
  * @method sfGuardUser         setRememberKeys()          Sets the current record's "RememberKeys" value
+ * @method sfGuardUser         setUsers()                 Sets the current record's "Users" collection
+ * @method sfGuardUser         setCompanyUser()           Sets the current record's "CompanyUser" collection
  * @method sfGuardUser         setProfile()               Sets the current record's "Profile" value
  * 
  * @package    siwapp
@@ -130,6 +136,15 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
         $this->hasOne('sfGuardRememberKey as RememberKeys', array(
              'local' => 'id',
              'foreign' => 'user_id'));
+
+        $this->hasMany('Company as Users', array(
+             'refClass' => 'CompanyUser',
+             'local' => 'sf_guard_user_id',
+             'foreign' => 'company_id'));
+
+        $this->hasMany('CompanyUser', array(
+             'local' => 'id',
+             'foreign' => 'sf_guard_user_id'));
 
         $this->hasOne('Profile', array(
              'local' => 'id',

@@ -13,6 +13,7 @@ abstract class BaseProductFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'company_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
       'reference'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'description' => new sfWidgetFormFilterInput(),
       'price'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
@@ -22,6 +23,7 @@ abstract class BaseProductFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'company_id'  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Company'), 'column' => 'id')),
       'reference'   => new sfValidatorPass(array('required' => false)),
       'description' => new sfValidatorPass(array('required' => false)),
       'price'       => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
@@ -48,6 +50,7 @@ abstract class BaseProductFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'          => 'Number',
+      'company_id'  => 'ForeignKey',
       'reference'   => 'Text',
       'description' => 'Text',
       'price'       => 'Number',

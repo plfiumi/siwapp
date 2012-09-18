@@ -13,6 +13,7 @@ abstract class BaseCommonFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'company_id'              => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
       'series_id'               => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Series'), 'add_empty' => true)),
       'customer_id'             => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Customer'), 'add_empty' => true)),
       'customer_name'           => new sfWidgetFormFilterInput(),
@@ -63,6 +64,7 @@ abstract class BaseCommonFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'company_id'              => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Company'), 'column' => 'id')),
       'series_id'               => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Series'), 'column' => 'id')),
       'customer_id'             => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Customer'), 'column' => 'id')),
       'customer_name'           => new sfValidatorPass(array('required' => false)),
@@ -130,6 +132,7 @@ abstract class BaseCommonFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'                      => 'Number',
+      'company_id'              => 'ForeignKey',
       'series_id'               => 'ForeignKey',
       'customer_id'             => 'ForeignKey',
       'customer_name'           => 'Text',

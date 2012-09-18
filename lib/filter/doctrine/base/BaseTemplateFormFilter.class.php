@@ -13,6 +13,7 @@ abstract class BaseTemplateFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'company_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
       'name'       => new sfWidgetFormFilterInput(),
       'template'   => new sfWidgetFormFilterInput(),
       'models'     => new sfWidgetFormFilterInput(),
@@ -22,6 +23,7 @@ abstract class BaseTemplateFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'company_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Company'), 'column' => 'id')),
       'name'       => new sfValidatorPass(array('required' => false)),
       'template'   => new sfValidatorPass(array('required' => false)),
       'models'     => new sfValidatorPass(array('required' => false)),
@@ -48,6 +50,7 @@ abstract class BaseTemplateFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'         => 'Number',
+      'company_id' => 'ForeignKey',
       'name'       => 'Text',
       'template'   => 'Text',
       'models'     => 'Text',

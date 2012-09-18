@@ -13,6 +13,7 @@ abstract class BaseItemFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'company_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
       'quantity'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'discount'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'common_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'add_empty' => true)),
@@ -24,6 +25,7 @@ abstract class BaseItemFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'company_id'      => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Company'), 'column' => 'id')),
       'quantity'        => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
       'discount'        => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
       'common_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Common'), 'column' => 'id')),
@@ -70,6 +72,7 @@ abstract class BaseItemFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'              => 'Number',
+      'company_id'      => 'ForeignKey',
       'quantity'        => 'Number',
       'discount'        => 'Number',
       'common_id'       => 'ForeignKey',

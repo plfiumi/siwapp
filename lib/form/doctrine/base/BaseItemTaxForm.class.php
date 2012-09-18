@@ -15,13 +15,15 @@ abstract class BaseItemTaxForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'item_id' => new sfWidgetFormInputHidden(),
-      'tax_id'  => new sfWidgetFormInputHidden(),
+      'company_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
+      'item_id'    => new sfWidgetFormInputHidden(),
+      'tax_id'     => new sfWidgetFormInputHidden(),
     ));
 
     $this->setValidators(array(
-      'item_id' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('item_id')), 'empty_value' => $this->getObject()->get('item_id'), 'required' => false)),
-      'tax_id'  => new sfValidatorChoice(array('choices' => array($this->getObject()->get('tax_id')), 'empty_value' => $this->getObject()->get('tax_id'), 'required' => false)),
+      'company_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'required' => false)),
+      'item_id'    => new sfValidatorChoice(array('choices' => array($this->getObject()->get('item_id')), 'empty_value' => $this->getObject()->get('item_id'), 'required' => false)),
+      'tax_id'     => new sfValidatorChoice(array('choices' => array($this->getObject()->get('tax_id')), 'empty_value' => $this->getObject()->get('tax_id'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('item_tax[%s]');
