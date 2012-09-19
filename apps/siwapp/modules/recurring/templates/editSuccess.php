@@ -14,6 +14,7 @@ $invoice = $invoiceForm->getObject();
     echo $invoiceForm['id'];
     echo $invoiceForm['_csrf_token'];
     echo $invoiceForm['type'];
+    echo $invoiceForm['company_id'];
     ?>
 
     <ul id="status">

@@ -32,7 +32,7 @@ class customersActions extends sfActions
     $page       = $this->getUser()->getAttribute('page', 1, $namespace);
     $maxResults = $this->getUser()->getPaginationMaxResults();
     
-    $q = CustomerQuery::create()->search($search)->orderBy("$sort[0] $sort[1], name $sort[1]");
+    $q = CustomerQuery::create()->where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->search($search)->orderBy("$sort[0] $sort[1], name $sort[1]");
     $date_range = array();
     $date_range['from'] = isset($search['from']) ? $search['from'] : null;
     $date_range['to']   = isset($search['to'])   ? $search['to']   : null;

@@ -25,6 +25,7 @@ class CommonForm extends BaseCommonForm
     {
       unset($this[$extra]);
     }
+    $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['customer_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['supplier_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['recurring_invoice_id'] = new sfWidgetFormInputHidden();
@@ -55,9 +56,11 @@ class CommonForm extends BaseCommonForm
 
     $this->widgetSchema->setHelps(array_merge($this->widgetSchema->getHelps(),$common_defaults));
 
-
+    $this->setDefault('company_id' , sfContext::getInstance()->getUser()->getAttribute('company_id'));
     $this->setDefault('tags', implode(',',$this->object->getTags()));
-    $this->setDefault('terms', PropertyTable::get('legal_terms'));
+    $companyObject = new Company();
+    $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
+    $this->setDefault('terms', $companyObject->getLegalTerms());
     
     // validators
     $this->validatorSchema['tags']           = new sfValidatorString(array('required'=>false));

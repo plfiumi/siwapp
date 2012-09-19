@@ -34,13 +34,13 @@ class recurringActions extends sfActions
     
     // Warn the user if there are pending invoices waiting for being generated
     
-    if ($this->pending = RecurringInvoiceQuery::create()->countPending())
+    if ($this->pending = RecurringInvoiceQuery::create()->Where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->countPending())
     {
       $i18n = $this->getContext()->getI18N();
       $this->getUser()->warn(sprintf($i18n->__("There are %d recurring invoices that were not executed."), $this->pending));
     }
     
-    $q = RecurringInvoiceQuery::create()->search($search)->orderBy("$sort[0] $sort[1]");
+    $q = RecurringInvoiceQuery::create()->Where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->search($search)->orderBy("$sort[0] $sort[1]");
     // totals
     $this->gross = $q->total('gross_amount');
     // expected totals

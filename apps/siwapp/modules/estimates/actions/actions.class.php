@@ -37,7 +37,7 @@ class estimatesActions extends sfActions
     $page       = $this->getUser()->getAttribute('page', 1, $namespace);
     $maxResults = $this->getUser()->getPaginationMaxResults();
     
-    $q = EstimateQuery::create()->search($search)->orderBy("$sort[0] $sort[1], number $sort[1]");
+    $q = EstimateQuery::create()->Where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->search($search)->orderBy("$sort[0] $sort[1], number $sort[1]");
     // totals
     $this->gross = $q->total('gross_amount');
 

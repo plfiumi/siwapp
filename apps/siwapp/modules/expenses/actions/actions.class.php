@@ -32,7 +32,7 @@ class expensesActions extends sfActions
     $page       = $this->getUser()->getAttribute('page', 1, $namespace);
     $maxResults = $this->getUser()->getPaginationMaxResults();
     
-    $q = ExpenseQuery::create()->search($search)->orderBy("$sort[0] $sort[1], number $sort[1]");
+    $q = ExpenseQuery::create()->Where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->search($search)->orderBy("$sort[0] $sort[1], number $sort[1]");
     // totals
     $this->gross = $q->total('gross_amount');
     $this->due   = $q->total('due_amount');

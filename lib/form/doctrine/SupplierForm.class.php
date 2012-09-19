@@ -30,6 +30,10 @@ class SupplierForm extends BaseSupplierForm
     
     $this->widgetSchema['expense_type_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
 
+    //Assign company_id from session values.
+    $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
+    $this->setDefault('company_id' , sfContext::getInstance()->getUser()->getAttribute('company_id'));
+
     // validators
     $this->validatorSchema['email'] = new sfValidatorEmail(
                                             array(

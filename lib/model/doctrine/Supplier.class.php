@@ -16,6 +16,7 @@ class Supplier extends BaseSupplier
    **/
   public function setDataFrom($obj)
   {
+    $this->setCompany($obj->getCompany());
     $this->setName($obj->getSupplierName());
     $this->setNameSlug(SupplierTable::slugify($obj->getSupplierName()));
     $this->setIdentification($obj->getSupplierIdentification());

@@ -16,6 +16,7 @@ class Customer extends BaseCustomer
    **/
   public function setDataFrom($obj)
   {
+    $this->setCompany($obj->getCompany());
     $this->setName($obj->getCustomerName());
     $this->setNameSlug(CustomerTable::slugify($obj->getCustomerName()));
     $this->setIdentification($obj->getCustomerIdentification());

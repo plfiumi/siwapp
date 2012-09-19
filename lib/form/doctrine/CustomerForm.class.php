@@ -28,6 +28,10 @@ class CustomerForm extends BaseCustomerForm
 
     $this->widgetSchema->setHelps($common_defaults);
 
+    //Assign company_id from session values.
+    $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
+    $this->setDefault('company_id' , sfContext::getInstance()->getUser()->getAttribute('company_id'));
+
     // validators
     $this->validatorSchema['email'] = new sfValidatorEmail(
                                             array(

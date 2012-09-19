@@ -18,6 +18,7 @@ $estimate = $estimateForm->getObject();
     echo $estimateForm['draft'];
     echo $estimateForm['_csrf_token'];
     echo $estimateForm['type'];
+    echo $estimateForm['company_id'];
   ?>
   <ul id="status">
     <?php echo $estimateForm['status']->renderRow() ?>

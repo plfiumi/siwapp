@@ -21,6 +21,11 @@ class ProductForm extends BaseProductForm
                              'description'=>'Product description',
                              'price'=> 'Product price'
                              );
+
+    //Assign company_id from session values.
+    $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
+    $this->setDefault('company_id' , sfContext::getInstance()->getUser()->getAttribute('company_id'));
+
     //Filter categories to the ones that belong to the current company
     $this->widgetSchema['category_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ProductCategory'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
     $this->widgetSchema->setHelps($common_defaults);

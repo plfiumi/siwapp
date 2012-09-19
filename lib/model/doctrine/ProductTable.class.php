@@ -73,8 +73,8 @@ class ProductTable extends Doctrine_Table
     public function retrieveForSelect($q, $limit)
     {
       $items = $this->createQuery()
-        ->where('reference LIKE ?', '%'.$q.'%')
-        ->orWhere('description LIKE ?', '%'.$q.'%')
+        ->where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
+        ->andWhere('(reference LIKE ? or description LIKE ?)', array('%'.$q.'%', '%'.$q.'%'))
         ->limit($limit)
         ->execute();
 
