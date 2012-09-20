@@ -11,7 +11,7 @@ class GlobalSettingsForm extends FormsContainer
     $culture = $this->getOption('culture', sfConfig::get('sf_default_culture'));
     
     //Embed Company Form:
-    $this->embedForm('company',new CompanyForm());
+    $this->embedForm('company',new CurrentCompanyForm());
     /* TAXES & SERIES*/
     $this->embedForm('taxes',new TaxesForm());
     $this->embedForm('seriess',new SeriessForm());

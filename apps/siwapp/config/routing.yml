@@ -118,6 +118,18 @@ products_edit:
   url:   /products/edit/:id
   param:  { module: products, action: edit, tab: products, searchForm: false }
   
+companies:
+  url:   /companies
+  param:  { module: companies, action: index, tab:companies, searchForm: true, searchNamespace: companies }
+
+companies_new:
+  url:   /companies/new
+  param:  { module: companies, action: new, tab: companies, searchForm: false }
+
+companies_edit:
+  url:   /companies/edit/:id
+  param:  { module: companies, action: edit, tab: companies, searchForm: false }
+
 settings:
   url:   /settings/global
   param:  { module: configuration, action: settings, searchForm: false, tab: global }

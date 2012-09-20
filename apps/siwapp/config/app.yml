@@ -55,3 +55,7 @@ all:
         verbose_name: 'Products Module'
         tab_name: 'Products'
         new_button_name: 'New Product'
+      companies:
+        verbose_name: 'Companies Module'
+        tab_name: 'Companies'
+        new_button_name: 'New Company'

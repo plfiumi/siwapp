@@ -18,31 +18,12 @@ class CompanyForm extends BaseCompanyForm
   public function configure()
   {
 
-    $companyObject = new Company();
-    $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
-
     $culture = $this->getOption('culture', sfConfig::get('sf_default_culture'));
     
     $this->widgetSchema['currency'] = new sfWidgetFormI18nChoiceCurrency(array('culture' => $culture));
     $this->widgetSchema['legal_terms'] = new sfWidgetFormTextarea(array(), array('cols' => '30', 'rows' => '7'));
     $this->widgetSchema['pdf_size'] = new sfWidgetFormSelect(array('choices' => self::$paper_sizes));
     $this->widgetSchema['pdf_orientation'] = new sfWidgetFormSelect(array('choices' => array('portrait', 'landscape')));
-    
-    unset($this->widgetSchema['company_user_list']);
-    
-    $this->setDefaults(array(
-      'id'     => $companyObject->getId(),
-      'name'     => $companyObject->getName(),
-      'address'  => $companyObject->getAddress(),
-      'phone'    => $companyObject->getPhone(),
-      'fax'      => $companyObject->getFax(),
-      'email'    => $companyObject->getEmail(),
-      'url'      => $companyObject->getUrl(),
-      'currency'        => $companyObject->getCurrency(),
-      'legal_terms'     => $companyObject->getLegalTerms(),
-      'pdf_size'        => $companyObject->getPdfSize(),
-      'pdf_orientation' => $companyObject->getPdfOrientation(),
-    ));
 
     $this->widgetSchema->setLabels(array(
       'name'     => 'Name',
@@ -58,73 +39,8 @@ class CompanyForm extends BaseCompanyForm
     ));
 
 
-    $this->widgetSchema['logo'] = new sfWidgetFormInputFileEditable(array(
-      'label'     => 'Logo',
-      'file_src'  => self::getUploadsDir().'/'.$companyObject->getLogo(),
-      'is_image'  => true,
-      'edit_mode' => is_file(sfConfig::get('sf_upload_dir').DIRECTORY_SEPARATOR.$companyObject->getLogo()),
-      'template'  => '<div id="company_logo_container"><div>%file%<br/>%input%</div><div class="dl">%delete% %delete_label%</div><div>'
-    ));
-
-    $this->setValidators(array(
-      'logo'        => new sfValidatorFile(array(
-                                     'mime_types' => 'web_images', 
-                                     'required' => false, 
-                                     'validated_file_class'=>'SiwappValidatedFile',
-                                     'path'      => sfConfig::get('sf_upload_dir').DIRECTORY_SEPARATOR
-                                     )),
-      'logo_delete' => new sfValidatorPass(),
-      'currency'            => new sfValidatorString(array('max_length' => 50, 'required' => true)),
-      'legal_terms'         => new sfValidatorString(array('required' => false)),
-      'pdf_size'            => new sfValidatorString(array('required' => false)),
-      'pdf_orientation'     => new sfValidatorString(array('required' => false))
-    ));
-
-   $this->validatorSchema->setPostValidator(new sfValidatorAnd(
-        array(
-          new sfValidatorCallBack(
-              array('callback'  => array($this,'checkLogo')),
-              array('invalid'   => "Can't upload the logo")
-              )
-          )
-        ));
   }
-  
-   /**
-   * @return void
-   * @author Sergi Almacellas <sergi.almacellas@btactic.com>
-   **/
-  public function save($con = null)
-  {
-/*
-    $currency_decimals = sfConfig::get('app_currency_decimals', array());
-    
-    foreach ($this->getValues() as $key => $value)
-    {
-      switch ($key)
-      {
-        case 'logo':
-          if (("on" == $this->getValue('logo_delete')) && is_file($old = sfConfig::get('sf_upload_dir').DIRECTORY_SEPARATOR.PropertyTable::get('logo')))
-          {
-            @ unlink($old);
-            PropertyTable::set('logo', null);
-          }
-          
-          if ($value)
-          {
-            $fname = $value->generateFilename();
-            $value->save(sfConfig::get('sf_upload_dir').DIRECTORY_SEPARATOR.$fname);
-            $this->setLogo($fname);
-          }
-          break;
 
-        case 'logo_delete':
-          break;
-
-      }
-    }*/
-    parent::save();
-  }
 
   public static function getUploadsDir()
   {
