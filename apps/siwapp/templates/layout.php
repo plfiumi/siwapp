@@ -25,6 +25,17 @@
     <ul id="hd-top-menu" class="inline content">
       <li><?php echo __('Welcome, [1]!', array('[1]' => $sf_user->getUsername())) ?> |</li>
       <!--<li><?php // echo link_to(__('Help'), '@homepage') ?> |</li>-->
+      <li>
+          <?php echo __('Current Company:') ?>
+          <select name="session_company">
+          <?php foreach ($sf_user->getAttribute('available_companies') as $company): ?>
+             <?php 
+                $selected = $company['id'] == $sf_user->getAttribute('company_id') ? 'selected=true' : '';
+                echo '<option '.$selected.' value="'.$company['id'].'">'.$company['name'].'</option>' ;
+             ?>
+          <?php endforeach ?>
+         </select> |
+      </li>
       <li><?php echo link_to(__('Settings'), 'configuration/settings', array('accesskey' => "s")) ?> |</li>
       <li><?php echo link_to('Users', '@sf_guard_user') ?> |</li>
       <li><?php echo link_to('Groups', '@sf_guard_group') ?> |</li>
@@ -32,6 +43,8 @@
       <li><?php echo link_to(__('Logout'), '@sf_guard_signout') ?></li>
     </ul>
     
+    </div>
+
     <?php include_partial('global/notifications') ?>
   </div>
   

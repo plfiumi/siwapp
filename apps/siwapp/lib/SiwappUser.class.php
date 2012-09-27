@@ -33,8 +33,8 @@ class SiwappUser extends sfGuardSecurityUser
                                                   );
     $this->setAttribute('currency', $currency);
     $this->setAttribute('currency_decimals', $currency_decimals);
-    //If the user is not a super admin don't show the companies and users options.    
-    if(!$this->hasCredential())
+    /* If the user is not a super admin don't show the companies and users options. */
+    if(!($this->getGuardUser()->getIsSuperAdmin()))
     {
         $real_modules= array();
         foreach ($siwapp_mandatory_modules as $module)
@@ -45,6 +45,21 @@ class SiwappUser extends sfGuardSecurityUser
         }
         $siwapp_mandatory_modules = $real_modules;
     }
+    
+    $com = Doctrine_Query::create()
+        ->select('cu.company_id,c.name')
+        ->from('CompanyUser cu')
+        ->innerJoin('cu.Company c')
+        ->where('sf_guard_user_id = ?', $this->getGuardUser()->getId())->fetchArray();
+    $available_companies= array();
+    foreach($com as $company)
+    {
+        $available_companies[] = array(
+            "id" => $company['Company']['id'],
+            "name" => $company['Company']['name'],
+        );
+    }  
+    $this->setAttribute('available_companies',$available_companies);
     
     $this->setAttribute('siwapp_modules', 
                         array_merge(
