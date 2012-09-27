@@ -130,6 +130,18 @@ companies_edit:
   url:   /companies/edit/:id
   param:  { module: companies, action: edit, tab: companies, searchForm: false }
 
+users:
+  url:   /users
+  param:  { module: users, action: index, tab:users, searchForm: true, searchNamespace: users }
+
+users_new:
+  url:   /users/new
+  param:  { module: users, action: new, tab: users, searchForm: false }
+
+users_edit:
+  url:   /users/edit/:id
+  param:  { module: users, action: edit, tab: users, searchForm: false }
+
 settings:
   url:   /settings/global
   param:  { module: configuration, action: settings, searchForm: false, tab: global }

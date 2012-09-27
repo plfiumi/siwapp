@@ -45,6 +45,12 @@ class searchComponents extends sfComponents
     $this->form = new CompanySearchForm($this->search, array('culture'=>$this->getUser()->getCulture()));
   }
   
+  public function executeUserForm(sfWebRequest $request)
+  {
+    $this->getStuff($request);
+    $this->form = new UserSearchForm($this->search, array('culture'=>$this->getUser()->getCulture()));
+  }
+  
   public function executeEstimateForm(sfWebRequest $request)
   {
     $this->executeForm($request);

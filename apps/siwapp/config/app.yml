@@ -59,3 +59,7 @@ all:
         verbose_name: 'Companies Module'
         tab_name: 'Companies'
         new_button_name: 'New Company'
+      users:
+        verbose_name: 'Users Module'
+        tab_name: 'Users'
+        new_button_name: 'New User'

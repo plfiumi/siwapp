@@ -95,7 +95,7 @@ class configurationActions extends sfActions
     $user = $this->getUser();
     $i18n = $this->getContext()->getI18N();
     
-    $form = new ProfileForm($user->getProfile(), array('user'=>$user));
+    $form = new CurrentUserProfileForm($user->getProfile(), array('user'=>$user));
     
     if ($request->isMethod('post'))
     {

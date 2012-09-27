@@ -1,0 +1,14 @@
+all:
+  metas:
+    title:     siwapp - Users
+  components:
+    searchForm: [search, userForm]
+    
+indexSuccess:
+  stylesheets: [ /sfFormExtraPlugin/css/jquery.autocompleter.css ]
+  javascripts:
+    - core/table.js
+editSuccess:
+  javascripts:
+    - invoice.js
+
