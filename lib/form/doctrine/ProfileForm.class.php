@@ -106,7 +106,6 @@ class ProfileForm extends BaseProfileForm
         $salt = md5(rand(100000, 999999) . $name);
         $pass = $values['new_password'];
         $superadmin = $values['superadmin'] ? 1 : 0 ;
-        sfContext::getInstance()->getLogger()->info("ProfileForm : creating user $name salt = $salt password = $pass superadmin = $superadmin");
 
         if (is_null($values['sf_guard_user_id']))
         {

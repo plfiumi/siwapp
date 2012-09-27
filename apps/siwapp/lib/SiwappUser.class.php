@@ -5,13 +5,13 @@ class SiwappUser extends sfGuardSecurityUser
   public function signIn($user, $remember = false, $con = null)
   {
     parent::signIn($user, $remember, $con);
-    $this->loadCompany($user);
+    $this->loadCompany();
     $this->loadUserSettings();
   }
   
-  private function loadCompany($user)
+  private function loadCompany()
   {
-    $userid= $user->getId();
+    $userid= $this->getGuardUser()->getId();
     //Every time the user logs in we assign it to the default company.
     $companyObject = new Company();
     $companyObject=$companyObject->getDefaultCompany($userid);
@@ -33,6 +33,19 @@ class SiwappUser extends sfGuardSecurityUser
                                                   );
     $this->setAttribute('currency', $currency);
     $this->setAttribute('currency_decimals', $currency_decimals);
+    //If the user is not a super admin don't show the companies and users options.    
+    if(!$this->hasCredential())
+    {
+        $real_modules= array();
+        foreach ($siwapp_mandatory_modules as $module)
+        {
+            if(in_array( $module, array('companies','users')))
+                continue;
+            $real_modules[] = $module;    
+        }
+        $siwapp_mandatory_modules = $real_modules;
+    }
+    
     $this->setAttribute('siwapp_modules', 
                         array_merge(
                                     $siwapp_mandatory_modules,

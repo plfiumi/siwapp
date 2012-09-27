@@ -1,2 +1,3 @@
 - settings/global form doesn't save the data correctly.
 - users/edit doesn't save the data. (Username and superadmin fields not loaded)
+- Dashboard doesn't apply company filters.
