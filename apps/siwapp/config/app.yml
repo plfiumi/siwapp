@@ -57,9 +57,9 @@ all:
         new_button_name: 'New Product'
       companies:
         verbose_name: 'Companies Module'
-        tab_name: 'Companies'
+        tab_name: 'COMPANIES'
         new_button_name: 'New Company'
       users:
         verbose_name: 'Users Module'
-        tab_name: 'Users'
+        tab_name: 'USERS'
         new_button_name: 'New User'
