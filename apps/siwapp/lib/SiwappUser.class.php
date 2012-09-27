@@ -9,13 +9,17 @@ class SiwappUser extends sfGuardSecurityUser
     $this->loadUserSettings();
   }
   
-  private function loadCompany()
+  public function loadCompany($companyid = 0)
   {
-    $userid= $this->getGuardUser()->getId();
-    //Every time the user logs in we assign it to the default company.
     $companyObject = new Company();
-    $companyObject=$companyObject->getDefaultCompany($userid);
-
+    if($companyid==0)
+    {
+        $userid= $this->getGuardUser()->getId();
+        $companyObject=$companyObject->getDefaultCompany($userid);
+    } else {
+      //TODO: Check if user has permisions on this company.
+      $companyObject=$companyObject->loadById($companyid);
+    }
     $this->setAttribute('company_id',''.$companyObject->getId());
     $this->setAttribute('company_name',$companyObject->getName());
   }

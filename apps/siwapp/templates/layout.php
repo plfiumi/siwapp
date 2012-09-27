@@ -12,6 +12,14 @@
 <body class="<?php echo semantic_body_classes() ?>">
 <?php echo javascript_tag("
   var userCulture = '".$sf_user->getCulture()."';
+  var userCompany = '".$sf_user->getAttribute('company_id')."';
+    function changeCompany(obj){
+        //Convert to jQuery
+            obj = $(obj);
+            if(obj.val() != userCompany)
+               location.href = '".url_for("@change_company")."?id='+obj.val();
+}
+
 "); ?>
 <div id="hd">
   <div id="hd-top">
@@ -27,7 +35,7 @@
       <!--<li><?php // echo link_to(__('Help'), '@homepage') ?> |</li>-->
       <li>
           <?php echo __('Current Company:') ?>
-          <select name="session_company">
+          <select id="session_company" name="session_company" onchange="javascript:changeCompany(this);">
           <?php foreach ($sf_user->getAttribute('available_companies') as $company): ?>
              <?php 
                 $selected = $company['id'] == $sf_user->getAttribute('company_id') ? 'selected=true' : '';

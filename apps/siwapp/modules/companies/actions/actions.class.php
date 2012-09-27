@@ -179,4 +179,10 @@ class CompaniesActions extends sfActions
     $this->redirect('companies');
   }
 
+  public function executeChange(sfWebRequest $request)
+  {
+    $this->getUser()->loadCompany($request->getParameter('id'));
+    $this->redirect('dashboard');    
+  }
+
 }

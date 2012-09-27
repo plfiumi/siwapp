@@ -130,6 +130,10 @@ companies_edit:
   url:   /companies/edit/:id
   param:  { module: companies, action: edit, tab: companies, searchForm: false }
 
+change_company:
+  url:   /change_company
+  param:  { module: companies, action: change, tab: companies, searchForm: false }
+
 users:
   url:   /users
   param:  { module: users, action: index, tab:users, searchForm: true, searchNamespace: users }
