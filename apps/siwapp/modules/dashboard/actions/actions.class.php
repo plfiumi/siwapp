@@ -26,12 +26,13 @@ class dashboardActions extends sfActions
     $namespace = $request->getParameter('searchNamespace');
     $search = $this->getUser()->getAttribute('search', null, $namespace);
     $this->maxResults = sfConfig::get('app_dashboard_max_results');
+    $company_id=sfContext::getInstance()->getUser()->getAttribute('company_id');
     
-    $q = InvoiceQuery::create()->search($search)->limit($this->maxResults);
+    $q = InvoiceQuery::create()->Where('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
 
     // for the overdue unset the date filters, to show all the overdue
     unset($search['from'], $search['to']);
-    $overdueQuery = InvoiceQuery::create()->search($search)->status(Invoice::OVERDUE);
+    $overdueQuery = InvoiceQuery::create()->Where('company_id = ?',$company_id )->search($search)->status(Invoice::OVERDUE);
 
     // totals
     $this->gross  = $q->total('gross_amount');
@@ -42,7 +43,7 @@ class dashboardActions extends sfActions
     $this->net    = $q->total('net_amount');
 
     $taxes = Doctrine_Query::create()->select('t.id, t.name')
-      ->from('Tax t')->execute();
+      ->from('Tax t')->Where('company_id = ?',$company_id )->execute();
 
     $total_taxes = array();
 
