@@ -28,7 +28,7 @@ class CompaniesActions extends sfActions
   {
     $namespace  = $request->getParameter('searchNamespace');
     $search     = $this->getUser()->getAttribute('search', null, $namespace);
-    $sort       = $this->getUser()->getAttribute('sort', array('reference', 'desc'), $namespace);
+    $sort       = $this->getUser()->getAttribute('sort', array('name', 'asc'), $namespace);
     $page       = $this->getUser()->getAttribute('page', 1, $namespace);
     $maxResults = $this->getUser()->getPaginationMaxResults();
     
