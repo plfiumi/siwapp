@@ -554,19 +554,3 @@ div.grippie {
   height: 20%;
 }
 form div.resizable-textarea { padding-bottom: 0pt;}
-
-
-#sf_admin_container {
-    font-size:1.30em;
-
-}
-.sf_admin_form_row td {
-    width: 200px;
-    height: 30px;
-}
-
-.notice {
-   font-size:1.50em;
-   color:#000;
-   background-color: #00EE00;
-}
