@@ -521,6 +521,22 @@
         <target>últimos 5 años</target>
       </trans-unit>
       <trans-unit>
+        <source>first quarter</source>
+        <target>primer trimerstre</target>
+      </trans-unit>
+      <trans-unit>
+        <source>second quarter</source>
+        <target>segundo trimerstre</target>
+      </trans-unit>
+      <trans-unit>
+        <source>third quarter</source>
+        <target>tercer trimerstre</target>
+      </trans-unit>
+      <trans-unit>
+        <source>fourth quarter</source>
+        <target>cuarto trimerstre</target>
+      </trans-unit>
+      <trans-unit>
         <source>Status</source>
         <target>Estado</target>
       </trans-unit>

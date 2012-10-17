@@ -53,7 +53,8 @@ class searchComponents extends sfComponents
   
   public function executeEstimateForm(sfWebRequest $request)
   {
-    $this->executeForm($request);
+    $this->getStuff($request);
+    $this->form = new InvoiceSearchForm($this->search, array('culture'=>$this->getUser()->getCulture()));
   }
   
   private function getStuff(sfWebRequest $request)

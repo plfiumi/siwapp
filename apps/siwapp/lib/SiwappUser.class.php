@@ -124,8 +124,7 @@ class SiwappUser extends sfGuardSecurityUser
     {
       $this->setAttribute('page', $page, $ns);
     }
-    
-    if($ns == 'invoices')
+    if($ns == 'invoices' || $ns == 'expenses' || $ns == 'estimates')
     {
       $search = $this->getSearchSettings($this->getAttribute('search', null, $ns));
     }
@@ -178,12 +177,6 @@ class SiwappUser extends sfGuardSecurityUser
       if (!isset($search['quick_dates']) && !$from && !$to && ($searchFilter = $profile->getSearchFilter()))
       {
         $to = sfDate::getInstance();
-        $search['to'] = array(
-            'day'   => $to->getDay(),
-            'month' => $to->format('n'),
-            'year'  => $to->getYear(),
-          );
-        
         $from = sfDate::getInstance();
 
         switch ($searchFilter)
@@ -209,7 +202,37 @@ class SiwappUser extends sfGuardSecurityUser
           case 'this_year':
             $from->firstDayOfYear();
             break;
+          case 'first_quarter':
+            $from->setDay(1);
+            $from->setMonth(0);
+            $to->setDay(31);
+            $to->setMonth(2);
+            break;
+          case 'second_quarter':
+            $from->setDay(1);
+            $from->setMonth(3);
+            $to->setDay(30);
+            $to->setMonth(5);
+            break;
+          case 'third_quarter':
+            $from->setDay(1);
+            $from->setMonth(6);
+            $to->setDay(30);
+            $to->setMonth(8);
+            break;
+          case 'fourth_quarter':
+            $from->setDay(1);
+            $from->setMonth(9);
+            $to->setDay(31);
+                to_mod.setMonth(11);
+            break;
         }
+
+        $search['to'] = array(
+            'day'   => $to->getDay(),
+            'month' => $to->format('n'),
+            'year'  => $to->getYear(),
+          );
 
         $search['from'] = array(
             'day'   => $from->format('j'),

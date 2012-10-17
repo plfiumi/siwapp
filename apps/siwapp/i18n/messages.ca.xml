@@ -521,6 +521,22 @@
         <target>darrers 5 anys</target>
       </trans-unit>
       <trans-unit>
+        <source>first quarter</source>
+        <target>primer trimerstre</target>
+      </trans-unit>
+      <trans-unit>
+        <source>second quarter</source>
+        <target>segon trimerstre</target>
+      </trans-unit>
+      <trans-unit>
+        <source>third quarter</source>
+        <target>tercer trimerstre</target>
+      </trans-unit>
+      <trans-unit>
+        <source>fourth quarter</source>
+        <target>quart trimerstre</target>
+      </trans-unit>
+      <trans-unit>
         <source>Status</source>
         <target>Estat</target>
       </trans-unit>

@@ -51,7 +51,7 @@
       f.find('select[name=search[quick_dates]]').bind('change', { form: f }, function(e){
         var frm = e.data.form;
         var val = $(this).val().toLowerCase();
-        var mod, to, from;
+        var from_mod = new Date(),to_mod = new Date(), to, from;
         
         // function to get the monday date of the week
         function getMonday(d) {
@@ -72,30 +72,55 @@
         }
         
         else {
-          to   = $('#search_to_jquery_control').datepicker('setDate', new Date()).datepicker('getDate');
           
           switch(val) {
-            case 'last_week'    : mod = '-7';  break;
-            case 'last_month'   : mod = '-1m'; break;
-            case 'last_year'    : mod = '-1y'; break;
-            case 'last_5_years' : mod = '-5y'; break;
+            case 'last_week'    : from_mod = '-7';  break;
+            case 'last_month'   : from_mod = '-1m'; break;
+            case 'last_year'    : from_mod = '-1y'; break;
+            case 'last_5_years' : from_mod = '-5y'; break;
             case 'this_week':
-                mod = getMonday(new Date()); 
+                from_mod = getMonday(new Date());
                 break;
             case 'this_month':
-                mod = new Date();
-                mod.setDate(1);
+                from_mod.setDate(1);
                 break;
             case 'this_year':
-                mod = new Date();
-                mod.setDate(1);
-                mod.setMonth(0);
+                from_mod.setDate(1);
+                from_mod.setMonth(0);
+                break;
+            case 'first_quarter':
+                from_mod.setDate(1);
+                from_mod.setMonth(0);
+                to_mod.setDate(31);
+                to_mod.setMonth(2);
+                break;
+            case 'second_quarter':
+                from_mod.setDate(1);
+                from_mod.setMonth(3);
+                to_mod.setDate(30);
+                to_mod.setMonth(5);
+                break;
+            case 'third_quarter':
+                from_mod.setDate(1);
+                from_mod.setMonth(6);
+                to_mod.setDate(30);
+                to_mod.setMonth(8);
+                break;
+            case 'fourth_quarter':
+                from_mod.setDate(1);
+                from_mod.setMonth(9);
+                to_mod.setDate(31);
+                to_mod.setMonth(11);
                 break;
             default: 
-                mod = null; 
+                from_mod = null;
+                to_mod = null;
                 break;
           }
-          from = $('#search_from_jquery_control').datepicker('setDate', mod).datepicker('getDate');
+
+          from = $('#search_from_jquery_control').datepicker('setDate', from_mod).datepicker('getDate');
+
+          to = $('#search_to_jquery_control').datepicker('setDate', to_mod).datepicker('getDate');
           
           to   = $.datepicker.formatDate('yy-mm-dd', to).split('-');
           from = $.datepicker.formatDate('yy-mm-dd', from).split('-');

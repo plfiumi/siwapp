@@ -62,14 +62,18 @@ class InvoiceSearchForm extends BaseForm
   public static function getQuickDates()
   {
     return array(
-      ''             => '',
-      'last_week'    => 'last week',
-      'last_month'   => 'last month',
-      'last_year'    => 'last year',
-      'last_5_years' => 'last 5 years',
-      'this_week'    => 'this week',
-      'this_month'   => 'this month',
-      'this_year'    => 'this year'
+      ''               => '',
+      'last_week'      => 'last week',
+      'last_month'     => 'last month',
+      'last_year'      => 'last year',
+      'last_5_years'   => 'last 5 years',
+      'this_week'      => 'this week',
+      'this_month'     => 'this month',
+      'this_year'      => 'this year',
+      'first_quarter'  => 'first quarter',
+      'second_quarter' => 'second quarter',
+      'third_quarter'  => 'third quarter',
+      'fourth_quarter'  => 'fourth quarter',
     );
   }
 }
