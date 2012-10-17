@@ -16,7 +16,7 @@ class EstimateForm extends BaseEstimateForm
   
   public function configure()
   {
-    unset($this['number'], $this['due_date'], $this['closed'], $this['created_at'], $this['updated_at']);
+    unset($this['number'], $this['due_date'], $this['closed'], $this['created_at'], $this['updated_at'], $this['series_id']);
     
     $this->widgetSchema['issue_date'] = new sfWidgetFormI18nJQueryDate($this->JQueryDateOptions);
     $this->widgetSchema['draft'] = new sfWidgetFormInputHidden();
@@ -27,5 +27,6 @@ class EstimateForm extends BaseEstimateForm
     $this->setDefaults(array('draft'=>0));
 
     parent::configure();
+    $this->validatorSchema['series_id']= new sfValidatorPass();
   }
 }

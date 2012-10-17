@@ -32,7 +32,6 @@ $estimate = $estimateForm->getObject();
   <div id="payment-data" class="block">
     <h3><?php echo __('Estimate details') ?></h3>
     <ul class="inline">
-      <?php echo $estimateForm['series_id']->renderRow() ?>
       <?php echo $estimateForm['issue_date']->renderRow() ?>
     </ul>
       
