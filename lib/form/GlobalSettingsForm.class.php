@@ -11,7 +11,7 @@ class GlobalSettingsForm extends FormsContainer
     $culture = $this->getOption('culture', sfConfig::get('sf_default_culture'));
     
     //Embed Company Form:
-    $this->embedForm('company',new CurrentCompanyForm());
+    $this->embedForm('company',new CompanyGlobalSettingsForm());
     /* TAXES & SERIES*/
     $this->embedForm('taxes',new TaxesForm());
     $this->embedForm('seriess',new SeriessForm());
@@ -19,7 +19,7 @@ class GlobalSettingsForm extends FormsContainer
     $this->embedForm('expenses',new ExpensesTypeForm());
     $this->embedForm('payments',new PaymentsTypeForm());
 
-/*    $this->validatorSchema->setPostValidator(new sfValidatorAnd(
+    $this->validatorSchema->setPostValidator(new sfValidatorAnd(
         array(
           new sfValidatorCallback(array(
               'callback' => array($this, 'validateTaxes')
@@ -42,7 +42,7 @@ class GlobalSettingsForm extends FormsContainer
               'invalid' => 'Some payments have not been deleted because they are currently in use: <strong>%invalid_payments%</strong>.'
             )),
         )));
-*/
+
     $this->widgetSchema->setNameFormat('config[%s]');
     $this->widgetSchema->setFormFormatterName('listB');
 
@@ -98,15 +98,7 @@ class GlobalSettingsForm extends FormsContainer
     
     return $values;
   }
-  
-   /**
-   * @return void
-   * @author Sergi Almacellas <sergi.almacellas@btactic.com>
-   **/
-  public function save($con = null)
-  {
-    parent::save();
-  }
+
 
   /**
    * Finds the series to be deleted and if they are still linked to Common instances throws

@@ -17,7 +17,7 @@ class CompanyForm extends BaseCompanyForm
 
   public function configure()
   {
-
+    parent::configure();
     $culture = $this->getOption('culture', sfConfig::get('sf_default_culture'));
     
     $this->widgetSchema['currency'] = new sfWidgetFormI18nChoiceCurrency(array('culture' => $culture));
@@ -38,6 +38,7 @@ class CompanyForm extends BaseCompanyForm
       'pdf_orientation'  => 'Page orientation'
     ));
 
+    $this->validatorSchema['id']  = new sfValidatorPass();
 
   }
 
@@ -52,6 +53,9 @@ class CompanyForm extends BaseCompanyForm
 
   public function checkLogo(sfValidatorBase $validator, $values)
   {
+    return true;
+/*
+TODO: Fix logo uploading.
     if(!$values['logo'])
     {
       return $values;
@@ -67,5 +71,7 @@ class CompanyForm extends BaseCompanyForm
       throw new sfValidatorError($validator,'invalid');
     }
     return $values;
+*/
   }
+ 
 }

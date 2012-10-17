@@ -35,14 +35,10 @@ class configurationActions extends sfActions
     $form = new GlobalSettingsForm(array(),null, array('culture' => $user->getCulture()));
     if ($request->isMethod('post'))
     {
-      sfContext::getInstance()->getLogger()->info("Before Bind");
       $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-      sfContext::getInstance()->getLogger()->info("Bind OK");
       if ($form->isValid())
       {
-        sfContext::getInstance()->getLogger()->info("Valid");
         $form->save();
-          sfContext::getInstance()->getLogger()->info("Saved");
         $user->info($i18n->__('Your settings were successfully saved.'));
         $user->loadUserSettings();
         
@@ -50,7 +46,6 @@ class configurationActions extends sfActions
       }
       else
       {
-         sfContext::getInstance()->getLogger()->info("Not valid");
         $user->error($i18n->__('Settings could not be saved. Please, check entered values and try to correct them.'), false);
       }
     }

@@ -15,24 +15,9 @@ class CurrentCompanyForm extends CompanyForm
   {
     parent::configure();
     unset($this->widgetSchema['company_user_list']);
-    $companyObject = new Company();
-    $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
     
-    $this->setDefaults(array(
-      'id'     => $companyObject->getId(),
-      'name'     => $companyObject->getName(),
-      'address'  => $companyObject->getAddress(),
-      'phone'    => $companyObject->getPhone(),
-      'fax'      => $companyObject->getFax(),
-      'email'    => $companyObject->getEmail(),
-      'url'      => $companyObject->getUrl(),
-      'currency'        => $companyObject->getCurrency(),
-      'legal_terms'     => $companyObject->getLegalTerms(),
-      'pdf_size'        => $companyObject->getPdfSize(),
-      'pdf_orientation' => $companyObject->getPdfOrientation(),
-    ));
-    
-        $this->widgetSchema['logo'] = new sfWidgetFormInputFileEditable(array(
+        //TODO: Logo upload is not working. 
+       /* $this->widgetSchema['logo'] = new sfWidgetFormInputFileEditable(array(
       'label'     => 'Logo',
       'file_src'  => self::getUploadsDir().'/'.$companyObject->getLogo(),
       'is_image'  => true,
@@ -58,7 +43,7 @@ class CurrentCompanyForm extends CompanyForm
           )
         ));
 
-
+*/
   }
 
 }
