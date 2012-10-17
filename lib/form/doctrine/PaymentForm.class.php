@@ -18,7 +18,7 @@ class PaymentForm extends BasePaymentForm
     
     //Assign company_id from session values.
     $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
-    $this->setDefault('company_id' , sfContext::getInstance()->getUser()->getAttribute('company_id'));
+
     $this->widgetSchema->setLabels(array(
       'date'   => 'Date',
       'amount' => 'Amount',
@@ -27,6 +27,7 @@ class PaymentForm extends BasePaymentForm
     
     $this->setDefaults(array(
       'date'   => time(),
+      'company_id' => sfContext::getInstance()->getUser()->getAttribute('company_id'),
     ));
     
     $this->widgetSchema->setFormFormatterName('xit');

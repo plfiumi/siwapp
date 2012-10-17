@@ -21,8 +21,8 @@ class paymentsActions extends sfActions
       $data = $request->getParameter('payments');
       
       $form = new PaymentsForm($request->getParameter('invoice_id'));
+
       $form->bind($data);
-      
       if ($form->isValid())
       {
         $form->save();
@@ -60,6 +60,7 @@ class paymentsActions extends sfActions
   {
     $this->forward404Unless($index = $request->getParameter('index'));
     $payment = new Payment();
+    $payment->setCompanyId(sfContext::getInstance()->getUser()->getAttribute('company_id'));
     $payment->setInvoiceId($request->getParameter('invoice_id'));
     
     // insert a PaymentForm with csrf protection disabled 

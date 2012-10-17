@@ -18,7 +18,7 @@ class PaymentsForm extends FormsContainer
       }
     }
     
-    parent::__construct($forms, 'PaymentsForm', $options, $CSRFSecret);
+    parent::__construct($forms, 'PaymentForm', $options, $CSRFSecret);
   }
   
   public function configure()
