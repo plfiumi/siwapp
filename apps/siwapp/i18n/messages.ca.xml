@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="EN" target-language="ca" datatype="plaintext" original="messages" date="2012-09-28T12:16:29Z" product-name="messages">
+  <file source-language="EN" target-language="ca" datatype="plaintext" original="messages" date="2010-10-22T14:15:16Z" product-name="messages">
     <header/>
     <body>
       <!-- ##### LOGIN/OUT ##### -->
       <trans-unit>
         <source>Username</source>
-        <target/>Usuari</target>
+        <target></target>
       </trans-unit>
       <trans-unit>
         <source>Password</source>
@@ -23,7 +23,7 @@
       </trans-unit>
       <trans-unit>
         <source>Forgot your password?</source>
-        <target>He oblidat la contrasenya?</target>
+        <target>Ha oblidat la contrasenya?</target>
       </trans-unit>
       <trans-unit>
         <source>Welcome, [1]!</source>
@@ -80,11 +80,11 @@
       </trans-unit>
       <trans-unit>
         <source>Save</source>
-        <target>Guardar</target>
+        <target>Desar</target>
       </trans-unit>
       <trans-unit>
         <source>Receipts</source>
-        <target>Ingressos</target>
+        <target>Rebudes</target>
       </trans-unit>
       <!-- ##### INVOICES ##### -->
       <trans-unit>
@@ -173,11 +173,11 @@
       </trans-unit>
       <trans-unit>
         <source>Save as draft</source>
-        <target>Guardar com a esborrany</target>
+        <target>Desar com a esborrany</target>
       </trans-unit>
       <trans-unit>
         <source>Save and send by e-mail</source>
-        <target>Guardar i enviar per e-mail</target>
+        <target>Desar i enviar per e-mail</target>
       </trans-unit>
       <trans-unit>
         <source>Print</source>
@@ -221,7 +221,7 @@
       </trans-unit>
       <trans-unit>
         <source>will become overdue at</source>
-        <target>es convertirà en endarrerida el</target>
+        <target>es convertirá en endarrerida el</target>
       </trans-unit>
       <trans-unit>
         <source>opened</source>
@@ -243,7 +243,7 @@
         <source>Sent by email</source>
         <target>Enviat per email</target>
       </trans-unit>
-      <trans-unit>
+       <trans-unit>
         <source>Force to be closed</source>
         <target>Forçar a ser tancada</target>
       </trans-unit>
@@ -395,7 +395,7 @@
       </trans-unit>
       <trans-unit>
         <source>Save and create invoice</source>
-        <target>Guardar i crear factura</target>
+        <target>Desar i crear factura</target>
       </trans-unit>
       <trans-unit>
         <source>The estimate was successfully saved.</source>
@@ -632,7 +632,7 @@
       </trans-unit>
       <trans-unit>
         <source>Printing templates</source>
-        <target>Plantilles d'impressió</target>
+        <target>Plantilles d'Impressió</target>
       </trans-unit>
       <trans-unit>
         <source>Your settings were successfully saved.</source>
@@ -673,7 +673,7 @@
       </trans-unit>
       <trans-unit>
         <source>Email</source>
-        <target>E-mail</target>
+        <target>Email</target>
       </trans-unit>
       <trans-unit>
         <source>Web</source>
@@ -828,7 +828,7 @@
       <!-- ##### MISCELANEOUS ##### -->
       <trans-unit>
         <source>Are you sure?</source>
-        <target>Està segur?</target>
+        <target>Està segur</target>
       </trans-unit>
       <trans-unit>
         <source>No results</source>
@@ -872,7 +872,7 @@
       </trans-unit>
       <trans-unit>
         <source>If you provided either a valid username or email, an email has been sent to you with the activation instructions.</source>
-        <target>Si ha escrit un nom d'usuari correcte o un e-mail, rebrà un correu amb les instruccions d'activació.</target>
+        <target>Si ha escrit un nom d'usuari correcte o un email, rebrà un correu amb les instruccions d'activació.</target>
       </trans-unit>
       <trans-unit>
         <source>If you want to send another activation email, you'll need to reload this page first</source>
@@ -888,23 +888,23 @@
       </trans-unit>
       <trans-unit>
         <source>Please type your username or email and we will send you an email with the activation link.</source>
-        <target>Si us plau escrigui el seu nom d'usuari o e-mail i li enviarem un correu amb l'enllaç d'activació.</target>
+        <target>Si us plau escrigui el seu nom d'usuari o email i li enviarem un correu amb l'enllaç d'activació.</target>
       </trans-unit>
       <trans-unit>
         <source>Username or email</source>
-        <target>Nom d'usuari o e-mail</target>
+        <target>Nom d'usuari o email</target>
       </trans-unit>
       <trans-unit>
         <source>Contact person</source>
-        <target>Persona de contacte</target>
+        <target>Persona contacte</target>
       </trans-unit>
       <trans-unit>
         <source>Invoicing address</source>
-        <target>Adreça de facturació</target>
+        <target>Adreça facturació</target>
       </trans-unit>
       <trans-unit>
         <source>Shipping address</source>
-        <target>Adreça d'enviament</target>
+        <target>Adreça enviament</target>
       </trans-unit>
       <trans-unit>
         <source>Unit cost</source>
@@ -912,7 +912,7 @@
       </trans-unit>
       <trans-unit>
         <source>Save PDF</source>
-        <target>Guardar PDF</target>
+        <target>Desar PDF</target>
       </trans-unit>
       <trans-unit>
         <source>Edit</source>
@@ -1016,315 +1016,15 @@
       </trans-unit>
       <trans-unit>
         <source>No selection. Nothing to do.</source>
-        <target/>No hi ha selecció. No hi ha res a fer.</target>
+        <target></target>
       </trans-unit>
       <trans-unit>
         <source>Net</source>
-        <target/>Net</target>
+        <target></target>
       </trans-unit>
       <trans-unit>
         <source>%d customers could not be saved because they have associated data.</source>
-        <target/>%d clients no es van poder desar perquè no tenen dades associades.</target>
-      </trans-unit>
-      <trans-unit id="1">
-        <source>Current Company:</source>
-        <target/>Empresa actual:</target>
-      </trans-unit>
-      <trans-unit id="2">
-        <source>Expense Type</source>
-        <target/>Tipus de despesa</target>
-      </trans-unit>
-      <trans-unit id="3">
-        <source>Amount</source>
-        <target/>Quantitat</target>
-      </trans-unit>
-      <trans-unit id="4">
-        <source>Product</source>
-        <target/>Producte</target>
-      </trans-unit>
-      <trans-unit id="5">
-        <source>Taxes Total</source>
-        <target/>Total d'impostos</target>
-      </trans-unit>
-      <trans-unit id="6">
-        <source>Supplier info</source>
-        <target/>Informació del proveidor</target>
-      </trans-unit>
-      <trans-unit id="7">
-        <source>Client Phone</source>
-        <target/>Telèfon del client</target>
-      </trans-unit>
-      <trans-unit id="8">
-        <source>Client Fax</source>
-        <target/>Fax del client</target>
-      </trans-unit>
-      <trans-unit id="9">
-        <source>Client Email Address</source>
-        <target/>Adreça e-mail del client</target>
-      </trans-unit>
-      <trans-unit id="10">
-        <source>Customer Phone</source>
-        <target/>Telèton del client</target>
-      </trans-unit>
-      <trans-unit id="11">
-        <source>Customer Fax</source>
-        <target/>Fax del clients</target>
-      </trans-unit>
-      <trans-unit id="12">
-        <source>Edit Estimate</source>
-        <target/>Editar pressupost</target>
-      </trans-unit>
-      <trans-unit id="13">
-        <source>The estimate was successfully sent.</source>
-        <target/>El pressupost s'ha enviat correctament.</target>
-      </trans-unit>
-      <trans-unit id="14">
-        <source>The estimate could not be sent due to an error.</source>
-        <target/>El pressupost no s'ha pogut enviar a causa d'un error.</target>
-      </trans-unit>
-      <trans-unit id="15">
-        <source>There is a problem with estimate %s</source>
-        <target/>Hi ha un problema amb el pressupost %s</target>
-      </trans-unit>
-      <trans-unit id="16">
-        <source>The estimate has not been saved due to some errors.</source>
-        <target/>El pressupost no s'ha guardat a causa de alguns errors.</target>
-      </trans-unit>
-      <trans-unit id="17">
-        <source>%d estimates were successfully deleted.</source>
-        <target/>%d pressupostos s'han eliminat correctament.</target>
-      </trans-unit>
-      <trans-unit id="18">
-        <source>%d estimates were successfully sent.</source>
-        <target/>%d pressupostos s'han enviat correctament.</target>
-      </trans-unit>
-      <trans-unit id="19">
-        <source>Supplier Name</source>
-        <target/>Nom del proveïdor</target>
-      </trans-unit>
-      <trans-unit id="20">
-        <source>Supplier Legal Id</source>
-        <target/>Identifiació Legal del proveïdor</target>
-      </trans-unit>
-      <trans-unit id="21">
-        <source>Supplier Person</source>
-        <target/>Persona contacte proveïdor</target>
-      </trans-unit>
-      <trans-unit id="22">
-        <source>Supplier Address</source>
-        <target/>Adreça del proveïdor</target>
-      </trans-unit>
-      <trans-unit id="23">
-        <source>Supplier Phone</source>
-        <target/>Telèfon del proveïdor</target>
-      </trans-unit>
-      <trans-unit id="24">
-        <source>Supplier Fax</source>
-        <target/>Fax del proveïdor</target>
-      </trans-unit>
-      <trans-unit id="25">
-        <source>Supplier Email Address</source>
-        <target/>Adreça e-mail deel proveïdor</target>
-      </trans-unit>
-      <trans-unit id="26">
-        <source>New Expense</source>
-        <target/>Nova despesa</target>
-      </trans-unit>
-      <trans-unit id="27">
-        <source>Edit Expense</source>
-        <target/>Editar despesa</target>
-      </trans-unit>
-      <trans-unit id="28">
-        <source>%d expenses were successfully deleted.</source>
-        <target/>%d despeses han estat eliminades correctament.</target>
-      </trans-unit>
-      <trans-unit id="29">
-        <source>Expense</source>
-        <target/>Despesa</target>
-      </trans-unit>
-      <trans-unit id="30">
-        <source>Supplier</source>
-        <target/>Proveïdor</target>
-      </trans-unit>
-      <trans-unit id="31">
-        <source>Supplier identification</source>
-        <target/>Identificació proveïdor</target>
-      </trans-unit>
-      <trans-unit id="32">
-        <source>Supplier reference</source>
-        <target/>Referència proveïdor</target>
-      </trans-unit>
-      <trans-unit id="33">
-        <source>Comments</source>
-        <target/>Observacions</target>
-      </trans-unit>
-      <trans-unit id="34">
-        <source>%d customers could not be deleted because they have associated data.</source>
-        <target/>%d customers could not be deleted because they have associated data.</target>
-      </trans-unit>
-      <trans-unit id="35">
-        <source>Company name</source>
-        <target/>Nom de l'empresa</target>
-      </trans-unit>
-      <trans-unit id="36">
-        <source>Company address</source>
-        <target/>Adreça de l'empresa</target>
-      </trans-unit>
-      <trans-unit id="37">
-        <source>Company email</source>
-        <target/>Adreça e-mail de l'empresa</target>
-      </trans-unit>
-      <trans-unit id="38">
-        <source>Company phone</source>
-        <target/>Telèfon de l'empresa</target>
-      </trans-unit>
-      <trans-unit id="39">
-        <source>Company fax</source>
-        <target/>Fax de l'empresa</target>
-      </trans-unit>
-      <trans-unit id="40">
-        <source>Company Website</source>
-        <target/>Lloc web de l'empresa</target>
-      </trans-unit>
-      <trans-unit id="41">
-        <source>New Company</source>
-        <target/>Nova empresa</target>
-      </trans-unit>
-      <trans-unit id="42">
-        <source>Edit Company</source>
-        <target/>Editar empresa</target>
-      </trans-unit>
-      <trans-unit id="43">
-        <source>The Company could not be deleted. </source>
-        <target/>L'empresa no s'ha pogut eliminar. </target>
-      </trans-unit>
-      <trans-unit id="44">
-        <source>The Company has not been saved due to some errors.</source>
-        <target/>L'empresa no s'ha guardat a causa d'alguns errors.</target>
-      </trans-unit>
-      <trans-unit id="45">
-        <source>%d Companys were successfully deleted.</source>
-        <target/>%d Empreses han estat eliminades.
-      </trans-unit>
-      <trans-unit id="46">
-        <source>Company info</source>
-        <target/>Informació de l'empresa</target>
-      </trans-unit>
-      <trans-unit id="47">
-        <source>Assigned Users</source>
-        <target/>Usuaris assignats</target>
-      </trans-unit>
-      <trans-unit id="48">
-        <source>New User</source>
-        <target/>Nou usuari</target>
-      </trans-unit>
-      <trans-unit id="49">
-        <source>Edit User</source>
-        <target/>Editar usuari</target>
-      </trans-unit>
-      <trans-unit id="50">
-        <source>The User could not be deleted. </source>
-        <target/>L'usuari no s'ha pogut eliminat. </target>
-      </trans-unit>
-      <trans-unit id="51">
-        <source>The User has not been saved due to some errors.</source>
-        <target/>L'usuari no s'ha guardat a causa d'alguns errors.</target>
-      </trans-unit>
-      <trans-unit id="52">
-        <source>%d Users were successfully deleted.</source>
-        <target/>%d Usuaris han estat eliminats.</target>
-      </trans-unit>
-      <trans-unit id="53">
-        <source>User Info</source>
-        <target/>Informació de l'usuari</target>
-      </trans-unit>
-      <trans-unit id="54">
-        <source>Access Info:</source>
-        <target/>Informació d'accés:</target>
-      </trans-unit>
-      <trans-unit id="55">
-        <source>Expenses Type</source>
-        <target/>Tipus de despeses</target>
-      </trans-unit>
-      <trans-unit id="56">
-        <source>Add a new expense type</source>
-        <target/>Afegir nou tipus de despesa</target>
-      </trans-unit>
-      <trans-unit id="57">
-        <source>Payments Type</source>
-        <target/>Formes de pagament</target>
-      </trans-unit>
-      <trans-unit id="58">
-        <source>Add a new payment type</source>
-        <target/>Afegir un nou tipus de pagament</target>
-      </trans-unit>
-      <trans-unit id="59">
-        <source>Product Categories</source>
-        <target/>Categories de productes</target>
-      </trans-unit>
-      <trans-unit id="60">
-        <source>Add a new category</source>
-        <target/>Afegir nova categoria</target>
-      </trans-unit>
-      <trans-unit id="61">
-        <source>Edit Product</source>
-        <target/>Editar producte</target>
-      </trans-unit>
-      <trans-unit id="62">
-        <source>The product could not be deleted. </source>
-        <target/>El producte no s'ha pogut eliminar</target>
-      </trans-unit>
-      <trans-unit id="63">
-        <source>The product has not been saved due to some errors.</source>
-        <target/>El prodcute no s'ha eliminat degut a alguns errors.</target>
-      </trans-unit>
-      <trans-unit id="64">
-        <source>%d products were successfully deleted.</source>
-        <target/>%d productes s'han eliminat correctament.</target>
-      </trans-unit>
-      <trans-unit id="65">
-        <source>Category: </source>
-        <target/>Categoria: </target>
-      </trans-unit>
-      <trans-unit id="66">
-        <source>Supplier Email</source>
-        <target/>E-mail proveïdor</target>
-      </trans-unit>
-      <trans-unit id="67">
-        <source>New Supplier</source>
-        <target/>Nou proveïdor</target>
-      </trans-unit>
-      <trans-unit id="68">
-        <source>Edit Supplier</source>
-        <target/>Editar proveïdor</target>
-      </trans-unit>
-      <trans-unit id="69">
-        <source>The supplier could not be deleted. </source>
-        <target/>El proveïdor no s'ha pogut eliminar. </target>
-      </trans-unit>
-      <trans-unit id="70">
-        <source>The supplier has not been saved due to some errors.</source>
-        <target/>El proveïdor no s'ha eliminat degut a alguns errors.</target>
-      </trans-unit>
-      <trans-unit id="71">
-        <source>%d suppliers were successfully deleted.</source>
-        <target/>%d proveïdors s'han eliminat correctament.</target>
-      </trans-unit>
-      <trans-unit id="72">
-        <source>%d suppliers could not be deleted because they have associated data.</source>
-        <target/>%d proveïdors no s'han pogut eliminar perquè tenen dades associades.</target>
-      </trans-unit>
-      <trans-unit id="73">
-        <source>Expenses</source>
-        <target/>Despeses</target>
-      </trans-unit>
-      <trans-unit id="74">
-        <source>There must be only one template for model.</source>
-        <target/>Hi ha d'haver només una plantilla per model.</target>
-      </trans-unit>
-      <trans-unit id="75">
-        <source>Successfully saved.</source>
-        <target/>S'ha desat correctament.</target>
+        <target></target>
       </trans-unit>
     </body>
   </file>
