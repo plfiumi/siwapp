@@ -1,7 +1,7 @@
 <?php use_helper('Number', 'I18N', 'Date') ?>
 
 <div id="content-wrapper" class="content">
-
+  <h2><?php echo __('Invoices'); ?></h2>
   <table id="dashboard-summary" class="dashboard-info">
     <tbody>
       <tr>
@@ -48,6 +48,27 @@
   </table>
 
   <div class="clear"></div>
+  
+    <h2><?php echo __('Estimates'); ?></h2>
+  <table id="dashboard-summary" class="dashboard-info">
+    <tbody>
+      <tr>
+        <td><?php echo __('Pending') ?></td>
+        <td id="pending" class="right"><?php echo format_currency($epending, $currency)?></td>
+      </tr>
+      <tr>
+        <td><?php echo __('Approved') ?><br/><small></small></td>
+        <td id="approved" class="totalDue right"><?php echo format_currency($eapproved, $currency)?></td>
+      </tr>
+      <tr class="overdue">
+        <td><?php echo __('Rejected') ?></td>
+        <td id="rejected" class="right"><?php echo format_currency($erejected, $currency)?></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="clear"></div>
+  
   <h2><?php echo __('Recent invoices') ?></h2>
   <table class="listing">
     <thead>
@@ -137,6 +158,38 @@
           <td class="action payments">
             <?php echo gButton(__("Payments"), "id=load-payments-for-$id rel=payments:show type=button class=payment action-clear {$invoice->getStatus()}") ?>
           </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+  
+  <!-- TODO: Add here expenses 
+  
+  
+  //-->
+  
+  <h2><?php echo __('Pending Estimates') ?></h2>
+  <table class="listing estimates">
+    <thead>
+      <tr>
+        <th class="number"><?php echo __('Number') ?></th>
+        <th><?php echo __('Customer Name') ?></th>
+        <th><?php echo __('Date') ?></th>
+        <th class="right total"><?php echo __('Total') ?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php $total = 0; ?>
+      <?php foreach ($pending as $i => $estimate): ?>
+        <?php
+          $id       = $estimate->getId();
+          $parity   = ($i % 2) ? 'odd' : 'even';
+        ?>
+        <tr customEditRow="<?php echo url_for('estimates/edit'); ?>" id="estimates-<?php echo $id ?>" class="<?php echo "$parity link estimate-$id " ?>">
+          <td class="number"><?php echo $estimate ?></td>
+          <td><?php echo $estimate->getCustomerName() ?></td>
+          <td class="date"><?php echo format_date($estimate->getIssueDate()) ?></td>
+          <td class="right"><?php echo format_currency($estimate->getGrossAmount(), $currency) ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>

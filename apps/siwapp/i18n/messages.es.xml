@@ -1354,6 +1354,10 @@
         <source>USERS</source>
         <target>USUARIOS</target>
       </trans-unit>
+      <trans-unit id="79">
+        <source>Pending Estimates</source>
+        <target>Pressupuestos pendientes</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -30,6 +30,23 @@ class dashboardActions extends sfActions
     
     $q = InvoiceQuery::create()->Where('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
 
+    $eqp = EstimateQuery::create()->Where('status = 2')->AndWhere('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
+
+    $eqa = EstimateQuery::create()->Where('status = 3')->AndWhere('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
+
+    $eqr = EstimateQuery::create()->Where('status = 1')->AndWhere('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
+    
+    //Expenses total
+    $this->epending  = $eqp->total('gross_amount');
+    if(empty($this->epending)) 
+        $this->epending = 0;
+    $this->eapproved  = $eqa->total('gross_amount');
+    if(empty($this->eapproved)) 
+        $this->eapproved = 0;
+    $this->erejected  = $eqr->total('gross_amount');
+    if(empty($this->erejected)) 
+        $this->erejected = 0;;
+    
     // for the overdue unset the date filters, to show all the overdue
     unset($search['from'], $search['to']);
     $overdueQuery = InvoiceQuery::create()->Where('company_id = ?',$company_id )->search($search)->status(Invoice::OVERDUE);
@@ -62,9 +79,11 @@ class dashboardActions extends sfActions
     // link counters
     $this->recentCounter  = $q->count();
     $this->overdueCounter = $overdueQuery->count();
+    $this->pendingCounter = $eqp->count();
     // recent & overdue invoices
     $this->recent         = $q->execute();
     $this->overdue        = $overdueQuery->execute();
+    $this->pending         = $eqp->execute();
   }
   
 }
