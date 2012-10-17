@@ -9,12 +9,13 @@ class EstimateTable extends CommonTable
         return Doctrine_Core::getTable('Estimate');
     }
     
-    //TODO: this is exactly the same method as in InvoiceTable, refactor this
     public function getNextNumber($series_id)
     {
+    $company_id=sfContext::getInstance()->getUser()->getAttribute('company_id');
+    
       $found = $this->createQuery()
         ->where('Draft = ?', 0)
-        ->andWhere('series_id = ?', $series_id)
+        ->AndWhere('company_id = ?',$company_id )
         ->execute()
         ->count();
 
@@ -22,14 +23,14 @@ class EstimateTable extends CommonTable
       {
         $rs = $this->createQuery()
           ->select('MAX(number) AS max_number')
+          ->AndWhere('company_id = ?',$company_id )
           ->where('Draft = ?', 0)
-          ->andWhere('series_id = ?', $series_id)
           ->fetchOne();
         return intval($rs->getMaxNumber()) + 1;
       }
       else
       {
-        return Doctrine::getTable('Series')->find($series_id)->getFirstNumber();
+        return 1;
       }
     }
 }
