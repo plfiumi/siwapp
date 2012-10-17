@@ -13,6 +13,8 @@ class ProfileForm extends BaseProfileForm
   {
     $user = sfContext::getInstance()->getUser();
     
+    $this->widgetSchema['company_user_list'] =  new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser'));
+    
     $this->widgetSchema['username'] = new sfWidgetFormInputText();
     $this->widgetSchema['superadmin'] = new sfWidgetFormInputCheckbox(array(),array('value'=>1));
 

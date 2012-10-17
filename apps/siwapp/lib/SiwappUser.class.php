@@ -4,9 +4,14 @@ class SiwappUser extends sfGuardSecurityUser
 {
   public function signIn($user, $remember = false, $con = null)
   {
-    parent::signIn($user, $remember, $con);
-    $this->loadCompany();
-    $this->loadUserSettings();
+    try{
+        parent::signIn($user, $remember, $con);
+        $this->loadCompany();
+        $this->loadUserSettings();
+    }catch(Exception $e)
+    {
+        parent::signOut();
+    }
   }
   
   public function loadCompany($companyid = 0)
@@ -20,6 +25,8 @@ class SiwappUser extends sfGuardSecurityUser
       //TODO: Check if user has permisions on this company.
       $companyObject=$companyObject->loadById($companyid);
     }
+    if(empty($companyObject))
+        throw new sfException('This user has no company assigned. Contact system administrator.');
     $this->setAttribute('company_id',''.$companyObject->getId());
     $this->setAttribute('company_name',$companyObject->getName());
     
