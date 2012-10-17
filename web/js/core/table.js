@@ -79,8 +79,13 @@ jQuery(function($){
   {
     tr = $('.listing').find('tbody tr.link');
     tr.rowClick(function(e){
+      var url = window.siwapp_urls.editRow;
+      row = $(this);
+      if(row.attr('customeditrow'))
+           url = row.attr('customeditrow');
+      alert(url);
       var id = Tools.getStringId($(this).attr('id'));
-      document.location.href = window.siwapp_urls.editRow + '/' + id;
+      document.location.href = url + '/' + id;
     });
   }
   
