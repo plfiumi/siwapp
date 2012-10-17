@@ -40,6 +40,7 @@ class configurationActions extends sfActions
       {
         $form->save();
         $user->info($i18n->__('Your settings were successfully saved.'));
+        $user->loadCompany();
         $user->loadUserSettings();
         
         $this->redirect('@settings');

@@ -22,12 +22,17 @@ class SiwappUser extends sfGuardSecurityUser
     }
     $this->setAttribute('company_id',''.$companyObject->getId());
     $this->setAttribute('company_name',$companyObject->getName());
+    
+    $currency = $companyObject->get('currency', 'USD');
+    $currency_decimals = $companyObject->get('currency_decimals', 2);
+    
+    $this->setAttribute('currency', $currency);
+    $this->setAttribute('currency_decimals', $currency_decimals);
+   
   }
 
   public function loadUserSettings()
   {
-    $currency = PropertyTable::get('currency', 'USD');
-    $currency_decimals = PropertyTable::get('currency_decimals', 2);
     $siwapp_mandatory_modules = array_keys(
                                            sfConfig::get('app_modules_mandatory')
                                            );
@@ -35,8 +40,6 @@ class SiwappUser extends sfGuardSecurityUser
                                                   'siwapp_modules',
                                                   array()
                                                   );
-    $this->setAttribute('currency', $currency);
-    $this->setAttribute('currency_decimals', $currency_decimals);
     /* If the user is not a super admin don't show the companies and users options. */
     if(!($this->getGuardUser()->getIsSuperAdmin()))
     {
