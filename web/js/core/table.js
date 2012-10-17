@@ -83,7 +83,6 @@ jQuery(function($){
       row = $(this);
       if(row.attr('customeditrow'))
            url = row.attr('customeditrow');
-      alert(url);
       var id = Tools.getStringId($(this).attr('id'));
       document.location.href = url + '/' + id;
     });
