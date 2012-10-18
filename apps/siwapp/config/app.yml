@@ -29,6 +29,14 @@ all:
       dashboard:
         tab_name: 'Dashboard'
         new_button_name: 'New Invoice'
+      customers:
+        verbose_name: 'Customers Module'
+        tab_name: 'Customers'
+        new_button_name: 'New Customer'
+      products:
+        verbose_name: 'Products Module'
+        tab_name: 'Products'
+        new_button_name: 'New Product'
       estimates:
         verbose_name: 'Estimates Module'
         tab_name: 'Estimates'
@@ -39,10 +47,6 @@ all:
       recurring:
         tab_name: 'Recurring Invoices'
         new_button_name: 'New Recurring Invoice'
-      customers:
-        verbose_name: 'Customers Module'
-        tab_name: 'Customers'
-        new_button_name: 'New Customer'
       suppliers:
         verbose_name: 'Suppliers Module'
         tab_name: 'Suppliers'
@@ -51,10 +55,6 @@ all:
         verbose_name: 'Expenses Module'
         tab_name: 'Expenses'
         new_button_name: 'New Expense'  
-      products:
-        verbose_name: 'Products Module'
-        tab_name: 'Products'
-        new_button_name: 'New Product'
       companies:
         verbose_name: 'Companies Module'
         tab_name: 'COMPANIES'
