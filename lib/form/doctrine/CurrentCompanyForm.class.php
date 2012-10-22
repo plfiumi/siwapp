@@ -15,6 +15,7 @@ class CurrentCompanyForm extends CompanyForm
   {
     parent::configure();
     unset($this->widgetSchema['company_user_list']);
+    unset($this->validatorSchema['company_user_list']);
     
         //TODO: Logo upload is not working. 
        /* $this->widgetSchema['logo'] = new sfWidgetFormInputFileEditable(array(
