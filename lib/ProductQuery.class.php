@@ -36,9 +36,11 @@ class ProductQuery extends Doctrine_Query
 
       
     $q->addSelect('p.id, p.reference, p.description, p.price')
+      ->addSelect('pc.name AS category')
       ->addSelect($q->quantity_col)
       ->addSelect($q->sold_col)
-      ->from("Product p, p.Items i, i.Common inv")
+      ->from("Product p, p.Items i, i.Common inv, p.ProductCategory pc")
+      ->Where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
       ->orderBy('p.reference asc')
       ->groupBy('p.id');
     //    echo $q->getSqlQuery();
@@ -56,8 +58,7 @@ class ProductQuery extends Doctrine_Query
     if($search)
     {
       if(isset($search['query']))  $this->textSearch($search['query']);
-      if(isset($search['from'])) $this->fromDate($search['from']);
-      if(isset($search['to'])) $this->toDate($search['to']);
+      if(isset($search['category']))  $this->categorySearch($search['category']);
       //TODO MCY adding other query
     }
     return $this;
@@ -77,38 +78,16 @@ class ProductQuery extends Doctrine_Query
     return $this;
   }
 
-  public function fromDate($date = null)
+  public function categorySearch($category)
   {
-    if(!($date=$this->filterDate($date)))
+    if($category)
     {
-      return $this;
-    }
-    else
-    {
-      return $this
-        ->andWhere(
-                 'inv.issue_date >= ?', 
-                 sfDate::getInstance($date)->to_database()
-                 )
-        ->andWhere("inv.draft = ?",0);
-    }
-  }
+      //TODO MCY check if we could use a parameter instead
+      $this
+        ->addWhere("p.category_id = $category ");
 
-  public function toDate($date = null)
-  {
-    if (!($date = $this->filterDate($date)))
-    {
-      return $this;
     }
-    else
-    {
-      return $this->
-        andWhere(
-                 'inv.issue_date < ?', 
-                 sfDate::getInstance($date)->addDay(1)->to_database()
-                 )->
-        andWhere('inv.draft = ?',0);
-    }   
+    return $this;
   }
 
   public function total($field)

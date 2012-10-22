@@ -41,6 +41,7 @@ $csrf     = new sfForm();
             <?php
               // sort parameter => array (Name, default order)
               renderHeaders(array(
+                'category' => array('Category', 'asc'),
                 'reference' => array('Reference', 'asc'),
                 'description'    => array('Description', 'desc'),
                 'price'    => array('Price', 'desc'),
@@ -60,6 +61,7 @@ $csrf     = new sfForm();
             ?>
             <tr id="product-<?php echo $id ?>" class="<?php echo "$parity link product-$id " ?>">
               <td class="check"><input rel="item" type="checkbox" value="<?php echo $id ?>" name="ids[]"></td>
+             <td><?php echo $product->category ?></td>
               <td><?php echo $product->reference ?></td>
                 <td><?php echo $product->description ?></td>
               <td><?php echo $product->price ?></td>            

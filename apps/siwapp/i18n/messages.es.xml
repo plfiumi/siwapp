@@ -1302,6 +1302,10 @@
         <source>Category: </source>
         <target>Categoría: </target>
       </trans-unit>
+      <trans-unit id="65">
+        <source>Category</source>
+        <target>Categoría </target>
+      </trans-unit>
       <trans-unit id="66">
         <source>Supplier Email</source>
         <target>Correo electronico del proveedor</target>
