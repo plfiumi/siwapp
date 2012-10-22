@@ -24,9 +24,9 @@ class EstimateForm extends BaseEstimateForm
     
     $this->widgetSchema->setNameFormat('invoice[%s]');
 
-    $this->setDefaults(array('draft'=>0));
-
     parent::configure();
+
+    $this->setDefaults(array('draft'=>0,'issue_date' => time(),'status' => 2 ));
     $this->validatorSchema['series_id']= new sfValidatorPass();
   }
 }
