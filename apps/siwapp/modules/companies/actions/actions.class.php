@@ -57,6 +57,7 @@ class CompaniesActions extends sfActions
                           'fax'=> $i18n->__('Company fax'),
                           'url'=> $i18n->__('Company Website'),
                           'currency' => 'EUR',
+                          'pdf_size' => 'a4',
                           ));
     
     $this->companyForm = new CompanyForm($Company, array('culture'=>$this->culture));

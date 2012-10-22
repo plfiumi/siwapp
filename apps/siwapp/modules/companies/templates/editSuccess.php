@@ -32,7 +32,7 @@ $company = $companyForm->getObject();
     </li>
     <li>
       <span class="_50"><?php echo _('Currency') ?> : <?php echo render_tag($companyForm['currency'])  ?></span>
-      <span class="_50"></span>
+      <span class="_50"><?php echo _('Page size') ?> : <?php echo render_tag($companyForm['pdf_size']) ?></span>
     </li>
   </ul>
 </div>
