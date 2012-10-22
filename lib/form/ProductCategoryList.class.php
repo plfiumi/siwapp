@@ -55,11 +55,9 @@ class ProductCategoryList extends FormsContainer
       return $values;
     }
 
-    $toDelete = Doctrine_Core::getTable('ProductCategory')
+    $toDelete = Doctrine_Core::getTable('Product')
       ->createQuery()
-      ->from('ProductCategory pc')
-      ->innerJoin('p.Product p')
-      ->addWhere('p.id IN (?)',implode(',',$deleted_ids))->execute();
+      ->addWhere('category_id IN (?)',implode(',',$deleted_ids))->execute();
 
     if(count($toDelete))
     {

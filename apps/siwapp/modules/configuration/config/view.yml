@@ -5,7 +5,7 @@ settingsSuccess:
     - siwapp/settings/global.js
 productCategoriesSuccess:
   javascripts:
-    - siwapp/settings/global.js
+    - siwapp/settings/categories.js
 profileSuccess:
   javascripts:
     - siwapp/lang.selector.js
