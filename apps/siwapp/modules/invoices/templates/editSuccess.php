@@ -34,10 +34,11 @@ $invoice = $invoiceForm->getObject();
   <div id="payment-data" class="block">
     <h3><?php echo __('Payment details') ?></h3>
     <ul class="inline">
-      <?php echo $invoiceForm['payment_type_id']->renderRow() ?>
-      <?php echo $invoiceForm['series_id']->renderRow() ?>
-      <?php echo $invoiceForm['issue_date']->renderRow() ?>
-      <?php echo $invoiceForm['due_date']->renderRow() ?>
+      <?php echo $invoiceForm['series_id']->renderRow() ?><br>
+      <?php echo $invoiceForm['issue_date']->renderRow() ?><br>
+      <span style="margin-right:10px"><?php echo $invoiceForm['payment_type_id']->renderRow() ?> </span>
+      <?php echo $invoiceForm['due_date']->renderRow() ?> <br>
+
     </ul>
       
     <?php include_partial('common/items', array(

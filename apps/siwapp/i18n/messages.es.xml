@@ -1362,6 +1362,10 @@
         <source>Pending Estimates</source>
         <target>Pressupuestos pendientes</target>
       </trans-unit>
+      <trans-unit>
+        <source>Payment type</source>
+        <target>Forma de pago</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
