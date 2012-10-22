@@ -508,6 +508,7 @@ PaymentType:
   columns:
     company_id: integer
     name:   string(255)
+    description:   clob
     enabled:
       type: boolean
       default: true

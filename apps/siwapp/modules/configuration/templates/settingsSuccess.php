@@ -94,6 +94,7 @@
         <ul class="head">
           <a href="#" class="xit"></a>
           <li class="name"><strong><?php echo __('Name')?></strong></li>
+          <li class="name"><strong><?php echo __('Description')?></strong></li>
           <li class="active"><strong><?php echo __('Enabled')?></strong></li>
         </ul>
         <?php foreach ($form['payments'] as $s): ?>

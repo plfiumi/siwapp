@@ -7,17 +7,20 @@
  * 
  * @property integer $company_id
  * @property string $name
+ * @property clob $description
  * @property boolean $enabled
  * @property Company $Company
  * @property Doctrine_Collection $PaymentType
  * 
  * @method integer             getCompanyId()   Returns the current record's "company_id" value
  * @method string              getName()        Returns the current record's "name" value
+ * @method clob                getDescription() Returns the current record's "description" value
  * @method boolean             getEnabled()     Returns the current record's "enabled" value
  * @method Company             getCompany()     Returns the current record's "Company" value
  * @method Doctrine_Collection getPaymentType() Returns the current record's "PaymentType" collection
  * @method PaymentType         setCompanyId()   Sets the current record's "company_id" value
  * @method PaymentType         setName()        Sets the current record's "name" value
+ * @method PaymentType         setDescription() Sets the current record's "description" value
  * @method PaymentType         setEnabled()     Sets the current record's "enabled" value
  * @method PaymentType         setCompany()     Sets the current record's "Company" value
  * @method PaymentType         setPaymentType() Sets the current record's "PaymentType" collection
@@ -38,6 +41,9 @@ abstract class BasePaymentType extends sfDoctrineRecord
         $this->hasColumn('name', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
+             ));
+        $this->hasColumn('description', 'clob', null, array(
+             'type' => 'clob',
              ));
         $this->hasColumn('enabled', 'boolean', null, array(
              'type' => 'boolean',
