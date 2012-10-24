@@ -43,6 +43,7 @@ class CustomerForm extends BaseCustomerForm
                                               )
                                             );
     $this->validatorSchema['name']->setOption('required', true);
+    $this->validatorSchema['identification']->setOption('required', true);
     $this->validatorSchema['name_slug']->
       setMessages(array_merge(array('invalid'=>'sg'),
                               $this->validatorSchema['name_slug']->
