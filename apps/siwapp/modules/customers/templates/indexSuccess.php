@@ -35,8 +35,9 @@ $csrf     = new sfForm();
             <?php
               // sort parameter => array (Name, default order)
               renderHeaders(array(
-                'name' => array('Customer Name', 'asc'),
                 'identification'    => array('Identification', 'desc'),
+                'name' => array('Customer Name', 'asc'),
+                'email'    => array('Email', 'desc'),
                 'due_amount'    => array('Due', 'desc'),
                 'gross_amount'  => array('Total', 'desc')
                 ), $sf_data->getRaw('sort'), '@customers');
@@ -53,8 +54,9 @@ $csrf     = new sfForm();
             ?>
             <tr id="customer-<?php echo $id ?>" class="<?php echo "$parity link customer-$id " ?>">
               <td class="check"><input rel="item" type="checkbox" value="<?php echo $id ?>" name="ids[]"></td>
-              <td><?php echo $customer ?></td>
               <td><?php echo $customer->getIdentification() ?></td>
+              <td><?php echo $customer ?></td>
+              <td><?php echo $customer->getEmail() ?></td>
             <td class="right"><?php if ($customer->getDueAmount($sf_data->getRaw('date_range')) != 0) echo format_currency($customer->getDueAmount($sf_data->getRaw('date_range')), $currency) ?></td>
               <td class="right">
                <?php echo format_currency($customer->getGrossAmount($sf_data->getRaw('date_range')), $currency)  ?>
