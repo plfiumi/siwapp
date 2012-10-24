@@ -29,7 +29,6 @@ echo javascript_tag("var customer_name_autocomplete = '".$customer_name."'");
       <ul class="series">
       <?php
       echo $form['sent']->renderRow();
-      echo $form['series_id']->renderRow();
       echo $form['customer_id']->renderRow();
       ?>
       </ul>
