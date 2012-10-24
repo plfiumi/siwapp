@@ -17,8 +17,10 @@ class CurrentCompanyForm extends CompanyForm
     unset($this->widgetSchema['company_user_list']);
     unset($this->validatorSchema['company_user_list']);
     
-        //TODO: Logo upload is not working. 
-       /* $this->widgetSchema['logo'] = new sfWidgetFormInputFileEditable(array(
+    $companyObject = new Company();
+    $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
+    
+    $this->widgetSchema['logo'] = new sfWidgetFormInputFileEditable(array(
       'label'     => 'Logo',
       'file_src'  => self::getUploadsDir().'/'.$companyObject->getLogo(),
       'is_image'  => true,
@@ -44,7 +46,37 @@ class CurrentCompanyForm extends CompanyForm
           )
         ));
 
-*/
+
+  }
+
+  public static function getUploadsDir()
+  {
+    $root_path = substr($_SERVER['SCRIPT_NAME'],0,strrpos($_SERVER['SCRIPT_NAME'],'/'));
+    $web_dir = str_replace(DIRECTORY_SEPARATOR,'/',sfConfig::get('sf_web_dir'));
+    $upload_dir = str_replace(DIRECTORY_SEPARATOR,'/',sfConfig::get('sf_upload_dir'));
+    return $root_path.str_replace($web_dir, null, $upload_dir);
+  }
+
+  public function checkLogo(sfValidatorBase $validator, $values)
+  {
+
+    if(!$values['logo'])
+    {
+      return $values;
+    }
+    $logoObject = $values['logo'];
+    try
+    {
+      //TODO: This method saves the logo but it breaks. 
+      //$logoObject->canSave();
+    }
+    catch(Exception $e)
+    {
+      $validator->setMessage('invalid',$validator->getMessage('invalid').': '.$e->getMessage());
+      throw new sfValidatorError($validator,'invalid');
+    }
+    return $values;
+
   }
 
 }
