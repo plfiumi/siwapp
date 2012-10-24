@@ -26,7 +26,7 @@ class EstimateForm extends BaseEstimateForm
 
     parent::configure();
 
-    $this->setDefaults(array('draft'=>0,'issue_date' => time(),'status' => 2 ));
+    $this->setDefaults(array('draft'=>0,'issue_date' => time(),'status' => 2, 'company_id' => sfContext::getInstance()->getUser()->getAttribute('company_id') ));
     $this->validatorSchema['series_id']= new sfValidatorPass();
   }
 }
