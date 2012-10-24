@@ -16,6 +16,7 @@ class InvoiceForm extends CommonForm
     unset($this['number'], $this['created_at'], $this['updated_at']);
     // we unset paid_amount so the system don't "nullify" the field on every invoice editing.
     unset($this['paid_amount']); 
+
     
     $this->number = $this->getObject()->getNumber();
     $this->widgetSchema['issue_date'] = 
@@ -31,7 +32,8 @@ class InvoiceForm extends CommonForm
       'issue_date'              => time(),
       'draft'                   => 0
       ));
-        
+    
+    $this->validatorSchema['payment_type_id'] = new sfValidatorString(array('required' => true));
     $this->widgetSchema->setNameFormat('invoice[%s]');
     
     parent::configure();

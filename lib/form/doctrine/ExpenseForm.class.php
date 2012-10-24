@@ -16,6 +16,7 @@ class ExpenseForm extends CommonForm
     unset($this['number'], $this['created_at'], $this['updated_at']);
     // we unset paid_amount so the system don't "nullify" the field on every expense editing.
     unset($this['paid_amount']); 
+    unset($this['shipping_address']);
     
     $this->number = $this->getObject()->getNumber();
     $this->widgetSchema['issue_date'] = 

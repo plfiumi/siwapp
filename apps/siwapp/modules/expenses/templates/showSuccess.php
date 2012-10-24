@@ -50,13 +50,9 @@
         </li>
         <li>
           <span>
-            <span class="_50">
+            <span class="_75 _last">
               <label><?php echo __('Invoicing address') ?>:</label>
               <?php echo simple_format_text($invoice->getInvoicingAddress()) ?></span>
-            <span class="_50 _last">
-              <label><?php echo __('Shipping address') ?>:</label>
-              <?php echo simple_format_text($invoice->getShippingAddress()) ?>
-            </span>
           </span>
           <span class="clear"></span>
         </li>

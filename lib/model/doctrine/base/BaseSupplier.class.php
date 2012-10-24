@@ -12,7 +12,6 @@
  * @property string $email
  * @property string $contact_person
  * @property clob $invoicing_address
- * @property clob $shipping_address
  * @property string $phone
  * @property string $fax
  * @property clob $comments
@@ -28,7 +27,6 @@
  * @method string              getEmail()             Returns the current record's "email" value
  * @method string              getContactPerson()     Returns the current record's "contact_person" value
  * @method clob                getInvoicingAddress()  Returns the current record's "invoicing_address" value
- * @method clob                getShippingAddress()   Returns the current record's "shipping_address" value
  * @method string              getPhone()             Returns the current record's "phone" value
  * @method string              getFax()               Returns the current record's "fax" value
  * @method clob                getComments()          Returns the current record's "comments" value
@@ -43,7 +41,6 @@
  * @method Supplier            setEmail()             Sets the current record's "email" value
  * @method Supplier            setContactPerson()     Sets the current record's "contact_person" value
  * @method Supplier            setInvoicingAddress()  Sets the current record's "invoicing_address" value
- * @method Supplier            setShippingAddress()   Sets the current record's "shipping_address" value
  * @method Supplier            setPhone()             Sets the current record's "phone" value
  * @method Supplier            setFax()               Sets the current record's "fax" value
  * @method Supplier            setComments()          Sets the current record's "comments" value
@@ -86,9 +83,6 @@ abstract class BaseSupplier extends sfDoctrineRecord
              'length' => 100,
              ));
         $this->hasColumn('invoicing_address', 'clob', null, array(
-             'type' => 'clob',
-             ));
-        $this->hasColumn('shipping_address', 'clob', null, array(
              'type' => 'clob',
              ));
         $this->hasColumn('phone', 'string', 20, array(

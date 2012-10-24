@@ -74,7 +74,7 @@ class CommonForm extends BaseCommonForm
                                                        )
                                                      );
     $this->validatorSchema['customer_name']  = new sfValidatorString(array('required' => true));
-    $this->validatorSchema['payment_type_id'] = new sfValidatorString(array('required' => true));
+
 
     $this->validatorSchema['series_id']  = new sfValidatorString(array('required'=>true),array('required'=>'The invoice serie is mandatory'));
     

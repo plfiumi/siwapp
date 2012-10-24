@@ -81,7 +81,6 @@ Supplier:
     email: string(100)
     contact_person: string(100)
     invoicing_address: clob
-    shipping_address: clob
     phone: string(20)
     fax: string(20)
     comments: clob

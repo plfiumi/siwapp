@@ -32,8 +32,8 @@ $supplier = $supplierForm->getObject();
       <span class="_50"><?php echo render_tag($supplierForm['fax'])?></span>
     </li>
     <li>
-      <span class="_50"><?php echo render_tag($supplierForm['invoicing_address'])?></span>
-      <span class="_50"><?php echo render_tag($supplierForm['shipping_address'])?></span>
+      <span class="_75"><?php echo render_tag($supplierForm['invoicing_address'])?></span>
+      <span class="_25"></span>
     </li>
     <li>
       <span class="_75"><?php echo render_tag($supplierForm['comments'])?></span>

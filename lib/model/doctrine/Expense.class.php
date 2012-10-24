@@ -22,6 +22,7 @@ class Expense extends BaseExpense
     $this->_table->removeColumn('period_type');
     $this->_table->removeColumn('starting_date');
     $this->_table->removeColumn('finishing_date');
+    $this->_table->removeColumn('shipping_address');
   }
 
   public function __toString()

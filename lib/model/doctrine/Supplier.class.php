@@ -23,7 +23,6 @@ class Supplier extends BaseSupplier
     $this->setEmail($obj->getSupplierEmail());
     $this->setContactPerson($obj->getContactPerson());
     $this->setInvoicingAddress($obj->getInvoicingAddress());
-    $this->setShippingAddress($obj->getShippingAddress());
     
     return $this;
   }
