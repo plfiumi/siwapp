@@ -1394,6 +1394,10 @@
         <source>Required.</source>
         <target>Obligatorio.</target>
       </trans-unit>
+      <trans-unit>
+        <source>Legal Id</source>
+        <target>Identificador legal</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

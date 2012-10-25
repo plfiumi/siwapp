@@ -50,13 +50,6 @@ class CompaniesActions extends sfActions
     $i18n = $this->getContext()->getI18N();
     $Company = new Company();
     $Company->fromArray(array(
-                          'identification'=>$i18n->__('Company Legal Id'),
-                          'name'=>$i18n->__('Company name'),
-                          'address'=>$i18n->__('Company address'),
-                          'email'=> $i18n->__('Company email'),
-                          'phone'=> $i18n->__('Company phone'),   
-                          'fax'=> $i18n->__('Company fax'),
-                          'url'=> $i18n->__('Company Website'),
                           'currency' => 'EUR',
                           'pdf_size' => 'a4',
                           ));

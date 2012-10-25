@@ -455,6 +455,14 @@ div#invoice-container div#recurring-data input { width: auto;}
   line-height:1em;
   margin-bottom:0.3em;
 }
+ label {
+  display:block;
+  font-weight:bold;
+  font-size:0.85em;
+  line-height:1em;
+  margin-top:1.2em;
+  margin-bottom:0.5em;
+}
 
 #settings-wrapper fieldset      { float:left; width:47%; margin:1em 0; }
 #settings-wrapper fieldset > ul { margin:0; list-style-type:none; }

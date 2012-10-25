@@ -2,20 +2,43 @@
   <h3><?php echo __('Client info') ?></h3>
   <ul>
     <li>
-      <span class="_75"><?php echo render_tag($invoiceForm['customer_name'])?></span>
-      <span class="_25"><?php echo render_tag($invoiceForm['customer_identification'])?></span>
+      <span class="_75">        
+        <label for="<? echo $invoiceForm['customer_name']->renderId()?>"><?php echo __('Client Name') ?></label>
+        <?php echo render_tag($invoiceForm['customer_name'])?>
+      </span>
+      <span class="_25">
+        <label for="<? echo $invoiceForm['customer_identification']->renderId()?>"><?php echo __('Legal Id') ?></label>
+        <?php echo render_tag($invoiceForm['customer_identification'])?>
+      </span>
     </li>
     <li>
-      <span class="_50"><?php echo render_tag($invoiceForm['contact_person'])?></span>
-      <span class="_50"><?php echo render_tag($invoiceForm['customer_email'])?></span>
+      <span class="_50">
+        <label for="<? echo $invoiceForm['customer_email']->renderId()?>"><?php echo __('Contact Person') ?></label>
+        <?php echo render_tag($invoiceForm['contact_person'])?>
+      </span>
+      <span class="_50">
+         <label for="<? echo $invoiceForm['customer_email']->renderId()?>"><?php echo __('Customer email') ?></label>
+        <?php echo render_tag($invoiceForm['customer_email'])?>
+        </span>
     </li>
     <li>
-      <span class="_50"><?php echo render_tag($invoiceForm['customer_phone'])?></span>
-      <span class="_50"><?php echo render_tag($invoiceForm['customer_fax'])?></span>
+      <span class="_50">
+         <label for="<? echo $invoiceForm['customer_phone']->renderId()?>"><?php echo __('Customer Phone') ?></label>
+         <?php echo render_tag($invoiceForm['customer_phone'])?>
+      </span>
+      <span class="_50">
+        <label for="<? echo $invoiceForm['customer_fax']->renderId()?>"><?php echo __('Client Fax') ?></label>
+        <?php echo render_tag($invoiceForm['customer_fax'])?></span>
     </li>
     <li>
-      <span class="_50"><?php echo render_tag($invoiceForm['invoicing_address'])?></span>
-      <span class="_50"><?php echo render_tag($invoiceForm['shipping_address'])?></span>
+      <span class="_50">
+        <label for="<? echo $invoiceForm['invoicing_address']->renderId()?>"><?php echo __('Invoicing Address') ?></label>
+        <?php echo render_tag($invoiceForm['invoicing_address'])?>
+      </span>
+      <span class="_50">
+        <label for="<? echo $invoiceForm['shipping_address']->renderId()?>"><?php echo __('Shipping Address') ?></label>
+        <?php echo render_tag($invoiceForm['shipping_address'])?>
+      </span>
     </li>
   </ul>
 </div>

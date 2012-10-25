@@ -2,19 +2,40 @@
   <h3><?php echo __('Supplier info') ?></h3>
   <ul>
     <li>
-      <span class="_75"><?php echo render_tag($invoiceForm['supplier_name'])?></span>
-      <span class="_25"><?php echo render_tag($invoiceForm['supplier_identification'])?></span>
+      <span class="_75">
+        <label for="<? echo $invoiceForm['supplier_name']->renderId()?>"><?php echo __('Supplier Name') ?></label>
+        <?php echo render_tag($invoiceForm['supplier_name'])?>
+      </span>
+      <span class="_25">
+         <label for="<? echo $invoiceForm['supplier_identification']->renderId()?>"><?php echo __('Legal Id') ?></label>
+        <?php echo render_tag($invoiceForm['supplier_identification'])?>
+      </span>
     </li>
     <li>
-      <span class="_50"><?php echo render_tag($invoiceForm['contact_person'])?></span>
-      <span class="_50"><?php echo render_tag($invoiceForm['supplier_email'])?></span>
+      <span class="_50">
+         <label for="<? echo $invoiceForm['contact_person']->renderId()?>"><?php echo __('Contact Person') ?></label>
+        <?php echo render_tag($invoiceForm['contact_person'])?>
+      </span>
+      <span class="_50">
+       <label for="<? echo $invoiceForm['supplier_email']->renderId()?>"><?php echo __('Supplier Email') ?></label>
+        <?php echo render_tag($invoiceForm['supplier_email'])?>
+      </span>
     </li>
     <li>
-      <span class="_50"><?php echo render_tag($invoiceForm['supplier_phone'])?></span>
-      <span class="_50"><?php echo render_tag($invoiceForm['supplier_fax'])?></span>
+      <span class="_50">
+         <label for="<? echo $invoiceForm['supplier_phone']->renderId()?>"><?php echo __('Supplier Phone') ?></label>
+        <?php echo render_tag($invoiceForm['supplier_phone'])?>
+      </span>
+      <span class="_50">
+         <label for="<? echo $invoiceForm['supplier_fax']->renderId()?>"><?php echo __('Supplier Fax') ?></label>
+        <?php echo render_tag($invoiceForm['supplier_fax'])?>
+      </span>
     </li>
     <li>
-      <span class="_75"><?php echo render_tag($invoiceForm['invoicing_address'])?></span>
+      <span class="_75">
+         <label for="<? echo $invoiceForm['invoicing_address']->renderId()?>"><?php echo __('Invoicing Address') ?></label>
+        <?php echo render_tag($invoiceForm['invoicing_address'])?>
+      </span>
     </li>
   </ul>
 </div>

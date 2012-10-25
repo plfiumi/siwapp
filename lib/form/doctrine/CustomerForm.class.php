@@ -26,7 +26,6 @@ class CustomerForm extends BaseCustomerForm
                              'comments'=> 'Comments',
                              );
 
-    $this->widgetSchema->setHelps($common_defaults);
 
     //Assign company_id from session values.
     $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();

@@ -51,11 +51,6 @@ class productsActions extends sfActions
   {
     $i18n = $this->getContext()->getI18N();
     $product = new Product();
-    $product->fromArray(array(
-                          'reference'=>$i18n->__('Product reference'),
-                          'description'=>$i18n->__('Product description'),
-                          'price'=> $i18n->__('Product price')
-                          ));
     $this->productForm = new ProductForm($product, array('culture'=>$this->culture));
     $this->title       = $i18n->__('New Product');
     $this->action      = 'create';

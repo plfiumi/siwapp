@@ -60,7 +60,7 @@ $invoice = $invoiceForm->getObject();
         'invoice' => $invoice,
         'invoiceForm' => $invoiceForm,
         'currency' => $currency, 
-        'expense' => $false
+        'expense' => false
         ));?>
     </div>
 

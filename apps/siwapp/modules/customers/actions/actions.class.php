@@ -55,19 +55,6 @@ class customersActions extends sfActions
   {
     $i18n = $this->getContext()->getI18N();
     $customer = new Customer();
-    $customer->fromArray(array(
-                          'name'=>$i18n->__('Client Name'),
-                          'identification'=>$i18n->__('Client Legal Id'),
-                          'contact_person'=> $i18n->__('Contact Person'),
-                          'invoicing_address'=> $i18n->__('Invoicing Address'),
-                          'shipping_address'=> $i18n->__('Shipping Address'),
-                          'phone'=> $i18n->__('Client Phone'),
-                          'fax'=> $i18n->__('Client Fax'),
-                          'comments'=> $i18n->__('Comments'),
-                          'website'=> $i18n->__('Website'),
-                          'mobile'=> $i18n->__('Client Mobile'),
-                          'email'=> $i18n->__('Client Email')
-                          ));
     $this->customerForm = new CustomerForm($customer, array('culture'=>$this->culture));
     $this->title       = $i18n->__('New Customer');
     $this->action      = 'create';

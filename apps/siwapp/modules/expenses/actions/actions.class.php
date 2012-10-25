@@ -58,17 +58,7 @@ class expensesActions extends sfActions
   {
     $i18n = $this->getContext()->getI18N();
     $expense = new Expense();
-    
-    $expense->fromArray(array(
-                          'supplier_name'=>$i18n->__('Supplier Name'),
-                          'supplier_identification'=>$i18n->__('Supplier Legal Id'),
-                          'contact_person'=> $i18n->__('Supplier Person'),
-                          'invoicing_address'=> $i18n->__('Supplier Address'),
-                          'shipping_address'=> $i18n->__('Shipping Address'),
-                          'supplier_phone'=> $i18n->__('Supplier Phone'),
-                          'supplier_fax'=> $i18n->__('Supplier Fax'),
-                          'supplier_email'=> $i18n->__('Supplier Email Address')
-                          ));
+
     $this->invoiceForm = new ExpenseForm($expense, array('culture'=>$this->culture));
     $this->title       = $i18n->__('New Expense');
     $this->action      = 'create';

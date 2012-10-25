@@ -55,21 +55,6 @@ class suppliersActions extends sfActions
   {
     $i18n = $this->getContext()->getI18N();
     $supplier = new Supplier();
-    $supplier->fromArray(array(
-                          'name'=>$i18n->__('Supplier Name'),
-                          'identification'=>$i18n->__('Supplier Legal Id'),
-                          'contact_person'=> $i18n->__('Contact Person'),
-                          'invoicing_address'=> $i18n->__('Invoicing Address'),
-                          'shipping_address'=> $i18n->__('Shipping Address'),
-                          'phone'=> $i18n->__('Supplier Phone'),
-                          'fax'=> $i18n->__('Supplier Fax'),
-                          'mobile'=> $i18n->__('Supplier Mobile'),
-                          'website'=> $i18n->__('Website'),
-                          'login'=> $i18n->__('Login'),
-                          'password'=> $i18n->__('Password'),
-                          'comments'=> $i18n->__('Comments'),
-                          'email'=> $i18n->__('Supplier Email')
-                          ));
     $this->supplierForm = new SupplierForm($supplier, array('culture'=>$this->culture));
     $this->title       = $i18n->__('New Supplier');
     $this->action      = 'create';

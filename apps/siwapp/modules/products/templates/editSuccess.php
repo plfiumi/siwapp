@@ -17,18 +17,15 @@ $product = $productForm->getObject();
   <h3><?php echo __('Product info') ?></h3>
   <ul>
     <li>
-      <span class="_25"><?php echo render_tag($productForm['reference'])?></span>
-      <span class="_75"><?php echo render_tag($productForm['description'])?></span>
+      <span class="_25">
+                <label for="<? echo $productForm['reference']->renderId()?>"><?php echo __('Product reference') ?></label><?php echo render_tag($productForm['reference'])?></span>
+      <span class="_75"><label for="<? echo $productForm['description']->renderId()?>"><?php echo __('Product description') ?></label><?php echo render_tag($productForm['description'])?></span>
     </li>
     <li></li>
     <li></li>
     <li>
-      <span class="_25"> <?php echo render_tag($productForm['price'])?></span>
-      <span class="_75"></span>  
-    </li>
-    <li>
-      <span class="_50"><?php echo __('Category: ').render_tag($productForm['category_id'])?></span>     
-      <span class="_75"></span>     
+      <span class="_25"><label for="<? echo $productForm['price']->renderId()?>"><?php echo __('Product price') ?></label><?php echo render_tag($productForm['price'])?></span>
+      <span class="_50"><label for="<? echo $productForm['reference']->renderId()?>"><?php echo __('Category') ?></label><?php echo render_tag($productForm['category_id'])?></span> 
     </li>
   </ul>
 </div>
