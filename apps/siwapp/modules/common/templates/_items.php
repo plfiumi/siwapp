@@ -6,12 +6,13 @@
       <?php if($expense) : ?>
           <th><?php echo __('Description') ?></th>
           <th class="right"><?php echo __('Expense Type') ?></th>
+          <th class="right"><?php echo __('Unit Cost') ?></th>
           <th class="right"><?php echo __('Amount') ?></th>
           <th class="right"><?php echo __('Taxes') ?></th>
           <th class="right"><?php echo __('Price') ?></th>
       <?php else: ?>
           <?php if($sf_user->has_module('products')) :?>
-          <th><?php echo __('Product') ?></th>
+          <th><?php echo __('Reference') ?></th>
           <?php endif?>
           <th><?php echo __('Description') ?></th>
           <th class="right"><?php echo __('Unit Cost') ?></th>
@@ -40,7 +41,7 @@
   <tfoot id="global_calculations">
     <tr>
       <?php $colspan = '4'; 
-            if ($expense) $colspan = '3'; 
+            if ($expense) $colspan = '4'; 
             else if ($sf_user->has_module('products')) $colspan='5' ?>
       <td colspan="<?php echo $colspan ?>" rowspan="25" class="noborder top">
         <div id="addItem">

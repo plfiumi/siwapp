@@ -13,7 +13,6 @@ $currency = $sf_user->getAttribute('currency');
     <?php echo $invoiceItemForm->renderHiddenFields();?>
     <?php echo $invoiceItemForm['description']->render(array(), ESC_RAW) ?>
   </td>
-  <!-- TODO: Add here the expense type -->
   <td class="right ucost"><?php 
     if ($invoiceItemForm['expense_type_id']->hasError()):
       echo $invoiceItemForm['expense_type_id']->render(array('class'=>'error'), ESC_RAW);
@@ -26,6 +25,13 @@ $currency = $sf_user->getAttribute('currency');
       echo $invoiceItemForm['unitary_cost']->render(array('class'=>'error'), ESC_RAW);
     else:
       echo $invoiceItemForm['unitary_cost']->render(array(), ESC_RAW);
+    endif;
+  ?></td>
+  <td class="right quantity"><?php 
+    if ($invoiceItemForm['quantity']->hasError()):
+      echo $invoiceItemForm['quantity']->render(array('class'=>'error'), ESC_RAW);
+    else:
+      echo $invoiceItemForm['quantity']->render(array(), ESC_RAW);
     endif;
   ?></td>
   <td class="right taxes_td">
