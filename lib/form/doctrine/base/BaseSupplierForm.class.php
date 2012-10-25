@@ -23,9 +23,13 @@ abstract class BaseSupplierForm extends BaseFormDoctrine
       'email'             => new sfWidgetFormInputText(),
       'contact_person'    => new sfWidgetFormInputText(),
       'invoicing_address' => new sfWidgetFormTextarea(),
+      'website'           => new sfWidgetFormInputText(),
       'phone'             => new sfWidgetFormInputText(),
+      'mobile'            => new sfWidgetFormInputText(),
       'fax'               => new sfWidgetFormInputText(),
       'comments'          => new sfWidgetFormTextarea(),
+      'login'             => new sfWidgetFormInputText(),
+      'password'          => new sfWidgetFormInputText(),
       'expense_type_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'), 'add_empty' => true)),
     ));
 
@@ -38,9 +42,13 @@ abstract class BaseSupplierForm extends BaseFormDoctrine
       'email'             => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'contact_person'    => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'invoicing_address' => new sfValidatorString(array('required' => false)),
+      'website'           => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'phone'             => new sfValidatorString(array('max_length' => 20, 'required' => false)),
+      'mobile'            => new sfValidatorString(array('max_length' => 20, 'required' => false)),
       'fax'               => new sfValidatorString(array('max_length' => 20, 'required' => false)),
       'comments'          => new sfValidatorString(array('required' => false)),
+      'login'             => new sfValidatorString(array('max_length' => 50, 'required' => false)),
+      'password'          => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'expense_type_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'), 'required' => false)),
     ));
 

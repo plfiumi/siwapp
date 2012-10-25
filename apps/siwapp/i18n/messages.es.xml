@@ -6,6 +6,10 @@
     <body>
       <!-- ##### LOGIN/OUT ##### -->
       <trans-unit>
+        <source>Login</source>
+        <target>Nombre de usuario</target>
+      </trans-unit>
+      <trans-unit>
         <source>Username</source>
         <target>Usuario</target>
       </trans-unit>
@@ -1365,6 +1369,22 @@
       <trans-unit>
         <source>Payment type</source>
         <target>Forma de pago</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Client Mobile</source>
+        <target>Móvil del cliente</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Website</source>
+        <target>Pagina web</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Supplier Mobile</source>
+        <target>Movil del proveedor</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Online Access</source>
+        <target>Datos de acceso Online</target>
       </trans-unit>
     </body>
   </file>

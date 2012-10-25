@@ -13,7 +13,9 @@
  * @property string $contact_person
  * @property clob $invoicing_address
  * @property clob $shipping_address
+ * @property string $website
  * @property string $phone
+ * @property string $mobile
  * @property string $fax
  * @property clob $comments
  * @property Company $Company
@@ -27,7 +29,9 @@
  * @method string              getContactPerson()     Returns the current record's "contact_person" value
  * @method clob                getInvoicingAddress()  Returns the current record's "invoicing_address" value
  * @method clob                getShippingAddress()   Returns the current record's "shipping_address" value
+ * @method string              getWebsite()           Returns the current record's "website" value
  * @method string              getPhone()             Returns the current record's "phone" value
+ * @method string              getMobile()            Returns the current record's "mobile" value
  * @method string              getFax()               Returns the current record's "fax" value
  * @method clob                getComments()          Returns the current record's "comments" value
  * @method Company             getCompany()           Returns the current record's "Company" value
@@ -40,7 +44,9 @@
  * @method Customer            setContactPerson()     Sets the current record's "contact_person" value
  * @method Customer            setInvoicingAddress()  Sets the current record's "invoicing_address" value
  * @method Customer            setShippingAddress()   Sets the current record's "shipping_address" value
+ * @method Customer            setWebsite()           Sets the current record's "website" value
  * @method Customer            setPhone()             Sets the current record's "phone" value
+ * @method Customer            setMobile()            Sets the current record's "mobile" value
  * @method Customer            setFax()               Sets the current record's "fax" value
  * @method Customer            setComments()          Sets the current record's "comments" value
  * @method Customer            setCompany()           Sets the current record's "Company" value
@@ -85,7 +91,15 @@ abstract class BaseCustomer extends sfDoctrineRecord
         $this->hasColumn('shipping_address', 'clob', null, array(
              'type' => 'clob',
              ));
+        $this->hasColumn('website', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
         $this->hasColumn('phone', 'string', 20, array(
+             'type' => 'string',
+             'length' => 20,
+             ));
+        $this->hasColumn('mobile', 'string', 20, array(
              'type' => 'string',
              'length' => 20,
              ));

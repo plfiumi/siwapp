@@ -6,12 +6,16 @@
     <body>
       <!-- ##### LOGIN/OUT ##### -->
       <trans-unit>
+        <source>Login</source>
+        <target>Nom d'usuari</target>
+      </trans-unit>
+      <trans-unit>
         <source>Username</source>
         <target>Usuari</target>
       </trans-unit>
       <trans-unit>
         <source>Password</source>
-        <target>Contrassenya</target>
+        <target>Contrasenya</target>
       </trans-unit>
       <trans-unit>
         <source>Remember me</source>
@@ -1365,6 +1369,22 @@
       <trans-unit>
         <source>Payment type</source>
         <target>Forma de pagament</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Client Mobile</source>
+        <target>Mòbil del client</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Website</source>
+        <target>Lloc web</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Supplier Mobile</source>
+        <target>Mòbil del proveïdor</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Online Access</source>
+        <target>Dades d'accés Online</target>
       </trans-unit>
     </body>
   </file>

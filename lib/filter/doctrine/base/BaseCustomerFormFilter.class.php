@@ -21,7 +21,9 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'contact_person'    => new sfWidgetFormFilterInput(),
       'invoicing_address' => new sfWidgetFormFilterInput(),
       'shipping_address'  => new sfWidgetFormFilterInput(),
+      'website'           => new sfWidgetFormFilterInput(),
       'phone'             => new sfWidgetFormFilterInput(),
+      'mobile'            => new sfWidgetFormFilterInput(),
       'fax'               => new sfWidgetFormFilterInput(),
       'comments'          => new sfWidgetFormFilterInput(),
     ));
@@ -35,7 +37,9 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'contact_person'    => new sfValidatorPass(array('required' => false)),
       'invoicing_address' => new sfValidatorPass(array('required' => false)),
       'shipping_address'  => new sfValidatorPass(array('required' => false)),
+      'website'           => new sfValidatorPass(array('required' => false)),
       'phone'             => new sfValidatorPass(array('required' => false)),
+      'mobile'            => new sfValidatorPass(array('required' => false)),
       'fax'               => new sfValidatorPass(array('required' => false)),
       'comments'          => new sfValidatorPass(array('required' => false)),
     ));
@@ -66,7 +70,9 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'contact_person'    => 'Text',
       'invoicing_address' => 'Text',
       'shipping_address'  => 'Text',
+      'website'           => 'Text',
       'phone'             => 'Text',
+      'mobile'            => 'Text',
       'fax'               => 'Text',
       'comments'          => 'Text',
     );

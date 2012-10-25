@@ -63,6 +63,10 @@ class suppliersActions extends sfActions
                           'shipping_address'=> $i18n->__('Shipping Address'),
                           'phone'=> $i18n->__('Supplier Phone'),
                           'fax'=> $i18n->__('Supplier Fax'),
+                          'mobile'=> $i18n->__('Supplier Mobile'),
+                          'website'=> $i18n->__('Website'),
+                          'login'=> $i18n->__('Login'),
+                          'password'=> $i18n->__('Password'),
                           'comments'=> $i18n->__('Comments'),
                           'email'=> $i18n->__('Supplier Email')
                           ));

@@ -29,7 +29,11 @@ $customer = $customerForm->getObject();
     </li>
     <li>
       <span class="_50"><?php echo render_tag($customerForm['phone'])?></span>
+      <span class="_50"><?php echo render_tag($customerForm['mobile'])?></span>
+    </li>
+    <li>
       <span class="_50"><?php echo render_tag($customerForm['fax'])?></span>
+      <span class="_50"><?php echo render_tag($customerForm['website'])?></span>
     </li>
     <li>
       <span class="_50"><?php echo render_tag($customerForm['invoicing_address'])?></span>

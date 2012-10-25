@@ -29,7 +29,11 @@ $supplier = $supplierForm->getObject();
     </li>
     <li>
       <span class="_50"><?php echo render_tag($supplierForm['phone'])?></span>
+      <span class="_50"><?php echo render_tag($supplierForm['mobile'])?></span>
+    </li>
+    <li>
       <span class="_50"><?php echo render_tag($supplierForm['fax'])?></span>
+      <span class="_50"><?php echo render_tag($supplierForm['website'])?></span>
     </li>
     <li>
       <span class="_75"><?php echo render_tag($supplierForm['invoicing_address'])?></span>
@@ -39,6 +43,15 @@ $supplier = $supplierForm->getObject();
       <span class="_75"><?php echo render_tag($supplierForm['comments'])?></span>
     </li>
   </ul>
+</div>
+<div id="expense-type-data" class="global-data block">  
+  <h3><?php echo __('Online Access') ?></h3>
+  <ul>
+    <li>
+      <span class="_50"><?php echo render_tag($supplierForm['login'])?></span>
+      <span class="_50"><?php echo render_tag($supplierForm['password'])?></span>
+    </li>
+  </ul> 
 </div>
 <div id="expense-type-data" class="global-data block">  
   <h3><?php echo __('Expense Type') ?></h3>

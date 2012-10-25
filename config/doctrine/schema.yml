@@ -58,7 +58,9 @@ Customer:
     contact_person: string(100)
     invoicing_address: clob
     shipping_address: clob
+    website: string(255)
     phone: string(20)
+    mobile: string(20)
     fax: string(20)
     comments: clob
   indexes:
@@ -81,9 +83,13 @@ Supplier:
     email: string(100)
     contact_person: string(100)
     invoicing_address: clob
+    website: string(255)
     phone: string(20)
+    mobile: string(20)
     fax: string(20)
     comments: clob
+    login: string(50)
+    password: string(50)
     expense_type_id: integer
   indexes:
     cstm:

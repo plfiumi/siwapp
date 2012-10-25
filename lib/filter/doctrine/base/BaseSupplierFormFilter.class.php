@@ -20,9 +20,13 @@ abstract class BaseSupplierFormFilter extends BaseFormFilterDoctrine
       'email'             => new sfWidgetFormFilterInput(),
       'contact_person'    => new sfWidgetFormFilterInput(),
       'invoicing_address' => new sfWidgetFormFilterInput(),
+      'website'           => new sfWidgetFormFilterInput(),
       'phone'             => new sfWidgetFormFilterInput(),
+      'mobile'            => new sfWidgetFormFilterInput(),
       'fax'               => new sfWidgetFormFilterInput(),
       'comments'          => new sfWidgetFormFilterInput(),
+      'login'             => new sfWidgetFormFilterInput(),
+      'password'          => new sfWidgetFormFilterInput(),
       'expense_type_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'), 'add_empty' => true)),
     ));
 
@@ -34,9 +38,13 @@ abstract class BaseSupplierFormFilter extends BaseFormFilterDoctrine
       'email'             => new sfValidatorPass(array('required' => false)),
       'contact_person'    => new sfValidatorPass(array('required' => false)),
       'invoicing_address' => new sfValidatorPass(array('required' => false)),
+      'website'           => new sfValidatorPass(array('required' => false)),
       'phone'             => new sfValidatorPass(array('required' => false)),
+      'mobile'            => new sfValidatorPass(array('required' => false)),
       'fax'               => new sfValidatorPass(array('required' => false)),
       'comments'          => new sfValidatorPass(array('required' => false)),
+      'login'             => new sfValidatorPass(array('required' => false)),
+      'password'          => new sfValidatorPass(array('required' => false)),
       'expense_type_id'   => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('ExpenseType'), 'column' => 'id')),
     ));
 
@@ -65,9 +73,13 @@ abstract class BaseSupplierFormFilter extends BaseFormFilterDoctrine
       'email'             => 'Text',
       'contact_person'    => 'Text',
       'invoicing_address' => 'Text',
+      'website'           => 'Text',
       'phone'             => 'Text',
+      'mobile'            => 'Text',
       'fax'               => 'Text',
       'comments'          => 'Text',
+      'login'             => 'Text',
+      'password'          => 'Text',
       'expense_type_id'   => 'ForeignKey',
     );
   }

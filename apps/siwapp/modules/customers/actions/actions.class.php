@@ -64,6 +64,8 @@ class customersActions extends sfActions
                           'phone'=> $i18n->__('Client Phone'),
                           'fax'=> $i18n->__('Client Fax'),
                           'comments'=> $i18n->__('Comments'),
+                          'website'=> $i18n->__('Website'),
+                          'mobile'=> $i18n->__('Client Mobile'),
                           'email'=> $i18n->__('Client Email')
                           ));
     $this->customerForm = new CustomerForm($customer, array('culture'=>$this->culture));
