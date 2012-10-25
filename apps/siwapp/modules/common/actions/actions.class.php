@@ -153,7 +153,7 @@ class commonActions extends sfActions
   public function executeAjaxInvoiceItemsAutocomplete(sfWebRequest $request)
   {
     $this->getResponse()->setContentType('application/json');
-    $items = Doctrine::getTable('Item')
+    $items = Doctrine::getTable('Product')
       ->retrieveForSelect($request->getParameter('q'), $request->getParameter('limit'));
 
     return $this->renderText(json_encode($items));

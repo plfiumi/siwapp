@@ -88,16 +88,28 @@ echo javascript_tag("
     .autocomplete('".$urlAjax."', jQuery.extend({}, {
       dataType: 'json',
       parse:    function(data) {
+              console.log(data);
         var parsed = [];
         for (key in data) {
-          parsed[parsed.length] = { data: [ data[key], key ], value: data[key], result: data[key] };
+          parsed[parsed.length] = { data: [
+            data[key].description, 
+            data[key].reference, 
+            data[key].price,
+            data[key].id
+          ], value: data[key].description, result: data[key].description };
         }
         return parsed;
       },
       minChars: 2,
       matchContains: true
-    })
-    );
+    }))
+    .result(function(event, item) {
+      $('#".$invoiceItemForm['description']->renderId()."').val(item[0]);
+      $('#".$invoiceItemForm['product_autocomplete']->renderId()."').val(item[1]);
+      $('#".$invoiceItemForm['unitary_cost']->renderId()."').val(item[2]);
+      $('#".$invoiceItemForm['product_id']->renderId()."').val(item[3]);
+      $(document).trigger('GlobalUpdateEvent');
+    });
     
   //connect the selection of a product to update the row item
   $('#".$invoiceItemForm['product_autocomplete']->renderId()."')
@@ -107,11 +119,11 @@ echo javascript_tag("
         var parsed = [];
         for (key in data) {
           parsed[parsed.length] = { data: [
-            data[key].reference, 
-            data[key].description, 
+            data[key].description,
+            data[key].reference,  
             data[key].price,
             data[key].id
-          ], value: data[key].reference, result: data[key].reference };
+          ], value: data[key].description, result: data[key].description };
         }
         return parsed;
       },
@@ -119,7 +131,8 @@ echo javascript_tag("
       matchContains: true
     }))
     .result(function(event, item) {
-      $('#".$invoiceItemForm['description']->renderId()."').val(item[1]);
+      $('#".$invoiceItemForm['description']->renderId()."').val(item[0]);
+      $('#".$invoiceItemForm['product_autocomplete']->renderId()."').val(item[1]);
       $('#".$invoiceItemForm['unitary_cost']->renderId()."').val(item[2]);
       $('#".$invoiceItemForm['product_id']->renderId()."').val(item[3]);
       $(document).trigger('GlobalUpdateEvent');
