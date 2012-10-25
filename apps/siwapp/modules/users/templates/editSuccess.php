@@ -8,6 +8,10 @@ $user = $UserObjectForm->getObject();
 ?>
 <div id="settings-wrapper" class="content">
   <form action="<?php echo url_for("users/$action") ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?> class="users">
+
+  <div class="clear text-right">
+  <?php echo gButton(__('Save'), 'type=submit class=btn action primary save', 'button=true') ?>
+</div>
     <?php echo $form->renderHiddenFields() ?>
     
     <?php include_partial('common/globalErrors', array('form' => $form));?>

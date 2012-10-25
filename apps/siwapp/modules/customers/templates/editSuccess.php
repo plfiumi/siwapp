@@ -13,6 +13,19 @@ $customer = $customerForm->getObject();
   <?php
   echo $customerForm->renderHiddenFields();
   ?>
+  <div id="saving-options" class="block right">
+    <?php
+    if ($customer->getId()) {
+      echo gButton_to(__('Delete'), "customers/delete?id=" . $customer->getId(), array(
+        'class' => 'action delete',
+        'post' => true,
+        'confirm' => __('Are you sure?'),
+        ) , 'button=false')." ";
+    }
+    
+    echo gButton(__('Save'), 'type=submit class=action primary save', 'button=true');
+    ?>
+  </div>
   <div id="customer-data" class="global-data block">
   <h3><?php echo __('Client info') ?></h3>
   <ul>

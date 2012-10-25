@@ -17,6 +17,17 @@ $invoice = $invoiceForm->getObject();
     echo $invoiceForm['company_id'];
     ?>
 
+<div id="saving-options">
+      <?php if ($invoice->getId()) {
+        echo gButton_to(__('Delete'), "recurring/delete?id=" . $invoice->getId(), array(
+            'class' => 'action delete', 
+            'post' => true,
+            'confirm' => __('Are you sure?'),
+          ) , 'button=false'); 
+      }?>
+       <?php echo gButton(__('Save'), 'type=submit class=action primary save', 'button=true') ?>
+    </div>
+
     <ul id="status">
       <li><?php echo __('Status')?>:&nbsp;<span class="status <?php echo ($stat = $invoice->getStatusString()) ?>"><?php echo __($stat)?></span></li>
       <?php echo $invoiceForm['enabled']->renderRow(); ?>
