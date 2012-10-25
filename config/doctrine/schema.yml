@@ -3,6 +3,7 @@ options:
 
 Company:
   columns:
+    identification: string(100)
     name: string(100)
     address: string(500)
     email: string(255)

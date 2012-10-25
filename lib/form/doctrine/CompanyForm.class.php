@@ -38,6 +38,9 @@ class CompanyForm extends BaseCompanyForm
       'pdf_orientation'  => 'Page orientation'
     ));
 
+     $this->validatorSchema['identification'] = new sfValidatorString(array('max_length' => 100, 'required' => true));
+     $this->validatorSchema['name'] = new sfValidatorString(array('max_length' => 100, 'required' => true));
+
     $this->validatorSchema['id']  = new sfValidatorPass();
     $this->validatorSchema['company_user_list'] = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser', 'required' => true));
 

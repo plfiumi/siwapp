@@ -17,10 +17,12 @@ $company = $companyForm->getObject();
   <h3><?php echo __('Company info') ?></h3>
   <ul>
     <li>
-      <span class="_50"><?php echo render_tag($companyForm['name'])?></span>
-      <span class="_50"><?php echo render_tag($companyForm['address'])?></span>
+      <span class="_75"><?php echo render_tag($companyForm['name'])?></span>
+      <span class="_25"><?php echo render_tag($companyForm['identification'])?></span>
     </li>
-
+    <li>
+      <span class="_75 _last"><?php echo render_tag($companyForm['address'])?></span>
+    </li>
     <li>
       <span class="_50"><?php echo render_tag($companyForm['phone'])?></span>     
       <span class="_50"><?php echo render_tag($companyForm['fax'])?></span>

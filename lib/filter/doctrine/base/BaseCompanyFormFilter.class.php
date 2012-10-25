@@ -13,6 +13,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'identification'    => new sfWidgetFormFilterInput(),
       'name'              => new sfWidgetFormFilterInput(),
       'address'           => new sfWidgetFormFilterInput(),
       'email'             => new sfWidgetFormFilterInput(),
@@ -29,6 +30,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'identification'    => new sfValidatorPass(array('required' => false)),
       'name'              => new sfValidatorPass(array('required' => false)),
       'address'           => new sfValidatorPass(array('required' => false)),
       'email'             => new sfValidatorPass(array('required' => false)),
@@ -80,6 +82,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'                => 'Number',
+      'identification'    => 'Text',
       'name'              => 'Text',
       'address'           => 'Text',
       'email'             => 'Text',

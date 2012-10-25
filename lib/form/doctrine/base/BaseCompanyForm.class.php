@@ -16,6 +16,7 @@ abstract class BaseCompanyForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'                => new sfWidgetFormInputHidden(),
+      'identification'    => new sfWidgetFormInputText(),
       'name'              => new sfWidgetFormInputText(),
       'address'           => new sfWidgetFormTextarea(),
       'email'             => new sfWidgetFormInputText(),
@@ -33,6 +34,7 @@ abstract class BaseCompanyForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'                => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'identification'    => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'name'              => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'address'           => new sfValidatorString(array('max_length' => 500, 'required' => false)),
       'email'             => new sfValidatorString(array('max_length' => 255, 'required' => false)),

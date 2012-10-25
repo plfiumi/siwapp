@@ -1386,6 +1386,14 @@
         <source>Online Access</source>
         <target>Dades d'accés Online</target>
       </trans-unit>
+      <trans-unit>
+        <source>Company Legal Id</source>
+        <target>Identificació legal de l'empresa</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Required.</source>
+        <target>Obligatori.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

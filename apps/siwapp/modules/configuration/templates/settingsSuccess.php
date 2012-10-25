@@ -12,6 +12,7 @@
     <fieldset class="left">
       <h3><?php echo __('Company') ?></h3>
       <ul>
+        <?php echo $form['company'][0]['identification']->renderRow(array('class' => 'full '.error_class($form['company'][0]['identification']))) ?>
         <?php echo $form['company'][0]['name']->renderRow(array('class' => 'full '.error_class($form['company'][0]['name']))) ?>
         <?php echo $form['company'][0]['address']->renderRow(array('class' => error_class($form['company'][0]['address']))) ?>
         <?php echo $form['company'][0]['phone']->renderRow(array('class' => error_class($form['company'][0]['phone']))) ?>
