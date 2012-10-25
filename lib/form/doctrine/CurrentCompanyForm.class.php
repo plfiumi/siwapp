@@ -22,9 +22,9 @@ class CurrentCompanyForm extends CompanyForm
     
     $this->widgetSchema['logo'] = new sfWidgetFormInputFileEditable(array(
       'label'     => 'Logo',
-      'file_src'  => self::getUploadsDir().'/'.$companyObject->getLogo(),
+      'file_src'  => self::getUploadsDir().'/',//.$companyObject->getLogo(),
       'is_image'  => true,
-      'edit_mode' => is_file(sfConfig::get('sf_upload_dir').DIRECTORY_SEPARATOR.$companyObject->getLogo()),
+      'edit_mode' => is_file(sfConfig::get('sf_upload_dir').DIRECTORY_SEPARATOR),//.$companyObject->getLogo()),
       'template'  => '<div id="company_logo_container"><div>%file%<br/>%input%</div><div class="dl">%delete% %delete_label%</div><div>'
     ));
     
