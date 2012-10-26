@@ -5,7 +5,7 @@
     <?php echo $form->renderHiddenFields() ?>
     
     <?php include_partial('common/globalErrors', array('form' => $form));?>
-
+    <?php include_partial('submit') ?>
     <fieldset class="left">
       <h3><?php echo __('About you') ?></h3>
       <ul>

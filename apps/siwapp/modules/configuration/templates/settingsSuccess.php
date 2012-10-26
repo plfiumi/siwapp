@@ -3,7 +3,8 @@
 <?php include_partial('configuration/navigation') ?>
 
 <div id="settings-wrapper" class="content">
-  <form action="<?php echo url_for('@settings') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+  <form action="<?php echo url_for('@settings') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>ç
+      <?php include_partial('submit') ?>
     <?php echo $form['_csrf_token'] ?>
     <?php echo $form['company'][0]['id'] ?>
     

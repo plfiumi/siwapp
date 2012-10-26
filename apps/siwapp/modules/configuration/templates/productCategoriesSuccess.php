@@ -6,7 +6,7 @@
   <form action="<?php echo url_for('@categories') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
     <?php echo $form['_csrf_token']?>
     
-    
+        <?php include_partial('submit') ?>
     
     <?php include_partial('common/globalErrors', array('form' => $form));?>
     <fieldset class="left categories taxseries">
