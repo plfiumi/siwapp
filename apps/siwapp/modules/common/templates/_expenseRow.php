@@ -94,7 +94,6 @@ echo javascript_tag("
     .autocomplete('".$urlAjax."', jQuery.extend({}, {
       dataType: 'json',
       parse:    function(data) {
-              console.log(data);
         var parsed = [];
         for (key in data) {
           parsed[parsed.length] = { data: [
