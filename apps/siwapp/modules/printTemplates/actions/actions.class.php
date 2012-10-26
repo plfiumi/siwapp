@@ -15,7 +15,7 @@ class printTemplatesActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    $finder = Doctrine::getTable('Template')->createQuery()->orderBy('Name', 'asc');
+    $finder = Doctrine::getTable('Template')->createQuery()->where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->orderBy('Name', 'asc');
     $this->_csrf = new BaseForm();
     $this->templates = $finder->execute();
   }

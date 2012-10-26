@@ -13,7 +13,8 @@ class TemplateTable extends Doctrine_Table
   public static function getTemplateForModel($model='Invoice')
   {
     $templates = Doctrine::getTable('Template')->createQuery()
-      ->where('models LIKE ?', '%'.$model.'%')->limit(1)->execute();
+      ->where('models LIKE ?', '%'.$model.'%')
+      ->AndWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->limit(1)->execute();
     
     if ($templates->count())
       return $templates[0];

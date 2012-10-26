@@ -17,6 +17,10 @@ class TemplateForm extends BaseTemplateForm
   public function configure()
   {
     unset($this['created_at'], $this['updated_at'], $this['slug']);
+    $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
+    $this->setDefaults(array(
+        'company_id' => sfContext::getInstance()->getUser()->getAttribute('company_id'),
+        ));
     
     $this->widgetSchema['template'] = new sfWidgetFormEditArea(array('editarea_options' => array(
       'min_width'  => '900',

@@ -390,6 +390,8 @@ class staticActions extends sfActions
     $sql[] = "INSERT INTO company_user VALUES (1,1)";
     $sql = array_merge($sql, $this->getDefaultTemplateQuery());
     $sql[] = $this->getMigrationVersionQuery();
+    //Assign templates to first company
+    $sql[] = "UPDATE template set company_id = 1";
     // we add  "drop table if exists" statements in case there is already a db with tables
     $nsql = array();
     $nsql[] = "SET foreign_key_checks = 0";
