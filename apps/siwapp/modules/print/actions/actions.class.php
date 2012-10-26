@@ -118,7 +118,7 @@ class printActions extends sfActions
 
     $finder = Doctrine::getTable($request->getParameter('model'))->createQuery()
       ->from($request->getParameter('model').' in')->
-      leftJoin('in.Items it')->leftJoin('it.Taxes tx')->
+      leftJoin('in.Items it')->leftJoin('it.Taxes tx')->leftJoin('in.PaymentType pt')->
       whereIn('in.id', (array) $request->getParameter('ids',array(0)))->execute();
 
     foreach ($finder as $invoice)

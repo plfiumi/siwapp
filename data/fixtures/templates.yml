@@ -129,6 +129,12 @@ Template:
 
         <div class="section">
           <h3>Payment details</h3>
+          <div>
+               Payment type: {{invoice.PaymentType.name}}
+               {% if invoice.PaymentType.description %}
+                  - {{invoice.PaymentType.description}}
+               {% endif %}
+          </div>
 
           <div class="payment-data">
             <table>
