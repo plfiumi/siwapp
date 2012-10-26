@@ -8,7 +8,10 @@ $estimate = $estimateForm->getObject();
 <div id="invoice-container" class="content">
   
   <h2><?php echo $title ?></h2>
-<div id="saving-options" class="block">
+
+  <form action="<?php echo url_for("estimates/$action") ?>" method="post" <?php $estimateForm->isMultipart() and print 'enctype="multipart/form-data" ' ?> class="invoice">
+  
+  <div id="saving-options" class="block">
     <?php 
     if ($estimate->getId()) {
       echo gButton_to(__('Delete'), "estimates/delete?id=" . $estimate->getId(), array(
@@ -34,7 +37,6 @@ $estimate = $estimateForm->getObject();
     echo gButton(__('Save'), 'type=submit class=action primary save', 'button=true'); 
     ?>
   </div>
-  <form action="<?php echo url_for("estimates/$action") ?>" method="post" <?php $estimateForm->isMultipart() and print 'enctype="multipart/form-data" ' ?> class="invoice">
     <input type="hidden" id="send_email" name="send_email" value="0" />
     <input type="hidden" id="generate_invoice" name="generate_invoice" value="0" />
   <?php 
