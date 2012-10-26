@@ -20,6 +20,8 @@ $invoice = $invoiceForm->getObject();
         'post' => true,
         'confirm' => __('Are you sure?'),
         ) , 'button=false')."&nbsp;&nbsp;&nbsp;&nbsp;"; 
+        echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$invoice->getId()."')", 'class=action print'); 
+      echo gButton_to_function(__('Save PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$invoice->getId()."'", 'class=action pdf')."&nbsp;&nbsp;&nbsp;&nbsp;"; 
     }
 
     if ($invoice->isNew() || $db_draft)
@@ -64,7 +66,7 @@ $invoice = $invoiceForm->getObject();
   </div>  <!-- div#payment-data -->
 
   <?php include_partial('common/tagsDataBlock', array('invoice' => $invoice, 'invoiceForm' => $invoiceForm)) ?>
-  
+
   <div id="saving-options" class="block">
     <?php 
     if ($invoice->getId()) {
@@ -73,6 +75,8 @@ $invoice = $invoiceForm->getObject();
         'post' => true,
         'confirm' => __('Are you sure?'),
         ) , 'button=false')."&nbsp;&nbsp;&nbsp;&nbsp;"; 
+        echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$invoice->getId()."')", 'class=action print'); 
+      echo gButton_to_function(__('Save PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$invoice->getId()."'", 'class=action pdf')."&nbsp;&nbsp;&nbsp;&nbsp;"; 
     }
 
     if ($invoice->isNew() || $db_draft)
@@ -82,6 +86,6 @@ $invoice = $invoiceForm->getObject();
     
     echo gButton(__('Save'), 'type=submit class=action primary save', 'button=true'); 
     ?>
-  </div>
+  </div> 
   </form>
 </div>

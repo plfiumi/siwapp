@@ -65,6 +65,7 @@ class printTemplatesActions extends sfActions
     $request->checkCSRFProtection();
     $invoices = (array) $request->getParameter('invoices', array());
     $estimates = (array) $request->getParameter('estimates', array());
+    $expenses = (array) $request->getParameter('expenses', array());
     // check that there is only one template for each one
     if (count($invoices) > 1 || count($estimates) > 1)
     {
@@ -78,6 +79,7 @@ class printTemplatesActions extends sfActions
       $models = array();
       if (in_array($t->getId(), $invoices)) $models[] = 'Invoice';
       if (in_array($t->getId(), $estimates)) $models[] = 'Estimate';
+      if (in_array($t->getId(), $expenses)) $models[] = 'Expense';
       $t->setModels(implode(',', $models));
       $t->save();
     }

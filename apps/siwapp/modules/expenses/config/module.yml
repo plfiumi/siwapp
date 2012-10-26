@@ -4,3 +4,5 @@ all:
     variables:
       editRow:          expenses/edit
       calculateInvoice: common/calculate
+      printHtml:        @expenses_print?action=print
+      printPdf:         @expenses_print?action=pdf

@@ -13,6 +13,7 @@
           </th>
           <th class="xs"><?php echo __('Use for Invoices')?></th>
           <th class="xs"><?php echo __('Use for Estimates')?></th>
+          <th class="xs"><?php echo __('Use for Expenses')?></th>
           <th><?php echo __('Name') ?></th>
           <th class="medium"><?php echo __('Updated at') ?></th>
         </tr>
@@ -25,6 +26,7 @@
             </td>
             <td><input type="checkbox" name="invoices[]" value="<?php echo $template->getId() ?>" <?php echo $template->isFor('Invoice')?'checked="checked"':'' ?> /></td>
             <td><input type="checkbox" name="estimates[]" value="<?php echo $template->getId() ?>" <?php echo $template->isFor('Estimate')?'checked="checked"':'' ?> /></td>
+            <td><input type="checkbox" name="expenses[]" value="<?php echo $template->getId() ?>" <?php echo $template->isFor('Expense')?'checked="checked"':'' ?> /></td>
             <td><?php echo $template->getName() ?></td>
             <td><?php echo format_date($template->getUpdatedAt()) ?></td>
           </tr>

@@ -103,7 +103,7 @@ class printActions extends sfActions
   
   private function render($model='Invoice', $pdf=false)
   {
-    sfConfig::set('sf_web_debug',false);
+    //sfConfig::set('sf_web_debug',false);
     $template = TemplateTable::getTemplateForModel($model);
     $printer = new Printer($model, $template->getId());
     $data    = $this->getInvoiceDataFromRequest($this->getRequest());
