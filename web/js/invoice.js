@@ -48,21 +48,6 @@
           parent.css('position', 'relative');
         }
         
-        var label = $('<label id="' + this.id + '_label" for="' + this.id + '" class="tip" style="display:none;">' + this.title + '</label>');
-        label.css({left : '0px', top : $(this).height() + 'px'});
-        $(this).before(label);
-        
-        $(this).bind('focus', function(e) {
-          //$(this).select(); // select text (to work also in textareas)
-          $('#' + this.id + '_label').fadeIn('fast');
-            if(options.is_new && $(this).val()==this.title)
-            {
-                $(this).val('');
-            }
-        }).bind('blur', function(e){
-          //$(this).val($(this).val()); // Unselect text (the same as before)
-          $('#' + this.id + '_label').fadeOut('fast');
-        });
       }
     });
   };
