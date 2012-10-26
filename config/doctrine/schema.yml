@@ -425,7 +425,7 @@ Template:
   actAs:
     Timestampable:
     Sluggable:
-      unique:     true
+      unique:     false
       fields:     [name]
       canUpdate:  false
   columns:

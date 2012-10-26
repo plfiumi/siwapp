@@ -60,7 +60,7 @@ abstract class BaseTemplate extends sfDoctrineRecord
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $sluggable0 = new Doctrine_Template_Sluggable(array(
-             'unique' => true,
+             'unique' => false,
              'fields' => 
              array(
               0 => 'name',
