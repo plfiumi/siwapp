@@ -1,11 +1,14 @@
 <?php use_helper('Number', 'I18N', 'Date') ?>
 
 <div id="content-wrapper" class="content">
-  <h2><?php echo __('Invoices'); ?></h2>
-  <table id="dashboard-summary" class="dashboard-info">
+  <h2><?php echo __('Global Situation'); ?></h2>
+  <div id="situation-wrapper" class="left">
+  <div class="left">
+  <h3><?php echo __('Invoices'); ?></h3>
+  <table class="dashboard-info">
     <tbody>
       <tr>
-        <td><?php echo __('Receipts') ?></td>
+        <td><?php echo __('Recived') ?></td>
         <td id="receipts" class="right"><?php echo format_currency($paid, $currency)?></td>
       </tr>
       <tr>
@@ -18,39 +21,10 @@
       </tr>
     </tbody>
   </table>
-
-  <table id="dashboard-balance" class="dashboard-info">
-    <tbody>
-      <tr>
-        <td><?php echo __('Total') ?>:</td>
-        <td id="dashboard-balance-total"><?php echo format_currency($gross,$currency);?></td>
-      </tr>
-      <tr>
-        <td><?php echo __('Net') ?>:</td>
-        <td id="dashboard-balance-net"><?php echo format_currency($net,$currency);?></td>
-      </tr>
-      <tr>
-        <td><?php echo __('Taxes') ?>:</td>
-        <td id="dashboard-balance-taxes"><?php echo format_currency($taxes,$currency);?></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table id="dashboard-taxes" class="dashboard-info">
-    <tbody>
-      <?php foreach($total_taxes as $ttname=>$ttvalue):?>
-      <tr>
-        <td><?php echo $ttname?>:</td>
-        <td><?php echo format_currency($ttvalue,$currency)?></td>
-      </tr>
-      <?php endforeach ?>
-    </tbody>
-  </table>
-
-  <div class="clear"></div>
-  
-    <h2><?php echo __('Estimates'); ?></h2>
-  <table id="dashboard-summary" class="dashboard-info">
+  </div>
+  <div class="left">
+    <h3><?php echo __('Estimates'); ?></h3>
+  <table class="dashboard-info">
     <tbody>
       <tr>
         <td><?php echo __('Pending') ?></td>
@@ -66,9 +40,108 @@
       </tr>
     </tbody>
   </table>
+  </div>
+  <div class="left">
+  <h3><?php echo __('Invoices Total'); ?></h3>
+  <table class="dashboard-info">
+    <tbody>
+      <tr>
+        <td><?php echo __('Total') ?></td>
+        <td id="dashboard-balance-total"><?php echo format_currency($gross,$currency);?></td>
+      </tr>
+      <tr>
+        <td><?php echo __('Net') ?></td>
+        <td id="dashboard-balance-net"><?php echo format_currency($net,$currency);?></td>
+      </tr>
+      <tr>
+        <td><?php echo __('Taxes') ?></td>
+        <td id="dashboard-balance-taxes"><?php echo format_currency($taxes,$currency);?></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="left">
+  <h3><?php echo __('Invoice Taxes detail'); ?></h3>
+  <table id="dashboard-taxes" class="dashboard-info">
+    <tbody>
+      <?php foreach($total_taxes as $ttname=>$ttvalue):?>
+      <tr>
+        <td><?php echo $ttname?></td>
+        <td><?php echo format_currency($ttvalue,$currency)?></td>
+      </tr>
+      <?php endforeach ?>
+    </tbody>
+  </table>
+  </div>
+    <div class="left">
+  <h3><?php echo __('Expenses'); ?></h3>
+  <table class="dashboard-info">
+    <tbody>
+      <tr>
+        <td><?php echo __('Paid') ?></td>
+        <td id="receipts" class="right"><?php echo format_currency($expense_paid, $currency)?></td>
+      </tr>
+      <tr>
+        <td><?php echo __('Due') ?><br/><small></small></td>
+        <td id="due" class="totalDue right"><?php echo format_currency($expense_due, $currency)?></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="left">
+  <h3><?php echo __('Expenses Total'); ?></h3>
+  <table class="dashboard-info">
+    <tbody>
+      <tr>
+        <td><?php echo __('Total') ?></td>
+        <td id="dashboard-balance-total"><?php echo format_currency($expense_gross,$currency);?></td>
+      </tr>
+      <tr>
+        <td><?php echo __('Net') ?></td>
+        <td id="dashboard-balance-net"><?php echo format_currency($expense_net,$currency);?></td>
+      </tr>
+      <tr>
+        <td><?php echo __('Taxes') ?></td>
+        <td id="dashboard-balance-taxes"><?php echo format_currency($expense_taxes,$currency);?></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="left">
+  <h3><?php echo __('Expense Taxes detail'); ?></h3>
+  <table id="dashboard-taxes" class="dashboard-info">
+    <tbody>
+      <?php foreach($expense_total_taxes as $ttname=>$ttvalue):?>
+      <tr>
+        <td><?php echo $ttname?></td>
+        <td><?php echo format_currency($ttvalue,$currency)?></td>
+      </tr>
+      <?php endforeach ?>
+    </tbody>
+  </table>
+  </div>
+  <div class="left">
+  <h3><?php echo __('Profit and Loss'); ?></h3>
+  <table class="dashboard-info">
+    <tbody>
+      <tr>
+        <td><?php echo __('Total Revenue') ?></td>
+        <td id="dashboard-balance-total"><?php echo format_currency($gross,$currency);?></td>
+      </tr>
+      <tr>
+        <td><?php echo __('Total Expenses') ?></td>
+        <td id="dashboard-balance-net"><?php echo format_currency($expense_gross,$currency);?></td>
+      </tr>
+      <tr>
+        <td><?php echo __('Net Profit') ?></td>
+        <td id="dashboard-balance-taxes"><?php echo format_currency($gross-$expense_gross,$currency);?></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
   
-  <div class="clear"></div>
-  
+  </div> <!-- situation-wrapper -->
+<div class="clear"></div>
   <h2><?php echo __('Recent invoices') ?></h2>
   <table class="listing">
     <thead>
@@ -163,10 +236,39 @@
     </tbody>
   </table>
   
-  <!-- TODO: Add here expenses 
-  
-  
-  //-->
+<h2><?php echo __('Recent expenses') ?></h2>
+  <table class="listing estimates">
+    <thead>
+      <tr>
+        <th class="number"><?php echo __('Number') ?></th>
+        <th><?php echo __('Supplier Name') ?></th>
+        <th><?php echo __('Date') ?></th>
+        <th class="right due"><?php echo __('Due') ?></th>
+        <th class="right total"><?php echo __('Total') ?></th>
+        <th class="noborder"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php $total = 0; ?>
+      <?php foreach ($expenses as $i => $invoice): ?>
+        <?php
+          $id       = $invoice->getId();
+          $parity   = ($i % 2) ? 'odd' : 'even';
+          $closed   = ($invoice->getStatus() == Invoice::CLOSED);
+        ?>
+        <tr id="overdue-<?php echo $id ?>" class="<?php echo "$parity link invoice-$id " ?>">
+          <td class="number"><?php echo $invoice ?></td>
+          <td><?php echo $invoice->getSupplierName() ?></td>
+          <td class="date"><?php echo format_date($invoice->getIssueDate()) ?></td>
+          <td class="due right"><?php echo format_currency($invoice->getDueAmount(), $currency)?></td>
+          <td class="right"><?php echo format_currency($invoice->getGrossAmount(), $currency) ?></td>
+          <td class="action payments">
+            <?php echo gButton(__("Payments"), "id=load-payments-for-$id rel=payments:show type=button class=payment action-clear {$invoice->getStatus()}") ?>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
   
   <h2><?php echo __('Pending Estimates') ?></h2>
   <table class="listing estimates">

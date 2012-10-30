@@ -29,6 +29,8 @@ class dashboardActions extends sfActions
     $company_id=sfContext::getInstance()->getUser()->getAttribute('company_id');
     
     $q = InvoiceQuery::create()->Where('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
+    
+    $exp = ExpenseQuery::create()->Where('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
 
     $eqp = EstimateQuery::create()->Where('status = 2')->AndWhere('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
 
@@ -53,11 +55,40 @@ class dashboardActions extends sfActions
 
     // totals
     $this->gross  = $q->total('gross_amount');
+    if(empty($this->gross)) 
+        $this->gross = 0;
     $this->due    = $q->total('due_amount');
+    if(empty($this->due)) 
+        $this->due = 0;
     $this->paid   = $q->total('paid_amount');
+    if(empty($this->paid)) 
+        $this->paid = 0;
     $this->odue   = $overdueQuery->total('due_amount');
+    if(empty($this->odue)) 
+        $this->odue = 0;
     $this->taxes  = $q->total('tax_amount');
+    if(empty($this->taxes)) 
+        $this->taxes = 0;
     $this->net    = $q->total('net_amount');
+    if(empty($this->net)) 
+        $this->net = 0;
+    //Expenses  totals
+    $this->expense_gross  = $exp->total('gross_amount');
+    if(empty($this->expense_gross)) 
+        $this->expense_gross = 0;
+    $this->expense_due    = $exp->total('due_amount');
+    if(empty($this->expense_due)) 
+        $this->expense_due = 0;
+    $this->expense_paid   = $exp->total('paid_amount');
+    if(empty($this->expense_paid)) 
+        $this->expense_paid = 0;
+    $this->expense_taxes  = $exp->total('tax_amount');
+    if(empty($this->expense_taxes)) 
+        $this->expense_taxes = 0;
+    $this->expense_net    = $exp->total('net_amount');
+    if(empty($this->expense_net)) 
+        $this->expense_net = 0;
+    
 
     $taxes = Doctrine_Query::create()->select('t.id, t.name')
       ->from('Tax t')->Where('company_id = ?',$company_id )->execute();
@@ -72,6 +103,17 @@ class dashboardActions extends sfActions
       }
     }
     $this->total_taxes = $total_taxes;
+    
+    $total_taxes = array();
+
+    foreach($taxes as $t)
+    {
+      if($value = $exp->total_tax($t->id))
+      {
+        $total_taxes[$t->name] = $exp->total_tax($t->id);
+      }
+    }
+    $this->expense_total_taxes = $total_taxes;
 
     // this is for the redirect of the payments forms
     $this->getUser()->setAttribute('module', $request->getParameter('module'));
@@ -84,6 +126,7 @@ class dashboardActions extends sfActions
     $this->recent         = $q->execute();
     $this->overdue        = $overdueQuery->execute();
     $this->pending         = $eqp->execute();
+    $this->expenses         = $exp->execute();
   }
   
 }

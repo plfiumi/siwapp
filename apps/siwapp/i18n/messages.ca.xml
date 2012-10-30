@@ -1398,6 +1398,54 @@
         <source>Legal Id</source>
         <target>Identificador legal</target>
       </trans-unit>
+      <trans-unit>
+        <source>Invoices Total</source>
+        <target>Total factures</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invoice Taxes detail</source>
+        <target>Resum impostos factures</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Expenses Total</source>
+        <target>Total despeses</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Expense Taxes detail</source>
+        <target>Resum impostos despeses</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Profit and Loss</source>
+        <target>Perdues i Guanys</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Total Revenue</source>
+        <target>Total Ingresos</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Total Expenses</source>
+        <target>Total Despeses</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Net Profit</source>
+        <target>Benefici Net</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Recived</source>
+        <target>Cobrat</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Paid</source>
+        <target>Pagat</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Recent expenses</source>
+        <target>Despeses recents</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Global Situation</source>
+        <target>Situació global</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

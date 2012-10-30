@@ -189,10 +189,7 @@ table.listing td.sent {
 /* DASHBOARD */
 .dashboard table.dashboard-info    { width:auto; margin:1em 0; border-collapse:collapse; }
 .dashboard table.dashboard-info td { padding:0.2em 1em; border:1px solid #DCDCDC; }
-.dashboard #dashboard-summary  { float:left; }
-.dashboard #dashboard-balance { float:right; margin-left:1em; }
-.dashboard #dashboard-taxes { float:right; }
-
+.dashboard div#situation-wrapper div { display: inline-block; }
 
 /* RECURRING INVOICES */
 .recurring table#recurring-summary    { width:auto; margin:1em 0; border-collapse:collapse; }

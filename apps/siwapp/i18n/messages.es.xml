@@ -40,7 +40,7 @@
       <!-- ##### DASHBOARD ##### -->
       <trans-unit>
         <source>Dashboard</source>
-        <target>Resumen</target>
+        <target>Resumenen</target>
       </trans-unit>
       <trans-unit>
         <source>Recent invoices</source>
@@ -1397,6 +1397,54 @@
       <trans-unit>
         <source>Legal Id</source>
         <target>Identificador legal</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invoices Total</source>
+        <target>Total facturas</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invoice Taxes detail</source>
+        <target>Resumen impuestos facturas</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Expenses Total</source>
+        <target>Total despeses</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Expense Taxes detail</source>
+        <target>Resumen impuestos despeses</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Profit and Loss</source>
+        <target>Perdidas y ganancias</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Total Revenue</source>
+        <target>Total Ingresos</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Total Expenses</source>
+        <target>Total Gastos</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Net Profit</source>
+        <target>Beneficio Neto</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Recived</source>
+        <target>Cobrado</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Paid</source>
+        <target>Pagado</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Recent expenses</source>
+        <target>Gastos recientes</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Global Situation</source>
+        <target>Situación global</target>
       </trans-unit>
     </body>
   </file>
