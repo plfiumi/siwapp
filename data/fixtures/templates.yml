@@ -39,7 +39,7 @@ Template:
           .terms, .notes              { padding:9pt 0 0; font-size:7pt; line-height:9pt; }
 
           .section                    { margin-bottom: 1em; }
-          .logo                       { text-align: right; }
+          .logo                       { float: right; }
         </style>
 
         <style type="text/css">
@@ -143,7 +143,7 @@ Template:
                   <th>Description</th>
                   <th class="right">Unit Cost</th>
                   <th class="right">Qty</th>
-                  <th class="right">Taxes</th>
+                  <th class="right">Taxes total</th>
                   {# show discounts only if there is some discount #}
                   {% if invoice.discount_amount %}
                   <th class="right">Discount</th>
@@ -198,7 +198,7 @@ Template:
                 {% endfor %}
                 <tr>
                   <td class="bottomleft" colspan="{% if invoice.discount_amount %}4{% else %}3{% endif %}"></td>
-                  <th class="right">Taxes</th>
+                  <th class="right">Taxes total</th>
                   <td class="td_total_taxes right">{{invoice.tax_amount|currency}}</td>
                 </tr>
                 <tr class="strong">
@@ -479,7 +479,7 @@ Template:
           .terms, .notes              { padding:9pt 0 0; font-size:7pt; line-height:9pt; }
 
           .section                    { margin-bottom: 1em; }
-          .logo                       { text-align: right; }
+          .logo                       { float: right; }
         </style>
 
         <style type="text/css">
@@ -577,7 +577,7 @@ Template:
                   <th>Description</th>
                   <th class="right">Unit Cost</th>
                   <th class="right">Qty</th>
-                  <th class="right">Taxes</th>
+                  <th class="right">Taxes total</th>
                   {# show discounts only if there is some discount #}
                   {% if estimate.discount_amount %}
                   <th class="right">Discount</th>
@@ -632,7 +632,7 @@ Template:
                 {% endfor %}
                 <tr>
                   <td class="bottomleft" colspan="{% if estimate.discount_amount %}4{% else %}3{% endif %}"></td>
-                  <th class="right">Taxes</th>
+                  <th class="right">Taxes total</th>
                   <td class="td_total_taxes right">{{estimate.tax_amount|currency}}</td>
                 </tr>
                 <tr class="strong">
@@ -694,7 +694,7 @@ Template:
             .terms, .notes              { padding:9pt 0 0; font-size:7pt; line-height:9pt; }
 
             .section                    { margin-bottom: 1em; }
-            .logo                       { text-align: right; }
+            .logo                       { float: right; }
           </style>
 
           <style type="text/css">
@@ -769,7 +769,7 @@ Template:
                     <th>Description</th>
                     <th class="right">Unit Cost</th>
                     <th class="right">Qty</th>
-                    <th class="right">Taxes</th>
+                    <th class="right">Taxes total</th>
                     {# show discounts only if there is some discount #}
                     {% if expense.discount_amount %}
                     <th class="right">Discount</th>
@@ -824,7 +824,7 @@ Template:
                   {% endfor %}
                   <tr>
                     <td class="bottomleft" colspan="{% if expense.discount_amount %}4{% else %}3{% endif %}"></td>
-                    <th class="right">Taxes</th>
+                    <th class="right">Taxes total</th>
                     <td class="td_total_taxes right">{{expense.tax_amount|currency}}</td>
                   </tr>
                   <tr class="strong">
