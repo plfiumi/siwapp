@@ -88,32 +88,6 @@ class dashboardActions extends sfActions
     $this->expense_net    = $exp->total('net_amount');
     if(empty($this->expense_net)) 
         $this->expense_net = 0;
-    
-
-    $taxes = Doctrine_Query::create()->select('t.id, t.name')
-      ->from('Tax t')->Where('company_id = ?',$company_id )->execute();
-
-    $total_taxes = array();
-
-    foreach($taxes as $t)
-    {
-      if($value = $q->total_tax($t->id))
-      {
-        $total_taxes[$t->name] = $q->total_tax($t->id);
-      }
-    }
-    $this->total_taxes = $total_taxes;
-    
-    $total_taxes = array();
-
-    foreach($taxes as $t)
-    {
-      if($value = $exp->total_tax($t->id))
-      {
-        $total_taxes[$t->name] = $exp->total_tax($t->id);
-      }
-    }
-    $this->expense_total_taxes = $total_taxes;
 
     // this is for the redirect of the payments forms
     $this->getUser()->setAttribute('module', $request->getParameter('module'));

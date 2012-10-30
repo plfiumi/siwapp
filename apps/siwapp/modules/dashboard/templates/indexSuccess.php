@@ -61,19 +61,6 @@
   </table>
   </div>
   <div class="left">
-  <h3><?php echo __('Invoice Taxes detail'); ?></h3>
-  <table id="dashboard-taxes" class="dashboard-info">
-    <tbody>
-      <?php foreach($total_taxes as $ttname=>$ttvalue):?>
-      <tr>
-        <td><?php echo $ttname?></td>
-        <td><?php echo format_currency($ttvalue,$currency)?></td>
-      </tr>
-      <?php endforeach ?>
-    </tbody>
-  </table>
-  </div>
-    <div class="left">
   <h3><?php echo __('Expenses'); ?></h3>
   <table class="dashboard-info">
     <tbody>
@@ -104,19 +91,6 @@
         <td><?php echo __('Taxes') ?></td>
         <td id="dashboard-balance-taxes"><?php echo format_currency($expense_taxes,$currency);?></td>
       </tr>
-    </tbody>
-  </table>
-  </div>
-  <div class="left">
-  <h3><?php echo __('Expense Taxes detail'); ?></h3>
-  <table id="dashboard-taxes" class="dashboard-info">
-    <tbody>
-      <?php foreach($expense_total_taxes as $ttname=>$ttvalue):?>
-      <tr>
-        <td><?php echo $ttname?></td>
-        <td><?php echo format_currency($ttvalue,$currency)?></td>
-      </tr>
-      <?php endforeach ?>
     </tbody>
   </table>
   </div>
