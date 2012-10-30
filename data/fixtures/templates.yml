@@ -43,37 +43,35 @@ Template:
         </style>
 
         <style type="text/css">
-          /* CSS code for printing */
-          @media print {
             body           { margin:auto; }
             .section       { page-break-inside:avoid; }
             div#sfWebDebug { display:none; }
-          }
         </style>
       </head>
       <body>
-
-        {% if invoice.Company.logo %}
-          <div class="logo">
-            <img src="{{ invoice.Company.logoURL }}" alt="{{ invoice.Company.name }}" />
-          </div>
-        {% endif %}
           
-        <div class="h2">
-          <h2>Invoice #{{invoice}}</h2>
-        </div>
-
-        <div class="section">
-          <div class="company-data">
-            <ul>
-              <li>Company: {{invoice.Company.name}}</li>
-              <li>Address: {{invoice.Company.address|format}}</li>
-              <li>Phone: {{invoice.Company.phone}}</li>
-              <li>Fax: {{invoice.Company.fax}}</li>
-              <li>Email: {{invoice.Company.email}}</li>
-              <li>Web: {{invoice.Company.url}}</li>
-            </ul>
+          <div class="h2">
+           <h2> Invoice #{{invoice}}</h2>
           </div>
+
+          <div class="section">
+            <table cellspacing="0" cellpadding="0" width="100%">
+              <tr><td width=80%>
+                <ul>
+                    <li>Company: {{invoice.Company.name}}</li>
+                    <li>Address: {{invoice.Company.address|format}}</li>
+                    <li>Phone: {{invoice.Company.phone}}</li>
+                    <li>Fax: {{invoice.Company.fax}}</li>
+                    <li>Email: {{invoice.Company.email}}</li>
+                    <li>Web: {{invoice.Company.url}}</li>
+                </ul>
+              </td> 
+              {% if invoice.Company.logo %}
+                <td width="20%"> 
+                   <img src="{{ invoice.Company.logoURL }}" alt="{{ invoice.Company.name }}" />
+                </td>
+             {% endif %}
+            </tr></table>
         </div>
 
         <div class="section">
@@ -264,38 +262,36 @@ Template:
        </style>
 
        <style type="text/css">
-         /* CSS code for printing */
-         @media print {
            body           { margin:auto; }
            .section       { page-break-inside:avoid; }
            div#sfWebDebug { display:none; }
-         }
        </style>
       </head>
       <body>
 
-       {% if invoice.Company.logo %}
-         <div class="logo">
-           <img src="{{ invoice.Company.logoURL }}" alt="{{ invoice.Company.name }}" />
-         </div>
-       {% endif %}
+        <div class="h2">
+           <h2> Invoice #{{invoice}}</h2>
+          </div>
 
-       <div class="h2">
-         <h2>Invoice #{{invoice.number}}</h2>
-       </div>
-
-       <div class="section">
-         <div class="company-data">
-           <ul>
-             <li>Company: {{invoice.Company.name}}</li>
-             <li>Address: {{invoice.Company.address|format}}</li>
-             <li>Phone: {{invoice.Company.phone}}</li>
-             <li>Fax: {{invoice.Company.fax}}</li>
-             <li>Email: {{invoice.Company.email}}</li>
-             <li>Web: {{invoice.Company.url}}</li>
-           </ul>
-         </div>
-       </div>
+          <div class="section">
+            <table cellspacing="0" cellpadding="0" width="100%">
+              <tr><td width=80%>
+                <ul>
+                    <li>Company: {{invoice.Company.name}}</li>
+                    <li>Address: {{invoice.Company.address|format}}</li>
+                    <li>Phone: {{invoice.Company.phone}}</li>
+                    <li>Fax: {{invoice.Company.fax}}</li>
+                    <li>Email: {{invoice.Company.email}}</li>
+                    <li>Web: {{invoice.Company.url}}</li>
+                </ul>
+              </td> 
+              {% if invoice.Company.logo %}
+                <td width="20%"> 
+                   <img src="{{ invoice.Company.logoURL }}" alt="{{ invoice.Company.name }}" />
+                </td>
+             {% endif %}
+            </tr></table>
+        </div>
 
        <div class="section">
          <h3>Client info</h3>
@@ -483,12 +479,9 @@ Template:
         </style>
 
         <style type="text/css">
-          /* CSS code for printing */
-          @media print {
             body           { margin:auto; }
             .section       { page-break-inside:avoid; }
             div#sfWebDebug { display:none; }
-          }
         </style>
       </head>
       <body>
@@ -503,17 +496,24 @@ Template:
           <h2>Estimate #{{estimate}}</h2>
         </div>
 
-        <div class="section">
-          <div class="company-data">
-            <ul>
-              <li>Company: {{estimate.Company.name}}</li>
-              <li>Address: {{estimate.Company.address|format}}</li>
-              <li>Phone: {{estimate.Company.phone}}</li>
-              <li>Fax: {{estimate.Company.fax}}</li>
-              <li>Email: {{estimate.Company.email}}</li>
-              <li>Web: {{estimate.Company.url}}</li>
-            </ul>
-          </div>
+          <div class="section">
+            <table cellspacing="0" cellpadding="0" width="100%">
+              <tr><td width=80%>
+                <ul>
+                    <li>Company: {{estimate.Company.name}}</li>
+                    <li>Address: {{estimate.Company.address|format}}</li>
+                    <li>Phone: {{estimate.Company.phone}}</li>
+                    <li>Fax: {{estimate.Company.fax}}</li>
+                    <li>Email: {{estimate.Company.email}}</li>
+                    <li>Web: {{estimate.Company.url}}</li>
+                </ul>
+              </td> 
+              {% if invoice.Company.logo %}
+                <td width="20%"> 
+                   <img src="{{ invoice.Company.logoURL }}" alt="{{ invoice.Company.name }}" />
+                </td>
+             {% endif %}
+            </tr></table>
         </div>
 
         <div class="section">
@@ -698,12 +698,9 @@ Template:
           </style>
 
           <style type="text/css">
-            /* CSS code for printing */
-            @media print {
               body           { margin:auto; }
               .section       { page-break-inside:avoid; }
               div#sfWebDebug { display:none; }
-            }
           </style>
         </head>
         <body>
