@@ -10,31 +10,38 @@
  */
 class CurrentCompanyForm extends CompanyForm
 {
+
+  private function getCurrentCompany()
+  {
+    $companyObject = new Company();
+    $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
+    return $companyObject;
+  }
      
   public function configure()
   {
     parent::configure();
-    unset($this->widgetSchema['company_user_list']);
-    unset($this->validatorSchema['company_user_list']);
+    unset($this->widgetSchema['user_list']);
+    unset($this->validatorSchema['user_list']);
     
-    $companyObject = new Company();
-    $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
+    $companyObject = $this->getCurrentCompany();
     
     $this->widgetSchema['logo'] = new sfWidgetFormInputFileEditable(array(
       'label'     => 'Logo',
-      'file_src'  => self::getUploadsDir().'/',//.$companyObject->getLogo(),
+      'file_src'  => self::getUploadsDir().'/'.$companyObject->getLogo(),
       'is_image'  => true,
-      'edit_mode' => is_file(sfConfig::get('sf_upload_dir').DIRECTORY_SEPARATOR),//.$companyObject->getLogo()),
-      'template'  => '<div id="company_logo_container"><div>%file%<br/>%input%</div><div class="dl">%delete% %delete_label%</div><div>'
+      'edit_mode' => is_file(sfConfig::get('sf_upload_dir').DIRECTORY_SEPARATOR.$companyObject->getLogo()),
+      'template'  => '<div id="logo_container"><div>%file%<br/>%input%</div><div class="dl">%delete% %delete_label%</div><div>'
     ));
     
-    $this->validatorSchemda['logo'] = new sfValidatorFile(array(
+    $this->validatorSchema['logo'] = new sfValidatorFile(array(
                                      'mime_types' => 'web_images', 
                                      'required' => false, 
                                      'validated_file_class'=>'SiwappValidatedFile',
                                      'path'      => sfConfig::get('sf_upload_dir').DIRECTORY_SEPARATOR
                              ));
-    $this->validatorSchemda['logo_delete'] = new sfValidatorPass();
+    $this->validatorSchema['logo_delete'] = new sfValidatorPass();
+    $this->validatorSchema['company_user_list'] = new sfValidatorPass();
 
 
    $this->validatorSchema->setPostValidator(new sfValidatorAnd(
@@ -47,6 +54,46 @@ class CurrentCompanyForm extends CompanyForm
         ));
 
 
+  }
+
+  /**
+   * @return void
+   * @author Carlos Escribano <carlos@markhaus.com>
+   **/
+  public function save($con = null)
+  {
+    parent::save();
+    $currency_decimals = sfConfig::get('app_currency_decimals', array());
+
+    foreach ($this->getValues() as $key => $value)
+    {
+       switch ($key)
+       {
+            case 'logo':
+                $companyObject = $this->getCurrentCompany();
+	            if (("on" == $this->getValue('logo_delete')) && is_file($old = sfConfig::get('sf_upload_dir').DIRECTORY_SEPARATOR.$companyObject->getLogo()))
+	            {
+	                @ unlink($old);
+	                $companyObject->setLogo(null);
+	                $companyObject->save();
+	            }
+
+	            if ($value)
+	            {
+	                $fname = $value->generateFilename();
+                    $value->save(sfConfig::get('sf_upload_dir').DIRECTORY_SEPARATOR.$fname);
+	                $companyObject->setLogo($fname);
+	                $companyObject->save();
+	            }
+	          break;
+
+	        case 'logo_delete':
+	          break;
+	
+	        default:
+	          break;
+        }
+    }
   }
 
   public static function getUploadsDir()
@@ -64,11 +111,10 @@ class CurrentCompanyForm extends CompanyForm
     {
       return $values;
     }
-    $logoObject = $values['logo'];
     try
     {
       //TODO: This method saves the logo but it breaks. 
-      //$logoObject->canSave();
+      $values['logo']->canSave();
     }
     catch(Exception $e)
     {
