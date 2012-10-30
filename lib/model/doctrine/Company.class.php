@@ -29,4 +29,17 @@ class Company extends BaseCompany
 
   
   }
+
+  public function getLogoURL()
+  {
+    return self::getUploadsDir().'/'.$this->getLogo();
+  }
+
+  public static function getUploadsDir()
+  {
+    $root_path = substr($_SERVER['SCRIPT_NAME'],0,strrpos($_SERVER['SCRIPT_NAME'],'/'));
+    $web_dir = str_replace(DIRECTORY_SEPARATOR,'/',sfConfig::get('sf_web_dir'));
+    $upload_dir = str_replace(DIRECTORY_SEPARATOR,'/',sfConfig::get('sf_upload_dir'));
+    return $root_path.str_replace($web_dir, null, $upload_dir);
+  }
 }

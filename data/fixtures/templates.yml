@@ -53,9 +53,9 @@ Template:
       </head>
       <body>
 
-        {% if settings.company_logo %}
+        {% if invoice.Company.logo %}
           <div class="logo">
-            <img src="{{ settings.company_logo }}" alt="{{ settings.company_name }}" />
+            <img src="{{ invoice.Company.logoURL }}" alt="{{ invoice.Company.name }}" />
           </div>
         {% endif %}
           
@@ -66,12 +66,12 @@ Template:
         <div class="section">
           <div class="company-data">
             <ul>
-              <li>Company: {{settings.company_name}}</li>
-              <li>Address: {{settings.company_address|format}}</li>
-              <li>Phone: {{settings.company_phone}}</li>
-              <li>Fax: {{settings.company_fax}}</li>
-              <li>Email: {{settings.company_email}}</li>
-              <li>Web: {{settings.company_url}}</li>
+              <li>Company: {{invoice.Company.name}}</li>
+              <li>Address: {{invoice.Company.address|format}}</li>
+              <li>Phone: {{invoice.Company.phone}}</li>
+              <li>Fax: {{invoice.Company.fax}}</li>
+              <li>Email: {{invoice.Company.email}}</li>
+              <li>Web: {{invoice.Company.url}}</li>
             </ul>
           </div>
         </div>
@@ -274,9 +274,9 @@ Template:
       </head>
       <body>
 
-       {% if settings.company_logo %}
+       {% if invoice.Company.logo %}
          <div class="logo">
-           <img src="{{ settings.company_logo }}" alt="{{ settings.company_name }}" />
+           <img src="{{ invoice.Company.logoURL }}" alt="{{ invoice.Company.name }}" />
          </div>
        {% endif %}
 
@@ -287,12 +287,12 @@ Template:
        <div class="section">
          <div class="company-data">
            <ul>
-             <li>Company: {{settings.company_name}}</li>
-             <li>Address: {{settings.company_address|format}}</li>
-             <li>Phone: {{settings.company_phone}}</li>
-             <li>Fax: {{settings.company_fax}}</li>
-             <li>Email: {{settings.company_email}}</li>
-             <li>Web: {{settings.company_url}}</li>
+             <li>Company: {{invoice.Company.name}}</li>
+             <li>Address: {{invoice.Company.address|format}}</li>
+             <li>Phone: {{invoice.Company.phone}}</li>
+             <li>Fax: {{invoice.Company.fax}}</li>
+             <li>Email: {{invoice.Company.email}}</li>
+             <li>Web: {{invoice.Company.url}}</li>
            </ul>
          </div>
        </div>
@@ -493,9 +493,9 @@ Template:
       </head>
       <body>
 
-        {% if settings.company_logo %}
+        {% if estimate.Company.logo %}
           <div class="logo">
-            <img src="{{ settings.company_logo }}" alt="{{ settings.company_name }}" />
+            <img src="{{ estimate.Company.logoURL }}" alt="{{ estimate.Company.name }}" />
           </div>
         {% endif %}
 
@@ -506,12 +506,12 @@ Template:
         <div class="section">
           <div class="company-data">
             <ul>
-              <li>Company: {{settings.company_name}}</li>
-              <li>Address: {{settings.company_address|format}}</li>
-              <li>Phone: {{settings.company_phone}}</li>
-              <li>Fax: {{settings.company_fax}}</li>
-              <li>Email: {{settings.company_email}}</li>
-              <li>Web: {{settings.company_url}}</li>
+              <li>Company: {{estimate.Company.name}}</li>
+              <li>Address: {{estimate.Company.address|format}}</li>
+              <li>Phone: {{estimate.Company.phone}}</li>
+              <li>Fax: {{estimate.Company.fax}}</li>
+              <li>Email: {{estimate.Company.email}}</li>
+              <li>Web: {{estimate.Company.url}}</li>
             </ul>
           </div>
         </div>
