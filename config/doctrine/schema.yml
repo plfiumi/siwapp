@@ -347,8 +347,15 @@ Payment:
     invoice_id: integer
     date: date
     amount: { type: decimal(53), scale: 15 }
+    payment_type_id: integer
     notes: clob
   relations:
+    PaymentType:
+      local: payment_type_id
+      foreign: id
+      foreignAlias: PaymentType
+      type: one
+      onDelete: SET NULL  
     Company:
       foreignAlias: Company
       local: company_id

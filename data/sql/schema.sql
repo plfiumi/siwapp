@@ -5,7 +5,7 @@ CREATE TABLE customer (id BIGINT AUTO_INCREMENT, company_id BIGINT, name VARCHAR
 CREATE TABLE expense_type (id BIGINT AUTO_INCREMENT, company_id BIGINT, name VARCHAR(255), enabled TINYINT(1) DEFAULT '1', INDEX company_id_idx (company_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
 CREATE TABLE item (id BIGINT AUTO_INCREMENT, company_id BIGINT, quantity DECIMAL(53, 15) DEFAULT 1 NOT NULL, discount DECIMAL(53, 2) DEFAULT 0 NOT NULL, common_id BIGINT, product_id BIGINT, expense_type_id BIGINT, description VARCHAR(255), unitary_cost DECIMAL(53, 15) DEFAULT 0 NOT NULL, INDEX desc_idx (company_id, description), INDEX company_id_idx (company_id), INDEX common_id_idx (common_id), INDEX product_id_idx (product_id), INDEX expense_type_id_idx (expense_type_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
 CREATE TABLE item_tax (company_id BIGINT, item_id BIGINT, tax_id BIGINT, INDEX company_id_idx (company_id), PRIMARY KEY(item_id, tax_id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
-CREATE TABLE payment (id BIGINT AUTO_INCREMENT, company_id BIGINT, invoice_id BIGINT, date DATE, amount DECIMAL(53, 15), notes LONGTEXT, INDEX company_id_idx (company_id), INDEX invoice_id_idx (invoice_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
+CREATE TABLE payment (id BIGINT AUTO_INCREMENT, company_id BIGINT, invoice_id BIGINT, date DATE, amount DECIMAL(53, 15), payment_type_id BIGINT, notes LONGTEXT, INDEX payment_type_id_idx (payment_type_id), INDEX company_id_idx (company_id), INDEX invoice_id_idx (invoice_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
 CREATE TABLE payment_type (id BIGINT AUTO_INCREMENT, company_id BIGINT, name VARCHAR(255), description LONGTEXT, enabled TINYINT(1) DEFAULT '1', INDEX company_id_idx (company_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
 CREATE TABLE product (id BIGINT AUTO_INCREMENT, company_id BIGINT, reference VARCHAR(100) NOT NULL, description LONGTEXT, price DECIMAL(53, 15) DEFAULT 0 NOT NULL, category_id BIGINT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX company_id_idx (company_id), INDEX category_id_idx (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
 CREATE TABLE product_category (id BIGINT AUTO_INCREMENT, company_id BIGINT, name VARCHAR(100) NOT NULL, INDEX company_id_idx (company_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 ENGINE = INNODB;
@@ -39,8 +39,10 @@ ALTER TABLE item ADD CONSTRAINT item_product_id_product_id FOREIGN KEY (product_
 ALTER TABLE item ADD CONSTRAINT item_expense_type_id_expense_type_id FOREIGN KEY (expense_type_id) REFERENCES expense_type(id) ON DELETE SET NULL;
 ALTER TABLE item ADD CONSTRAINT item_company_id_company_id FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE;
 ALTER TABLE item ADD CONSTRAINT item_common_id_common_id FOREIGN KEY (common_id) REFERENCES common(id) ON DELETE CASCADE;
+ALTER TABLE item_tax ADD CONSTRAINT item_tax_tax_id_tax_id FOREIGN KEY (tax_id) REFERENCES tax(id);
 ALTER TABLE item_tax ADD CONSTRAINT item_tax_item_id_item_id FOREIGN KEY (item_id) REFERENCES item(id) ON DELETE CASCADE;
 ALTER TABLE item_tax ADD CONSTRAINT item_tax_company_id_company_id FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE;
+ALTER TABLE payment ADD CONSTRAINT payment_payment_type_id_payment_type_id FOREIGN KEY (payment_type_id) REFERENCES payment_type(id) ON DELETE SET NULL;
 ALTER TABLE payment ADD CONSTRAINT payment_invoice_id_common_id FOREIGN KEY (invoice_id) REFERENCES common(id) ON DELETE CASCADE;
 ALTER TABLE payment ADD CONSTRAINT payment_company_id_company_id FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE;
 ALTER TABLE payment_type ADD CONSTRAINT payment_type_company_id_company_id FOREIGN KEY (company_id) REFERENCES company(id) ON DELETE CASCADE;

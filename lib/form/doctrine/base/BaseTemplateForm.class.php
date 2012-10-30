@@ -36,10 +36,6 @@ abstract class BaseTemplateForm extends BaseFormDoctrine
       'slug'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
-    $this->validatorSchema->setPostValidator(
-      new sfValidatorDoctrineUnique(array('model' => 'Template', 'column' => array('slug')))
-    );
-
     $this->widgetSchema->setNameFormat('template[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);

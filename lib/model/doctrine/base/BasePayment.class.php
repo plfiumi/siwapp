@@ -9,24 +9,30 @@
  * @property integer $invoice_id
  * @property date $date
  * @property decimal $amount
+ * @property integer $payment_type_id
  * @property clob $notes
+ * @property PaymentType $PaymentType
  * @property Company $Company
  * @property Common $Common
  * 
- * @method integer getCompanyId()  Returns the current record's "company_id" value
- * @method integer getInvoiceId()  Returns the current record's "invoice_id" value
- * @method date    getDate()       Returns the current record's "date" value
- * @method decimal getAmount()     Returns the current record's "amount" value
- * @method clob    getNotes()      Returns the current record's "notes" value
- * @method Company getCompany()    Returns the current record's "Company" value
- * @method Common  getCommon()     Returns the current record's "Common" value
- * @method Payment setCompanyId()  Sets the current record's "company_id" value
- * @method Payment setInvoiceId()  Sets the current record's "invoice_id" value
- * @method Payment setDate()       Sets the current record's "date" value
- * @method Payment setAmount()     Sets the current record's "amount" value
- * @method Payment setNotes()      Sets the current record's "notes" value
- * @method Payment setCompany()    Sets the current record's "Company" value
- * @method Payment setCommon()     Sets the current record's "Common" value
+ * @method integer     getCompanyId()       Returns the current record's "company_id" value
+ * @method integer     getInvoiceId()       Returns the current record's "invoice_id" value
+ * @method date        getDate()            Returns the current record's "date" value
+ * @method decimal     getAmount()          Returns the current record's "amount" value
+ * @method integer     getPaymentTypeId()   Returns the current record's "payment_type_id" value
+ * @method clob        getNotes()           Returns the current record's "notes" value
+ * @method PaymentType getPaymentType()     Returns the current record's "PaymentType" value
+ * @method Company     getCompany()         Returns the current record's "Company" value
+ * @method Common      getCommon()          Returns the current record's "Common" value
+ * @method Payment     setCompanyId()       Sets the current record's "company_id" value
+ * @method Payment     setInvoiceId()       Sets the current record's "invoice_id" value
+ * @method Payment     setDate()            Sets the current record's "date" value
+ * @method Payment     setAmount()          Sets the current record's "amount" value
+ * @method Payment     setPaymentTypeId()   Sets the current record's "payment_type_id" value
+ * @method Payment     setNotes()           Sets the current record's "notes" value
+ * @method Payment     setPaymentType()     Sets the current record's "PaymentType" value
+ * @method Payment     setCompany()         Sets the current record's "Company" value
+ * @method Payment     setCommon()          Sets the current record's "Common" value
  * 
  * @package    siwapp
  * @subpackage model
@@ -52,6 +58,9 @@ abstract class BasePayment extends sfDoctrineRecord
              'scale' => 15,
              'length' => 53,
              ));
+        $this->hasColumn('payment_type_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('notes', 'clob', null, array(
              'type' => 'clob',
              ));
@@ -62,6 +71,11 @@ abstract class BasePayment extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('PaymentType', array(
+             'local' => 'payment_type_id',
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
+
         $this->hasOne('Company', array(
              'local' => 'company_id',
              'foreign' => 'id',
