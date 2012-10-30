@@ -59,8 +59,10 @@ $currency = $sf_user->getAttribute('currency');
         if(isset($isNew) && !count($item_taxes))
         {
           $default_taxes = Doctrine::getTable('Tax')->createQuery()->
-            where('active', true)->
-            where('is_default', true)->execute();
+            AndWhere('active = ? ', true)->
+            AndWhere('is_default = ? ', true)->
+            AndWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->
+execute();
           foreach($default_taxes as $taxx)
           {
             echo javascript_tag(
