@@ -13,7 +13,7 @@
       <ul>
         <?php echo $form ?>
         <li class="text-right">
-          <?php echo gButton_to('Cancel', '@templates', 'class=action cancel') ?> <?php echo gButton('Save', 'type=submit class=action save') ?> 
+          <?php echo gButton_to(__('Cancel'), '@templates', 'class=action cancel') ?> <?php echo gButton(__('Save'), 'type=submit class=action save') ?> 
         </li>
       </ul>
     </fieldset>
