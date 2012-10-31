@@ -1446,6 +1446,10 @@
         <source>Global Situation</source>
         <target>Situació global</target>
       </trans-unit>
+      <trans-unit>
+        <source>Use for Expenses</source>
+        <target>Usar en despeses</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
