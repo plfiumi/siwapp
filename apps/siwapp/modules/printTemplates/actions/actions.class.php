@@ -73,7 +73,7 @@ class printTemplatesActions extends sfActions
       $this->redirect('@templates');
     }
     
-    $templates = Doctrine::getTable('Template')->createQuery()->execute();
+    $templates = Doctrine::getTable('Template')->createQuery()->where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->execute();
     foreach ($templates as $t)
     {
       $models = array();
