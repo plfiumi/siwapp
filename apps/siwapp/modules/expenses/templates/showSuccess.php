@@ -6,7 +6,7 @@
   <div id="saving-options">
     <?php echo gButton_to(__('Edit'), 'expenses/edit?id=' .$invoice->getId(), 'class=action edit');  ?>
     <?php echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$invoice->getId()."')", 'class=action print') ?>
-    <?php echo gButton_to_function(__('Save PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$invoice->getId()."'", 'class=action pdf') ?>
+    <?php echo gButton_to_function(__('PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$invoice->getId()."'", 'class=action pdf') ?>
   </div>
   <div class="invoice show">
 
@@ -150,7 +150,7 @@
   <div id="saving-options">
     <?php echo gButton_to(__('Edit'), 'expenses/edit?id=' .$invoice->getId(), 'class=action edit');  ?>
     <?php echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$invoice->getId()."')", 'class=action print') ?>
-    <?php echo gButton_to_function(__('Save PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$invoice->getId()."'", 'class=action pdf') ?>
+    <?php echo gButton_to_function(__('PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$invoice->getId()."'", 'class=action pdf') ?>
   </div>
   
 </div>
