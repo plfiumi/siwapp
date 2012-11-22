@@ -51,7 +51,7 @@ class SupplierForm extends BaseSupplierForm
                               $this->validatorSchema['name_slug']->
                                 getMessages()
                               ));
-                              
+    $this->validatorSchema['expense_type_id']->setOption('required', true);                       
     /* TODO: Commented because it breaks 
     foreach($this->validatorSchema->getPostValidator()->getValidators() as $val)
     {
