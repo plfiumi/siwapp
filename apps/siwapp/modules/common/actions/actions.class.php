@@ -23,6 +23,8 @@ class commonActions extends sfActions
     $format   = new sfNumberFormat($this->culture);
     
     $data = $request->getParameter('invoice');
+    if(!isset($data))
+        $data = $request->getParameter('expense');
     $this->getResponse()->setHttpHeader('Content-Type', 'application/json; charset=utf-8');
 
     $invoice = new Invoice();
