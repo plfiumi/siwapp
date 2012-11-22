@@ -48,8 +48,8 @@ $supplier = $supplierForm->getObject();
         <?php echo render_tag($supplierForm['contact_person'])?>
       </span>
       <span class="_50">
-        <label for="<? echo $supplierForm['email']->renderId()?>"><?php echo __('Supplier Email') ?></label>
-        <?php echo render_tag($supplierForm['email'])?>
+        <label for="<? echo $supplierForm['mobile']->renderId()?>"><?php echo __('Supplier Mobile') ?></label>
+        <?php echo render_tag($supplierForm['mobile'])?>
       </span>
     </li>
     <li>
@@ -58,14 +58,14 @@ $supplier = $supplierForm->getObject();
         <?php echo render_tag($supplierForm['phone'])?>
       </span>
       <span class="_50">
-        <label for="<? echo $supplierForm['mobile']->renderId()?>"><?php echo __('Supplier Mobile') ?></label>
-        <?php echo render_tag($supplierForm['mobile'])?>
+        <label for="<? echo $supplierForm['fax']->renderId()?>"><?php echo __('Supplier Fax') ?></label>
+        <?php echo render_tag($supplierForm['fax'])?>
       </span>
     </li>
     <li>
       <span class="_50">
-        <label for="<? echo $supplierForm['fax']->renderId()?>"><?php echo __('Supplier Fax') ?></label>
-        <?php echo render_tag($supplierForm['fax'])?>
+        <label for="<? echo $supplierForm['email']->renderId()?>"><?php echo __('Supplier Email') ?></label>
+        <?php echo render_tag($supplierForm['email'])?>
       </span>
       <span class="_50">
         <label for="<? echo $supplierForm['website']->renderId()?>"><?php echo __('Website') ?></label>

@@ -45,26 +45,27 @@ $customer = $customerForm->getObject();
         <label for="<? echo $customerForm['contact_person']->renderId()?>"><?php echo __('Contact Person') ?></label>
         <?php echo render_tag($customerForm['contact_person'])?>
       </span>
-       <span class="_50">
-          <label for="<? echo $customerForm['email']->renderId()?>"><?php echo __('Client Email') ?></label>
-         <?php echo render_tag($customerForm['email'])?>
-     </span>
-    </li>
-    <li>
-        <span class="_50">
-           <label for="<? echo $customerForm['phone']->renderId()?>"><?php echo __('Client Phone') ?></label>
-           <?php echo render_tag($customerForm['phone'])?>
-        </span>
         <span class="_50">
           <label for="<? echo $customerForm['mobile']->renderId()?>"><?php echo __('Client Mobile') ?></label>
           <?php echo render_tag($customerForm['mobile'])?>
       </span>
     </li>
     <li>
+        <span class="_50">
+           <label for="<? echo $customerForm['phone']->renderId()?>"><?php echo __('Client Phone') ?></label>
+           <?php echo render_tag($customerForm['phone'])?>
+        </span>
       <span class="_50">
         <label for="<? echo $customerForm['fax']->renderId()?>"><?php echo __('Client Fax') ?></label>
             <?php echo render_tag($customerForm['fax'])?>
       </span>
+    </li>
+    <li>
+      <span class="_50">
+          <label for="<? echo $customerForm['email']->renderId()?>"><?php echo __('Client Email') ?></label>
+         <?php echo render_tag($customerForm['email'])?>
+     </span>
+
       <span class="_50">
         <label for="<? echo $customerForm['website']->renderId()?>"><?php echo __('Website') ?></label>
         <?php echo render_tag($customerForm['website'])?>
