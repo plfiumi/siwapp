@@ -5,6 +5,16 @@
  */
 class Item extends BaseItem
 {
+  private $decimals = null;
+  private function getDecimals()
+  {
+    if(!$this->decimals)
+    {
+      $this->decimals = PropertyTable::get('currency_decimals',2);
+    }
+    return $this->decimals;
+  }
+
   public function getBaseAmount()
   {
     return $this->getUnitaryCost() * $this->getQuantity();
@@ -22,7 +32,7 @@ class Item extends BaseItem
   
   public function getTaxAmount($tax_name = null)
   {
-    return $this->getNetAmount() * $this->getTaxesPercent($tax_name) / 100;
+    return round($this->getNetAmount() * $this->getTaxesPercent($tax_name) / 100,$this->getDecimals());
   }
   
   public function getGrossAmount()
