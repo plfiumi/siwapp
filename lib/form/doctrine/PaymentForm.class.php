@@ -16,6 +16,9 @@ class PaymentForm extends BasePaymentForm
     $this->widgetSchema['notes'] = new sfWidgetFormInputText(array(), array('class' => 'notes'));
     $this->widgetSchema['date']  = new sfWidgetFormI18nJQueryDate($this->JQueryDateOptions);
     
+   $query = Doctrine::getTable('PaymentType')->createQuery()->addWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'));
+$this->widgetSchema['payment_type_id']->setOption('query', $query);
+
     //Assign company_id from session values.
     $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
 
