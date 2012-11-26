@@ -1,10 +1,16 @@
 <?php
 class SiwappMessage extends Swift_Message
 {
+
+  protected $company_name;
+
   public function __construct()
   {
     parent::__construct();
-    $this->setFrom(PropertyTable::get('company_email'), PropertyTable::get('company_name'));
+    $company = new Company();
+    $company = $company->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
+    $this->setFrom($company->getEmail(), $company->getName());
+    $this->company_name = $company->getName();
   }
 }
 
@@ -100,7 +106,7 @@ class InvoiceMessage extends SiwappMessage
                             'application/pdf'
                             );
       $this
-        ->setSubject(PropertyTable::get('company_name').' ['.$model.': '.$invoice.']')
+        ->setSubject($this->company_name.' ['.$model.': '.$invoice.']')
         ->setBody($printer->render($data), 'text/html')
         ->attach($attachment);
       $this->setReadyState(true);
