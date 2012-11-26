@@ -205,7 +205,7 @@ ul.payments li ul li { float:left; margin:0em 1em 0.5em 0em;}
 form.payments-form input { padding:0; margin:0; outline-width:0; border:0; border-bottom:1px solid #DCDCDC; }
 form.payments-form input:focus { border-style:dotted; border-color:#DA4722; background-color:#FFF0E1; }
 form.payments-form input.amount { text-align: right; width: 9em;}
-form.payments-form input.notes { width: 38em;}
+form.payments-form input.notes { width: 28em;}
 form.payments-form a.xit { margin:0.5em 0.5em 0 0; }
 form.payments-form .buttons { margin:0; padding:0; }
 
