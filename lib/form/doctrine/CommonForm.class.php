@@ -9,12 +9,15 @@
  */
 class CommonForm extends BaseCommonForm
 {
+
+  protected $expense = false;
+
   public function setup()
   {
     parent::setup();
   }
 
-  public function configure()
+  public function configure($expense = false)
   {
     $decorator = new myFormSchemaFormatter($this->getWidgetSchema());
     $this->widgetSchema->addFormFormatter('custom', $decorator);
@@ -79,10 +82,14 @@ class CommonForm extends BaseCommonForm
     $this->validatorSchema['series_id']  = new sfValidatorString(array('required'=>true),array('required'=>'The invoice serie is mandatory'));
     
     $iforms = array();
-
+    sfContext::getInstance()->getLogger()->info("Expense ==".$this->expense);
     foreach($this->object->getItems() as $item)
     {
       $iforms[$item->id] = new ItemForm($item);
+      if($expense)
+      {
+        $iforms[$item->id]->validatorSchema['expense_type_id']->setOption('required',true);
+      }
     }
 
     $itemForms = new FormsContainer($iforms,'ItemForm');

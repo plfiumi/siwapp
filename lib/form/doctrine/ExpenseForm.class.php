@@ -47,8 +47,7 @@ class ExpenseForm extends CommonForm
     $this->validatorSchema['supplier_name']  = new sfValidatorString(array('required' => true));
         
     $this->widgetSchema->setNameFormat('expense[%s]');
-    
-    parent::configure();
+    parent::configure(true);
     //Override validations: 
     $this->validatorSchema['customer_email'] = new sfValidatorString(array('max_length' => 100, 'required' => false));
     $this->validatorSchema['customer_name']  =  new sfValidatorString(array('max_length' => 100, 'required' => false));
