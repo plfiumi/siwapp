@@ -9,6 +9,9 @@ use_helper('Siwapp', 'JavascriptBase');
         <?php
         echo $form['query']->renderRow();        
         echo $form['category']->renderRow();
+        echo $form['from']->renderRow(); 
+        echo $form['to']->renderRow();
+        echo $form['quick_dates']->renderRow();
         ?>
       </ul>
     </div>

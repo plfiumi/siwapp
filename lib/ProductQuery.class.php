@@ -59,6 +59,8 @@ class ProductQuery extends Doctrine_Query
     {
       if(isset($search['query']))  $this->textSearch($search['query']);
       if(isset($search['category']))  $this->categorySearch($search['category']);
+      if(isset($search['from'])) $this->fromDate($search['from']);
+      if(isset($search['to'])) $this->toDate($search['to']);
       //TODO MCY adding other query
     }
     return $this;
@@ -107,7 +109,32 @@ class ProductQuery extends Doctrine_Query
 
     return $other->fetchOne() ? $other->fetchOne()->getTotal():0;
   }
+    
+
+  public function fromDate($date = null)
+  {
+    if (!($date = $this->filterDate($date)))
+    {
+      return $this;
+    }
+    else
+    {
+      return $this->andWhere('inv.issue_date >= ?', sfDate::getInstance($date)->to_database());
+    }
+  }
   
+
+  public function toDate($date = null)
+  {
+    if (!($date = $this->filterDate($date)))
+    {
+      return $this;
+    }
+    else
+    {
+      return $this->andWhere('inv.issue_date < ?', sfDate::getInstance($date)->addDay(1)->to_database());
+    }
+  }
   /**
    * Internal method to deduce a correct or null date value.
    * @param mixed date; if it is an array it must have the 'year', 'month' and 'day' keys.
