@@ -11,7 +11,7 @@ class ExpenseForm extends CommonForm
 {
   protected $number;
 
-  public function configure()
+  public function configure($expense = false)
   {
     unset($this['number'], $this['created_at'], $this['updated_at']);
     // we unset paid_amount so the system don't "nullify" the field on every expense editing.
