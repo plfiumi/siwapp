@@ -39,10 +39,28 @@ $company = $companyForm->getObject();
         <?php echo render_tag($companyForm['identification'])?>
       </span>
     </li>
-    <li>
-      <span class="_75 _last">
-        <label for="<? echo $companyForm['address']->renderId()?>"><?php echo __('Company address') ?></label>
+<li>
+      <span class="_50">
+        <label for="<? echo $companyForm['address']->renderId()?>"><?php echo __('Address') ?></label>
         <?php echo render_tag($companyForm['address'])?>
+      </span>
+      <span class="_50">
+        <label for="<? echo $companyForm['city']->renderId()?>"><?php echo __('City') ?></label>
+        <?php echo render_tag($companyForm['city'])?>
+      </span>
+    </li>
+    <li>
+      <span class="_25">
+        <label for="<? echo $companyForm['postalcode']->renderId()?>"><?php echo __('Postal code') ?></label>
+        <?php echo render_tag($companyForm['postalcode'])?>
+      </span>  
+      <span class="_25">
+        <label for="<? echo $companyForm['state']->renderId()?>"><?php echo __('State') ?></label>
+        <?php echo render_tag($companyForm['state'])?>
+      </span>
+        <span class="_25">
+        <label for="<? echo $companyForm['country']->renderId()?>"><?php echo __('Contry') ?></label>
+        <?php echo render_tag($companyForm['country'])?>
       </span>
     </li>
     <li>

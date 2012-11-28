@@ -99,6 +99,10 @@ class SupplierTable extends Doctrine_Table
       $res[$i]['supplier_email'] = $item->getEmail();
       $res[$i]['contact_person'] = $item->getContactPerson();
       $res[$i]['invoicing_address'] = $item->getInvoicingAddress();
+      $res[$i]['invoicing_city'] = $item->getInvoicingCity();
+      $res[$i]['invoicing_state'] = $item->getInvoicingState();
+      $res[$i]['invoicing_postalcode'] = $item->getInvoicingPostalcode();
+      $res[$i]['invoicing_country'] = $item->getInvoicingCountry();
       $res[$i]['supplier_phone'] = $item->getPhone();
       $res[$i]['supplier_fax'] = $item->getFax();
       $res[$i]['comments'] = $item->getComments();

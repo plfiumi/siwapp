@@ -31,10 +31,28 @@
         <?php echo render_tag($invoiceForm['supplier_fax'])?>
       </span>
     </li>
-    <li>
-      <span class="_75">
-         <label for="<? echo $invoiceForm['invoicing_address']->renderId()?>"><?php echo __('Invoicing Address') ?></label>
+        <li>
+      <span class="_50">
+        <label for="<? echo $invoiceForm['invoicing_address']->renderId()?>"><?php echo __('Invoicing Address') ?></label>
         <?php echo render_tag($invoiceForm['invoicing_address'])?>
+      </span>
+      <span class="_50">
+        <label for="<? echo $invoiceForm['invoicing_city']->renderId()?>"><?php echo __('Invoicing City') ?></label>
+        <?php echo render_tag($invoiceForm['invoicing_city'])?>
+      </span>
+    </li>
+    <li>
+      <span class="_25">
+        <label for="<? echo $invoiceForm['invoicing_postalcode']->renderId()?>"><?php echo __('Invoicing Postal code') ?></label>
+        <?php echo render_tag($invoiceForm['invoicing_postalcode'])?>
+      </span>  
+      <span class="_25">
+        <label for="<? echo $invoiceForm['invoicing_state']->renderId()?>"><?php echo __('Invoicing State') ?></label>
+        <?php echo render_tag($invoiceForm['invoicing_state'])?>
+      </span>
+        <span class="_25">
+        <label for="<? echo $invoiceForm['invoicing_country']->renderId()?>"><?php echo __('Invoicing Contry') ?></label>
+        <?php echo render_tag($invoiceForm['invoicing_country'])?>
       </span>
     </li>
   </ul>
@@ -59,6 +77,10 @@ echo javascript_tag("
             data[key].supplier_phone,
             data[key].supplier_fax,
             data[key].expense_type,
+            data[key].invoicing_city,
+            data[key].invoicing_state,
+            data[key].invoicing_postalcode,
+            data[key].invoicing_country,
           ], value: data[key].supplier, result: data[key].supplier };
         }
         return parsed;
@@ -72,10 +94,13 @@ echo javascript_tag("
       $('#".$invoiceForm['contact_person']->renderId()."').val(item[2]);
       $('#".$invoiceForm['supplier_email']->renderId()."').val(item[3]);
       $('#".$invoiceForm['invoicing_address']->renderId()."').val(item[4]);
-      $('#".$invoiceForm['shipping_address']->renderId()."').val(item[5]);
       $('#".$invoiceForm['supplier_phone']->renderId()."').val(item[6]);
       $('#".$invoiceForm['supplier_fax']->renderId()."').val(item[7]);
       $('#".$invoiceForm['default_expense_type']->renderId()."').val(item[8]);
+      $('#".$invoiceForm['invoicing_city']->renderId()."').val(item[9]);
+      $('#".$invoiceForm['invoicing_state']->renderId()."').val(item[10]);
+      $('#".$invoiceForm['invoicing_postalcode']->renderId()."').val(item[11]);
+      $('#".$invoiceForm['invoicing_country']->renderId()."').val(item[12]);
       //Change al the expenses types that are not assigned
       $('#tbody_invoice_items select').each(function(idx,elem){
         if(elem.id.indexOf('expense_type_id')>0)

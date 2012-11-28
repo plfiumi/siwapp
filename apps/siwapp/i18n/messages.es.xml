@@ -459,8 +459,36 @@
         <target>Dirección de Facturación</target>
       </trans-unit>
       <trans-unit>
+        <source>Invoicing Postal code</source>
+        <target>Codigo postal de facturación</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invoicing State</source>
+        <target>Provincia de facturación</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invoicing Contry</source>
+        <target>País de facturación</target>
+      </trans-unit>
+      <trans-unit>
         <source>Shipping Address</source>
         <target>Dirección de Envío</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Shipping City</source>
+        <target>Población de Envío</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Shipping Postal code</source>
+        <target>Codigo postal de Envío</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Shipping State</source>
+        <target>Provincia de Envío</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Shipping Contry</source>
+        <target>País de Envío</target>
       </trans-unit>
       <trans-unit>
         <source>Client Email</source>

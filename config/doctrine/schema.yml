@@ -5,7 +5,11 @@ Company:
   columns:
     identification: string(100)
     name: string(100)
-    address: string(500)
+    address: string(255)
+    postalcode: string(255)
+    city: string(255)
+    state: string(255)
+    country: string(255)
     email: string(255)
     phone: string(50)
     fax: string(50)
@@ -57,8 +61,16 @@ Customer:
     identification: string(50)
     email: string(100)
     contact_person: string(100)
-    invoicing_address: clob
-    shipping_address: clob
+    invoicing_address: string(255)
+    invoicing_postalcode: string(255)
+    invoicing_city: string(255)
+    invoicing_state: string(255)
+    invoicing_country: string(255)
+    shipping_address: string(255)
+    shipping_postalcode: string(255)
+    shipping_city: string(255)
+    shipping_state: string(255)
+    shipping_country: string(255)
     website: string(255)
     phone: string(20)
     mobile: string(20)
@@ -83,7 +95,11 @@ Supplier:
     identification: string(50)
     email: string(100)
     contact_person: string(100)
-    invoicing_address: clob
+    invoicing_address: string(255)
+    invoicing_postalcode: string(255)
+    invoicing_city: string(255)
+    invoicing_state: string(255)
+    invoicing_country: string(255)
     website: string(255)
     phone: string(20)
     mobile: string(20)
@@ -127,8 +143,16 @@ Common:
     supplier_email: string(100)
     supplier_phone: string(20)
     supplier_fax: string(20)
-    invoicing_address: clob
-    shipping_address: clob
+    invoicing_address: string(255)
+    invoicing_postalcode: string(255)
+    invoicing_city: string(255)
+    invoicing_state: string(255)
+    invoicing_country: string(255)
+    shipping_address: string(255)
+    shipping_postalcode: string(255)
+    shipping_city: string(255)
+    shipping_state: string(255)
+    shipping_country: string(255)
     contact_person: string(100)
     terms: clob
     notes: clob

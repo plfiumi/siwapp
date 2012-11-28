@@ -56,7 +56,7 @@
           <span>
             <span class="_75 _last">
               <label><?php echo __('Invoicing address') ?>:</label>
-              <?php echo simple_format_text($invoice->getInvoicingAddress()) ?></span>
+              <?php echo simple_format_text($invoice->getInvoicingAddress().'<br>'.$invoice->getInvoicingPostalcode().' '.$invoice->getInvoicingCity().'<br>'.$invoice->getInvoicingState().' '.$invoice->getInvoicingCountry()) ?></span>
           </span>
           <span class="clear"></span>
         </li>

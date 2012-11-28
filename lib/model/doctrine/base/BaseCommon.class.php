@@ -19,8 +19,16 @@
  * @property string $supplier_email
  * @property string $supplier_phone
  * @property string $supplier_fax
- * @property clob $invoicing_address
- * @property clob $shipping_address
+ * @property string $invoicing_address
+ * @property string $invoicing_postalcode
+ * @property string $invoicing_city
+ * @property string $invoicing_state
+ * @property string $invoicing_country
+ * @property string $shipping_address
+ * @property string $shipping_postalcode
+ * @property string $shipping_city
+ * @property string $shipping_state
+ * @property string $shipping_country
  * @property string $contact_person
  * @property clob $terms
  * @property clob $notes
@@ -73,8 +81,16 @@
  * @method string              getSupplierEmail()           Returns the current record's "supplier_email" value
  * @method string              getSupplierPhone()           Returns the current record's "supplier_phone" value
  * @method string              getSupplierFax()             Returns the current record's "supplier_fax" value
- * @method clob                getInvoicingAddress()        Returns the current record's "invoicing_address" value
- * @method clob                getShippingAddress()         Returns the current record's "shipping_address" value
+ * @method string              getInvoicingAddress()        Returns the current record's "invoicing_address" value
+ * @method string              getInvoicingPostalcode()     Returns the current record's "invoicing_postalcode" value
+ * @method string              getInvoicingCity()           Returns the current record's "invoicing_city" value
+ * @method string              getInvoicingState()          Returns the current record's "invoicing_state" value
+ * @method string              getInvoicingCountry()        Returns the current record's "invoicing_country" value
+ * @method string              getShippingAddress()         Returns the current record's "shipping_address" value
+ * @method string              getShippingPostalcode()      Returns the current record's "shipping_postalcode" value
+ * @method string              getShippingCity()            Returns the current record's "shipping_city" value
+ * @method string              getShippingState()           Returns the current record's "shipping_state" value
+ * @method string              getShippingCountry()         Returns the current record's "shipping_country" value
  * @method string              getContactPerson()           Returns the current record's "contact_person" value
  * @method clob                getTerms()                   Returns the current record's "terms" value
  * @method clob                getNotes()                   Returns the current record's "notes" value
@@ -127,7 +143,15 @@
  * @method Common              setSupplierPhone()           Sets the current record's "supplier_phone" value
  * @method Common              setSupplierFax()             Sets the current record's "supplier_fax" value
  * @method Common              setInvoicingAddress()        Sets the current record's "invoicing_address" value
+ * @method Common              setInvoicingPostalcode()     Sets the current record's "invoicing_postalcode" value
+ * @method Common              setInvoicingCity()           Sets the current record's "invoicing_city" value
+ * @method Common              setInvoicingState()          Sets the current record's "invoicing_state" value
+ * @method Common              setInvoicingCountry()        Sets the current record's "invoicing_country" value
  * @method Common              setShippingAddress()         Sets the current record's "shipping_address" value
+ * @method Common              setShippingPostalcode()      Sets the current record's "shipping_postalcode" value
+ * @method Common              setShippingCity()            Sets the current record's "shipping_city" value
+ * @method Common              setShippingState()           Sets the current record's "shipping_state" value
+ * @method Common              setShippingCountry()         Sets the current record's "shipping_country" value
  * @method Common              setContactPerson()           Sets the current record's "contact_person" value
  * @method Common              setTerms()                   Sets the current record's "terms" value
  * @method Common              setNotes()                   Sets the current record's "notes" value
@@ -228,11 +252,45 @@ abstract class BaseCommon extends sfDoctrineRecord
              'type' => 'string',
              'length' => 20,
              ));
-        $this->hasColumn('invoicing_address', 'clob', null, array(
-             'type' => 'clob',
+        $this->hasColumn('invoicing_address', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
              ));
-        $this->hasColumn('shipping_address', 'clob', null, array(
-             'type' => 'clob',
+        $this->hasColumn('invoicing_postalcode', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('invoicing_city', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('invoicing_state', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('invoicing_country', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('shipping_address', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('shipping_postalcode', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('shipping_city', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('shipping_state', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('shipping_country', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
              ));
         $this->hasColumn('contact_person', 'string', 100, array(
              'type' => 'string',

@@ -59,7 +59,7 @@ Template:
               <tr><td width=80%>
                 <ul>
                     <li>Company: {{invoice.Company.name}}</li>
-                    <li>Address: {{invoice.Company.address|format}}</li>
+                    <li>Address: <br> {{invoice.Company.address}} <br> {{invoice.Company.postalcode}} {{invoice.Company.city}} <br> {{invoice.Company.state}} {{invoice.Company.country}} </li>
                     <li>Phone: {{invoice.Company.phone}}</li>
                     <li>Fax: {{invoice.Company.fax}}</li>
                     <li>Email: {{invoice.Company.email}}</li>
@@ -111,13 +111,13 @@ Template:
                 <td>
                   <span class="left">
                     <label>Invoicing address:</label>
-                    {{invoice.invoicing_address|format}}
+                    <br> {{invoice.invoicing_address}} <br> {{invoice.invoicing_postalcode}} {{invoice.invoicing_city}} <br> {{invoice.invoicing_state}} {{invoice.invoicing_country}}
                   </span>
                 </td>
                 <td>
                   <span class="right">
                     <label>Shipping address:</label>
-                    {{invoice.shipping_address|format}}
+                    <br> {{invoice.shipping_address}} <br> {{invoice.shipping_postalcode}} {{invoice.shipping_city}} <br> {{invoice.shipping_state}} {{invoice.shipping_country}}
                   </span>
                 </td>
               </tr>
@@ -278,7 +278,7 @@ Template:
               <tr><td width=80%>
                 <ul>
                     <li>Company: {{invoice.Company.name}}</li>
-                    <li>Address: {{invoice.Company.address|format}}</li>
+                    <li>Address: <br> {{invoice.Company.address}} <br> {{invoice.Company.postalcode}} {{invoice.Company.city}} <br> {{invoice.Company.state}} {{invoice.Company.country}} </li>
                     <li>Phone: {{invoice.Company.phone}}</li>
                     <li>Fax: {{invoice.Company.fax}}</li>
                     <li>Email: {{invoice.Company.email}}</li>
@@ -330,13 +330,13 @@ Template:
                <td>
                  <span class="left">
                    <label>Invoicing address:</label>
-                   {{invoice.invoicing_address|format}}
+                   <br> {{invoice.invoicing_address}} <br> {{invoice.invoicing_postalcode}} {{invoice.invoicing_city}} <br> {{invoice.invoicing_state}} {{invoice.invoicing_country}}
                  </span>
                </td>
                <td>
                  <span class="right">
                    <label>Shipping address:</label>
-                   {{invoice.shipping_address|format}}
+                   <br> {{invoice.shipping_address}} <br> {{invoice.shipping_postalcode}} {{invoice.shipping_city}} <br> {{invoice.shipping_state}} {{invoice.shipping_country}}
                  </span>
                </td>
              </tr>
@@ -501,7 +501,7 @@ Template:
               <tr><td width=80%>
                 <ul>
                     <li>Company: {{estimate.Company.name}}</li>
-                    <li>Address: {{estimate.Company.address|format}}</li>
+                    <li>Address: <br> {{estimate.Company.address}} <br> {{estimate.Company.postalcode}} {{estimate.Company.city}} <br> {{estimate.Company.state}} {{estimate.Company.country}} </li>
                     <li>Phone: {{estimate.Company.phone}}</li>
                     <li>Fax: {{estimate.Company.fax}}</li>
                     <li>Email: {{estimate.Company.email}}</li>
@@ -553,13 +553,13 @@ Template:
                 <td>
                   <span class="left">
                     <label>Invoicing address:</label>
-                    {{estimate.invoicing_address|format}}
+                    <br> {{estimate.invoicing_address}} <br> {{estimate.invoicing_postalcode}} {{estimate.invoicing_city}} <br> {{estimate.invoicing_state}} {{estimate.invoicing_country}}
                   </span>
                 </td>
                 <td>
                   <span class="right">
                     <label>Shipping address:</label>
-                    {{estimate.shipping_address|format}}
+                    <br> {{estimate.shipping_address}} <br> {{estimate.shipping_postalcode}} {{estimate.shipping_city}} <br> {{estimate.shipping_state}} {{estimate.shipping_country}}
                   </span>
                 </td>
               </tr>
@@ -741,7 +741,7 @@ Template:
                   <td>
                     <span class="left">
                       <label>Invoicing address:</label>
-                      {{expense.invoicing_address|format}}
+                      <br> {{expense.invoicing_address}} <br> {{expense.invoicing_postalcode}} {{expense.invoicing_city}} <br> {{expense.invoicing_state}} {{expense.invoicing_country}}
                     </span>
                   </td>
                   <td>

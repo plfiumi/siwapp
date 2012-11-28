@@ -41,9 +41,7 @@ class CommonForm extends BaseCommonForm
       'choices' => SeriesTable::getChoicesForSelect()));
     $this->widgetSchema['series_id']->setDefault(
       sfContext::getInstance()->getUser()->getProfile()->getSeries());
-    
-    $this->widgetSchema['invoicing_address'] = new sfWidgetFormTextarea();
-    $this->widgetSchema['shipping_address'] = new sfWidgetFormTextarea();
+
     $this->widgetSchema['terms'] = new sfWidgetFormTextarea();
 
     $common_defaults = array(

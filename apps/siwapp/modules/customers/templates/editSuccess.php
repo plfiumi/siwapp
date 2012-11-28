@@ -71,14 +71,52 @@ $customer = $customerForm->getObject();
         <?php echo render_tag($customerForm['website'])?>
       </span>
     </li>
-    <li>
+        <li>
       <span class="_50">
-          <label for="<? echo $customerForm['invoicing_address']->renderId()?>"><?php echo __('Invoicing Address') ?></label>
-          <?php echo render_tag($customerForm['invoicing_address'])?>
+        <label for="<? echo $customerForm['invoicing_address']->renderId()?>"><?php echo __('Invoicing Address') ?></label>
+        <?php echo render_tag($customerForm['invoicing_address'])?>
       </span>
+      <span class="_50">
+        <label for="<? echo $customerForm['invoicing_city']->renderId()?>"><?php echo __('Invoicing City') ?></label>
+        <?php echo render_tag($customerForm['invoicing_city'])?>
+      </span>
+    </li>
+    <li>
+      <span class="_25">
+        <label for="<? echo $customerForm['invoicing_postalcode']->renderId()?>"><?php echo __('Invoicing Postal code') ?></label>
+        <?php echo render_tag($customerForm['invoicing_postalcode'])?>
+      </span>  
+      <span class="_25">
+        <label for="<? echo $customerForm['invoicing_state']->renderId()?>"><?php echo __('Invoicing State') ?></label>
+        <?php echo render_tag($customerForm['invoicing_state'])?>
+      </span>
+        <span class="_25">
+        <label for="<? echo $customerForm['invoicing_country']->renderId()?>"><?php echo __('Invoicing Contry') ?></label>
+        <?php echo render_tag($customerForm['invoicing_country'])?>
+      </span>
+    </li>
+    <li>
       <span class="_50">
         <label for="<? echo $customerForm['shipping_address']->renderId()?>"><?php echo __('Shipping Address') ?></label>
         <?php echo render_tag($customerForm['shipping_address'])?>
+      </span>
+      <span class="_50">
+        <label for="<? echo $customerForm['shipping_city']->renderId()?>"><?php echo __('Shipping City') ?></label>
+        <?php echo render_tag($customerForm['shipping_city'])?>
+      </span>
+    </li>
+    <li>
+      <span class="_25">
+        <label for="<? echo $customerForm['shipping_postalcode']->renderId()?>"><?php echo __('Shipping Postal code') ?></label>
+        <?php echo render_tag($customerForm['shipping_postalcode'])?>
+      </span>  
+      <span class="_25">
+        <label for="<? echo $customerForm['shipping_state']->renderId()?>"><?php echo __('Shipping State') ?></label>
+        <?php echo render_tag($customerForm['shipping_state'])?>
+      </span>
+        <span class="_25">
+        <label for="<? echo $customerForm['shipping_country']->renderId()?>"><?php echo __('Shipping Contry') ?></label>
+        <?php echo render_tag($customerForm['shipping_country'])?>
       </span>
     </li>
     <li>

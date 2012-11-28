@@ -8,6 +8,10 @@
  * @property string $identification
  * @property string $name
  * @property string $address
+ * @property string $postalcode
+ * @property string $city
+ * @property string $state
+ * @property string $country
  * @property string $email
  * @property string $phone
  * @property string $fax
@@ -23,6 +27,10 @@
  * @method string              getIdentification()    Returns the current record's "identification" value
  * @method string              getName()              Returns the current record's "name" value
  * @method string              getAddress()           Returns the current record's "address" value
+ * @method string              getPostalcode()        Returns the current record's "postalcode" value
+ * @method string              getCity()              Returns the current record's "city" value
+ * @method string              getState()             Returns the current record's "state" value
+ * @method string              getCountry()           Returns the current record's "country" value
  * @method string              getEmail()             Returns the current record's "email" value
  * @method string              getPhone()             Returns the current record's "phone" value
  * @method string              getFax()               Returns the current record's "fax" value
@@ -38,6 +46,10 @@
  * @method Company             setIdentification()    Sets the current record's "identification" value
  * @method Company             setName()              Sets the current record's "name" value
  * @method Company             setAddress()           Sets the current record's "address" value
+ * @method Company             setPostalcode()        Sets the current record's "postalcode" value
+ * @method Company             setCity()              Sets the current record's "city" value
+ * @method Company             setState()             Sets the current record's "state" value
+ * @method Company             setCountry()           Sets the current record's "country" value
  * @method Company             setEmail()             Sets the current record's "email" value
  * @method Company             setPhone()             Sets the current record's "phone" value
  * @method Company             setFax()               Sets the current record's "fax" value
@@ -55,6 +67,10 @@
  * @method string              getIdentification()    Returns the current record's "identification" value
  * @method string              getName()              Returns the current record's "name" value
  * @method string              getAddress()           Returns the current record's "address" value
+ * @method string              getPostalcode()        Returns the current record's "postalcode" value
+ * @method string              getCity()              Returns the current record's "city" value
+ * @method string              getState()             Returns the current record's "state" value
+ * @method string              getCountry()           Returns the current record's "country" value
  * @method string              getEmail()             Returns the current record's "email" value
  * @method string              getPhone()             Returns the current record's "phone" value
  * @method string              getFax()               Returns the current record's "fax" value
@@ -70,6 +86,10 @@
  * @method Company             setIdentification()    Sets the current record's "identification" value
  * @method Company             setName()              Sets the current record's "name" value
  * @method Company             setAddress()           Sets the current record's "address" value
+ * @method Company             setPostalcode()        Sets the current record's "postalcode" value
+ * @method Company             setCity()              Sets the current record's "city" value
+ * @method Company             setState()             Sets the current record's "state" value
+ * @method Company             setCountry()           Sets the current record's "country" value
  * @method Company             setEmail()             Sets the current record's "email" value
  * @method Company             setPhone()             Sets the current record's "phone" value
  * @method Company             setFax()               Sets the current record's "fax" value
@@ -101,9 +121,25 @@ abstract class BaseCompany extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('address', 'string', 500, array(
+        $this->hasColumn('address', 'string', 255, array(
              'type' => 'string',
-             'length' => 500,
+             'length' => 255,
+             ));
+        $this->hasColumn('postalcode', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('city', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('state', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('country', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
              ));
         $this->hasColumn('email', 'string', 255, array(
              'type' => 'string',

@@ -459,8 +459,40 @@
         <target>Adreça de facturació</target>
       </trans-unit>
       <trans-unit>
+        <source>Invoicing City</source>
+        <target>Població de facturació</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invoicing Postal code</source>
+        <target>Codi postal de facturació</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invoicing State</source>
+        <target>Provincia de facturació</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invoicing Contry</source>
+        <target>Pais de facturació</target>
+      </trans-unit>
+      <trans-unit>
         <source>Shipping Address</source>
         <target>Adreça d'enviament</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Shipping City</source>
+        <target>Població d'enviament</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Shipping Postal code</source>
+        <target>Codi postal d'enviament</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Shipping State</source>
+        <target>Provincia d'enviament</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Shipping Contry</source>
+        <target>País d'enviament</target>
       </trans-unit>
       <trans-unit>
         <source>Client Email</source>

@@ -16,6 +16,10 @@
         <?php echo $form['company'][0]['identification']->renderRow(array('class' => 'full '.error_class($form['company'][0]['identification']))) ?>
         <?php echo $form['company'][0]['name']->renderRow(array('class' => 'full '.error_class($form['company'][0]['name']))) ?>
         <?php echo $form['company'][0]['address']->renderRow(array('class' => error_class($form['company'][0]['address']))) ?>
+        <?php echo $form['company'][0]['city']->renderRow(array('class' => error_class($form['company'][0]['city']))) ?>
+        <?php echo $form['company'][0]['postalcode']->renderRow(array('class' => error_class($form['company'][0]['postalcode']))) ?>
+        <?php echo $form['company'][0]['state']->renderRow(array('class' => error_class($form['company'][0]['state']))) ?>
+        <?php echo $form['company'][0]['country']->renderRow(array('class' => error_class($form['company'][0]['country']))) ?>
         <?php echo $form['company'][0]['phone']->renderRow(array('class' => error_class($form['company'][0]['phone']))) ?>
         <?php echo $form['company'][0]['fax']->renderRow(array('class' => error_class($form['company'][0]['fax']))) ?>
         <?php echo $form['company'][0]['email']->renderRow(array('class' => 'full '.error_class($form['company'][0]['email']))) ?>

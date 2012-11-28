@@ -99,7 +99,15 @@ class CustomerTable extends Doctrine_Table
       $res[$i]['customer_email'] = $item->getEmail();
       $res[$i]['contact_person'] = $item->getContactPerson();
       $res[$i]['invoicing_address'] = $item->getInvoicingAddress();
+      $res[$i]['invoicing_city'] = $item->getInvoicingCity();
+      $res[$i]['invoicing_state'] = $item->getInvoicingState();
+      $res[$i]['invoicing_postalcode'] = $item->getInvoicingPostalcode();
+      $res[$i]['invoicing_country'] = $item->getInvoicingCountry();
       $res[$i]['shipping_address'] = $item->getShippingAddress();
+      $res[$i]['shipping_city'] = $item->getShippingCity();
+      $res[$i]['shipping_state'] = $item->getShippingState();
+      $res[$i]['shipping_postalcode'] = $item->getShippingPostalcode();
+      $res[$i]['shipping_country'] = $item->getShippingCountry();
       $res[$i]['customer_phone'] = $item->getPhone();
       $res[$i]['customer_fax'] = $item->getFax();
       $res[$i]['comments'] = $item->getComments();

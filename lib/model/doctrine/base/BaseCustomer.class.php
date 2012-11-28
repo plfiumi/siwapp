@@ -11,8 +11,16 @@
  * @property string $identification
  * @property string $email
  * @property string $contact_person
- * @property clob $invoicing_address
- * @property clob $shipping_address
+ * @property string $invoicing_address
+ * @property string $invoicing_postalcode
+ * @property string $invoicing_city
+ * @property string $invoicing_state
+ * @property string $invoicing_country
+ * @property string $shipping_address
+ * @property string $shipping_postalcode
+ * @property string $shipping_city
+ * @property string $shipping_state
+ * @property string $shipping_country
  * @property string $website
  * @property string $phone
  * @property string $mobile
@@ -21,36 +29,52 @@
  * @property Company $Company
  * @property Doctrine_Collection $Commons
  * 
- * @method integer             getCompanyId()         Returns the current record's "company_id" value
- * @method string              getName()              Returns the current record's "name" value
- * @method string              getNameSlug()          Returns the current record's "name_slug" value
- * @method string              getIdentification()    Returns the current record's "identification" value
- * @method string              getEmail()             Returns the current record's "email" value
- * @method string              getContactPerson()     Returns the current record's "contact_person" value
- * @method clob                getInvoicingAddress()  Returns the current record's "invoicing_address" value
- * @method clob                getShippingAddress()   Returns the current record's "shipping_address" value
- * @method string              getWebsite()           Returns the current record's "website" value
- * @method string              getPhone()             Returns the current record's "phone" value
- * @method string              getMobile()            Returns the current record's "mobile" value
- * @method string              getFax()               Returns the current record's "fax" value
- * @method clob                getComments()          Returns the current record's "comments" value
- * @method Company             getCompany()           Returns the current record's "Company" value
- * @method Doctrine_Collection getCommons()           Returns the current record's "Commons" collection
- * @method Customer            setCompanyId()         Sets the current record's "company_id" value
- * @method Customer            setName()              Sets the current record's "name" value
- * @method Customer            setNameSlug()          Sets the current record's "name_slug" value
- * @method Customer            setIdentification()    Sets the current record's "identification" value
- * @method Customer            setEmail()             Sets the current record's "email" value
- * @method Customer            setContactPerson()     Sets the current record's "contact_person" value
- * @method Customer            setInvoicingAddress()  Sets the current record's "invoicing_address" value
- * @method Customer            setShippingAddress()   Sets the current record's "shipping_address" value
- * @method Customer            setWebsite()           Sets the current record's "website" value
- * @method Customer            setPhone()             Sets the current record's "phone" value
- * @method Customer            setMobile()            Sets the current record's "mobile" value
- * @method Customer            setFax()               Sets the current record's "fax" value
- * @method Customer            setComments()          Sets the current record's "comments" value
- * @method Customer            setCompany()           Sets the current record's "Company" value
- * @method Customer            setCommons()           Sets the current record's "Commons" collection
+ * @method integer             getCompanyId()            Returns the current record's "company_id" value
+ * @method string              getName()                 Returns the current record's "name" value
+ * @method string              getNameSlug()             Returns the current record's "name_slug" value
+ * @method string              getIdentification()       Returns the current record's "identification" value
+ * @method string              getEmail()                Returns the current record's "email" value
+ * @method string              getContactPerson()        Returns the current record's "contact_person" value
+ * @method string              getInvoicingAddress()     Returns the current record's "invoicing_address" value
+ * @method string              getInvoicingPostalcode()  Returns the current record's "invoicing_postalcode" value
+ * @method string              getInvoicingCity()        Returns the current record's "invoicing_city" value
+ * @method string              getInvoicingState()       Returns the current record's "invoicing_state" value
+ * @method string              getInvoicingCountry()     Returns the current record's "invoicing_country" value
+ * @method string              getShippingAddress()      Returns the current record's "shipping_address" value
+ * @method string              getShippingPostalcode()   Returns the current record's "shipping_postalcode" value
+ * @method string              getShippingCity()         Returns the current record's "shipping_city" value
+ * @method string              getShippingState()        Returns the current record's "shipping_state" value
+ * @method string              getShippingCountry()      Returns the current record's "shipping_country" value
+ * @method string              getWebsite()              Returns the current record's "website" value
+ * @method string              getPhone()                Returns the current record's "phone" value
+ * @method string              getMobile()               Returns the current record's "mobile" value
+ * @method string              getFax()                  Returns the current record's "fax" value
+ * @method clob                getComments()             Returns the current record's "comments" value
+ * @method Company             getCompany()              Returns the current record's "Company" value
+ * @method Doctrine_Collection getCommons()              Returns the current record's "Commons" collection
+ * @method Customer            setCompanyId()            Sets the current record's "company_id" value
+ * @method Customer            setName()                 Sets the current record's "name" value
+ * @method Customer            setNameSlug()             Sets the current record's "name_slug" value
+ * @method Customer            setIdentification()       Sets the current record's "identification" value
+ * @method Customer            setEmail()                Sets the current record's "email" value
+ * @method Customer            setContactPerson()        Sets the current record's "contact_person" value
+ * @method Customer            setInvoicingAddress()     Sets the current record's "invoicing_address" value
+ * @method Customer            setInvoicingPostalcode()  Sets the current record's "invoicing_postalcode" value
+ * @method Customer            setInvoicingCity()        Sets the current record's "invoicing_city" value
+ * @method Customer            setInvoicingState()       Sets the current record's "invoicing_state" value
+ * @method Customer            setInvoicingCountry()     Sets the current record's "invoicing_country" value
+ * @method Customer            setShippingAddress()      Sets the current record's "shipping_address" value
+ * @method Customer            setShippingPostalcode()   Sets the current record's "shipping_postalcode" value
+ * @method Customer            setShippingCity()         Sets the current record's "shipping_city" value
+ * @method Customer            setShippingState()        Sets the current record's "shipping_state" value
+ * @method Customer            setShippingCountry()      Sets the current record's "shipping_country" value
+ * @method Customer            setWebsite()              Sets the current record's "website" value
+ * @method Customer            setPhone()                Sets the current record's "phone" value
+ * @method Customer            setMobile()               Sets the current record's "mobile" value
+ * @method Customer            setFax()                  Sets the current record's "fax" value
+ * @method Customer            setComments()             Sets the current record's "comments" value
+ * @method Customer            setCompany()              Sets the current record's "Company" value
+ * @method Customer            setCommons()              Sets the current record's "Commons" collection
  * 
  * @package    siwapp
  * @subpackage model
@@ -85,11 +109,45 @@ abstract class BaseCustomer extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('invoicing_address', 'clob', null, array(
-             'type' => 'clob',
+        $this->hasColumn('invoicing_address', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
              ));
-        $this->hasColumn('shipping_address', 'clob', null, array(
-             'type' => 'clob',
+        $this->hasColumn('invoicing_postalcode', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('invoicing_city', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('invoicing_state', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('invoicing_country', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('shipping_address', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('shipping_postalcode', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('shipping_city', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('shipping_state', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('shipping_country', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
              ));
         $this->hasColumn('website', 'string', 255, array(
              'type' => 'string',

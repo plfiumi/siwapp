@@ -57,10 +57,10 @@
           <span>
             <span class="_50">
               <label><?php echo __('Invoicing address') ?>:</label>
-              <?php echo simple_format_text($invoice->getInvoicingAddress()) ?></span>
+<?php echo simple_format_text($invoice->getInvoicingAddress().'<br>'.$invoice->getInvoicingPostalcode().' '.$invoice->getInvoicingCity().'<br>'.$invoice->getInvoicingState().' '.$invoice->getInvoicingCountry()) ?></span>
             <span class="_50 _last">
               <label><?php echo __('Shipping address') ?>:</label>
-              <?php echo simple_format_text($invoice->getShippingAddress()) ?>
+<?php echo simple_format_text($invoice->getShippingAddress().'<br>'.$invoice->getShippingPostalcode().' '.$invoice->getShippingCity().'<br>'.$invoice->getShippingState().' '.$invoice->getShippingCountry()) ?>
             </span>
           </span>
           <span class="clear"></span>
