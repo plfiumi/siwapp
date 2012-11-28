@@ -75,6 +75,7 @@ echo javascript_tag("
       $('#".$invoiceForm['shipping_address']->renderId()."').val(item[5]);
       $('#".$invoiceForm['supplier_phone']->renderId()."').val(item[6]);
       $('#".$invoiceForm['supplier_fax']->renderId()."').val(item[7]);
+      $('#".$invoiceForm['default_expense_type']->renderId()."').val(item[8]);
       //Change al the expenses types that are not assigned
       $('#tbody_invoice_items select').each(function(idx,elem){
         if(elem.id.indexOf('expense_type_id')>0)

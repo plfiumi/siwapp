@@ -24,6 +24,7 @@ class ExpenseForm extends CommonForm
     $this->widgetSchema['due_date']   = 
       new sfWidgetFormI18nJQueryDate($this->JQueryDateOptions);
     $this->widgetSchema['draft']      = new sfWidgetFormInputHidden();
+    $this->widgetSchema['default_expense_type']      = new sfWidgetFormInputHidden();
     $this->widgetSchema['closed']->setLabel('Force to be closed');
 
     $this->widgetSchema['sent_by_email']->setLabel('Sent by email');
@@ -45,6 +46,7 @@ class ExpenseForm extends CommonForm
                                                      );
 
     $this->validatorSchema['supplier_name']  = new sfValidatorString(array('required' => true));
+    $this->validatorSchema['default_expense_type'] = new sfValidatorPass();
         
     $this->widgetSchema->setNameFormat('expense[%s]');
     parent::configure(true);

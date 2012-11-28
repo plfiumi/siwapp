@@ -41,6 +41,7 @@ $invoice = $invoiceForm->getObject();
     echo $invoiceForm['recurring_invoice_id'];
     echo $invoiceForm['supplier_id'];
     echo $invoiceForm['company_id'];
+    echo $invoiceForm['default_expense_type'];
   ?>
   <ul id="status">
     <li><?php echo __('Status')?>: <span class="status <?php echo ($stat = $invoice->getStatusString()) ?>"><?php echo __($stat)?></span></li>
