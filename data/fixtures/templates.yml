@@ -132,6 +132,7 @@ Template:
                {% if invoice.PaymentType.description %}
                   - {{invoice.PaymentType.description}}
                {% endif %}
+               <br> Due Date: {{invoice.due_date}}
           </div>
 
           <div class="payment-data">
@@ -344,8 +345,15 @@ Template:
          </div>
        </div>
 
-       <div class="section">
-         <h3>Payment details</h3>
+        <div class="section">
+          <h3>Payment details</h3>
+          <div>
+               Payment type: {{invoice.PaymentType.name}}
+               {% if invoice.PaymentType.description %}
+                  - {{invoice.PaymentType.description}}
+               {% endif %}
+               <br> Due Date: {{invoice.due_date}}
+          </div>
 
          <div class="payment-data">
            <table>
