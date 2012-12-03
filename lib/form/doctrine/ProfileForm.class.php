@@ -95,7 +95,9 @@ class ProfileForm extends BaseProfileForm
     $this->setDefaults(array(
         'nb_display_results'  => 10,
         'language'            => $user->getLanguage(),
-        'country'             => $user->getCountry()
+        'country'             => $user->getCountry(),
+        'username'            => $this->getOption('username'),
+        'superadmin'          => $this->getOption('superadmin'),
       ));
      
     $this->widgetSchema->setNameFormat('profile[%s]');
@@ -130,12 +132,12 @@ class ProfileForm extends BaseProfileForm
         }
         else if(strlen($this->values['new_password']))
         {
-            $user = Doctrine_Table::getTable('sfGuardUser')->find($values['sf_guard_user_id']);
+            $user = Doctrine_Core::getTable('sfGuardUser')->find($values['sf_guard_user_id']);
             $user->setPassword($pass);
             $user->setIsSuperAdmin($superadmin);
             $user->save();
         } else {
-            $user = Doctrine_Table::getTable('sfGuardUser')->find($values['sf_guard_user_id']);
+            $user = Doctrine_Core::getTable('sfGuardUser')->find($values['sf_guard_user_id']);
             $user->setIsSuperAdmin($superadmin);
             $user->save();
         }
