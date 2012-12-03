@@ -15,6 +15,12 @@ class ProfileForm extends BaseProfileForm
     
     $this->widgetSchema['company_user_list'] =  new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser'));
     
+    $this->widgetSchema['series'] = new sfWidgetFormSelect(
+                                          array(
+                                            'choices' => SeriesTable::getChoicesForSelect()
+                                            ));
+
+    
     $this->widgetSchema['username'] = new sfWidgetFormInputText();
     $this->widgetSchema['superadmin'] = new sfWidgetFormInputCheckbox(array(),array('value'=>1));
 
@@ -122,14 +128,14 @@ class ProfileForm extends BaseProfileForm
             $this->getObject()->setUser($user);
             $this->getObject()->save();
         }
-        else if(isset($values['new_password']))
+        else if(strlen($this->values['new_password']))
         {
-            $user = Doctirne_Table::getTable('sfGuardUser')->find($values['sf_guard_user_id']);
+            $user = Doctrine_Table::getTable('sfGuardUser')->find($values['sf_guard_user_id']);
             $user->setPassword($pass);
             $user->setIsSuperAdmin($superadmin);
             $user->save();
         } else {
-            $user = Doctirne_Table::getTable('sfGuardUser')->find($values['sf_guard_user_id']);
+            $user = Doctrine_Table::getTable('sfGuardUser')->find($values['sf_guard_user_id']);
             $user->setIsSuperAdmin($superadmin);
             $user->save();
         }

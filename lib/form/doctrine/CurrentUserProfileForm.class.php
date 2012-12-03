@@ -108,7 +108,7 @@ class CurrentUserProfileForm extends ProfileForm
   }
 
 
-  public function save($con = null)
+  public function save($con = null, $currentUser = false)
   {
     if(strlen($this->values['new_password']))
     {
