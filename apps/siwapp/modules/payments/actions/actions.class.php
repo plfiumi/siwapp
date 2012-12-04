@@ -44,14 +44,15 @@ class paymentsActions extends sfActions
     else
     {
       $this->forward404Unless($invoice = Doctrine::getTable('Common')->find($request->getParameter('invoice_id')));
-      
+      $invoice = Doctrine::getTable('Common')->find($request->getParameter('invoice_id'));
+
       $form = new PaymentsForm($request->getParameter('invoice_id'), array(
         'culture' => $this->getUser()->getCulture()
         ));
 
       return $this->renderPartial('payments/form', array(
         'form' => $form, 
-        'invoice_id' => $request->getParameter('invoice_id')
+        'invoice_id' => $request->getParameter('invoice_id'),
         ));
     }
   }
@@ -62,7 +63,8 @@ class paymentsActions extends sfActions
     $payment = new Payment();
     $payment->setCompanyId(sfContext::getInstance()->getUser()->getAttribute('company_id'));
     $payment->setInvoiceId($request->getParameter('invoice_id'));
-    
+    $invoice = Doctrine::getTable('Common')->find($request->getParameter('invoice_id'));
+    $payment->setAmount($invoice->getGrossAmount() - $invoice->getPaidAmount());
     // insert a PaymentForm with csrf protection disabled 
     $form = new PaymentForm($payment, array('culture'=>$this->getUser()->getCulture()), false);
     $form->getWidgetSchema()->setNameFormat('payments[new_'.$index.'][%s]');
