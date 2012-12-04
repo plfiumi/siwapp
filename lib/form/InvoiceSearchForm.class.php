@@ -29,7 +29,7 @@ class InvoiceSearchForm extends BaseForm
       'query'       => 'Search',
       'from'        => 'from',
       'to'          => 'to',
-      'quick_dates' => ' ',
+      'quick_dates' => 'Period',
       'series_id'   => 'Series',
       'customer_id' => 'Customer',
       'sent'        => 'Sent',

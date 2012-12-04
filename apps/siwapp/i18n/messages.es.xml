@@ -1506,6 +1506,10 @@
         <source>Last name</source>
         <target>Apellidos</target>
       </trans-unit>
+      <trans-unit>
+        <source>Period</source>
+        <target>Periodo</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

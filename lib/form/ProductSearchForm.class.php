@@ -26,7 +26,7 @@ class ProductSearchForm extends BaseForm
       'category' => 'Category',
       'from'        => 'from',
       'to'          => 'to',
-      'quick_dates' => ' ',
+      'quick_dates' => 'Period',
       
                                          ));
     $dateRangeValidatorOptions = array(

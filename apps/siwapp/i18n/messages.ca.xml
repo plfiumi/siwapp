@@ -1510,6 +1510,10 @@
         <source>Last name</source>
         <target>Cognoms</target>
       </trans-unit>
+      <trans-unit>
+        <source>Period</source>
+        <target>Període</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

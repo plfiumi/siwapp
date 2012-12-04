@@ -24,7 +24,7 @@ class SupplierSearchForm extends BaseForm
       'query'       => 'Search',
       'from'        => 'from',
       'to'          => 'to',
-      'quick_dates' => ' ',
+      'quick_dates' => 'Period',
     ));
 
     $dateRangeValidatorOptions = array(
