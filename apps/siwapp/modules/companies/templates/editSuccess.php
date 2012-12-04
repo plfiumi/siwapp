@@ -59,7 +59,7 @@ $company = $companyForm->getObject();
         <?php echo render_tag($companyForm['state'])?>
       </span>
         <span class="_25">
-        <label for="<? echo $companyForm['country']->renderId()?>"><?php echo __('Contry') ?></label>
+        <label for="<? echo $companyForm['country']->renderId()?>"><?php echo __('Country') ?></label>
         <?php echo render_tag($companyForm['country'])?>
       </span>
     </li>

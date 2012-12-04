@@ -1482,6 +1482,34 @@
         <source>Use for Expenses</source>
         <target>Usar en despeses</target>
       </trans-unit>
+      <trans-unit>
+        <source>City</source>
+        <target>Ciutat</target>
+      </trans-unit>
+      <trans-unit>
+        <source>State</source>
+        <target>Provincia</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Postal code</source>
+        <target>Codi postal</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Country</source>
+        <target>Pais</target>
+      </trans-unit>
+      <trans-unit>
+        <source>New password2</source>
+        <target>Repeteix contrasenya</target>
+      </trans-unit>
+      <trans-unit>
+        <source>First name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Last name</source>
+        <target>Cognoms</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
