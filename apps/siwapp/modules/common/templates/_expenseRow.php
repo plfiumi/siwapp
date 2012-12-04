@@ -87,7 +87,7 @@ execute();
     </span>
     
   </td>
-    <td class="right price"><?php echo format_currency(Tools::getRounded(Tools::getGrossAmount($invoiceItemForm['unitary_cost']->getValue(),$invoiceItemForm['quantity']->getValue(),0,$totalTaxesValue), Tools::getDecimals()), $currency) ?> </td>
+    <td class="right price"><?php echo format_currency(Tools::getRounded(Tools::getNetAmount($invoiceItemForm['unitary_cost']->getValue(),$invoiceItemForm['quantity']->getValue(),0,$totalTaxesValue), Tools::getDecimals()), $currency) ?> </td>
 </tr>
 <?php
 $urlAjax = url_for('common/ajaxInvoiceItemsAutocomplete');

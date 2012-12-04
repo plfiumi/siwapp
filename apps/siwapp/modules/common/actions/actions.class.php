@@ -51,7 +51,7 @@ class commonActions extends sfActions
           $item->Taxes = $taxes;
         }
         
-        $items[$itemId] = $format->format($item->getGrossAmount(), 'c', $currency);
+        $items[$itemId] = $format->format($item->getNetAmount(), 'c', $currency);
 
         $invoice->Items[] = $item;
       }
