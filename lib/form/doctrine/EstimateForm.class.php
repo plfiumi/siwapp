@@ -14,7 +14,7 @@ class EstimateForm extends BaseEstimateForm
    * @see CommonForm
    */
   
-  public function configure()
+  public function configure($expense = false)
   {
     unset($this['number'], $this['due_date'], $this['closed'], $this['created_at'], $this['updated_at'], $this['series_id']);
     
