@@ -76,11 +76,11 @@ $csrf     = new sfForm();
                         $rel = $invoice->getEstimate()->getId();
                         if(isset($rel))
                         {
-                           echo link_to(_('Go to Estimate'),'@estimates_edit?id='.$rel);
+                           echo link_to(__('Go to Estimate'),'@estimates_edit?id='.$rel);
                         }
                         else
                         {
-                           echo _('No related Estimate');
+                           echo __('No related Estimate');
                         }
 
                ?></td>

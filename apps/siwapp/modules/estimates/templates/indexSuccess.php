@@ -74,11 +74,11 @@ $csrf     = new sfForm();
                         $rel = $invoice->getRelatedInvoice()->getId();
                         if(isset($rel))
                         {
-                           echo link_to(_('Go to Invoice'),'@invoices_show?id='.$rel);
+                           echo link_to(__('Go to Invoice'),'@invoices_show?id='.$rel);
                         }
                         else
                         {
-                           echo _('Not invoiced');
+                           echo __('Not invoiced');
                         }
 
                ?></td>

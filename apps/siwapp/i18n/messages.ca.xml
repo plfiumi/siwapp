@@ -1514,6 +1514,22 @@
         <source>Period</source>
         <target>Període</target>
       </trans-unit>
+      <trans-unit>
+        <source>No related Estimate</source>
+        <target>Cap pressupost</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Go to Estimate</source>
+        <target>Veure pressupost</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Not invoiced</source>
+        <target>Cap factura</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Go to Invoice</source>
+        <target>Veure factura</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

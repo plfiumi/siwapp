@@ -1510,6 +1510,22 @@
         <source>Period</source>
         <target>Periodo</target>
       </trans-unit>
+      <trans-unit>
+        <source>No related Estimate</source>
+        <target>Sin presupuesto</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Go to Estimate</source>
+        <target>Ver presupuesto</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Not invoiced</source>
+        <target>Sin factura</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Go to Invoice</source>
+        <target>Ver factura</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
