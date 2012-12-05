@@ -40,7 +40,7 @@
       <!-- ##### DASHBOARD ##### -->
       <trans-unit>
         <source>Dashboard</source>
-        <target>Resumenen</target>
+        <target>Resumen</target>
       </trans-unit>
       <trans-unit>
         <source>Recent invoices</source>
