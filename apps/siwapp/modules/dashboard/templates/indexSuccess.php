@@ -8,6 +8,10 @@
   <table class="dashboard-info">
     <tbody>
       <tr>
+        <th><?php echo __('Total') ?></th>
+        <th id="total" class="right"><?php echo format_currency($epending+$eapproved+$erejected, $currency)?></th>
+      </tr>
+      <tr>
         <td><?php echo __('Pending') ?></td>
         <td id="pending" class="right"><?php echo format_currency($epending, $currency)?></td>
       </tr>
@@ -28,28 +32,16 @@
   <table class="dashboard-info">
     <tbody>
       <tr>
+        <th><?php echo __('Total') ?></th>
+        <th id="total" class="right"><?php echo format_currency($gross, $currency)?></th>
+      </tr>
+      <tr>
         <td><?php echo __('Recived') ?></td>
         <td id="receipts" class="right"><?php echo format_currency($paid, $currency)?></td>
       </tr>
       <tr>
         <td><?php echo __('Due') ?><br/><small></small></td>
         <td id="due" class="totalDue right"><?php echo format_currency($due, $currency)?></td>
-      </tr>
-      <tr class="overdue">
-        <td><?php echo __('Overdue') ?></td>
-        <td id="overdue" class="right"><?php echo format_currency($odue, $currency)?></td>
-      </tr>
-      <tr>
-        <td><?php echo __('Total') ?></td>
-        <td id="dashboard-balance-total" class="right"><?php echo format_currency($gross,$currency);?></td>
-      </tr>
-      <tr>
-        <td><?php echo __('Net') ?></td>
-        <td id="dashboard-balance-net" class="right"><?php echo format_currency($net,$currency);?></td>
-      </tr>
-      <tr>
-        <td><?php echo __('Taxes') ?></td>
-        <td id="dashboard-balance-taxes" class="right"><?php echo format_currency($taxes,$currency);?></td>
       </tr>
     </tbody>
   </table>
@@ -60,24 +52,16 @@
   <table class="dashboard-info">
     <tbody>
       <tr>
+        <th><?php echo __('Total') ?></th>
+        <th id="total" class="right"><?php echo format_currency($expense_gross, $currency)?></th>
+      </tr>
+      <tr>
         <td><?php echo __('Paid') ?></td>
         <td id="receipts" class="right"><?php echo format_currency($expense_paid, $currency)?></td>
       </tr>
       <tr>
         <td><?php echo __('Due') ?><br/><small></small></td>
         <td id="due" class="totalDue right"><?php echo format_currency($expense_due, $currency)?></td>
-      </tr>
-      <tr>
-        <td><?php echo __('Total') ?></td>
-        <td id="dashboard-balance-total" class="right"><?php echo format_currency($expense_gross,$currency);?></td>
-      </tr>
-      <tr>
-        <td><?php echo __('Net') ?></td>
-        <td id="dashboard-balance-net" class="right"><?php echo format_currency($expense_net,$currency);?></td>
-      </tr>
-      <tr>
-        <td><?php echo __('Taxes') ?></td>
-        <td id="dashboard-balance-taxes" class="right"><?php echo format_currency($expense_taxes,$currency);?></td>
       </tr>
     </tbody>
   </table>
@@ -87,16 +71,16 @@
   <table class="dashboard-info">
     <tbody>
       <tr>
+        <th><?php echo __('Net Profit') ?></th>
+        <th id="dashboard-balance-taxes" class="right"><?php echo format_currency($gross-$expense_gross,$currency);?></th>
+      </tr>
+      <tr>
         <td><?php echo __('Total Revenue') ?></td>
         <td id="dashboard-balance-total" class="right"><?php echo format_currency($gross,$currency);?></td>
       </tr>
       <tr>
         <td><?php echo __('Total Expenses') ?></td>
         <td id="dashboard-balance-net" class="right"><?php echo format_currency($expense_gross,$currency);?></td>
-      </tr>
-      <tr>
-        <td><?php echo __('Net Profit') ?></td>
-        <td id="dashboard-balance-taxes" class="right"><?php echo format_currency($gross-$expense_gross,$currency);?></td>
       </tr>
     </tbody>
   </table>
