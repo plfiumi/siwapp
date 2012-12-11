@@ -34,9 +34,10 @@ class SupplierTable extends Doctrine_Table
    **/
   public function matchName($text)
   {
-    $Supplier = $this->findOneBy('NameSlug', self::slugify($text));
-      
-    return $Supplier;
+    return $this->createQuery()
+      ->where('name_slug = ?', self::slugify($text))
+      ->AndWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
+      ->fetchONe();
   }
   
   /**

@@ -34,9 +34,10 @@ class CustomerTable extends Doctrine_Table
    **/
   public function matchName($text)
   {
-    $customer = $this->findOneBy('NameSlug', self::slugify($text));
-      
-    return $customer;
+    return $this->createQuery()
+      ->where('name_slug = ?', self::slugify($text))
+      ->AndWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
+      ->fetchONe();
   }
   
   /**
