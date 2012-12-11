@@ -1444,7 +1444,7 @@
       </trans-unit>
       <trans-unit>
         <source>Profit and Loss</source>
-        <target>Perdidas y ganancias</target>
+        <target>Resultado</target>
       </trans-unit>
       <trans-unit>
         <source>Total Revenue</source>
@@ -1456,7 +1456,7 @@
       </trans-unit>
       <trans-unit>
         <source>Net Profit</source>
-        <target>Beneficio Neto</target>
+        <target>Total</target>
       </trans-unit>
       <trans-unit>
         <source>Recived</source>
