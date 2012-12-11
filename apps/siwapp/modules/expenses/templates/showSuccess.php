@@ -66,6 +66,7 @@
     <div id="payment-data" class="block">
       <h3><?php echo __('Payment details') ?></h3>
       <p><label><?php echo __('Issued at') ?>:</label> <?php echo $invoice->getIssueDate() ?> <label></p>
+      <p><label><?php echo __('Due date') ?>:</label> <?php echo $invoice->getDueDate() ?> <label></p>
       <p><label><?php echo __('Supplier reference') ?>:</label> <?php echo $invoice->getSupplierReference() ?> <label></p>
 
       <table class="listing">

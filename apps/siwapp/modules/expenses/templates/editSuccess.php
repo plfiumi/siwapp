@@ -55,6 +55,7 @@ $invoice = $invoiceForm->getObject();
     <h3><?php echo __('Payment details') ?></h3>
     <ul class="inline">
       <?php echo $invoiceForm['issue_date']->renderRow() ?>
+      <?php echo $invoiceForm['due_date']->renderRow() ?>
       <?php echo $invoiceForm['supplier_reference']->renderRow() ?>
     </ul>
       
