@@ -72,7 +72,7 @@
           </div>
         <?php endif ?>
       </td>
-      <td><?php echo __('Base') ?></td>
+      <td><?php echo __('Subtotal') ?></td>
       <td class="base right">
         <?php echo format_currency($invoice->getRoundedAmount('base'), $currency) ?>
       </td>
@@ -86,7 +86,7 @@
     </tr>
     <?php endif; ?>
     <tr>
-      <td><?php echo __('Subtotal') ?></td>
+      <td><?php echo __('Base') ?></td>
       <td class="net right">
         <?php echo format_currency($invoice->getRoundedAmount('net'), $currency)?>
       </td>
