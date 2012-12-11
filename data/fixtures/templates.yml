@@ -712,6 +712,9 @@ Template:
           </style>
         </head>
         <body>
+          <div class="h2">
+           <h2> Expense #{{expense}}</h2>
+          </div>
           <div class="section">
             <h3>Supplier info</h3>
 
