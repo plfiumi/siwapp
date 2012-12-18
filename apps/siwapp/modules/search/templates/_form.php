@@ -8,7 +8,6 @@ echo javascript_tag("var customer_name_autocomplete = '".$customer_name."'");
     <div class="searchSection">
       <ul>
         <?php
-        echo $form['query']->renderRow();
         echo $form['from']->renderRow(); 
         echo $form['to']->renderRow();
         echo $form['quick_dates']->renderRow();

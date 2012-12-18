@@ -74,7 +74,8 @@ class ProductQuery extends Doctrine_Query
       //TODO MCY check if we could use a parameter instead
       $this
         ->addWhere("(p.reference LIKE '%$text%'".
-                   "OR p.description LIKE '%$text%') ");
+                   " OR p.description LIKE '%$text%') ");
+                   
 
     }
     return $this;
