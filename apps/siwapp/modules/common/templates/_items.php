@@ -85,12 +85,14 @@
       </td>
     </tr>
     <?php endif; ?>
+    <?php foreach ($invoice->getBasesDetails() as $name => $amount): ?>
     <tr>
-      <td><?php echo __('Base') ?></td>
+      <td><?php echo __('Base')." ".$name ?></td>
       <td class="net right">
-        <?php echo format_currency($invoice->getRoundedAmount('net'), $currency)?>
+        <?php echo format_currency($amount, $currency)?>
       </td>
     </tr>
+    <?php endforeach ?>
     <?php foreach ($invoice->getTaxDetails() as $name => $amount): ?>
       <tr>
         <td><?php echo __('Total')." ".$name ?></td>

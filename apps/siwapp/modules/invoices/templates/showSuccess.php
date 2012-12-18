@@ -104,20 +104,24 @@
           <?php endif ?>
         </tbody>
         <tfoot id="global_calculations">
+          <?php foreach ($invoice->getBasesDetails() as $name => $amount): ?>
           <tr>
-            <td colspan="4" rowspan="25" class="noborder"></td>
-            <td><?php echo __('Subtotal') ?></td>
+            <td colspan="4" class="noborder"></td>
+            <td><?php echo __('Base')." ".$name ?></td>
             <td id="td_subtotal" class="right">
-              <?php echo format_currency($invoice->getNetAmount(), $currency) ?>
+              <?php echo format_currency($amount, $currency) ?>
             </td>
           </tr>
+          <?php endforeach ?>
           <?php foreach ($invoice->getTaxDetails() as $name => $amount): ?>
           <tr>
+            <td colspan="4" class="noborder"></td>
             <td><?php echo __('Total')." ".$name ?></td>
             <td class="right"><?php echo format_currency($amount,$currency)?></td>
           </tr>
           <?php endforeach ?>
           <tr>
+            <td colspan="4" rowspan="3" class="noborder"></td>
             <td><?php echo __('Taxes Total') ?></td>
             <td id="td_total_taxes" class="right">
               <?php echo format_currency($invoice->getTaxAmount(), $currency) ?>

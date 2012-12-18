@@ -102,6 +102,19 @@ class Item extends BaseItem
     return $detail;
   }
 
+  public function getBaseDetail($tax_names = null)
+  {
+    $detail = array();
+    foreach($this->Taxes as $tax)
+    {
+      {
+        $detail[$tax->getName()] = $this->getBaseAmount($tax->getName());
+      }
+    }
+
+    return $detail;
+  }  
+
   public function getQuantity()
   {
     return (float) $this->_get('quantity');

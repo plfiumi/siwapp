@@ -117,6 +117,32 @@ class Common extends BaseCommon
     return $result;
   }
 
+  public function getBasesDetails()
+  {
+    $result = array();
+    foreach ($this->getItems() as $item)
+    {
+      foreach ( $item->getBaseDetail() as $name => $ammount)
+      {
+        if (isset($result[$name]))
+        {
+          $result[$name] += $ammount;
+        }
+        else
+        {
+          $result[$name] = $ammount;
+        }
+      }
+    }
+    //Round the items so we get no diferencies.
+    foreach ( $result as $key => $val)
+    {
+      $result[$key] = round($val,$this->getDecimals());
+    }
+
+    return $result;
+  }
+
    /**
    * Gets an Invoice by the Estimate ID
    * @author: Sergi Almacellas Abellana <sergi.almacellas@btactic.com>
