@@ -1526,6 +1526,14 @@
         <source>Go to Invoice</source>
         <target>Ver factura</target>
       </trans-unit>
+      <trans-unit>
+        <source>portrait</source>
+        <target>Vertical</target>
+      </trans-unit>
+      <trans-unit>
+        <source>landscape</source>
+        <target>Horitzontal</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
