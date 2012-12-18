@@ -23,7 +23,6 @@ class ExpenseQuery extends CommonInvoiceQuery
     {
       if(isset($search['from'])) $this->fromDate($search['from']);
       if(isset($search['to'])) $this->toDate($search['to']);
-      if(isset($search['sent'])) $this->sent($search['sent']);
     }
 
     return $this;
