@@ -49,8 +49,7 @@ class CustomerTable extends Doctrine_Table
   public function updateCustomer($obj)
   {
     $customer = $this->getCustomerMatch($obj);
-    if($customer->isNew() || 
-       !in_array('customers',PropertyTable::get('siwapp_modules',array())))
+    if($customer->isNew())
     {
       $customer->setDataFrom($obj);
     }

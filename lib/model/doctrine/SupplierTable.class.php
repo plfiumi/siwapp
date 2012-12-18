@@ -49,8 +49,7 @@ class SupplierTable extends Doctrine_Table
   public function updateSupplier($obj)
   {
     $Supplier = $this->getSupplierMatch($obj);
-    if($Supplier->isNew() || 
-       !in_array('Suppliers',PropertyTable::get('siwapp_modules',array())))
+    if($Supplier->isNew())
     {
       $Supplier->setDataFrom($obj);
     }
