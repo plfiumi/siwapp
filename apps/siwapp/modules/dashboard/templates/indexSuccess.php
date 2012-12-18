@@ -189,6 +189,7 @@
         <th class="number"><?php echo __('Number') ?></th>
         <th><?php echo __('Supplier Name') ?></th>
         <th><?php echo __('Date') ?></th>
+        <th><?php echo __('Due Date') ?></th>
         <th class="right due"><?php echo __('Due') ?></th>
         <th class="right total"><?php echo __('Total') ?></th>
         <th class="noborder"></th>
@@ -206,6 +207,7 @@
           <td class="number"><?php echo $invoice ?></td>
           <td><?php echo $invoice->getSupplierName() ?></td>
           <td class="date"><?php echo format_date($invoice->getIssueDate()) ?></td>
+          <td class="date"><?php echo format_date($invoice->getDueDate()) ?></td>
           <td class="due right"><?php echo format_currency($invoice->getDueAmount(), $currency)?></td>
           <td class="right"><?php echo format_currency($invoice->getGrossAmount(), $currency) ?></td>
           <td class="action payments">
