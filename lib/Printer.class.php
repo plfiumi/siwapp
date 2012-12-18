@@ -95,4 +95,22 @@ class Printer
     return $q->getPdf();
   }
   
+  public function getInvoiceData($model,$ids)
+  {
+    $data   = array();
+    // explicit all the relations so they are already loaded for the template
+
+    $finder = Doctrine::getTable($model)->createQuery()
+      ->from($model.' in')->
+      leftJoin('in.Company c')->
+      leftJoin('in.Items it')->leftJoin('it.Taxes tx')->leftJoin('in.PaymentType pt')->
+      whereIn('in.id', $ids)->execute();
+
+    foreach ($finder as $invoice)
+    {
+      $data[] = $invoice;
+    }
+    return $data;
+  }
+  
 }

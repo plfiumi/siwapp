@@ -87,13 +87,8 @@ class InvoiceMessage extends SiwappMessage
     parent::__construct();
     $this->setTo($invoice->customer_email, $invoice->customer_name);
 
-    // To get all the properties loaded for the template
-    foreach($invoice->Items as $it)
-    {
-      $it->refreshRelated();
-    }
-    $data[] = $invoice;
     $model = get_class($invoice);
+    $data = Printer::getInvoiceData($model,$invoice->getId());
     $printer = new Printer($model, TemplateTable::getTemplateForModel($model)->getId());
 
     try
