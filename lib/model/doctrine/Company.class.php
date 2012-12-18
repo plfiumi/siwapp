@@ -32,7 +32,7 @@ class Company extends BaseCompany
 
   public function getLogoURL()
   {
-    return self::getUploadsDir().'/'.$this->getLogo();
+    return str_replace("\\", "/",self::getUploadsDir().'/'.$this->getLogo());
   }
 
   public static function getUploadsDir()
