@@ -130,6 +130,7 @@ class CustomerTable extends Doctrine_Table
   {
     $items = Doctrine::getTable('Customer')->createQuery()
       ->where('name_slug LIKE ?', '%'.CustomerTable::slugify($q).'%')
+      ->AndWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
       ->limit($limit)
       ->execute();
     
