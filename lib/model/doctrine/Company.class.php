@@ -39,9 +39,11 @@ class Company extends BaseCompany
 
   public static function getUploadsDir()
   {
+    $uri = sfContext::getInstance()->getRequest()->getUri();
+    $server_url = substr($uri,0,strpos($uri,'/',9));
     $root_path = substr($_SERVER['SCRIPT_NAME'],0,strrpos($_SERVER['SCRIPT_NAME'],'/'));
     $web_dir = str_replace(DIRECTORY_SEPARATOR,'/',sfConfig::get('sf_web_dir'));
     $upload_dir = str_replace(DIRECTORY_SEPARATOR,'/',sfConfig::get('sf_upload_dir'));
-    return $root_path.str_replace($web_dir, null, $upload_dir);
+    return $server_url.$root_path.str_replace($web_dir, null, $upload_dir);
   }
 }
