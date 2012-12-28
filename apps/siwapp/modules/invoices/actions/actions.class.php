@@ -204,6 +204,76 @@ class invoicesActions extends sfActions
    *
    * @return void
    **/
+  public function executeExport(sfWebRequest $request)
+  {
+    $i18n = $this->getContext()->getI18N();
+    $form = new sfForm();
+    $form->bind(array('_csrf_token' => $request->getParameter('_csrf_token')));
+    
+    if($form->isValid() || $this->getContext()->getConfiguration()->getEnvironment() == 'test')
+    {
+      $n = 0;
+      $objPHPExcel = new sfPhpExcel();
+      //Generate Headers.
+      $objPHPExcel->getActiveSheet()->setTitle('VENTAS');
+      $objPHPExcel->getActiveSheet()->setCellValue('A1', 'FECHA');
+      $objPHPExcel->getActiveSheet()->setCellValue('B1', 'REGISTRO');
+      $objPHPExcel->getActiveSheet()->setCellValue('C1', 'CUENTA');
+      $objPHPExcel->getActiveSheet()->setCellValue('D1', 'NIF');
+      $objPHPExcel->getActiveSheet()->setCellValue('E1', 'NOMBRE');
+      $objPHPExcel->getActiveSheet()->setCellValue('F1', 'DESCRIPCIÓN');
+      $objPHPExcel->getActiveSheet()->setCellValue('G1', 'BASE');
+      $objPHPExcel->getActiveSheet()->setCellValue('H1', '%IVA');
+      $objPHPExcel->getActiveSheet()->setCellValue('H1', 'IMPORTE IVA');
+      $objPHPExcel->getActiveSheet()->setCellValue('J1', 'BASE RETENCION');
+      $objPHPExcel->getActiveSheet()->setCellValue('K1', '%IRPF');
+      $objPHPExcel->getActiveSheet()->setCellValue('L1', 'TOTAL IRPF');
+      $objPHPExcel->getActiveSheet()->setCellValue('M1', 'TOTAL');
+      $objPHPExcel->getActiveSheet()->setCellValue('N1', 'CONTRAPARTIDA'); 
+      $objPHPExcel->getActiveSheet()->setCellValue('O1', 'PAIS'); 
+      $objPHPExcel->getActiveSheet()->setCellValue('P1', 'PROVINCIA'); 
+      $objPHPExcel->getActiveSheet()->setCellValue('Q1', 'PAGO AUTOMATICO'); 
+      $objPHPExcel->getActiveSheet()->setCellValue('R1', 'OPERACION ARRENDAMIENTO'); 
+      foreach($request->getParameter('ids', array()) as $id)
+      {
+        if($invoice = Doctrine::getTable('Invoice')->find($id))
+        {
+            //TODO: 
+              $objPHPExcel->getActiveSheet()->setCellValue('A'. ($n+2), $invoice->getIssueDate()); //FECHA
+              $objPHPExcel->getActiveSheet()->setCellValue('B'. ($n+2), 'REGISTRO'); //REGISTRO
+              $objPHPExcel->getActiveSheet()->setCellValue('C'. ($n+2), ''); //CUENTA
+              $objPHPExcel->getActiveSheet()->setCellValue('D'. ($n+2), $invoice->getCustomerIdentification()); //NIF
+              $objPHPExcel->getActiveSheet()->setCellValue('E'. ($n+2), $invoice->getCustomerName()); //NOMBRE
+              $objPHPExcel->getActiveSheet()->setCellValue('F'. ($n+2), ''); //DESCRIPCIÓN
+              $objPHPExcel->getActiveSheet()->setCellValue('G'. ($n+2), $invoce->getGrossAmount()); //BASE 
+              $objPHPExcel->getActiveSheet()->setCellValue('H'. ($n+2), '%IVA'); //%IVA
+              $objPHPExcel->getActiveSheet()->setCellValue('H'. ($n+2), $invoice->getTaxAmount()); //IMPORTE IVA
+              $objPHPExcel->getActiveSheet()->setCellValue('J'. ($n+2), 0); //BASE RETENCION
+              $objPHPExcel->getActiveSheet()->setCellValue('K'. ($n+2), 0); //%IRPF
+              $objPHPExcel->getActiveSheet()->setCellValue('L'. ($n+2), 0); //TOTAL IRPF
+              $objPHPExcel->getActiveSheet()->setCellValue('M'. ($n+2), $invoice->getNetAmount()); //TOTAL
+              $objPHPExcel->getActiveSheet()->setCellValue('N'. ($n+2), ''); //CONTRAPARTIDA 
+              $objPHPExcel->getActiveSheet()->setCellValue('O'. ($n+2), ''); //PAIS
+              $objPHPExcel->getActiveSheet()->setCellValue('P'. ($n+2), ''); //PROVINCIA
+              $objPHPExcel->getActiveSheet()->setCellValue('Q'. ($n+2), ''); //PAGO AUTOMATICO
+              $objPHPExcel->getActiveSheet()->setCellValue('R'. ($n+2), ''); //OPERACION ARRENDAMIENTO
+              $n++;
+        }
+      }
+      $objPHPExcel->setActiveSheetIndex(0);
+      $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+      $objWriter->save('Invoices_export.xls');
+
+    }
+
+    $this->redirect('@invoices');
+  }
+  
+  /**
+   * batch actions
+   *
+   * @return void
+   **/
   public function executeBatch(sfWebRequest $request)
   {
     $i18n = $this->getContext()->getI18N();
