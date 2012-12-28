@@ -58,14 +58,6 @@
     </li>
   </ul>
   </fieldset>
-</div>
-  <div id="company-users-data" class="global-data block">
-    <h3><?php echo __('Assigned Users') ?></h3>
-    <ul>
-    <li>
-      <span class="_50"><?php echo render_tag($form['company'][0]['company_user_list'])?></span>  
-    </li>
-  </ul>
     
     <fieldset class="left taxes taxseries">
       <h3><?php echo __('Invoicing taxes') ?></h3>
