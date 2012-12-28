@@ -34,6 +34,11 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'mobile'               => new sfWidgetFormFilterInput(),
       'fax'                  => new sfWidgetFormFilterInput(),
       'comments'             => new sfWidgetFormFilterInput(),
+      'iban'                 => new sfWidgetFormFilterInput(),
+      'entity'               => new sfWidgetFormFilterInput(),
+      'office'               => new sfWidgetFormFilterInput(),
+      'control_digit'        => new sfWidgetFormFilterInput(),
+      'account'              => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -58,6 +63,11 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'mobile'               => new sfValidatorPass(array('required' => false)),
       'fax'                  => new sfValidatorPass(array('required' => false)),
       'comments'             => new sfValidatorPass(array('required' => false)),
+      'iban'                 => new sfValidatorPass(array('required' => false)),
+      'entity'               => new sfValidatorPass(array('required' => false)),
+      'office'               => new sfValidatorPass(array('required' => false)),
+      'control_digit'        => new sfValidatorPass(array('required' => false)),
+      'account'              => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('customer_filters[%s]');
@@ -99,6 +109,11 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'mobile'               => 'Text',
       'fax'                  => 'Text',
       'comments'             => 'Text',
+      'iban'                 => 'Text',
+      'entity'               => 'Text',
+      'office'               => 'Text',
+      'control_digit'        => 'Text',
+      'account'              => 'Text',
     );
   }
 }

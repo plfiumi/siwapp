@@ -1534,6 +1534,30 @@
         <source>landscape</source>
         <target>Horitzontal</target>
       </trans-unit>
+      <trans-unit>
+        <source>Mercantil registry</source>
+        <target>Registro mercantil</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Bank details</source>
+        <target>Datos bancarios</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Entity</source>
+        <target>Entidad</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Office</source>
+        <target>Oficina</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Control digit</source>
+        <target>Dígito de control</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Account</source>
+        <target>Cuenta corriente</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

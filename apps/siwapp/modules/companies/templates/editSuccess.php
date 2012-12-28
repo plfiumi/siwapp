@@ -93,6 +93,35 @@ $company = $companyForm->getObject();
         <label for="<? echo $companyForm['pdf_size']->renderId()?>"><?php echo __('Page size') ?></label>
         <?php echo render_tag($companyForm['pdf_size']) ?></span>
     </li>
+    <li>
+      <span class="_75">
+        <label for="<? echo $companyForm['mercantil_registry']->renderId()?>"><?php echo __('Mercantil registry') ?></label>
+        <?php echo render_tag($companyForm['mercantil_registry'])?>
+      </span>     
+    </li>
+  </ul>
+</div>
+  <div id="company-bank-data" class="global-data block">
+    <h3><?php echo __('Bank details') ?></h3>
+    <ul>
+    <li>
+      <span class="_50">
+        <label for="<? echo $companyForm['entity']->renderId()?>"><?php echo __('Entity') ?></label>
+        <?php echo render_tag($companyForm['entity'])  ?>
+        </span>
+      <span class="_50">
+        <label for="<? echo $companyForm['office']->renderId()?>"><?php echo __('Office') ?></label>
+        <?php echo render_tag($companyForm['office']) ?></span>
+    </li>
+    <li>
+      <span class="_50">
+        <label for="<? echo $companyForm['control_digit']->renderId()?>"><?php echo __('Control digit') ?></label>
+        <?php echo render_tag($companyForm['control_digit'])  ?>
+        </span>
+      <span class="_50">
+        <label for="<? echo $companyForm['account']->renderId()?>"><?php echo __('Account') ?></label>
+        <?php echo render_tag($companyForm['account']) ?></span>
+    </li>
   </ul>
 </div>
   <div id="company-users-data" class="global-data block">

@@ -26,6 +26,11 @@
  * @property string $mobile
  * @property string $fax
  * @property clob $comments
+ * @property string $iban
+ * @property string $entity
+ * @property string $office
+ * @property string $control_digit
+ * @property string $account
  * @property Company $Company
  * @property Doctrine_Collection $Commons
  * 
@@ -50,6 +55,11 @@
  * @method string              getMobile()               Returns the current record's "mobile" value
  * @method string              getFax()                  Returns the current record's "fax" value
  * @method clob                getComments()             Returns the current record's "comments" value
+ * @method string              getIban()                 Returns the current record's "iban" value
+ * @method string              getEntity()               Returns the current record's "entity" value
+ * @method string              getOffice()               Returns the current record's "office" value
+ * @method string              getControlDigit()         Returns the current record's "control_digit" value
+ * @method string              getAccount()              Returns the current record's "account" value
  * @method Company             getCompany()              Returns the current record's "Company" value
  * @method Doctrine_Collection getCommons()              Returns the current record's "Commons" collection
  * @method Customer            setCompanyId()            Sets the current record's "company_id" value
@@ -73,6 +83,11 @@
  * @method Customer            setMobile()               Sets the current record's "mobile" value
  * @method Customer            setFax()                  Sets the current record's "fax" value
  * @method Customer            setComments()             Sets the current record's "comments" value
+ * @method Customer            setIban()                 Sets the current record's "iban" value
+ * @method Customer            setEntity()               Sets the current record's "entity" value
+ * @method Customer            setOffice()               Sets the current record's "office" value
+ * @method Customer            setControlDigit()         Sets the current record's "control_digit" value
+ * @method Customer            setAccount()              Sets the current record's "account" value
  * @method Customer            setCompany()              Sets the current record's "Company" value
  * @method Customer            setCommons()              Sets the current record's "Commons" collection
  * 
@@ -167,6 +182,26 @@ abstract class BaseCustomer extends sfDoctrineRecord
              ));
         $this->hasColumn('comments', 'clob', null, array(
              'type' => 'clob',
+             ));
+        $this->hasColumn('iban', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('entity', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('office', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('control_digit', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('account', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
              ));
 
 

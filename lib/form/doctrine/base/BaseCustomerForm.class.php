@@ -37,6 +37,11 @@ abstract class BaseCustomerForm extends BaseFormDoctrine
       'mobile'               => new sfWidgetFormInputText(),
       'fax'                  => new sfWidgetFormInputText(),
       'comments'             => new sfWidgetFormTextarea(),
+      'iban'                 => new sfWidgetFormInputText(),
+      'entity'               => new sfWidgetFormInputText(),
+      'office'               => new sfWidgetFormInputText(),
+      'control_digit'        => new sfWidgetFormInputText(),
+      'account'              => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -62,6 +67,11 @@ abstract class BaseCustomerForm extends BaseFormDoctrine
       'mobile'               => new sfValidatorString(array('max_length' => 20, 'required' => false)),
       'fax'                  => new sfValidatorString(array('max_length' => 20, 'required' => false)),
       'comments'             => new sfValidatorString(array('required' => false)),
+      'iban'                 => new sfValidatorString(array('max_length' => 50, 'required' => false)),
+      'entity'               => new sfValidatorString(array('max_length' => 50, 'required' => false)),
+      'office'               => new sfValidatorString(array('max_length' => 50, 'required' => false)),
+      'control_digit'        => new sfValidatorString(array('max_length' => 50, 'required' => false)),
+      'account'              => new sfValidatorString(array('max_length' => 50, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('customer[%s]');

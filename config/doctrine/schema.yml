@@ -20,6 +20,12 @@ Company:
     legal_terms: clob
     pdf_orientation: string(50)
     pdf_size: string(50)
+    iban: string(50)
+    entity: string(50)
+    office: string(50)
+    control_digit: string(50)
+    account: string(50)
+    mercantil_registry: string(255)
   indexes:
     cst:
       fields: [name]
@@ -76,6 +82,11 @@ Customer:
     mobile: string(20)
     fax: string(20)
     comments: clob
+    iban: string(50)
+    entity: string(50)
+    office: string(50)
+    control_digit: string(50)
+    account: string(50)
   indexes:
     cstm:
       fields: [company_id,name]

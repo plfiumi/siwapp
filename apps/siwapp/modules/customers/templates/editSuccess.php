@@ -127,6 +127,29 @@ $customer = $customerForm->getObject();
     </li>
   </ul>
 </div>
+  <div id="customer-bank-data" class="global-data block">
+    <h3><?php echo __('Bank details') ?></h3>
+    <ul>
+    <li>
+      <span class="_50">
+        <label for="<? echo $customerForm['entity']->renderId()?>"><?php echo __('Entity') ?></label>
+        <?php echo render_tag($customerForm['entity'])  ?>
+        </span>
+      <span class="_50">
+        <label for="<? echo $customerForm['office']->renderId()?>"><?php echo __('Office') ?></label>
+        <?php echo render_tag($customerForm['office']) ?></span>
+    </li>
+    <li>
+      <span class="_50">
+        <label for="<? echo $customerForm['control_digit']->renderId()?>"><?php echo __('Control digit') ?></label>
+        <?php echo render_tag($customerForm['control_digit'])  ?>
+        </span>
+      <span class="_50">
+        <label for="<? echo $customerForm['account']->renderId()?>"><?php echo __('Account') ?></label>
+        <?php echo render_tag($customerForm['account']) ?></span>
+    </li>
+  </ul>
+</div>
   <div id="saving-options" class="block">
     <?php
     if ($customer->getId()) {

@@ -22,86 +22,116 @@
  * @property clob $legal_terms
  * @property string $pdf_orientation
  * @property string $pdf_size
+ * @property string $iban
+ * @property string $entity
+ * @property string $office
+ * @property string $control_digit
+ * @property string $account
+ * @property string $mercantil_registry
  * @property Doctrine_Collection $Company
  * 
- * @method string              getIdentification()    Returns the current record's "identification" value
- * @method string              getName()              Returns the current record's "name" value
- * @method string              getAddress()           Returns the current record's "address" value
- * @method string              getPostalcode()        Returns the current record's "postalcode" value
- * @method string              getCity()              Returns the current record's "city" value
- * @method string              getState()             Returns the current record's "state" value
- * @method string              getCountry()           Returns the current record's "country" value
- * @method string              getEmail()             Returns the current record's "email" value
- * @method string              getPhone()             Returns the current record's "phone" value
- * @method string              getFax()               Returns the current record's "fax" value
- * @method string              getUrl()               Returns the current record's "url" value
- * @method clob                getLogo()              Returns the current record's "logo" value
- * @method string              getCurrency()          Returns the current record's "currency" value
- * @method integer             getCurrencyDecimals()  Returns the current record's "currency_decimals" value
- * @method clob                getLegalTerms()        Returns the current record's "legal_terms" value
- * @method string              getPdfOrientation()    Returns the current record's "pdf_orientation" value
- * @method string              getPdfSize()           Returns the current record's "pdf_size" value
- * @method Doctrine_Collection getCompanyUser()       Returns the current record's "CompanyUser" collection
- * @method Doctrine_Collection getCompany()           Returns the current record's "Company" collection
- * @method Company             setIdentification()    Sets the current record's "identification" value
- * @method Company             setName()              Sets the current record's "name" value
- * @method Company             setAddress()           Sets the current record's "address" value
- * @method Company             setPostalcode()        Sets the current record's "postalcode" value
- * @method Company             setCity()              Sets the current record's "city" value
- * @method Company             setState()             Sets the current record's "state" value
- * @method Company             setCountry()           Sets the current record's "country" value
- * @method Company             setEmail()             Sets the current record's "email" value
- * @method Company             setPhone()             Sets the current record's "phone" value
- * @method Company             setFax()               Sets the current record's "fax" value
- * @method Company             setUrl()               Sets the current record's "url" value
- * @method Company             setLogo()              Sets the current record's "logo" value
- * @method Company             setCurrency()          Sets the current record's "currency" value
- * @method Company             setCurrencyDecimals()  Sets the current record's "currency_decimals" value
- * @method Company             setLegalTerms()        Sets the current record's "legal_terms" value
- * @method Company             setPdfOrientation()    Sets the current record's "pdf_orientation" value
- * @method Company             setPdfSize()           Sets the current record's "pdf_size" value
- * @method Company             setCompanyUser()       Sets the current record's "CompanyUser" collection
- * @method Company             setCompany()           Sets the current record's "Company" collectionUser
+ * @method string              getIdentification()     Returns the current record's "identification" value
+ * @method string              getName()               Returns the current record's "name" value
+ * @method string              getAddress()            Returns the current record's "address" value
+ * @method string              getPostalcode()         Returns the current record's "postalcode" value
+ * @method string              getCity()               Returns the current record's "city" value
+ * @method string              getState()              Returns the current record's "state" value
+ * @method string              getCountry()            Returns the current record's "country" value
+ * @method string              getEmail()              Returns the current record's "email" value
+ * @method string              getPhone()              Returns the current record's "phone" value
+ * @method string              getFax()                Returns the current record's "fax" value
+ * @method string              getUrl()                Returns the current record's "url" value
+ * @method clob                getLogo()               Returns the current record's "logo" value
+ * @method string              getCurrency()           Returns the current record's "currency" value
+ * @method integer             getCurrencyDecimals()   Returns the current record's "currency_decimals" value
+ * @method clob                getLegalTerms()         Returns the current record's "legal_terms" value
+ * @method string              getPdfOrientation()     Returns the current record's "pdf_orientation" value
+ * @method string              getPdfSize()            Returns the current record's "pdf_size" value
+ * @method string              getIban()               Returns the current record's "iban" value
+ * @method string              getEntity()             Returns the current record's "entity" value
+ * @method string              getOffice()             Returns the current record's "office" value
+ * @method string              getControlDigit()       Returns the current record's "control_digit" value
+ * @method string              getAccount()            Returns the current record's "account" value
+ * @method string              getMercantilRegistry()  Returns the current record's "mercantil_registry" value
+ * @method Doctrine_Collection getCompanyUser()        Returns the current record's "CompanyUser" collection
+ * @method Doctrine_Collection getCompany()            Returns the current record's "Company" collection
+ * @method Company             setIdentification()     Sets the current record's "identification" value
+ * @method Company             setName()               Sets the current record's "name" value
+ * @method Company             setAddress()            Sets the current record's "address" value
+ * @method Company             setPostalcode()         Sets the current record's "postalcode" value
+ * @method Company             setCity()               Sets the current record's "city" value
+ * @method Company             setState()              Sets the current record's "state" value
+ * @method Company             setCountry()            Sets the current record's "country" value
+ * @method Company             setEmail()              Sets the current record's "email" value
+ * @method Company             setPhone()              Sets the current record's "phone" value
+ * @method Company             setFax()                Sets the current record's "fax" value
+ * @method Company             setUrl()                Sets the current record's "url" value
+ * @method Company             setLogo()               Sets the current record's "logo" value
+ * @method Company             setCurrency()           Sets the current record's "currency" value
+ * @method Company             setCurrencyDecimals()   Sets the current record's "currency_decimals" value
+ * @method Company             setLegalTerms()         Sets the current record's "legal_terms" value
+ * @method Company             setPdfOrientation()     Sets the current record's "pdf_orientation" value
+ * @method Company             setPdfSize()            Sets the current record's "pdf_size" value
+ * @method Company             setIban()               Sets the current record's "iban" value
+ * @method Company             setEntity()             Sets the current record's "entity" value
+ * @method Company             setOffice()             Sets the current record's "office" value
+ * @method Company             setControlDigit()       Sets the current record's "control_digit" value
+ * @method Company             setAccount()            Sets the current record's "account" value
+ * @method Company             setMercantilRegistry()  Sets the current record's "mercantil_registry" value
+ * @method Company             setCompanyUser()        Sets the current record's "CompanyUser" collection
+ * @method Company             setCompany()            Sets the current record's "Company" collectionUser
  * @property Doctrine_Collection $Company
  * 
- * @method string              getIdentification()    Returns the current record's "identification" value
- * @method string              getName()              Returns the current record's "name" value
- * @method string              getAddress()           Returns the current record's "address" value
- * @method string              getPostalcode()        Returns the current record's "postalcode" value
- * @method string              getCity()              Returns the current record's "city" value
- * @method string              getState()             Returns the current record's "state" value
- * @method string              getCountry()           Returns the current record's "country" value
- * @method string              getEmail()             Returns the current record's "email" value
- * @method string              getPhone()             Returns the current record's "phone" value
- * @method string              getFax()               Returns the current record's "fax" value
- * @method string              getUrl()               Returns the current record's "url" value
- * @method clob                getLogo()              Returns the current record's "logo" value
- * @method string              getCurrency()          Returns the current record's "currency" value
- * @method integer             getCurrencyDecimals()  Returns the current record's "currency_decimals" value
- * @method clob                getLegalTerms()        Returns the current record's "legal_terms" value
- * @method string              getPdfOrientation()    Returns the current record's "pdf_orientation" value
- * @method string              getPdfSize()           Returns the current record's "pdf_size" value
- * @method Doctrine_Collection getCompanyUser()       Returns the current record's "CompanyUser" collection
- * @method Doctrine_Collection getCompany()           Returns the current record's "Company" collection
- * @method Company             setIdentification()    Sets the current record's "identification" value
- * @method Company             setName()              Sets the current record's "name" value
- * @method Company             setAddress()           Sets the current record's "address" value
- * @method Company             setPostalcode()        Sets the current record's "postalcode" value
- * @method Company             setCity()              Sets the current record's "city" value
- * @method Company             setState()             Sets the current record's "state" value
- * @method Company             setCountry()           Sets the current record's "country" value
- * @method Company             setEmail()             Sets the current record's "email" value
- * @method Company             setPhone()             Sets the current record's "phone" value
- * @method Company             setFax()               Sets the current record's "fax" value
- * @method Company             setUrl()               Sets the current record's "url" value
- * @method Company             setLogo()              Sets the current record's "logo" value
- * @method Company             setCurrency()          Sets the current record's "currency" value
- * @method Company             setCurrencyDecimals()  Sets the current record's "currency_decimals" value
- * @method Company             setLegalTerms()        Sets the current record's "legal_terms" value
- * @method Company             setPdfOrientation()    Sets the current record's "pdf_orientation" value
- * @method Company             setPdfSize()           Sets the current record's "pdf_size" value
- * @method Company             setCompanyUser()       Sets the current record's "CompanyUser" collection
- * @method Company             setCompany()           Sets the current record's "Company" collection
+ * @method string              getIdentification()     Returns the current record's "identification" value
+ * @method string              getName()               Returns the current record's "name" value
+ * @method string              getAddress()            Returns the current record's "address" value
+ * @method string              getPostalcode()         Returns the current record's "postalcode" value
+ * @method string              getCity()               Returns the current record's "city" value
+ * @method string              getState()              Returns the current record's "state" value
+ * @method string              getCountry()            Returns the current record's "country" value
+ * @method string              getEmail()              Returns the current record's "email" value
+ * @method string              getPhone()              Returns the current record's "phone" value
+ * @method string              getFax()                Returns the current record's "fax" value
+ * @method string              getUrl()                Returns the current record's "url" value
+ * @method clob                getLogo()               Returns the current record's "logo" value
+ * @method string              getCurrency()           Returns the current record's "currency" value
+ * @method integer             getCurrencyDecimals()   Returns the current record's "currency_decimals" value
+ * @method clob                getLegalTerms()         Returns the current record's "legal_terms" value
+ * @method string              getPdfOrientation()     Returns the current record's "pdf_orientation" value
+ * @method string              getPdfSize()            Returns the current record's "pdf_size" value
+ * @method string              getIban()               Returns the current record's "iban" value
+ * @method string              getEntity()             Returns the current record's "entity" value
+ * @method string              getOffice()             Returns the current record's "office" value
+ * @method string              getControlDigit()       Returns the current record's "control_digit" value
+ * @method string              getAccount()            Returns the current record's "account" value
+ * @method string              getMercantilRegistry()  Returns the current record's "mercantil_registry" value
+ * @method Doctrine_Collection getCompanyUser()        Returns the current record's "CompanyUser" collection
+ * @method Doctrine_Collection getCompany()            Returns the current record's "Company" collection
+ * @method Company             setIdentification()     Sets the current record's "identification" value
+ * @method Company             setName()               Sets the current record's "name" value
+ * @method Company             setAddress()            Sets the current record's "address" value
+ * @method Company             setPostalcode()         Sets the current record's "postalcode" value
+ * @method Company             setCity()               Sets the current record's "city" value
+ * @method Company             setState()              Sets the current record's "state" value
+ * @method Company             setCountry()            Sets the current record's "country" value
+ * @method Company             setEmail()              Sets the current record's "email" value
+ * @method Company             setPhone()              Sets the current record's "phone" value
+ * @method Company             setFax()                Sets the current record's "fax" value
+ * @method Company             setUrl()                Sets the current record's "url" value
+ * @method Company             setLogo()               Sets the current record's "logo" value
+ * @method Company             setCurrency()           Sets the current record's "currency" value
+ * @method Company             setCurrencyDecimals()   Sets the current record's "currency_decimals" value
+ * @method Company             setLegalTerms()         Sets the current record's "legal_terms" value
+ * @method Company             setPdfOrientation()     Sets the current record's "pdf_orientation" value
+ * @method Company             setPdfSize()            Sets the current record's "pdf_size" value
+ * @method Company             setIban()               Sets the current record's "iban" value
+ * @method Company             setEntity()             Sets the current record's "entity" value
+ * @method Company             setOffice()             Sets the current record's "office" value
+ * @method Company             setControlDigit()       Sets the current record's "control_digit" value
+ * @method Company             setAccount()            Sets the current record's "account" value
+ * @method Company             setMercantilRegistry()  Sets the current record's "mercantil_registry" value
+ * @method Company             setCompanyUser()        Sets the current record's "CompanyUser" collection
+ * @method Company             setCompany()            Sets the current record's "Company" collection
  * 
  * @package    siwapp
  * @subpackage model
@@ -177,6 +207,30 @@ abstract class BaseCompany extends sfDoctrineRecord
         $this->hasColumn('pdf_size', 'string', 50, array(
              'type' => 'string',
              'length' => 50,
+             ));
+        $this->hasColumn('iban', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('entity', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('office', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('control_digit', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('account', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('mercantil_registry', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
              ));
 
 
