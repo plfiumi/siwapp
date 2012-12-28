@@ -35,6 +35,37 @@
         <?php echo $form['company'][0]['legal_terms']->renderRow(array('class' => error_class($form['company'][0]['legal_terms']))) ?>
       </ul>
     </fieldset>
+        <fieldset>
+     <h3><?php echo __('Bank details') ?></h3>
+    <ul>
+    <li>
+      <span class="_50">
+        <label for="<? echo $form['company'][0]['entity']->renderId()?>"><?php echo __('Entity') ?></label>
+        <?php echo render_tag($form['company'][0]['entity'])  ?>
+        </span>
+      <span class="_50">
+        <label for="<? echo $form['company'][0]['office']->renderId()?>"><?php echo __('Office') ?></label>
+        <?php echo render_tag($form['company'][0]['office']) ?></span>
+    </li>
+    <li>
+      <span class="_50">
+        <label for="<? echo $form['company'][0]['control_digit']->renderId()?>"><?php echo __('Control digit') ?></label>
+        <?php echo render_tag($form['company'][0]['control_digit'])  ?>
+        </span>
+      <span class="_50">
+        <label for="<? echo $form['company'][0]['account']->renderId()?>"><?php echo __('Account') ?></label>
+        <?php echo render_tag($form['company'][0]['account']) ?></span>
+    </li>
+  </ul>
+  </fieldset>
+</div>
+  <div id="company-users-data" class="global-data block">
+    <h3><?php echo __('Assigned Users') ?></h3>
+    <ul>
+    <li>
+      <span class="_50"><?php echo render_tag($form['company'][0]['company_user_list'])?></span>  
+    </li>
+  </ul>
     
     <fieldset class="left taxes taxseries">
       <h3><?php echo __('Invoicing taxes') ?></h3>
