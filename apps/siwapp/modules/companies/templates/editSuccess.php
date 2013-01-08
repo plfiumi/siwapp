@@ -93,12 +93,6 @@ $company = $companyForm->getObject();
         <label for="<? echo $companyForm['pdf_size']->renderId()?>"><?php echo __('Page size') ?></label>
         <?php echo render_tag($companyForm['pdf_size']) ?></span>
     </li>
-    <li>
-      <span class="_75">
-        <label for="<? echo $companyForm['mercantil_registry']->renderId()?>"><?php echo __('Mercantil registry') ?></label>
-        <?php echo render_tag($companyForm['mercantil_registry'])?>
-      </span>     
-    </li>
   </ul>
 </div>
   <div id="company-bank-data" class="global-data block">
