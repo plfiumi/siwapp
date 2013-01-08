@@ -1570,6 +1570,10 @@
         <source>Mercantil Registry</source>
         <target>Registro Mercantil</target>
       </trans-unit>
+      <trans-unit>
+        <source>Remit</source>
+        <target>Remesar</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
