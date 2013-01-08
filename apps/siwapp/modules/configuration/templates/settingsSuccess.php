@@ -58,6 +58,18 @@
     </li>
   </ul>
   </fieldset>
+  <fieldset>
+    <h3><?php echo __('Other info') ?></h3>
+    <ul>
+    <li>
+      <span class="_50">
+        <label for="<? echo $form['company'][0]['mercantil_registry']->renderId()?>"><?php echo __('Mercantil Registry') ?></label>
+        <?php echo render_tag($form['company'][0]['mercantil_registry'])  ?>
+        </span>
+    </li>
+  </ul>
+  </fieldset>
+  
     
     <fieldset class="left taxes taxseries">
       <h3><?php echo __('Invoicing taxes') ?></h3>

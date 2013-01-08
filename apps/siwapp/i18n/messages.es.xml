@@ -1562,6 +1562,14 @@
         <source>Export</source>
         <target>Exportar</target>
       </trans-unit>
+      <trans-unit>
+        <source>Other info</source>
+        <target>Información addicional</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Mercantil Registry</source>
+        <target>Registro Mercantil</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

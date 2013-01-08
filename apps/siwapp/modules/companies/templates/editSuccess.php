@@ -124,6 +124,17 @@ $company = $companyForm->getObject();
     </li>
   </ul>
 </div>
+   <div class="global-data block">
+    <h3><?php echo __('Other info') ?></h3>
+    <ul>
+    <li>
+      <span class="_100">
+        <label for="<? echo $companyForm['mercantil_registry']->renderId()?>"><?php echo __('Mercantil Registry') ?></label>
+        <?php echo render_tag($companyForm['mercantil_registry'])  ?>
+        </span>
+    </li>
+  </ul>
+  </div>
   <div id="company-users-data" class="global-data block">
     <h3><?php echo __('Assigned Users') ?></h3>
     <ul>
