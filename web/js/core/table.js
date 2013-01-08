@@ -132,6 +132,20 @@ jQuery(function($){
         alert(__('No selection. Nothing to do.'));
     });
   }
+
+  if (window.siwapp_urls.export)
+  {
+    tb.find('[rel=export]').click(function(e){
+      e.preventDefault();
+      var u = window.siwapp_urls.export;
+      var n = getSelected();
+      
+      if (n.length)
+        window.location=u + '?' + 'ids[]=' + n.join('&ids[]=');
+      else
+        alert(__('No selection. Nothing to do.'));
+    });
+  }
   
   // Generic batch actions
   tb.find('[rel^=batch:]').click(function(e){

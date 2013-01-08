@@ -106,6 +106,7 @@ button.pill-r span { border-left-color:#fff; }
 .btn.pdf span span          { background-image:url(../../images/icons/pdf.png);  }
 
 .btn.send span span         { background-image:url(../../images/icons/send.png); }
+.btn.export span span         { background-image:url(../../images/icons/export.png); }
 .btn.action.send span span  { padding-left:27px; background-position:5px center; }
 
 .btn.create-invoice span span { background-image:url(../../images/icons/page_white_gear.png); }

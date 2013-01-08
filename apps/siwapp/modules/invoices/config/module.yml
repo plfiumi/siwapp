@@ -6,3 +6,4 @@ all:
       calculateInvoice: common/calculate
       printHtml:        @invoices_print?action=print
       printPdf:         @invoices_print?action=pdf
+      export:           @invoices_export
