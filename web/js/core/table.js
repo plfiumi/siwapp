@@ -147,6 +147,19 @@ jQuery(function($){
     });
   }
   
+  if (window.siwapp_urls.remesar)
+  {
+    tb.find('[rel=remesar]').click(function(e){
+      e.preventDefault();
+      var u = window.siwapp_urls.remesar;
+      var n = getSelected();
+      
+      if (n.length)
+        window.location=u + '?' + 'ids[]=' + n.join('&ids[]=');
+      else
+        alert(__('No selection. Nothing to do.'));
+    });
+  }
   // Generic batch actions
   tb.find('[rel^=batch:]').click(function(e){
     e.preventDefault();

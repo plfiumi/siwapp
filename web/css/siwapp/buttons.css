@@ -118,6 +118,7 @@ button.pill-r span { border-left-color:#fff; }
 
 .btn.payment span span      { background-image:url(../../images/icons/coins.png); }
 .btn.add-payment span span  { background-image:url(../../images/icons/add_payment.png); }
+.btn.remesar span span      { background-image:url(../../images/icons/coins.png); }
 
 .btn.invoices span span      { background-image:url(../../images/icons/invoices.png); }
 

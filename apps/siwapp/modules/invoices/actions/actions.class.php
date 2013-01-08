@@ -272,6 +272,92 @@ class invoicesActions extends sfActions
     return sfView::NONE;
   }
   
+    /**
+   * Export selected invoices to remesas.
+   * @author: Sergi Almacellas Abellana <sergi.almacellas@btactic.com>
+   * @return void
+   **/
+  public function executeRemesar(sfWebRequest $request)
+  {
+  $i18n = $this->getContext()->getI18N();
+  
+    require_once('AEB19Writter.php');
+      $n = 0;
+      $aeb19 = new AEB19Writter('.');
+      $companyObject = new Company();
+      $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
+      //Campos comunes para todas las lineas.
+      $aeb19->insertarCampo('codigo_presentador', str_pad($companyObject->getIdentification(), 12, '0', STR_PAD_RIGHT));
+      $aeb19->insertarCampo('fecha_fichero', date('dmy'));
+      $aeb19->insertarCampo('nombre_presentador', $companyObject->getName());
+      $aeb19->insertarCampo('entidad_receptora', $companyObject->getEntity());
+      $aeb19->insertarCampo('oficina_presentador', $companyObject->getOffice());
+      
+      $aeb19->insertarCampo('codigo_ordenante', str_pad($companyObject->getIdentification(), 12, '0', STR_PAD_RIGHT));
+      $aeb19->insertarCampo('fecha_cargo', date('dmy'));
+      $aeb19->insertarCampo('nombre_ordenante', $companyObject->getName());
+      $aeb19->insertarCampo('cuenta_abono_ordenante', $companyObject->getEntity().$companyObject->getOffice().$companyObject->getControlDigit().$companyObject->getAccount());
+      $aeb19->guardarRegistro('ordenante');
+
+      $aeb19->insertarCampo('ordenante_domiciliacion' , str_pad($companyObject->getIdentification(), 12, '0', STR_PAD_RIGHT));
+
+      foreach($request->getParameter('ids', array()) as $id)
+      {
+        if($invoice = Doctrine::getTable('Invoice')->find($id))
+        {
+            $customer=$invoice->getCustomer();
+            //Con el codigo_referencia_domiciliacion podremos referenciar la domiciliación
+            $aeb19->insertarCampo('codigo_referencia_domiciliacion', $invoice);
+            //Cliente al que le domiciliamos
+            $aeb19->insertarCampo('nombre_cliente_domiciliacion',$invoice->getCustomerName());
+            //Cuenta del cliente en la que se domiciliará la factura
+            $aeb19->insertarCampo('cuenta_adeudo_cliente',$customer->getEntity().$customer->getOffice().$customer->getControlDigit().$customer->getAccount());
+            //El importe de la domiciliación (tiene que ser en céntimos de euro y con el IVA aplicado)
+            $aeb19->insertarCampo('importe_domiciliacion', $invoice->getGrossAmount());
+            //Código para asociar la devolución en caso de que ocurra
+            $aeb19->insertarCampo('codigo_devolucion_domiciliacion', $invoice);
+            //Código interno para saber a qué corresponde la domiciliación
+            $aeb19->insertarCampo('codigo_referencia_interna', $invoice);
+
+            //Preparamos los conceptos de la domiciliación, en un array
+            //Disponemos de 80 caracteres por línea (elemento del array). Más caracteres serán cortados
+            //El índice 8 y 9 contendrían el sexto registro opcional, que es distinto a los demás
+            $conceptosDom = array();
+            //Los dos primeros índices serán el primer registro opcional
+            $conceptosDom[] = str_pad("Factura ".$invoice->getId(), 40, ' ', STR_PAD_RIGHT) . str_pad("emitida por: ".$companyObject->getName(), 40, ' ', STR_PAD_RIGHT);
+            $conceptosDom[] = str_pad('emitida el ' . date('d/m/Y') . ' para: '.$invoice->getCustomerName(), 40, ' ', STR_PAD_RIGHT) . str_pad(" ES-".$customer->getIdentification(), 40, ' ', STR_PAD_RIGHT);
+            $conceptosDom[] = '';
+            $conceptosDom[] = '';
+            $conceptosDom[] = '';
+            $conceptosDom[] = '';
+/*            //Los dos segundos índices serán el segundo registro opcional
+            $conceptosDom[] = str_pad('titular domiciliacion', 40, ' ', STR_PAD_RIGHT);
+            $conceptosDom[] = str_pad('', 40, ' ', STR_PAD_RIGHT) . 'Base imponible:' . str_pad(number_format($i, 2, ',', '.') . ' EUR', 25, ' ', STR_PAD_LEFT);
+            //Los dos terceros índices serán el tercer registro opcional
+            $conceptosDom[] = str_pad('', 40, ' ', STR_PAD_RIGHT).
+                'IVA ' . str_pad(number_format($iva * 100, 2, ',', '.'), 2, '0', STR_PAD_LEFT) . '%:'.
+                str_pad(number_format($importeIva, 2, ',', '.') . ' EUR', 29, ' ', STR_PAD_LEFT);
+            $conceptosDom[] = str_pad('', 40, ' ', STR_PAD_RIGHT).
+                 'Total:' . str_pad(number_format($totalFactura, 2, ',', '.') . ' EUR', 34, ' ', STR_PAD_LEFT);
+*/
+        
+            //Añadimos la domiciliación
+            $aeb19->guardarRegistro('domiciliacion', $conceptosDom);
+ 
+ 
+        }
+      }
+      $this->setLayout(false);
+      $response = $this->getContext()->getResponse();
+      $response->clearHttpHeaders();
+      $response->setHttpHeader('Content-Type', 'text/plain;charset=utf-8');
+      $response->setHttpHeader('Content-Disposition:', 'attachment;filename=remesa.txt'); 
+      $response->setContent($aeb19->construirArchivo());
+   
+    return sfView::NONE;
+  
+  }
+  
   /**
    * batch actions
    *

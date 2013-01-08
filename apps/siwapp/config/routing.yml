@@ -26,6 +26,10 @@ invoices_export:
   url:    /invoices/export/
   param:  { module: invoices, action: export, tab: invoices, searchForm: false}
 
+invoices_remesar:
+  url:    /invoices/remesar/
+  param:  { module: invoices, action: remesar, tab: invoices, searchForm: false}
+
 expenses:
   url:   /expenses
   param:  { module: expenses, action: index, tab: expenses, searchForm: true, searchNamespace: expenses }
