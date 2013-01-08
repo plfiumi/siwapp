@@ -155,22 +155,40 @@ class Common extends BaseCommon
     {
       foreach ( $item->getTaxes() as $tax )
       {
-        $name=$tax->getName();
-        $ammount=$item->getTaxAmount($tax->getName());
-        $base=$item->getBaseAmount($tax->getName());
+        //Retención
+        if($tax->getValue() < 0) {
+            $retencion = $item->getTaxAmount($tax->getName());
+            $baseRetencion = $item->getBaseAmount($tax->getName());
+            $ammount= 0;$base = 0;
+            $retencionValue = $tax->getValue();
+        }
+        else {
+            $name = $tax->getName();
+            $ammount=$item->getTaxAmount($tax->getName());
+            $base=$item->getBaseAmount($tax->getName());
+            $retencion = 0;$baseRetencion = 0;
+            $retencionValue = 0;
+        }        
         if (isset($result[$name]))
         {
           $result[$name]['tax'] += $ammount;
           $result[$name]['base'] += $base;
-          $result[$name]['total'] += ($ammount+$base);
+          $result[$name]['total'] += ($ammount+$base+$retencion);
+          $result[$name]['retencion'] += $retencion;
+          $result[$name]['base_retencion'] += $baseRetencion;
+          if($retencionValue!=0)
+              $result[$name]['retencion_value'] = $retencionValue;
         }
         else
         {
           $result[$name] = array(
             'tax' => $ammount,
             'base' => $base,
-            'total' => $ammount+$base,
+            'total' => ($ammount+$base+$retencion),
+            'retencion' => $retencion,
+            'base_retencion' => $baseRetencion,
             'tax_value' => $tax->getValue(),
+            'retencion_value' => $retencionValue,
           );
         }
       }

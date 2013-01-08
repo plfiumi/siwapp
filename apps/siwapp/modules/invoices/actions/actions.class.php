@@ -236,7 +236,7 @@ class invoicesActions extends sfActions
               foreach ($invoice->getGrupedTaxes() as $tax => $value) 
               {
                   $objPHPExcel->getActiveSheet()->setCellValue('A'. ($n+2),date('d/m/Y',strtotime($invoice->getIssueDate()))); //FECHA
-                  $objPHPExcel->getActiveSheet()->setCellValue('B'. ($n+2), ''); //REGISTRO
+                  $objPHPExcel->getActiveSheet()->setCellValue('B'. ($n+2), $invoice.''); //REGISTRO
                   $objPHPExcel->getActiveSheet()->setCellValue('C'. ($n+2), ''); //CUENTA
                   $objPHPExcel->getActiveSheet()->setCellValue('D'. ($n+2), $invoice->getCustomerIdentification()); //NIF
                   $objPHPExcel->getActiveSheet()->setCellValue('E'. ($n+2), $invoice->getCustomerName()); //NOMBR
@@ -244,9 +244,9 @@ class invoicesActions extends sfActions
                   $objPHPExcel->getActiveSheet()->setCellValue('G'. ($n+2),  $value['base']); //BASE 
                   $objPHPExcel->getActiveSheet()->setCellValue('H'. ($n+2), $value['tax_value']); //%IVA
                   $objPHPExcel->getActiveSheet()->setCellValue('I'. ($n+2), $value['tax']); //IMPORTE IVA
-                  $objPHPExcel->getActiveSheet()->setCellValue('J'. ($n+2), 0); //BASE RETENCION
-                  $objPHPExcel->getActiveSheet()->setCellValue('K'. ($n+2), 0); //%IRPF
-                  $objPHPExcel->getActiveSheet()->setCellValue('L'. ($n+2), 0); //TOTAL IRPF
+                  $objPHPExcel->getActiveSheet()->setCellValue('J'. ($n+2), $value['base_retencion']); //BASE RETENCION
+                  $objPHPExcel->getActiveSheet()->setCellValue('K'. ($n+2), $value['retencion_value']); //%IRPF
+                  $objPHPExcel->getActiveSheet()->setCellValue('L'. ($n+2), $value['retencion']); //TOTAL IRPF
                   $objPHPExcel->getActiveSheet()->setCellValue('M'. ($n+2), $value['total']); //TOTAL
                   $objPHPExcel->getActiveSheet()->setCellValue('N'. ($n+2), ''); //CONTRAPARTIDA 
                   $objPHPExcel->getActiveSheet()->setCellValue('O'. ($n+2), $invoice->getCustomer()->getInvoicingCountry()); //PAIS
