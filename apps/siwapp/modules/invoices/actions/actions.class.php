@@ -206,14 +206,10 @@ class invoicesActions extends sfActions
    **/
   public function executeExport(sfWebRequest $request)
   {
-    $i18n = $this->getContext()->getI18N();
-    $form = new sfForm();
-    $form->bind(array('_csrf_token' => $request->getParameter('_csrf_token')));
-    
-    if($form->isValid() || $this->getContext()->getConfiguration()->getEnvironment() == 'test')
-    {
+
       $n = 0;
       $objPHPExcel = new sfPhpExcel();
+      $objPHPExcel->setActiveSheetIndex(0);
       //Generate Headers.
       $objPHPExcel->getActiveSheet()->setTitle('VENTAS');
       $objPHPExcel->getActiveSheet()->setCellValue('A1', 'FECHA');
@@ -224,7 +220,7 @@ class invoicesActions extends sfActions
       $objPHPExcel->getActiveSheet()->setCellValue('F1', 'DESCRIPCIÓN');
       $objPHPExcel->getActiveSheet()->setCellValue('G1', 'BASE');
       $objPHPExcel->getActiveSheet()->setCellValue('H1', '%IVA');
-      $objPHPExcel->getActiveSheet()->setCellValue('H1', 'IMPORTE IVA');
+      $objPHPExcel->getActiveSheet()->setCellValue('I1', 'IMPORTE IVA');
       $objPHPExcel->getActiveSheet()->setCellValue('J1', 'BASE RETENCION');
       $objPHPExcel->getActiveSheet()->setCellValue('K1', '%IRPF');
       $objPHPExcel->getActiveSheet()->setCellValue('L1', 'TOTAL IRPF');
@@ -238,35 +234,42 @@ class invoicesActions extends sfActions
       {
         if($invoice = Doctrine::getTable('Invoice')->find($id))
         {
-            //TODO: 
-              $objPHPExcel->getActiveSheet()->setCellValue('A'. ($n+2), $invoice->getIssueDate()); //FECHA
-              $objPHPExcel->getActiveSheet()->setCellValue('B'. ($n+2), 'REGISTRO'); //REGISTRO
-              $objPHPExcel->getActiveSheet()->setCellValue('C'. ($n+2), ''); //CUENTA
-              $objPHPExcel->getActiveSheet()->setCellValue('D'. ($n+2), $invoice->getCustomerIdentification()); //NIF
-              $objPHPExcel->getActiveSheet()->setCellValue('E'. ($n+2), $invoice->getCustomerName()); //NOMBRE
-              $objPHPExcel->getActiveSheet()->setCellValue('F'. ($n+2), ''); //DESCRIPCIÓN
-              $objPHPExcel->getActiveSheet()->setCellValue('G'. ($n+2), $invoce->getGrossAmount()); //BASE 
-              $objPHPExcel->getActiveSheet()->setCellValue('H'. ($n+2), '%IVA'); //%IVA
-              $objPHPExcel->getActiveSheet()->setCellValue('H'. ($n+2), $invoice->getTaxAmount()); //IMPORTE IVA
-              $objPHPExcel->getActiveSheet()->setCellValue('J'. ($n+2), 0); //BASE RETENCION
-              $objPHPExcel->getActiveSheet()->setCellValue('K'. ($n+2), 0); //%IRPF
-              $objPHPExcel->getActiveSheet()->setCellValue('L'. ($n+2), 0); //TOTAL IRPF
-              $objPHPExcel->getActiveSheet()->setCellValue('M'. ($n+2), $invoice->getNetAmount()); //TOTAL
-              $objPHPExcel->getActiveSheet()->setCellValue('N'. ($n+2), ''); //CONTRAPARTIDA 
-              $objPHPExcel->getActiveSheet()->setCellValue('O'. ($n+2), ''); //PAIS
-              $objPHPExcel->getActiveSheet()->setCellValue('P'. ($n+2), ''); //PROVINCIA
-              $objPHPExcel->getActiveSheet()->setCellValue('Q'. ($n+2), ''); //PAGO AUTOMATICO
-              $objPHPExcel->getActiveSheet()->setCellValue('R'. ($n+2), ''); //OPERACION ARRENDAMIENTO
-              $n++;
+              foreach ($invoice->getGrupedTaxes() as $tax => $value) 
+              {
+                  $objPHPExcel->getActiveSheet()->setCellValue('A'. ($n+2), $invoice->getIssueDate()); //FECHA
+                  $objPHPExcel->getActiveSheet()->setCellValue('B'. ($n+2), ''); //REGISTRO
+                  $objPHPExcel->getActiveSheet()->setCellValue('C'. ($n+2), ''); //CUENTA
+                  $objPHPExcel->getActiveSheet()->setCellValue('D'. ($n+2), $invoice->getCustomerIdentification()); //NIF
+                  $objPHPExcel->getActiveSheet()->setCellValue('E'. ($n+2), $invoice->getCustomerName()); //NOMBRE
+                  $objPHPExcel->getActiveSheet()->setCellValue('F'. ($n+2), 'FACTURA'.$invoice->getId()); //DESCRIPCIÓN
+                  $objPHPExcel->getActiveSheet()->setCellValue('G'. ($n+2),  $value['base']); //BASE 
+                  $objPHPExcel->getActiveSheet()->setCellValue('H'. ($n+2), $value['tax_value']); //%IVA
+                  $objPHPExcel->getActiveSheet()->setCellValue('I'. ($n+2), $value['tax']); //IMPORTE IVA
+                  $objPHPExcel->getActiveSheet()->setCellValue('J'. ($n+2), 0); //BASE RETENCION
+                  $objPHPExcel->getActiveSheet()->setCellValue('K'. ($n+2), 0); //%IRPF
+                  $objPHPExcel->getActiveSheet()->setCellValue('L'. ($n+2), 0); //TOTAL IRPF
+                  $objPHPExcel->getActiveSheet()->setCellValue('M'. ($n+2), $value['total']); //TOTAL
+                  $objPHPExcel->getActiveSheet()->setCellValue('N'. ($n+2), ''); //CONTRAPARTIDA 
+                  $objPHPExcel->getActiveSheet()->setCellValue('O'. ($n+2), $invoice->getCustomer()->getInvoicingCountry()); //PAIS
+                  $objPHPExcel->getActiveSheet()->setCellValue('P'. ($n+2), $invoice->getCustomer()->getInvoicingState()); //PROVINCIA
+                  $objPHPExcel->getActiveSheet()->setCellValue('Q'. ($n+2), ''); //PAGO AUTOMATICO
+                  $objPHPExcel->getActiveSheet()->setCellValue('R'. ($n+2), ''); //OPERACION ARRENDAMIENTO
+                  $n++;
+              }
         }
       }
-      $objPHPExcel->setActiveSheetIndex(0);
-      $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-      $objWriter->save('Invoices_export.xls');
 
-    }
+    $this->setLayout(false);
+    $response = $this->getContext()->getResponse();
+    $response->clearHttpHeaders();
+    $response->setHttpHeader('Content-Type', 'application/vnd.ms-excel;charset=utf-8');
+    $response->setHttpHeader('Content-Disposition:', 'attachment;filename=export.xls'); 
 
-    $this->redirect('@invoices');
+    $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+    ob_start();
+    $objWriter->save('php://output');
+    $response->setContent(ob_get_clean());
+    return sfView::NONE;
   }
   
   /**

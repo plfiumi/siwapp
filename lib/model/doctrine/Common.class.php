@@ -142,6 +142,49 @@ class Common extends BaseCommon
 
     return $result;
   }
+  
+  /**
+   * Gets tax details of the invoice grupped by tax type.
+   * @author: Sergi Almacellas Abellana <sergi.almacellas@btactic.com>
+   * @return Array
+   */
+  public function getGrupedTaxes()
+  {
+    $result = array();
+    foreach ($this->getItems() as $item)
+    {
+      foreach ( $item->getTaxes() as $tax )
+      {
+        $name=$tax->getName();
+        $ammount=$item->getTaxAmount($tax->getName());
+        $base=$item->getBaseAmount($tax->getName());
+        if (isset($result[$name]))
+        {
+          $result[$name]['tax'] += $ammount;
+          $result[$name]['base'] += $base;
+          $result[$name]['total'] += $amount+$base;
+        }
+        else
+        {
+          $result[$name] = array(
+            'tax' => $ammount,
+            'base' => $base,
+            'total' => $ammount+$base,
+            'tax_value' => $tax->getValue(),
+          );
+        }
+      }
+    }
+    //Round the items so we get no diferencies.
+    foreach ( $result as $key => $val)
+    {
+      $result[$key]['tax'] = round($val['tax'],$this->getDecimals());
+      $result[$key]['base'] = round($val['base'],$this->getDecimals());
+      $result[$key]['total'] = round($val['total'],$this->getDecimals());
+    }
+
+    return $result;
+  }
 
    /**
    * Gets an Invoice by the Estimate ID
