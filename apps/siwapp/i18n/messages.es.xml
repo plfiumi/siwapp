@@ -1558,6 +1558,10 @@
         <source>Account</source>
         <target>Cuenta corriente</target>
       </trans-unit>
+      <trans-unit>
+        <source>Export</source>
+        <target>Exportar</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
