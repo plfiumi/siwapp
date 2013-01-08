@@ -162,7 +162,7 @@ class Common extends BaseCommon
         {
           $result[$name]['tax'] += $ammount;
           $result[$name]['base'] += $base;
-          $result[$name]['total'] += $amount+$base;
+          $result[$name]['total'] += ($ammount+$base);
         }
         else
         {
