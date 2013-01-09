@@ -39,6 +39,7 @@ abstract class BaseCompanyForm extends BaseFormDoctrine
       'control_digit'      => new sfWidgetFormInputText(),
       'account'            => new sfWidgetFormInputText(),
       'mercantil_registry' => new sfWidgetFormInputText(),
+      'sufix'              => new sfWidgetFormInputText(),
       'company_user_list'  => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser')),
     ));
 
@@ -67,6 +68,7 @@ abstract class BaseCompanyForm extends BaseFormDoctrine
       'control_digit'      => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'account'            => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'mercantil_registry' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'sufix'              => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'company_user_list'  => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser', 'required' => false)),
     ));
 

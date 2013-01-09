@@ -26,6 +26,7 @@ Company:
     control_digit: string(50)
     account: string(50)
     mercantil_registry: string(255)
+    sufix: string(255)
   indexes:
     cst:
       fields: [name]

@@ -28,6 +28,7 @@
  * @property string $control_digit
  * @property string $account
  * @property string $mercantil_registry
+ * @property string $sufix
  * @property Doctrine_Collection $Company
  * 
  * @method string              getIdentification()     Returns the current record's "identification" value
@@ -53,6 +54,7 @@
  * @method string              getControlDigit()       Returns the current record's "control_digit" value
  * @method string              getAccount()            Returns the current record's "account" value
  * @method string              getMercantilRegistry()  Returns the current record's "mercantil_registry" value
+ * @method string              getSufix()              Returns the current record's "sufix" value
  * @method Doctrine_Collection getCompanyUser()        Returns the current record's "CompanyUser" collection
  * @method Doctrine_Collection getCompany()            Returns the current record's "Company" collection
  * @method Company             setIdentification()     Sets the current record's "identification" value
@@ -78,6 +80,7 @@
  * @method Company             setControlDigit()       Sets the current record's "control_digit" value
  * @method Company             setAccount()            Sets the current record's "account" value
  * @method Company             setMercantilRegistry()  Sets the current record's "mercantil_registry" value
+ * @method Company             setSufix()              Sets the current record's "sufix" value
  * @method Company             setCompanyUser()        Sets the current record's "CompanyUser" collection
  * @method Company             setCompany()            Sets the current record's "Company" collectionUser
  * @property Doctrine_Collection $Company
@@ -105,6 +108,7 @@
  * @method string              getControlDigit()       Returns the current record's "control_digit" value
  * @method string              getAccount()            Returns the current record's "account" value
  * @method string              getMercantilRegistry()  Returns the current record's "mercantil_registry" value
+ * @method string              getSufix()              Returns the current record's "sufix" value
  * @method Doctrine_Collection getCompanyUser()        Returns the current record's "CompanyUser" collection
  * @method Doctrine_Collection getCompany()            Returns the current record's "Company" collection
  * @method Company             setIdentification()     Sets the current record's "identification" value
@@ -130,6 +134,7 @@
  * @method Company             setControlDigit()       Sets the current record's "control_digit" value
  * @method Company             setAccount()            Sets the current record's "account" value
  * @method Company             setMercantilRegistry()  Sets the current record's "mercantil_registry" value
+ * @method Company             setSufix()              Sets the current record's "sufix" value
  * @method Company             setCompanyUser()        Sets the current record's "CompanyUser" collection
  * @method Company             setCompany()            Sets the current record's "Company" collection
  * 
@@ -229,6 +234,10 @@ abstract class BaseCompany extends sfDoctrineRecord
              'length' => 50,
              ));
         $this->hasColumn('mercantil_registry', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('sufix', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
              ));

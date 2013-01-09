@@ -55,6 +55,9 @@
       <span class="_50">
         <label for="<? echo $form['company'][0]['account']->renderId()?>"><?php echo __('Account') ?></label>
         <?php echo render_tag($form['company'][0]['account']) ?></span>
+      <span class="_50">
+        <label for="<? echo $form['company'][0]['sufix']->renderId()?>"><?php echo __('Suffix') ?></label>
+        <?php echo render_tag($form['company'][0]['sufix']) ?></span>
     </li>
   </ul>
   </fieldset>

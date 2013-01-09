@@ -115,6 +115,9 @@ $company = $companyForm->getObject();
       <span class="_50">
         <label for="<? echo $companyForm['account']->renderId()?>"><?php echo __('Account') ?></label>
         <?php echo render_tag($companyForm['account']) ?></span>
+      <span class="_50">
+        <label for="<? echo $companyForm['sufix']->renderId()?>"><?php echo __('Sufix') ?></label>
+        <?php echo render_tag($companyForm['sufix']) ?></span>
     </li>
   </ul>
 </div>

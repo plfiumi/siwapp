@@ -36,6 +36,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
       'control_digit'      => new sfWidgetFormFilterInput(),
       'account'            => new sfWidgetFormFilterInput(),
       'mercantil_registry' => new sfWidgetFormFilterInput(),
+      'sufix'              => new sfWidgetFormFilterInput(),
       'company_user_list'  => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser')),
     ));
 
@@ -63,6 +64,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
       'control_digit'      => new sfValidatorPass(array('required' => false)),
       'account'            => new sfValidatorPass(array('required' => false)),
       'mercantil_registry' => new sfValidatorPass(array('required' => false)),
+      'sufix'              => new sfValidatorPass(array('required' => false)),
       'company_user_list'  => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser', 'required' => false)),
     ));
 
@@ -125,6 +127,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
       'control_digit'      => 'Text',
       'account'            => 'Text',
       'mercantil_registry' => 'Text',
+      'sufix'              => 'Text',
       'company_user_list'  => 'ManyKey',
     );
   }
