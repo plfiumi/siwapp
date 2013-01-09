@@ -1574,6 +1574,10 @@
         <source>Remit</source>
         <target>Remesar</target>
       </trans-unit>
+      <trans-unit>
+        <source>Postalcode</source>
+        <target>Código Postal</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
