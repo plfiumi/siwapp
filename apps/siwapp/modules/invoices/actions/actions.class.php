@@ -282,7 +282,7 @@ class invoicesActions extends sfActions
   
     require_once('AEB19Writter.php');
       $n = 0;
-      $aeb19 = new AEB19Writter('.');
+      $aeb19 = new AEB19Writter(' ');
       $companyObject = new Company();
       $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
       //Campos comunes para todas las lineas.
@@ -312,7 +312,7 @@ class invoicesActions extends sfActions
             //Cuenta del cliente en la que se domiciliará la factura
             $aeb19->insertarCampo('cuenta_adeudo_cliente',$customer->getEntity().$customer->getOffice().$customer->getControlDigit().$customer->getAccount());
             //El importe de la domiciliación (tiene que ser en céntimos de euro y con el IVA aplicado)
-            $aeb19->insertarCampo('importe_domiciliacion', $invoice->getGrossAmount());
+            $aeb19->insertarCampo('importe_domiciliacion', (int)($invoice->getGrossAmount()*100));
             //Código para asociar la devolución en caso de que ocurra
             $aeb19->insertarCampo('codigo_devolucion_domiciliacion', $invoice);
             //Código interno para saber a qué corresponde la domiciliación
