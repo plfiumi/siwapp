@@ -212,7 +212,7 @@ class invoicesActions extends sfActions
       //Generate Headers.
       $objPHPExcel->getActiveSheet()->setTitle('VENTAS');
       $objPHPExcel->getActiveSheet()->setCellValue('A1', 'FECHA');
-      $objPHPExcel->getActiveSheet()->setCellValue('B1', 'REGISTRO');
+      $objPHPExcel->getActiveSheet()->setCellValue('B1', 'REG.');
       $objPHPExcel->getActiveSheet()->setCellValue('C1', 'CUENTA');
       $objPHPExcel->getActiveSheet()->setCellValue('D1', 'NIF');
       $objPHPExcel->getActiveSheet()->setCellValue('E1', 'NOMBRE');
@@ -248,7 +248,7 @@ class invoicesActions extends sfActions
                   $objPHPExcel->getActiveSheet()->setCellValue('K'. ($n+2), abs($value['retencion_value'])); //%IRPF
                   $objPHPExcel->getActiveSheet()->setCellValue('L'. ($n+2), abs($value['retencion'])); //TOTAL IRPF
                   $objPHPExcel->getActiveSheet()->setCellValue('M'. ($n+2), $value['total']); //TOTAL
-                  $objPHPExcel->getActiveSheet()->setCellValue('N'. ($n+2), ''); //CONTRAPARTIDA 
+                  $objPHPExcel->getActiveSheet()->setCellValue('N'. ($n+2), '70000000'); //CONTRAPARTIDA 
                   $objPHPExcel->getActiveSheet()->setCellValue('O'. ($n+2), $invoice->getCustomer()->getInvoicingCountry()); //PAIS
                   $objPHPExcel->getActiveSheet()->setCellValue('P'. ($n+2), $invoice->getCustomer()->getInvoicingState()); //PROVINCIA
                   $objPHPExcel->getActiveSheet()->setCellValue('Q'. ($n+2), ''); //PAGO AUTOMATICO
