@@ -245,8 +245,8 @@ class invoicesActions extends sfActions
                   $objPHPExcel->getActiveSheet()->setCellValue('H'. ($n+2), $value['tax_value']); //%IVA
                   $objPHPExcel->getActiveSheet()->setCellValue('I'. ($n+2), $value['tax']); //IMPORTE IVA
                   $objPHPExcel->getActiveSheet()->setCellValue('J'. ($n+2), $value['base_retencion']); //BASE RETENCION
-                  $objPHPExcel->getActiveSheet()->setCellValue('K'. ($n+2), $value['retencion_value']); //%IRPF
-                  $objPHPExcel->getActiveSheet()->setCellValue('L'. ($n+2), $value['retencion']); //TOTAL IRPF
+                  $objPHPExcel->getActiveSheet()->setCellValue('K'. ($n+2), abs($value['retencion_value'])); //%IRPF
+                  $objPHPExcel->getActiveSheet()->setCellValue('L'. ($n+2), abs($value['retencion'])); //TOTAL IRPF
                   $objPHPExcel->getActiveSheet()->setCellValue('M'. ($n+2), $value['total']); //TOTAL
                   $objPHPExcel->getActiveSheet()->setCellValue('N'. ($n+2), ''); //CONTRAPARTIDA 
                   $objPHPExcel->getActiveSheet()->setCellValue('O'. ($n+2), $invoice->getCustomer()->getInvoicingCountry()); //PAIS
