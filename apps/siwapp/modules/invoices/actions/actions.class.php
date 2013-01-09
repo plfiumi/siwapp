@@ -286,19 +286,19 @@ class invoicesActions extends sfActions
       $companyObject = new Company();
       $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
       //Campos comunes para todas las lineas.
-      $aeb19->insertarCampo('codigo_presentador', str_pad($companyObject->getIdentification(), 12, '0', STR_PAD_RIGHT));
+      $aeb19->insertarCampo('codigo_presentador', $companyObject->getIdentification().$companyObject->getSufix());
       $aeb19->insertarCampo('fecha_fichero', date('dmy'));
       $aeb19->insertarCampo('nombre_presentador', $companyObject->getName());
       $aeb19->insertarCampo('entidad_receptora', $companyObject->getEntity());
       $aeb19->insertarCampo('oficina_presentador', $companyObject->getOffice());
       
-      $aeb19->insertarCampo('codigo_ordenante', str_pad($companyObject->getIdentification(), 12, '0', STR_PAD_RIGHT));
+      $aeb19->insertarCampo('codigo_ordenante', $companyObject->getIdentification().$companyObject->getSufix());
       $aeb19->insertarCampo('fecha_cargo', date('dmy'));
       $aeb19->insertarCampo('nombre_ordenante', $companyObject->getName());
       $aeb19->insertarCampo('cuenta_abono_ordenante', $companyObject->getEntity().$companyObject->getOffice().$companyObject->getControlDigit().$companyObject->getAccount());
       $aeb19->guardarRegistro('ordenante');
 
-      $aeb19->insertarCampo('ordenante_domiciliacion' , str_pad($companyObject->getIdentification(), 12, '0', STR_PAD_RIGHT));
+      $aeb19->insertarCampo('ordenante_domiciliacion' , $companyObject->getIdentification().$companyObject->getSufix());
 
       foreach($request->getParameter('ids', array()) as $id)
       {
