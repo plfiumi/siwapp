@@ -43,6 +43,8 @@ class CompanyForm extends BaseCompanyForm
 
     $this->validatorSchema['id']  = new sfValidatorPass();
     $this->validatorSchema['company_user_list'] = new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser', 'required' => true));
+    
+    $this->setDefault('sufix', '000');
 
   }
 
