@@ -1582,6 +1582,42 @@
         <source>Postalcode</source>
         <target>Codi Postal</target>
       </trans-unit>
+      <trans-unit>
+        <source>Estimate</source>
+        <target>Pressupost</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The customer was created successfully .</source>
+        <target>S'ha creat el client correctament.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The customer was updated successfully .</source>
+        <target>S'ha actualitzat el client correctament.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The product was created successfully .</source>
+        <target>S'ha creat el producte correctament.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The supplier was updated successfully .</source>
+        <target>S'ha actualitzat el proveïdor correctament.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The supplier was created successfully .</source>
+        <target>S'ha creat el proveïdor correctament.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The product was updated successfully .</source>
+        <target>S'ha actualitzat el producte correctament.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The expense has not been saved due to some errors.</source>
+        <target>La despesa no ha pogut ser desada.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The expense was successfully saved.</source>
+        <target>La despesa s'ha desat correctament.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

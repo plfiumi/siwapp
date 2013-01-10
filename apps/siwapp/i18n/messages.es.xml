@@ -1578,6 +1578,42 @@
         <source>Postalcode</source>
         <target>Código Postal</target>
       </trans-unit>
+      <trans-unit>
+        <source>Estimate</source>
+        <target>Presupuesto</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The customer was created successfully .</source>
+        <target>Se ha creado el cliente correctamente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The customer was updated successfully .</source>
+        <target>Se ha actualitzado el cliente correctamente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The product was created successfully .</source>
+        <target>Se ha creado el producto correctamente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The supplier was updated successfully .</source>
+        <target>Se ha actualitzado el proveedor correctamente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The supplier was created successfully .</source>
+        <target>Se ha creado el proveedor correctamente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The product was updated successfully .</source>
+        <target>Se ha actualitzado el producto correctamente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The expense has not been saved due to some errors.</source>
+        <target>No se ha podido guardar el gasto.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The expense was successfully saved.</source>
+        <target>Se ha guardado el Gasto correctamente.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

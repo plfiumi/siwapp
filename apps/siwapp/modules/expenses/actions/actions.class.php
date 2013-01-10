@@ -134,7 +134,7 @@ class expensesActions extends sfActions
       // update totals with saved values
       $invoice->refresh(true)->setAmounts()->save();
 
-      $this->getUser()->info($i18n->__('The invoice was successfully saved.'));
+      $this->getUser()->info($i18n->__('The expense was successfully saved.'));
       $this->redirect('expenses/edit?id='.$invoice->id);
     }
     else
@@ -143,7 +143,7 @@ class expensesActions extends sfActions
       {
         $this->getUser()->error(sprintf('%s: %s', $k, $v->getMessageFormat()));
       }
-      $this->getUser()->error($i18n->__('The invoice has not been saved due to some errors.'));
+      $this->getUser()->error($i18n->__('The expense has not been saved due to some errors.'));
     }
   }
   
