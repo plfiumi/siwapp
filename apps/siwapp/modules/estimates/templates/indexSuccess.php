@@ -19,7 +19,7 @@ $csrf     = new sfForm();
           
           <tr>
             <td colspan="4" class="listing-options noborder">
-              <?php include_partial('invoices/batchActions')?>
+              <?php include_partial('estimates/batchActions')?>
             </td>
             <td class="strong noborder"><?php echo __('Total') ?></td>
             <td class="strong noborder right"><?php echo format_currency($gross, $currency) ?></td>
@@ -89,7 +89,7 @@ $csrf     = new sfForm();
         <tfoot>
           <tr class="noborder">
             <td colspan="10" class="listing-options">
-              <?php include_partial('invoices/batchActions'); ?>
+              <?php include_partial('estimates/batchActions'); ?>
             </td>
           </tr>
         </tfoot>
