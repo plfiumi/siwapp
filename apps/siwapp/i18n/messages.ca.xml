@@ -1618,6 +1618,14 @@
         <source>The expense was successfully saved.</source>
         <target>La despesa s'ha desat correctament.</target>
       </trans-unit>
+      <trans-unit>
+        <source>The recurring invoice was created successfully.</source>
+        <target>La factura recurrent s'ha desat correctament.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>the recurring invoice was updated successfully.</source>
+        <target>la factura recurrent s'ha actualitzat correctament.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

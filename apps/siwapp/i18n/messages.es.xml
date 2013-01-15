@@ -1614,6 +1614,14 @@
         <source>The expense was successfully saved.</source>
         <target>Se ha guardado el Gasto correctamente.</target>
       </trans-unit>
+      <trans-unit>
+        <source>The recurring invoice was created successfully.</source>
+        <target>La factura recurrente se ha guardado correctamente.</target>
+      </trans-unit> 
+      <trans-unit>
+        <source>The recurring invoice was updated successfully.</source>
+        <target>La factura recurrente se ha actualizado correctamente.</target>
+      </trans-unit> 
     </body>
   </file>
 </xliff>
