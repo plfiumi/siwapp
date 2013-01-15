@@ -32,6 +32,7 @@ class CommonForm extends BaseCommonForm
     $this->widgetSchema['customer_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['supplier_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['recurring_invoice_id'] = new sfWidgetFormInputHidden();
+    $this->widgetSchema['estimate_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['tags']  = new sfWidgetFormInputHidden();
     $this->widgetSchema['payment_type_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PaymentType'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
     $this->widgetSchema['type']  = new sfWidgetFormInputHidden(array(),
