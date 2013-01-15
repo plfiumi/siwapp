@@ -19,7 +19,7 @@ $currency = $sf_user->getAttribute('currency');
     else:
       echo $invoiceItemForm['expense_type_id']->render(array(), ESC_RAW);
     endif;
-    echo javascript_tag("$('#".$invoiceItemForm['expense_type_id']->renderId()."').val($('#expense_default_expense_type').val())");
+    echo javascript_tag("if($('#".$invoiceItemForm['expense_type_id']->renderId()."').val() == '') $('#".$invoiceItemForm['expense_type_id']->renderId()."').val($('#expense_default_expense_type').val())");
     ?></td>
   <td class="right quantity"><?php 
     if ($invoiceItemForm['unitary_cost']->hasError()):
