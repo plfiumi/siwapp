@@ -24,6 +24,7 @@ class CompanyForm extends BaseCompanyForm
     $this->widgetSchema['legal_terms'] = new sfWidgetFormTextarea(array(), array('cols' => '30', 'rows' => '7'));
     $this->widgetSchema['pdf_size'] = new sfWidgetFormSelect(array('choices' => self::$paper_sizes));
     $this->widgetSchema['pdf_orientation'] = new sfWidgetFormSelect(array('choices' => array('portrait', 'landscape')));
+    $this->widgetSchema['company_user_list']  = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'expanded' => true, 'model' => 'sfGuardUser'));
 
     $this->widgetSchema->setLabels(array(
       'name'     => 'Name',
