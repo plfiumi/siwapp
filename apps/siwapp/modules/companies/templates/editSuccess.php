@@ -29,6 +29,9 @@ $company = $companyForm->getObject();
   <div id="company-data" class="global-data block">
   <h3><?php echo __('Company info') ?></h3>
   <ul>
+    <div style="display:none">
+        <?php echo $companyForm['logo']->renderRow(array('class' => error_class($companyForm['logo']))) ?>
+    </div>    
     <li>
       <span class="_75">
         <label for="<? echo $companyForm['name']->renderId()?>"><?php echo __('Company name') ?></label>
