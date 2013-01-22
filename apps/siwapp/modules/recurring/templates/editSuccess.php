@@ -15,6 +15,7 @@ $invoice = $invoiceForm->getObject();
     echo $invoiceForm['_csrf_token'];
     echo $invoiceForm['type'];
     echo $invoiceForm['company_id'];
+    echo $invoiceForm['customer_id'];
     ?>
 
 <div id="saving-options">
