@@ -20,9 +20,15 @@ class Supplier extends BaseSupplier
     $this->setName($obj->getSupplierName());
     $this->setNameSlug(SupplierTable::slugify($obj->getSupplierName()));
     $this->setIdentification($obj->getSupplierIdentification());
+    $this->setPhone($obj->getSupplierPhone());
+    $this->setFax($obj->getSupplierFax());
     $this->setEmail($obj->getSupplierEmail());
     $this->setContactPerson($obj->getContactPerson());
     $this->setInvoicingAddress($obj->getInvoicingAddress());
+    $this->setInvoicingCity($obj->getInvoicingCity());
+    $this->setInvoicingPostalcode($obj->getInvoicingPostalcode());
+    $this->setInvoicingState($obj->getInvoicingState());
+    $this->setInvoicingCountry($obj->getInvoicingCountry());
     
     return $this;
   }
