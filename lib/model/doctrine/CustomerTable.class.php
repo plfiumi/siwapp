@@ -32,11 +32,11 @@ class CustomerTable extends Doctrine_Table
    * @return Client  -- the client matched
    * @author Enrique Martinez
    **/
-  public function matchName($text)
+  public function matchName($text,$company_id)
   {
     return $this->createQuery()
       ->where('name_slug = ?', self::slugify($text))
-      ->AndWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
+      ->AndWhere('company_id = ?', $company_id)
       ->fetchONe();
   }
   
@@ -67,7 +67,7 @@ class CustomerTable extends Doctrine_Table
    **/
   public function getCustomerMatch($invoice)
   {
-    if($customer = $this->matchName($invoice->getCustomerName()))
+    if($customer = $this->matchName($invoice->getCustomerName(),$invoice->getCompany()->getId()))
     {
       return $customer;
     }

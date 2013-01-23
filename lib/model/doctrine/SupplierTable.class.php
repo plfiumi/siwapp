@@ -32,11 +32,11 @@ class SupplierTable extends Doctrine_Table
    * @return Client  -- the client matched
    * @author Enrique Martinez
    **/
-  public function matchName($text)
+  public function matchName($text,$company_id)
   {
     return $this->createQuery()
       ->where('name_slug = ?', self::slugify($text))
-      ->AndWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
+      ->AndWhere('company_id = ?', $company_id)
       ->fetchONe();
   }
   
@@ -67,7 +67,7 @@ class SupplierTable extends Doctrine_Table
    **/
   public function getSupplierMatch($invoice)
   {
-    if($Supplier = $this->matchName($invoice->getSupplierName()))
+    if($Supplier = $this->matchName($invoice->getSupplierName(),$invoice->getCompany()->getId()))
     {
       return $Supplier;
     }
