@@ -191,10 +191,6 @@ class invoicesActions extends sfActions
     }
     else
     {
-      foreach($form->getErrorSchema()->getErrors() as $k=>$v)
-      {
-        $this->getUser()->error(sprintf('%s: %s', $k, $v->getMessageFormat()));
-      }
       $this->getUser()->error($i18n->__('The invoice has not been saved due to some errors.'));
     }
   }

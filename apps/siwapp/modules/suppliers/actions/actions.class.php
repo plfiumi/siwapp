@@ -136,10 +136,6 @@ class suppliersActions extends sfActions
     }
     else
     {
-      foreach($form->getErrorSchema()->getErrors() as $k=>$v)
-      {
-        $this->getUser()->error(sprintf('%s: %s', $k, $v->getMessageFormat()));
-      }
       $this->getUser()->error($i18n->__('The supplier has not been saved due to some errors.'));
     }
   }

@@ -125,10 +125,6 @@ class recurringActions extends sfActions
     }
     else
     {
-      foreach($form->getErrorSchema()->getErrors() as $k=>$v)
-      {
-        $this->getUser()->error(sprintf('%s: %s', $k, $v->getMessageFormat()));
-      }
       $this->getUser()->error('The recurring invoice has not been saved due to some errors.');
     }
   }
