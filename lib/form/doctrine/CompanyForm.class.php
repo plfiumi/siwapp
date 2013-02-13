@@ -21,7 +21,7 @@ class CompanyForm extends BaseCompanyForm
     $culture = $this->getOption('culture', sfConfig::get('sf_default_culture'));
     
     $this->widgetSchema['currency'] = new sfWidgetFormI18nChoiceCurrency(array('culture' => $culture));
-    $this->widgetSchema['legal_terms'] = new sfWidgetFormTextarea(array(), array('cols' => '30', 'rows' => '7'));
+    $this->widgetSchema['legal_terms'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['pdf_size'] = new sfWidgetFormSelect(array('choices' => self::$paper_sizes));
     $this->widgetSchema['pdf_orientation'] = new sfWidgetFormSelect(array('choices' => array('portrait', 'landscape')));
     $this->widgetSchema['company_user_list']  = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'expanded' => true, 'model' => 'sfGuardUser'));

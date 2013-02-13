@@ -23,6 +23,7 @@ class CurrentCompanyForm extends CompanyForm
     parent::configure();
     unset($this->widgetSchema['user_list']);
     unset($this->validatorSchema['user_list']);
+    $this->widgetSchema['legal_terms'] = new sfWidgetFormTextarea(array(), array('cols' => '30', 'rows' => '7'));
     
     $companyObject = $this->getCurrentCompany();
     
