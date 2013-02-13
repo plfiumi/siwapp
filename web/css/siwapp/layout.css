@@ -561,3 +561,9 @@ div.grippie {
   height: 20%;
 }
 form div.resizable-textarea { padding-bottom: 0pt;}
+
+/* Checkbox of users selection */
+
+ul.checkbox_list label {
+    display:inline;
+}
