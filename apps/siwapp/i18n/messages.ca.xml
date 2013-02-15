@@ -1626,6 +1626,10 @@
         <source>the recurring invoice was updated successfully.</source>
         <target>la factura recurrent s'ha actualitzat correctament.</target>
       </trans-unit>
+      <trans-unit>
+        <source>Customer email</source>
+        <target>Email del client</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
