@@ -72,15 +72,15 @@
     <tbody>
       <tr>
         <th><?php echo __('Net Profit') ?></th>
-        <th id="dashboard-balance-taxes" class="right"><?php echo format_currency($gross-$expense_gross,$currency);?></th>
+        <th id="dashboard-balance-taxes" class="right"><?php echo format_currency($net-$expense_net,$currency);?></th>
       </tr>
       <tr>
         <td><?php echo __('Total Revenue') ?></td>
-        <td id="dashboard-balance-total" class="right"><?php echo format_currency($gross,$currency);?></td>
+        <td id="dashboard-balance-total" class="right"><?php echo format_currency($net,$currency);?></td>
       </tr>
       <tr>
         <td><?php echo __('Total Expenses') ?></td>
-        <td id="dashboard-balance-net" class="right"><?php echo format_currency($expense_gross,$currency);?></td>
+        <td id="dashboard-balance-net" class="right"><?php echo format_currency($expense_net,$currency);?></td>
       </tr>
     </tbody>
   </table>
