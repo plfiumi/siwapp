@@ -60,6 +60,7 @@ class RecurringInvoiceForm extends CommonForm
       ));
     
     parent::configure();
+    $this->validatorSchema['payment_type_id'] = new sfValidatorString(array('required' => true));
   }
 
   public function getModelName()

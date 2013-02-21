@@ -67,6 +67,7 @@ $invoice = $invoiceForm->getObject();
       <ul class="inline">
         <?php echo $invoiceForm['series_id']->renderRow()?>
         <?php echo $invoiceForm['days_to_due']->renderRow()?>
+          <span style="margin-right:10px"><?php echo $invoiceForm['payment_type_id']->renderRow() ?> </span>
       </ul>
       <?php include_partial('common/items', array(
         'invoice' => $invoice,
