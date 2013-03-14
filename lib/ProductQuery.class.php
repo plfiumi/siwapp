@@ -25,7 +25,7 @@ class ProductQuery extends Doctrine_Query
              OR i.quantity IS NULL
              OR i.unitary_cost IS NULL,
              0, 
-             i.quantity * i.unitary_cost
+             (case when i.discount <> 0.00 then (1 - i.discount * 0.01) else 1.00 end) * i.quantity * i.unitary_cost
             )
          ) AS sold";
 
