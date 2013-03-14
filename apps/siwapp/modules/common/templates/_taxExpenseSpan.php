@@ -5,8 +5,8 @@ echo jq_link_to_function('',
 <select class="observable tax" id="item_taxes_list_<?php echo $rowId?>_<?php echo $taxKey?>" name="expense[Items][<?php echo $rowId?>][taxes_list][]">
   <?php
     $taxes = Doctrine::getTable('Tax')->createQuery()
-    ->where('id = ?', $taxKey)->orWhere('active = ?', 1)
-    ->andWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->execute();
+    ->Where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
+    ->orWhere('id = ?', $taxKey)->execute();
     foreach($taxes as $o_tax):?>
   <option value="<?php echo $o_tax->id?>" <?php echo $o_tax->id == $taxKey ? 'selected="selected"':''?>>
     <?php echo $o_tax->name?>
