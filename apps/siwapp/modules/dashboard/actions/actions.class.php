@@ -98,9 +98,7 @@ class dashboardActions extends sfActions
     $this->pendingCounter = $eqp->count();
     // recent & overdue invoices
     $this->recent         = $q->execute();
-    $this->overdue        = $overdueQuery->execute();
     $this->pending         = $eqp->execute();
-    $this->expenses         = $exp->execute();
     
     $this->net=$q->total('net_amount');
     $this->expense_net=$exp->total('net_amount');
