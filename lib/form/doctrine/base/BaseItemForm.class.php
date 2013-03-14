@@ -22,7 +22,7 @@ abstract class BaseItemForm extends BaseFormDoctrine
       'common_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'add_empty' => true)),
       'product_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Product'), 'add_empty' => true)),
       'expense_type_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'), 'add_empty' => true)),
-      'description'     => new sfWidgetFormInputText(),
+      'description'     => new sfWidgetFormTextarea(),
       'unitary_cost'    => new sfWidgetFormInputText(),
       'taxes_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Tax')),
     ));
@@ -35,7 +35,7 @@ abstract class BaseItemForm extends BaseFormDoctrine
       'common_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Common'), 'required' => false)),
       'product_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Product'), 'required' => false)),
       'expense_type_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'), 'required' => false)),
-      'description'     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'description'     => new sfValidatorString(array('required' => false)),
       'unitary_cost'    => new sfValidatorNumber(array('required' => false)),
       'taxes_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Tax', 'required' => false)),
     ));

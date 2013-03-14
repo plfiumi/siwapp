@@ -11,7 +11,7 @@
  * @property integer $common_id
  * @property integer $product_id
  * @property integer $expense_type_id
- * @property string $description
+ * @property clob $description
  * @property decimal $unitary_cost
  * @property Company $Company
  * @property Common $Common
@@ -26,7 +26,7 @@
  * @method integer             getCommonId()        Returns the current record's "common_id" value
  * @method integer             getProductId()       Returns the current record's "product_id" value
  * @method integer             getExpenseTypeId()   Returns the current record's "expense_type_id" value
- * @method string              getDescription()     Returns the current record's "description" value
+ * @method clob                getDescription()     Returns the current record's "description" value
  * @method decimal             getUnitaryCost()     Returns the current record's "unitary_cost" value
  * @method Company             getCompany()         Returns the current record's "Company" value
  * @method Common              getCommon()          Returns the current record's "Common" value
@@ -85,9 +85,8 @@ abstract class BaseItem extends sfDoctrineRecord
         $this->hasColumn('expense_type_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('description', 'string', 255, array(
-             'type' => 'string',
-             'length' => 255,
+        $this->hasColumn('description', 'clob', null, array(
+             'type' => 'clob',
              ));
         $this->hasColumn('unitary_cost', 'decimal', 53, array(
              'type' => 'decimal',

@@ -294,7 +294,7 @@ Item:
     common_id: integer
     product_id: integer
     expense_type_id: integer
-    description: string(255)
+    description: clob
     unitary_cost: { type: decimal(53), scale: 15, notnull: true, default: 0 }
   relations:
     Company:
