@@ -1200,7 +1200,7 @@
       </trans-unit>
       <trans-unit id="32">
         <source>Supplier reference</source>
-        <target>Referencia del proveedor</target>
+        <target>Numero factura proveedor</target>
       </trans-unit>
       <trans-unit id="33">
         <source>Comments</source>
