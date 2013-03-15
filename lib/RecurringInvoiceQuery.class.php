@@ -36,7 +36,7 @@ class RecurringInvoiceQuery extends CommonInvoiceQuery
   public function getAverageDayAmount()
   {
     $other = clone($this);
-      $select = "SUM( gross_amount / (period*(case period_type 
+      $select = "SUM( net_amount / (period*(case period_type 
           when 'year' then 365
           when 'month' then 30
           when 'week' then 7
