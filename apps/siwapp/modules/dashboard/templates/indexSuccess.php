@@ -92,6 +92,7 @@
   <table class="listing">
     <thead>
       <tr>
+        <th class="number"><?php echo __('Serie') ?></th>
         <th class="number"><?php echo __('Number') ?></th>
         <th><?php echo __('Customer Name') ?></th>
         <th class="date"><?php echo __('Date') ?></th>
@@ -110,8 +111,9 @@
           $closed   = ($invoice->getStatus() == Invoice::CLOSED);
         ?>
         <tr id="invoice-<?php echo $id ?>" class="<?php echo "$parity link invoice-$id" ?>">
+          <td class="link"><?php echo $invoice->getSeries()->getName() ?></td>
           <td class="link number"><?php echo $invoice ?></td>
-          <td class="link"><?php echo $invoice->getCustomerName() ?></td>
+          <td class="link"><?php echo $invoice->getCustomerName() ?> <br><span style="padding-left:10px;font-size:11px;font-style:italic;"><?php echo __('Notes').': '.substr($invoice->getNotes(),0,40) ?></span></td>
           <td class="link date"><?php echo format_date($invoice->getIssueDate()) ?></td>
           <td class="link date"><?php echo format_date($invoice->getDueDate()) ?></td>
           <td class="link">
