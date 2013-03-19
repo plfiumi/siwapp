@@ -57,7 +57,7 @@ $csrf     = new sfForm();
             <tr id="invoice-<?php echo $id ?>" class="<?php echo "$parity link invoice-$id" ?>">
               <td class="check"><input rel="item" type="checkbox" value="<?php echo $id ?>" name="ids[]"></td>
               <td><?php echo $invoice ?></td>
-              <td class="<?php echo $invoice->getSentByEmail() ? 'sent' : null ?>"><?php echo $invoice->getCustomerName() ?></td>
+              <td class="<?php echo $invoice->getSentByEmail() ? 'sent' : null ?>"><?php echo $invoice->getCustomerName() ?> <br><span style="padding-left:10px;font-size:11px;font-style:italic;"><?php echo __('Notes').': '.substr($invoice->getNotes(),0,40) ?></span></td>
               <td><?php echo format_date($invoice->getIssueDate()) ?></td>
               <td><?php echo format_date($invoice->getDueDate()) ?></td>
               <td>
