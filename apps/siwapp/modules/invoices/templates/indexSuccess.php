@@ -33,6 +33,7 @@ $csrf     = new sfForm();
             <?php
               // sort parameter => array (Name, default order)
               renderHeaders(array(
+                'series_id'        => array('Serie', 'desc'),
                 'number'        => array('Number', 'desc'),
                 'customer_name' => array('Customer Name', 'asc'),
                 'issue_date'    => array('Date', 'desc'),
@@ -56,6 +57,7 @@ $csrf     = new sfForm();
             ?>
             <tr id="invoice-<?php echo $id ?>" class="<?php echo "$parity link invoice-$id" ?>">
               <td class="check"><input rel="item" type="checkbox" value="<?php echo $id ?>" name="ids[]"></td>
+              <td><?php echo $invoice->getSeries()->getName() ?></td>
               <td><?php echo $invoice ?></td>
               <td class="<?php echo $invoice->getSentByEmail() ? 'sent' : null ?>"><?php echo $invoice->getCustomerName() ?> <br><span style="padding-left:10px;font-size:11px;font-style:italic;"><?php echo __('Notes').': '.substr($invoice->getNotes(),0,40) ?></span></td>
               <td><?php echo format_date($invoice->getIssueDate()) ?></td>
