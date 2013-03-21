@@ -26,7 +26,7 @@ class Invoice extends BaseInvoice
 
   public function __toString()
   {
-    return ($this->draft ? '[proforma]' : $this->getNumber());
+    return (($this->getStatus() == Invoice::DRAFT) ? '[proforma]' : $this->getNumber());
   }
   
   public function getDueAmount()
