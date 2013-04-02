@@ -142,8 +142,7 @@ class estimatesActions extends sfActions
         $result = $this->getMailer()->send($message);
         if($result)
         {
-          $estimate->setSentByEmail(true);
-          $estimate->save();
+         Doctrine_Manager::getInstance()->getCurrentConnection()->execute(" update common set sent_by_email = 1 where id =  ".$estimate->id);
         }
       }
     } catch (Exception $e) {
