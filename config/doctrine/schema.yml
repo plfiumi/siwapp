@@ -27,6 +27,9 @@ Company:
     account: string(50)
     mercantil_registry: string(255)
     sufix: string(255)
+    fiscality:
+      type: boolean
+      default: false
   indexes:
     cst:
       fields: [name]
