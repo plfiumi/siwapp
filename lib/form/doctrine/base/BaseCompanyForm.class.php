@@ -40,6 +40,7 @@ abstract class BaseCompanyForm extends BaseFormDoctrine
       'account'            => new sfWidgetFormInputText(),
       'mercantil_registry' => new sfWidgetFormInputText(),
       'sufix'              => new sfWidgetFormInputText(),
+      'fiscality'          => new sfWidgetFormInputCheckbox(),
       'company_user_list'  => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser')),
     ));
 
@@ -69,6 +70,7 @@ abstract class BaseCompanyForm extends BaseFormDoctrine
       'account'            => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'mercantil_registry' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'sufix'              => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'fiscality'          => new sfValidatorBoolean(array('required' => false)),
       'company_user_list'  => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser', 'required' => false)),
     ));
 

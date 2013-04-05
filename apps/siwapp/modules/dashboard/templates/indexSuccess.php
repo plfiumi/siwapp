@@ -82,12 +82,75 @@
         <td><?php echo __('Total Expenses') ?></td>
         <td id="dashboard-balance-net" class="right"><?php echo format_currency($expense_net,$currency);?></td>
       </tr>
+<?php
+   if($fiscality) {
+      foreach ($detailed_expenses as $expense_data) {
+      ?><tr>
+        <td style="padding-left:30px;font-size:12px;"><?php echo $expense_data['name'] ?></td>
+        <td class="right"><?php echo format_currency($expense_data['base'], $currency)?></td>
+      </tr>
+<?php
+    }
+  } //Close fiscality fi
+?>
     </tbody>
   </table>
   </div>
   
   </div> <!-- situation-wrapper -->
 <div class="clear"></div>
+<?php
+   if($fiscality) {
+?>
+  <h2><?php echo __('Fiscality'); ?></h2>
+  <div id="situation-wrapper" class="left">
+  <div class="left">
+  <h3><?php echo __('Incoming Taxes'); ?></h3>
+  <table class="dashboard-info">
+    <tbody>
+      <tr>
+        <th><?php echo __('Tax Name') ?></th>
+        <th><?php echo __('Base') ?></th>
+        <th><?php echo __('Tax Value') ?></th>
+      </tr>
+      <?php foreach ($fiscal_invoices as $tax_data) {
+      ?><tr>
+        <td><?php echo $tax_data['name'] ?></td>
+        <td class="right"><?php echo format_currency($tax_data['base'], $currency)?></td>
+        <td class="right"><?php echo format_currency($tax_data['value'] /100 * $tax_data['base'], $currency)?></td>
+      </tr>
+      <?php
+      }
+      ?>
+    </tbody>
+  </table>
+  </div>
+  <div class="left">
+  <h3><?php echo __('Outgoing Taxes'); ?></h3>
+  <table class="dashboard-info">
+    <tbody>
+      <tr>
+        <th><?php echo __('Tax Name') ?></th>
+        <th><?php echo __('Base') ?></th>
+        <th><?php echo __('Tax Value') ?></th>
+      </tr>
+      <?php foreach ($fiscal_expenses as $tax_data) {
+      ?><tr>
+        <td><?php echo $tax_data['name'] ?></td>
+        <td class="right"><?php echo format_currency($tax_data['base'], $currency)?></td>
+        <td class="right"><?php echo format_currency($tax_data['value'] /100 * $tax_data['base'], $currency)?></td>
+      </tr>
+      <?php
+      }
+      ?>
+    </tbody>
+  </table>
+  </div>
+  </div> <!-- fiscality-wrapper -->
+<div class="clear"></div>
+<?php
+  } //Close fiscality fi
+?>
   <h2><?php echo __('Recent invoices') ?></h2>
   <table class="listing">
     <thead>

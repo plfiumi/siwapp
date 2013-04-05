@@ -29,6 +29,7 @@
  * @property string $account
  * @property string $mercantil_registry
  * @property string $sufix
+ * @property boolean $fiscality
  * @property Doctrine_Collection $Company
  * 
  * @method string              getIdentification()     Returns the current record's "identification" value
@@ -55,6 +56,7 @@
  * @method string              getAccount()            Returns the current record's "account" value
  * @method string              getMercantilRegistry()  Returns the current record's "mercantil_registry" value
  * @method string              getSufix()              Returns the current record's "sufix" value
+ * @method boolean             getFiscality()          Returns the current record's "fiscality" value
  * @method Doctrine_Collection getCompanyUser()        Returns the current record's "CompanyUser" collection
  * @method Doctrine_Collection getCompany()            Returns the current record's "Company" collection
  * @method Company             setIdentification()     Sets the current record's "identification" value
@@ -81,6 +83,7 @@
  * @method Company             setAccount()            Sets the current record's "account" value
  * @method Company             setMercantilRegistry()  Sets the current record's "mercantil_registry" value
  * @method Company             setSufix()              Sets the current record's "sufix" value
+ * @method Company             setFiscality()          Sets the current record's "fiscality" value
  * @method Company             setCompanyUser()        Sets the current record's "CompanyUser" collection
  * @method Company             setCompany()            Sets the current record's "Company" collectionUser
  * @property Doctrine_Collection $Company
@@ -109,6 +112,7 @@
  * @method string              getAccount()            Returns the current record's "account" value
  * @method string              getMercantilRegistry()  Returns the current record's "mercantil_registry" value
  * @method string              getSufix()              Returns the current record's "sufix" value
+ * @method boolean             getFiscality()          Returns the current record's "fiscality" value
  * @method Doctrine_Collection getCompanyUser()        Returns the current record's "CompanyUser" collection
  * @method Doctrine_Collection getCompany()            Returns the current record's "Company" collection
  * @method Company             setIdentification()     Sets the current record's "identification" value
@@ -135,6 +139,7 @@
  * @method Company             setAccount()            Sets the current record's "account" value
  * @method Company             setMercantilRegistry()  Sets the current record's "mercantil_registry" value
  * @method Company             setSufix()              Sets the current record's "sufix" value
+ * @method Company             setFiscality()          Sets the current record's "fiscality" value
  * @method Company             setCompanyUser()        Sets the current record's "CompanyUser" collection
  * @method Company             setCompany()            Sets the current record's "Company" collection
  * 
@@ -240,6 +245,10 @@ abstract class BaseCompany extends sfDoctrineRecord
         $this->hasColumn('sufix', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
+             ));
+        $this->hasColumn('fiscality', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
 
 

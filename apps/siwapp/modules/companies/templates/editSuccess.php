@@ -133,6 +133,12 @@ $company = $companyForm->getObject();
         <?php echo render_tag($companyForm['mercantil_registry'])  ?>
         </span>
     </li>
+    <li>
+      <span class="_100">
+        <label for="<? echo $companyForm['fiscality']->renderId()?>"><?php echo __('Fiscality Enabled') ?></label>
+        <?php echo render_tag($companyForm['fiscality'])  ?>
+        </span>
+    </li>
   </ul>
   </div>
   <div id="company-users-data" class="global-data block">

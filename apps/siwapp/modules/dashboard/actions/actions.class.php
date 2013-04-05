@@ -27,6 +27,49 @@ class dashboardActions extends sfActions
     $search = $this->getUser()->getAttribute('search', null, $namespace);
     $this->maxResults = sfConfig::get('app_dashboard_max_results');
     $company_id=sfContext::getInstance()->getUser()->getAttribute('company_id');
+    $company = Doctrine::getTable('Company')->find($company_id);
+    $this->fiscality=$company->fiscality;
+    if($this->fiscality){
+        //Incoming expenses grouped by Tax id. 
+        $q = InvoiceQuery::create()->innerJoin('i.Items it')->innerJoin('it.ItemTax itt')->innerJoin('it.Taxes t')
+            ->addSelect('t.name as name')->addSelect('t.value as value ')
+            ->addSelect('i.id')->addSelect('it.id')->addSelect('t.id') //Necesary for doctrine
+            ->addSelect('sum(
+        CASE WHEN discount >0
+        THEN ((100-it.discount) / 100) * (it.unitary_cost * it.quantity)
+        ELSE it.unitary_cost * it.quantity
+        END ) AS base')
+
+            ->Where('company_id = ?',$company_id )->search($search)
+            ->addGroupBy('t.name')->addGroupBy('t.value');
+        $this->fiscal_invoices = $q->fetchArray();
+
+        $q = ExpenseQuery::create()->innerJoin('i.Items it')->innerJoin('it.ItemTax itt')->innerJoin('it.Taxes t')
+            ->addSelect('t.name as name')->addSelect('t.value as value ')
+            ->addSelect('i.id')->addSelect('it.id')->addSelect('t.id') //Necesary for doctrine
+            ->addSelect('sum(
+        CASE WHEN discount >0
+        THEN ((100-it.discount) /100) * (it.unitary_cost * it.quantity)
+        ELSE it.unitary_cost * it.quantity
+        END ) AS base')
+
+            ->Where('company_id = ?',$company_id )->search($search)
+            ->addGroupBy('t.name')->addGroupBy('t.value');
+        $this->fiscal_expenses = $q->fetchArray();
+
+        $q = ExpenseQuery::create()->innerJoin('i.Items it')->innerJoin('it.ItemTax itt')->innerJoin('it.Taxes t')->innerJoin('it.ExpenseType et')
+            ->addSelect('et.name as name')
+            ->addSelect('i.id')->addSelect('it.id')->addSelect('t.id') //Necesary for doctrine
+            ->addSelect('sum(
+        CASE WHEN discount >0
+        THEN ((100-it.discount) /100) * (it.unitary_cost * it.quantity)
+        ELSE it.unitary_cost * it.quantity
+        END ) AS base')
+
+            ->Where('company_id = ?',$company_id )->search($search)
+            ->addGroupBy('et.name');
+        $this->detailed_expenses = $q->fetchArray();
+    }
     
     $q = InvoiceQuery::create()->Where('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
     

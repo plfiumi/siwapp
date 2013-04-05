@@ -1630,6 +1630,34 @@
         <source>Customer email</source>
         <target>Email del client</target>
       </trans-unit>
+      <trans-unit>
+        <source>Fiscality Enabled</source>
+        <target>Fiscalitat activada</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Fiscality</source>
+        <target>Fiscalitat</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Incoming Taxes</source>
+        <target>Impostos Repercutits</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Outgoing Taxes</source>
+        <target>Impostos Suportats</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Tax Name</source>
+        <target>Impost</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Base</source>
+        <target>Base</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Tax Value</source>
+        <target>Import</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

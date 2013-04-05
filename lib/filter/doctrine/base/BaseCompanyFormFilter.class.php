@@ -37,6 +37,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
       'account'            => new sfWidgetFormFilterInput(),
       'mercantil_registry' => new sfWidgetFormFilterInput(),
       'sufix'              => new sfWidgetFormFilterInput(),
+      'fiscality'          => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'company_user_list'  => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser')),
     ));
 
@@ -65,6 +66,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
       'account'            => new sfValidatorPass(array('required' => false)),
       'mercantil_registry' => new sfValidatorPass(array('required' => false)),
       'sufix'              => new sfValidatorPass(array('required' => false)),
+      'fiscality'          => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'company_user_list'  => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardUser', 'required' => false)),
     ));
 
@@ -128,6 +130,7 @@ abstract class BaseCompanyFormFilter extends BaseFormFilterDoctrine
       'account'            => 'Text',
       'mercantil_registry' => 'Text',
       'sufix'              => 'Text',
+      'fiscality'          => 'Boolean',
       'company_user_list'  => 'ManyKey',
     );
   }
