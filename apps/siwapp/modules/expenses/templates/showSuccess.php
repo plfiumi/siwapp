@@ -74,6 +74,7 @@
           <tr>
           <th><?php echo __('Description') ?></th>
           <th class="right"><?php echo __('Expense Type') ?></th>
+          <th class="right"><?php echo __('Unit Cost') ?></th>
           <th class="right"><?php echo __('Amount') ?></th>
           <th class="right"><?php echo __('Taxes') ?></th>
           <th class="right"><?php echo __('Price') ?></th>
@@ -101,7 +102,7 @@
         </tbody>
         <tfoot id="global_calculations">
           <tr>
-            <td colspan="3" rowspan="4" class="noborder"></td>
+            <td colspan="4" rowspan="4" class="noborder"></td>
             <td><?php echo __('Subtotal') ?></td>
             <td id="td_subtotal" class="right">
               <?php echo format_currency($invoice->getNetAmount(), $currency) ?>
