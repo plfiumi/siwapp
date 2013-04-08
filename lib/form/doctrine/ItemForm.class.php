@@ -33,6 +33,15 @@ class ItemForm extends BaseItemForm
     $this->validatorSchema->setOption('allow_extra_fields', true);
   }
 
+  public function setDefaults($defaults)
+  {
+    if(isset($defaults['product_id']))
+    {
+        $product = Doctrine::getTable('Product')->find($defaults['product_id']);
+        $defaults['product_autocomplete'] = $product->getReference();
+    }
+    parent::setDefaults($defaults);
+  }
   public function doUpdateObject($values)
   {
     $this->object->unlink('Taxes');
