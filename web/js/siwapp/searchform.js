@@ -91,8 +91,8 @@
             case 'first_quarter':
                 from_mod.setDate(1);
                 from_mod.setMonth(0);
-                to_mod.setDate(31);
                 to_mod.setMonth(2);
+                to_mod.setDate(31);
                 break;
             case 'second_quarter':
                 from_mod.setDate(1);
@@ -109,8 +109,8 @@
             case 'fourth_quarter':
                 from_mod.setDate(1);
                 from_mod.setMonth(9);
-                to_mod.setDate(31);
                 to_mod.setMonth(11);
+                to_mod.setDate(31);
                 break;
             default: 
                 from_mod = null;
