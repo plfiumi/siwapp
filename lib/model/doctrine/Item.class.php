@@ -108,7 +108,7 @@ class Item extends BaseItem
     foreach($this->Taxes as $tax)
     {
       {
-        $detail[$tax->getName()] = $this->getBaseAmount($tax->getName());
+        $detail[$tax->getName()] = $this->getNetAmount($tax->getName());
       }
     }
 
