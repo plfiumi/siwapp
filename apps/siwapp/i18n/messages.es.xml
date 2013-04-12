@@ -1128,7 +1128,7 @@
       </trans-unit>
       <trans-unit id="14">
         <source>The estimate could not be sent due to an error.</source>
-        <target>El pressupuesto no ha podido ser enviado a causa de un error</target>
+        <target>El presupuesto no ha podido ser enviado a causa de un error</target>
       </trans-unit>
       <trans-unit id="15">
         <source>There is a problem with estimate %s</source>
@@ -1140,11 +1140,11 @@
       </trans-unit>
       <trans-unit id="17">
         <source>%d estimates were successfully deleted.</source>
-        <target>Se han eliminado %d pressupuestos</target>
+        <target>Se han eliminado %d presupuestos</target>
       </trans-unit>
       <trans-unit id="18">
         <source>%d estimates were successfully sent.</source>
-        <target>Se han enviado %d pressupuestos</target>
+        <target>Se han enviado %d presupuestos</target>
       </trans-unit>
       <trans-unit id="19">
         <source>Supplier Name</source>
