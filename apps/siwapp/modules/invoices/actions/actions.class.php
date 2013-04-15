@@ -339,6 +339,8 @@ class invoicesActions extends sfActions
             //Añadimos la domiciliación
             $aeb19->guardarRegistro('domiciliacion', $conceptosDom);
  
+            $invoice->setRemesed(true);
+            $invoice->save();
  
         }
       }

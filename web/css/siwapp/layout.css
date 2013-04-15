@@ -177,6 +177,15 @@ table.listing .noborder th { border:0 !important; background-image:none !importa
 table.listing .btn.action-clear { font-size:0.846em; }
 table.listing tbody td.action { width:1em; }
 
+table.listing td.remesed { 
+  background:transparent url(../../images/icons/coins.png) no-repeat 97% 50%;
+  padding-right: 3%;
+}
+table.listing td.sentremesed { 
+  background:transparent url(../../images/icons/sent_remesed.png) no-repeat 97% 50%;
+  padding-right: 3%;
+}
+
 table.listing td.sent { 
   background:transparent url(../../images/icons/email_open.png) no-repeat 97% 50%;
   padding-right: 3%;

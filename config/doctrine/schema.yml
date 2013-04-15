@@ -235,6 +235,9 @@ Invoice:
     sent_by_email:
       type: boolean
       default: false
+    remesed:
+      type: boolean
+      default: false
     number: integer(4)
     recurring_invoice_id: integer
     estimate_id: integer

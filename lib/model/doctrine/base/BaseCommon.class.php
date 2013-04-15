@@ -44,6 +44,7 @@
  * @property boolean $draft
  * @property boolean $closed
  * @property boolean $sent_by_email
+ * @property boolean $remesed
  * @property integer $number
  * @property integer $recurring_invoice_id
  * @property integer $estimate_id
@@ -106,6 +107,7 @@
  * @method boolean             getDraft()                   Returns the current record's "draft" value
  * @method boolean             getClosed()                  Returns the current record's "closed" value
  * @method boolean             getSentByEmail()             Returns the current record's "sent_by_email" value
+ * @method boolean             getRemesed()                 Returns the current record's "remesed" value
  * @method integer             getNumber()                  Returns the current record's "number" value
  * @method integer             getRecurringInvoiceId()      Returns the current record's "recurring_invoice_id" value
  * @method integer             getEstimateId()              Returns the current record's "estimate_id" value
@@ -167,6 +169,7 @@
  * @method Common              setDraft()                   Sets the current record's "draft" value
  * @method Common              setClosed()                  Sets the current record's "closed" value
  * @method Common              setSentByEmail()             Sets the current record's "sent_by_email" value
+ * @method Common              setRemesed()                 Sets the current record's "remesed" value
  * @method Common              setNumber()                  Sets the current record's "number" value
  * @method Common              setRecurringInvoiceId()      Sets the current record's "recurring_invoice_id" value
  * @method Common              setEstimateId()              Sets the current record's "estimate_id" value
@@ -352,6 +355,10 @@ abstract class BaseCommon extends sfDoctrineRecord
              'default' => false,
              ));
         $this->hasColumn('sent_by_email', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('remesed', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));
