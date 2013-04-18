@@ -158,5 +158,36 @@ class Expense extends BaseExpense
     return $this;
   }
 
+  /**
+   * Gets tax details of the expense grupped by expense type.
+   * @author: Sergi Almacellas Abellana <sergi.almacellas@btactic.com>
+   * @return Array
+   */
+  public function getGrupedExpenseTypes()
+  {
+    $result = array();
+    foreach ($this->getItems() as $item)
+    {
+        $name = $item->getExpenseType()->getName();
+        $ammount=$item->getTaxAmount();
+        $base=$item->getBaseAmount();
+
+        if (isset($result[$name]))
+        {
+          $result[$name]['tax'] += $ammount;
+          $result[$name]['base'] += $base;
+          $result[$name]['total'] += ($ammount+$base);
+        }
+        else
+        {
+          $result[$name] = array(
+            'tax' => $ammount,
+            'base' => $base,
+            'total' => ($ammount+$base),
+          );
+        }
+    }
+    return $result;
+  }
   
 }

@@ -148,6 +148,57 @@ class expensesActions extends sfActions
    *
    * @return void
    **/
+  public function executeExport(sfWebRequest $request)
+  {
+      $n = 0;
+      $objPHPExcel = new sfPhpExcel();
+      $objPHPExcel->setActiveSheetIndex(0);
+      //Generate Headers.
+      $objPHPExcel->getActiveSheet()->setTitle('GASTOS');
+      $objPHPExcel->getActiveSheet()->setCellValue('A1', 'FECHA');
+      $objPHPExcel->getActiveSheet()->setCellValue('B1', 'NUM. FACTURA');
+      $objPHPExcel->getActiveSheet()->setCellValue('C1', 'PROVEEDOR');
+      $objPHPExcel->getActiveSheet()->setCellValue('D1', 'TIPO GASTOS');
+      $objPHPExcel->getActiveSheet()->setCellValue('E1', 'BASE');
+      $objPHPExcel->getActiveSheet()->setCellValue('F1', 'IMPUESTOS');
+      $objPHPExcel->getActiveSheet()->setCellValue('G1', 'TOTAL');
+      foreach($request->getParameter('ids', array()) as $id)
+      {
+        if($invoice = Doctrine::getTable('Expense')->find($id))
+        {
+              #foreach ($invoice->getGrupedTaxes() as $expenseType => $value) 
+              foreach ($invoice->getGrupedExpenseTypes() as $expenseType => $value) 
+              {
+                  $objPHPExcel->getActiveSheet()->setCellValue('A'. ($n+2),date('d/m/Y',strtotime($invoice->getIssueDate()))); //FECHA
+                  $objPHPExcel->getActiveSheet()->setCellValue('B'. ($n+2), $invoice->getSupplierReference().''); //NUM. FACTURA
+                  $objPHPExcel->getActiveSheet()->setCellValue('C'. ($n+2), $invoice->getSupplierName()); //PROVEEDOR
+                  $objPHPExcel->getActiveSheet()->setCellValue('D'. ($n+2), $expenseType); //TIPO GASTO
+                  $objPHPExcel->getActiveSheet()->setCellValue('E'. ($n+2), $value['base']); //BASE 
+                  $objPHPExcel->getActiveSheet()->setCellValue('F'. ($n+2), $value['tax']); //%IVA
+                  $objPHPExcel->getActiveSheet()->setCellValue('G'. ($n+2), $value['total']); //TOTAL
+                  $n++;
+              }
+        }
+      }
+
+    $this->setLayout(false);
+    $response = $this->getContext()->getResponse();
+    $response->clearHttpHeaders();
+    $response->setHttpHeader('Content-Type', 'application/vnd.ms-excel;charset=utf-8');
+    $response->setHttpHeader('Content-Disposition:', 'attachment;filename=export.xls'); 
+
+    $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+    ob_start();
+    $objWriter->save('php://output');
+    $response->setContent(ob_get_clean());
+    return sfView::NONE;
+  }
+
+  /**
+   * batch actions
+   *
+   * @return void
+   **/
   public function executeBatch(sfWebRequest $request)
   {
     $i18n = $this->getContext()->getI18N();

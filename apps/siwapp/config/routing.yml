@@ -50,6 +50,10 @@ expenses_print:
   url:    /expenses/print/:action
   param:  { module: print, model: Expense }
 
+expenses_export:
+  url:    /expenses/export/
+  param:  { module: expenses, action: export, tab: expenses, searchForm: false}
+
 estimates_print:
   url:    /estimates/print/:action
   param:  { module: print, model: Estimate }
