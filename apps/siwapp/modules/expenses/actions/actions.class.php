@@ -15,15 +15,15 @@ class expensesActions extends sfActions
     $this->currency = $this->getUser()->getAttribute('currency');
     $this->culture  = $this->getUser()->getCulture();
   }
-  
+
   private function getExpense(sfWebRequest $request)
   {
     $this->forward404Unless($invoice = Doctrine::getTable('Expense')->find($request->getParameter('id')),
       sprintf('Object invoice does not exist with id %s', $request->getParameter('id')));
-      
+
     return $invoice;
   }
-  
+
   public function executeIndex(sfWebRequest $request)
   {
     $namespace  = $request->getParameter('searchNamespace');
@@ -31,24 +31,24 @@ class expensesActions extends sfActions
     $sort       = $this->getUser()->getAttribute('sort', array('issue_date', 'desc'), $namespace);
     $page       = $this->getUser()->getAttribute('page', 1, $namespace);
     $maxResults = $this->getUser()->getPaginationMaxResults();
-    
+
     $q = ExpenseQuery::create()->Where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->search($search)->orderBy("$sort[0] $sort[1], number $sort[1]");
     // totals
     $this->gross = $q->total('gross_amount');
     $this->due   = $q->total('due_amount');
-    
+
     $this->pager = new sfDoctrinePager('Expense', $maxResults);
     $this->pager->setQuery($q);
     $this->pager->setPage($page);
     $this->pager->init();
-    
+
     // this is for the redirect of the payments forms
     $this->getUser()->setAttribute('module', $request->getParameter('module'));
     $this->getUser()->setAttribute('page', $request->getParameter('page'));
-    
+
     $this->sort = $sort;
   }
-  
+
   public function executeShow(sfWebRequest $request)
   {
     $this->invoice = $this->getExpense($request);
@@ -91,7 +91,7 @@ class expensesActions extends sfActions
     // set draft=0 by default always
     $invoice->setDraft(false);
     $this->invoiceForm = new ExpenseForm($invoice, array('culture'=>$this->culture));
-    
+
     $i18n = $this->getContext()->getI18N();
     $this->title = $i18n->__('Edit Expense').' '.$invoice;
     $this->action = 'update';
@@ -105,11 +105,11 @@ class expensesActions extends sfActions
     $invoice = $this->getExpense($request);
     $this->invoiceForm = new ExpenseForm($invoice, array('culture'=>$this->culture));
     $this->processForm($request, $this->invoiceForm);
-    
+
     $i18n = $this->getContext()->getI18N();
     $this->title = $i18n->__('Edit Expense');
     $this->action = 'update';
-    
+
     $this->setTemplate('edit');
   }
 
@@ -120,7 +120,7 @@ class expensesActions extends sfActions
 
     $this->redirect('expenses/index');
   }
-  
+
   protected function processForm(sfWebRequest $request, sfForm $form)
   {
     $i18n = $this->getContext()->getI18N();
@@ -142,7 +142,7 @@ class expensesActions extends sfActions
       $this->getUser()->error($i18n->__('The expense has not been saved due to some errors.'));
     }
   }
-  
+
   /**
    * batch actions
    *
@@ -160,22 +160,24 @@ class expensesActions extends sfActions
       $objPHPExcel->getActiveSheet()->setCellValue('C1', 'PROVEEDOR');
       $objPHPExcel->getActiveSheet()->setCellValue('D1', 'TIPO GASTOS');
       $objPHPExcel->getActiveSheet()->setCellValue('E1', 'BASE');
-      $objPHPExcel->getActiveSheet()->setCellValue('F1', 'IMPUESTOS');
-      $objPHPExcel->getActiveSheet()->setCellValue('G1', 'TOTAL');
+      $objPHPExcel->getActiveSheet()->setCellValue('F1', 'TIPO IMPUESTO');
+      $objPHPExcel->getActiveSheet()->setCellValue('G1', 'IMPUESTOS');
+      $objPHPExcel->getActiveSheet()->setCellValue('H1', 'TOTAL');
       foreach($request->getParameter('ids', array()) as $id)
       {
         if($invoice = Doctrine::getTable('Expense')->find($id))
         {
-              #foreach ($invoice->getGrupedTaxes() as $expenseType => $value) 
-              foreach ($invoice->getGrupedExpenseTypes() as $expenseType => $value) 
+              #foreach ($invoice->getGrupedTaxes() as $expenseType => $value)
+              foreach ($invoice->getGrupedExpenseTypes() as $expenseType => $value)
               {
                   $objPHPExcel->getActiveSheet()->setCellValue('A'. ($n+2),date('d/m/Y',strtotime($invoice->getIssueDate()))); //FECHA
                   $objPHPExcel->getActiveSheet()->setCellValue('B'. ($n+2), $invoice->getSupplierReference().''); //NUM. FACTURA
                   $objPHPExcel->getActiveSheet()->setCellValue('C'. ($n+2), $invoice->getSupplierName()); //PROVEEDOR
                   $objPHPExcel->getActiveSheet()->setCellValue('D'. ($n+2), $expenseType); //TIPO GASTO
-                  $objPHPExcel->getActiveSheet()->setCellValue('E'. ($n+2), $value['base']); //BASE 
-                  $objPHPExcel->getActiveSheet()->setCellValue('F'. ($n+2), $value['tax']); //%IVA
-                  $objPHPExcel->getActiveSheet()->setCellValue('G'. ($n+2), $value['total']); //TOTAL
+                  $objPHPExcel->getActiveSheet()->setCellValue('E'. ($n+2), $value['base']); //BASE
+                  $objPHPExcel->getActiveSheet()->setCellValue('F'. ($n+2), $value['name']); //BASE
+                  $objPHPExcel->getActiveSheet()->setCellValue('G'. ($n+2), $value['tax']); //%IVA
+                  $objPHPExcel->getActiveSheet()->setCellValue('H'. ($n+2), $value['total']); //TOTAL
                   $n++;
               }
         }
@@ -185,7 +187,7 @@ class expensesActions extends sfActions
     $response = $this->getContext()->getResponse();
     $response->clearHttpHeaders();
     $response->setHttpHeader('Content-Type', 'application/vnd.ms-excel;charset=utf-8');
-    $response->setHttpHeader('Content-Disposition:', 'attachment;filename=export.xls'); 
+    $response->setHttpHeader('Content-Disposition:', 'attachment;filename=export.xls');
 
     $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
     ob_start();
@@ -204,7 +206,7 @@ class expensesActions extends sfActions
     $i18n = $this->getContext()->getI18N();
     $form = new sfForm();
     $form->bind(array('_csrf_token' => $request->getParameter('_csrf_token')));
-    
+
     if($form->isValid() || $this->getContext()->getConfiguration()->getEnvironment() == 'test')
     {
       $n = 0;
@@ -230,5 +232,5 @@ class expensesActions extends sfActions
 
     $this->redirect('@expenses');
   }
-  
+
 }

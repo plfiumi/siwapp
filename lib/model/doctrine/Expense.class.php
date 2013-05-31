@@ -14,7 +14,7 @@ class Expense extends BaseExpense
   public function setUp()
   {
     parent::setUp();
-    
+
     $this->_table->removeColumn('days_to_due');
     $this->_table->removeColumn('enabled');
     $this->_table->removeColumn('max_occurrences');
@@ -29,12 +29,12 @@ class Expense extends BaseExpense
   {
     return $this->getSeries()->getValue().($this->draft ? '[draft]' : $this->getNumber());
   }
-  
+
   public function getDueAmount()
   {
     if ($this->getStatus() == Expense::DRAFT)
       return null;
-      
+
     return $this->getGrossAmount() - $this->getPaidAmount();
   }
 
@@ -66,7 +66,7 @@ class Expense extends BaseExpense
   public function setSeriesId($value)
   {
       // we check for is_numeric to prevent loading series by name in the tests
-    if($this->getNumber() && $value != $this->series_id && 
+    if($this->getNumber() && $value != $this->series_id &&
        is_numeric($this->series_id) && is_numeric($value))
     {
       $this->series_changed = true;
@@ -86,9 +86,9 @@ class Expense extends BaseExpense
     }
     return parent::__isset($name);
   }
-  
+
   public function preSave($event)
-  {  
+  {
     // compute the number of iexpense
     if ( (!$this->getNumber() && !$this->getDraft()) ||
          ($this->series_changed && !$this->getDraft())
@@ -97,10 +97,10 @@ class Expense extends BaseExpense
       $this->series_changed = false;
       $this->setNumber($this->_table->getNextNumber($this->getSeriesId()));
     }
-    
+
     parent::preSave($event);
   }
-  
+
   /**
    * checks and sets the status
    *
@@ -123,10 +123,10 @@ class Expense extends BaseExpense
         $this->setStatus(Expense::OPENED);
       }
     }
-    
+
     return $this;
   }
-  
+
   public function getStatusString()
   {
     switch($this->getStatus())
@@ -147,7 +147,7 @@ class Expense extends BaseExpense
         $status = 'unknown';
         break;
     }
-    
+
     return $status;
   }
 
@@ -168,6 +168,7 @@ class Expense extends BaseExpense
     $result = array();
     foreach ($this->getItems() as $item)
     {
+        $taxname = $item->getTaxes()->getFirst()->getName();
         $name = $item->getExpenseType()->getName();
         $ammount=$item->getTaxAmount();
         $base=$item->getBaseAmount();
@@ -183,11 +184,12 @@ class Expense extends BaseExpense
           $result[$name] = array(
             'tax' => $ammount,
             'base' => $base,
+            'name' => $taxname,
             'total' => ($ammount+$base),
           );
         }
     }
     return $result;
   }
-  
+
 }
