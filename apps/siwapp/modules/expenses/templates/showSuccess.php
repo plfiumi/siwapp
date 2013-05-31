@@ -1,7 +1,7 @@
 <?php use_helper('Text') ?>
 
 <div id="invoice-container" class="content">
-  
+
   <h2><?php echo __("Expense") . ' ' . $invoice ?></h2>
   <div id="saving-options">
     <?php echo gButton_to(__('Edit'), 'expenses/edit?id=' .$invoice->getId(), 'class=action edit');  ?>
@@ -114,12 +114,6 @@
             <td class="right"><?php echo format_currency($amount,$currency)?></td>
           </tr>
           <?php endforeach ?>
-          <tr>
-            <td><?php echo __('Taxes Total') ?></td>
-            <td id="td_total_taxes" class="right">
-              <?php echo format_currency($invoice->getTaxAmount(), $currency) ?>
-            </td>
-          </tr>
           <tr class="strong">
             <td><?php echo __('Total') ?></td>
             <td id="td_total" class="right">
@@ -154,5 +148,5 @@
     <?php echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$invoice->getId()."')", 'class=action print') ?>
     <?php echo gButton_to_function(__('PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$invoice->getId()."'", 'class=action pdf') ?>
   </div>
-  
+
 </div>

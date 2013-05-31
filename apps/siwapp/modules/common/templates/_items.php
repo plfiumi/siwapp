@@ -25,7 +25,7 @@
   </thead>
 
   <tbody id="tbody_invoice_items">
-    <?php $partial = $expense ? 'common/expenseRow' : 'common/invoiceRow' ?> 
+    <?php $partial = $expense ? 'common/expenseRow' : 'common/invoiceRow' ?>
     <?php $invoiceItemsGlobalErrors = array(); ?>
     <?php foreach($invoiceForm['Items'] as $rowId => $invoiceItemForm):?>
     <?php if($invoiceItemForm['remove']->getValue() != '1'):?>
@@ -40,13 +40,13 @@
 
   <tfoot id="global_calculations">
     <tr>
-      <?php $colspan = '4'; 
-            if ($expense) $colspan = '4'; 
+      <?php $colspan = '4';
+            if ($expense) $colspan = '4';
             else if ($sf_user->has_module('products')) $colspan='5' ?>
       <td colspan="<?php echo $colspan ?>" rowspan="25" class="noborder top">
         <div id="addItem">
-          <?php  ?> 
-          <?php 
+          <?php  ?>
+          <?php
             $addItemURL = $expense ? 'common/ajaxAddExpenseItem' : 'common/ajaxAddInvoiceItem';
             $addItemOptions = array(
               'url'      => $addItemURL,
@@ -99,12 +99,6 @@
         <td class="taxes right"><?php echo format_currency($amount,$currency)?></td>
       <tr>
     <?php endforeach ?>
-    <tr>
-      <td><?php echo __('Taxes Total') ?></td>
-      <td class="taxes right">
-        <?php echo format_currency($invoice->getRoundedAmount('tax'), $currency)?>
-      </td>
-    </tr>
     <tr class="strong">
       <td><?php echo __('Total') ?></td>
       <td class="gross right">
