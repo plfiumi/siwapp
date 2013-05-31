@@ -6,15 +6,15 @@ $csrf     = new sfForm();
 ?>
 
 <div class="content">
-  
+
   <?php if (count($expenses)): ?>
-    
+
     <?php echo form_tag('expenses/batch', 'id=batch_form class=batch') ?>
       <?php echo $csrf['_csrf_token']->render(); ?>
       <input type="hidden" name="batch_action" id="batch_action">
 
       <table class="listing">
-        
+
         <thead>
           <tr>
             <td colspan="4" class="listing-options noborder">
@@ -33,7 +33,6 @@ $csrf     = new sfForm();
             <?php
               // sort parameter => array (Name, default order)
               renderHeaders(array(
-                'number'        => array('Number', 'desc'),
                 'reference'        => array('Supplier reference', 'desc'),
                 'supplier_name' => array('Supplier Name', 'asc'),
                 'issue_date'    => array('Date', 'desc'),
@@ -55,7 +54,6 @@ $csrf     = new sfForm();
             ?>
             <tr id="expense-<?php echo $id ?>" class="<?php echo "$parity link expense-$id" ?>">
               <td class="check"><input rel="item" type="checkbox" value="<?php echo $id ?>" name="ids[]"></td>
-              <td><?php echo $expense ?></td>
               <td><?php echo $expense->getSupplierReference() ?></td>
               <td class="<?php echo $expense->getSentByEmail() ? 'sent' : null ?>"><?php echo $expense->getSupplierName() ?></td>
               <td><?php echo format_date($expense->getIssueDate()) ?></td>
@@ -90,9 +88,9 @@ $csrf     = new sfForm();
     </form>
 
     <?php include_partial('global/pager', array('pager' => $pager, 'route' => '@expenses')) ?>
-    
+
   <?php else: ?>
     <p><?php echo __('No results') ?></p>
   <?php endif ?>
-  
+
 </div>
