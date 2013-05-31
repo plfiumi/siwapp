@@ -6,10 +6,11 @@
   <form action="<?php echo url_for('@settings') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
       <?php include_partial('submit') ?>
     <?php echo $form['_csrf_token'] ?>
+    <div style="display:none"> <?php echo $form['company'][0]['fiscality'] ?></div>
     <?php echo $form['company'][0]['id'] ?>
-    
+
     <?php include_partial('common/globalErrors', array('form' => $form));?>
-    
+
     <fieldset class="left">
       <h3><?php echo __('Company') ?></h3>
       <ul>
@@ -28,7 +29,7 @@
         <?php echo $form['company'][0]['currency']->renderRow(array('class' => error_class($form['company'][0]['currency']))) ?>
       </ul>
     </fieldset>
-    
+
     <fieldset>
       <h3><?php echo __('Legal texts') ?></h3>
       <ul>
@@ -72,8 +73,8 @@
     </li>
   </ul>
   </fieldset>
-  
-    
+
+
     <fieldset class="left taxes taxseries">
       <h3><?php echo __('Invoicing taxes') ?></h3>
       <div id="taxes">
@@ -93,7 +94,7 @@
         <a id="addNewTax" href="#" class="to:taxes"><?php echo __('Add a new tax value') ?></a>
       </small>
     </fieldset>
-    
+
     <fieldset class="seriess taxseries">
       <h3><?php echo __('Invoicing series') ?></h3>
       <div id="seriess">
@@ -131,7 +132,7 @@
         <a id="addNewExpenses" href="#" class="to:expenses"><?php echo __('Add a new expense type') ?></a><br/>
       </small>
     </fieldset>
-    
+
    <fieldset class="payments taxseries right">
       <h3><?php echo __('Payments Type') ?></h3>
       <div id="payments">
@@ -158,7 +159,7 @@
         <?php echo $form['company'][0]['pdf_orientation']->renderRow(array('class' => error_class($form['company'][0]['pdf_orientation']))) ?>
       </ul>
     </fieldset>
-    
+
     <?php include_partial('submit') ?>
   </form>
 </div>
