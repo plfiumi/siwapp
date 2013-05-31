@@ -96,7 +96,7 @@
     </tbody>
   </table>
   </div>
-  
+
   </div> <!-- situation-wrapper -->
 <div class="clear"></div>
 <?php
@@ -113,15 +113,22 @@
         <th><?php echo __('Base') ?></th>
         <th><?php echo __('Tax Value') ?></th>
       </tr>
-      <?php foreach ($fiscal_invoices as $tax_data) {
+      <?php $totalb = 0; $totalv=0;
+        foreach ($fiscal_invoices as $tax_data) {
       ?><tr>
         <td><?php echo $tax_data['name'] ?></td>
         <td class="right"><?php echo format_currency($tax_data['base'], $currency)?></td>
         <td class="right"><?php echo format_currency($tax_data['value'] /100 * $tax_data['base'], $currency)?></td>
       </tr>
       <?php
+           $totalb += $tax_data['base'];
+           $totalv += $tax_data['value'] /100 * $tax_data['base'];
       }
-      ?>
+      ?><tr>
+        <td><?php echo __('Total') ?></td>
+        <td class="right"><?php echo format_currency($totalb)?></td>
+        <td class="right"><?php echo format_currency($totalv)?></td>
+      </tr>
     </tbody>
   </table>
   </div>
@@ -134,15 +141,22 @@
         <th><?php echo __('Base') ?></th>
         <th><?php echo __('Tax Value') ?></th>
       </tr>
-      <?php foreach ($fiscal_expenses as $tax_data) {
+      <?php $totalb = 0; $totalv=0;
+            foreach ($fiscal_expenses as $tax_data) {
       ?><tr>
         <td><?php echo $tax_data['name'] ?></td>
         <td class="right"><?php echo format_currency($tax_data['base'], $currency)?></td>
         <td class="right"><?php echo format_currency($tax_data['value'] /100 * $tax_data['base'], $currency)?></td>
       </tr>
       <?php
+           $totalb += $tax_data['base'];
+           $totalv += $tax_data['value'] /100 * $tax_data['base'];
       }
-      ?>
+      ?><tr>
+        <td><?php echo __('Total') ?></td>
+        <td class="right"><?php echo format_currency($totalb)?></td>
+        <td class="right"><?php echo format_currency($totalv)?></td>
+      </tr>
     </tbody>
   </table>
   </div>
@@ -209,7 +223,7 @@
     </tfoot>
     <?php endif; ?>
   </table>
-  
+
   <h2><?php echo __('Pending Estimates') ?></h2>
   <table class="listing estimates">
     <thead>
@@ -236,5 +250,5 @@
       <?php endforeach; ?>
     </tbody>
   </table>
-  
+
 </div>
