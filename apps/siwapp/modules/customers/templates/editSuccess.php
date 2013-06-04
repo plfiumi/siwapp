@@ -6,7 +6,7 @@ include_javascripts_for_form($customerForm);
 $customer = $customerForm->getObject();
 ?>
 <div id="customer-container" class="content">
-  
+
   <h2><?php echo $title ?></h2>
   <form action="<?php echo url_for("customers/$action") ?>" method="post" <?php $customerForm->isMultipart() and print 'enctype="multipart/form-data" ' ?> class="customer">
   <?php include_partial('common/globalErrors', array('form' => $customerForm)) ?>
@@ -22,7 +22,7 @@ $customer = $customerForm->getObject();
         'confirm' => __('Are you sure?'),
         ) , 'button=false')." ";
     }
-    
+
     echo gButton(__('Save'), 'type=submit class=action primary save', 'button=true');
     ?>
   </div>
@@ -85,7 +85,7 @@ $customer = $customerForm->getObject();
       <span class="_25">
         <label for="<? echo $customerForm['invoicing_postalcode']->renderId()?>"><?php echo __('Invoicing Postal code') ?></label>
         <?php echo render_tag($customerForm['invoicing_postalcode'])?>
-      </span>  
+      </span>
       <span class="_25">
         <label for="<? echo $customerForm['invoicing_state']->renderId()?>"><?php echo __('Invoicing State') ?></label>
         <?php echo render_tag($customerForm['invoicing_state'])?>
@@ -109,7 +109,7 @@ $customer = $customerForm->getObject();
       <span class="_25">
         <label for="<? echo $customerForm['shipping_postalcode']->renderId()?>"><?php echo __('Shipping Postal code') ?></label>
         <?php echo render_tag($customerForm['shipping_postalcode'])?>
-      </span>  
+      </span>
       <span class="_25">
         <label for="<? echo $customerForm['shipping_state']->renderId()?>"><?php echo __('Shipping State') ?></label>
         <?php echo render_tag($customerForm['shipping_state'])?>
@@ -130,6 +130,12 @@ $customer = $customerForm->getObject();
   <div id="customer-bank-data" class="global-data block">
     <h3><?php echo __('Bank details') ?></h3>
     <ul>
+    <li>
+      <span class="_100">
+        <label for="<? echo $customerForm['payment_type_id']->renderId()?>"><?php echo __('Payment type') ?></label>
+        <?php echo render_tag($customerForm['payment_type_id'])  ?>
+        </span>
+    </li>
     <li>
       <span class="_50">
         <label for="<? echo $customerForm['entity']->renderId()?>"><?php echo __('Entity') ?></label>
@@ -159,7 +165,7 @@ $customer = $customerForm->getObject();
         'confirm' => __('Are you sure?'),
         ) , 'button=false')." ";
     }
-    
+
     echo gButton(__('Save'), 'type=submit class=action primary save', 'button=true');
     ?>
   </div>
