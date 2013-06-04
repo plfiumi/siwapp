@@ -2,7 +2,7 @@
   <h3><?php echo __('Client info') ?></h3>
   <ul>
     <li>
-      <span class="_75">        
+      <span class="_75">
         <label for="<? echo $invoiceForm['customer_name']->renderId()?>"><?php echo __('Client Name') ?></label>
         <?php echo render_tag($invoiceForm['customer_name'])?>
       </span>
@@ -44,7 +44,7 @@
       <span class="_25">
         <label for="<? echo $invoiceForm['invoicing_postalcode']->renderId()?>"><?php echo __('Invoicing Postal code') ?></label>
         <?php echo render_tag($invoiceForm['invoicing_postalcode'])?>
-      </span>  
+      </span>
       <span class="_25">
         <label for="<? echo $invoiceForm['invoicing_state']->renderId()?>"><?php echo __('Invoicing State') ?></label>
         <?php echo render_tag($invoiceForm['invoicing_state'])?>
@@ -68,7 +68,7 @@
       <span class="_25">
         <label for="<? echo $invoiceForm['shipping_postalcode']->renderId()?>"><?php echo __('Shipping Postal code') ?></label>
         <?php echo render_tag($invoiceForm['shipping_postalcode'])?>
-      </span>  
+      </span>
       <span class="_25">
         <label for="<? echo $invoiceForm['shipping_state']->renderId()?>"><?php echo __('Shipping State') ?></label>
         <?php echo render_tag($invoiceForm['shipping_state'])?>
@@ -91,8 +91,8 @@ echo javascript_tag("
       parse:    function(data) {
         var parsed = [];
         for (key in data) {
-          parsed[parsed.length] = { data: [ data[key].customer, 
-            data[key].customer_identification, 
+          parsed[parsed.length] = { data: [ data[key].customer,
+            data[key].customer_identification,
             data[key].contact_person,
             data[key].customer_email,
             data[key].invoicing_address,
@@ -107,6 +107,7 @@ echo javascript_tag("
             data[key].shipping_state,
             data[key].shipping_postalcode,
             data[key].shipping_country,
+            data[key].payment_type,
           ], value: data[key].customer, result: data[key].customer };
         }
         return parsed;
@@ -130,6 +131,7 @@ echo javascript_tag("
       $('#".$invoiceForm['shipping_state']->renderId()."').val(item[13]);
       $('#".$invoiceForm['shipping_postalcode']->renderId()."').val(item[14]);
       $('#".$invoiceForm['shipping_country']->renderId()."').val(item[15]);
+      $('#".$invoiceForm['payment_type_id']->renderId()."').val(item[16]);
     });
 ");
 

@@ -13,15 +13,15 @@ class CustomerTable extends Doctrine_Table
   public static function slugify($text)
   {
     $conv_text = iconv("UTF-8", "US-ASCII//TRANSLIT", $text);
-    if (trim($conv_text) == '') 
+    if (trim($conv_text) == '')
     {
         // cyrillic has no possible translit so we return the text
         return trim($text);
     }
-    
+
     $conv_text = preg_replace('/\W+/', null, $conv_text);
     $conv_text = strtolower(trim($conv_text));
-    
+
     return $conv_text;
   }
 
@@ -39,7 +39,7 @@ class CustomerTable extends Doctrine_Table
       ->AndWhere('company_id = ?', $company_id)
       ->fetchONe();
   }
-  
+
   /**
    * Updates a Customer object matching the object's data.
    *
@@ -56,7 +56,7 @@ class CustomerTable extends Doctrine_Table
     $obj->setCustomer($customer);
     $customer->save();
   }
-  
+
   /**
    * gets the customer that matches the invoice data
    * If no match returns a new Customer object
@@ -74,7 +74,7 @@ class CustomerTable extends Doctrine_Table
 
     return new Customer();
   }
-  
+
   /**
    * method for ajax request
    *
@@ -88,7 +88,7 @@ class CustomerTable extends Doctrine_Table
       ->AndWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
       ->limit($limit)
       ->execute();
-    
+
     $res = array();
     $i = 0;
     foreach ($items as $item)
@@ -111,13 +111,14 @@ class CustomerTable extends Doctrine_Table
       $res[$i]['customer_phone'] = $item->getPhone();
       $res[$i]['customer_fax'] = $item->getFax();
       $res[$i]['comments'] = $item->getComments();
+      $res[$i]['payment_type'] = $item->getPaymentType()->getId();
 
       $i++;
     }
-    
+
     return $res;
   }
-  
+
   /**
    * method for ajax request
    * This is for the search form
@@ -132,23 +133,23 @@ class CustomerTable extends Doctrine_Table
       ->AndWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
       ->limit($limit)
       ->execute();
-    
+
     $res = array();
     foreach ($items as $item)
     {
       $res[$item->getId()] = $item->getName();
     }
-    
+
     return $res;
   }
-  
+
   public function getNonDraftInvoices($customer_id,$date_range = array()) {
 
     $search = array_merge(array('customer_id'=>$customer_id),$date_range);
     $q = InvoiceQuery::create()->search($search)->andWhere('i.draft = 0');
     return $q->execute();
   }
-  
+
   public static function getCustomerName($customer_id = null)
   {
     if ($customer_id)
@@ -162,7 +163,7 @@ class CustomerTable extends Doctrine_Table
 
     return '';
   }
-  
+
   /**
    * Rebuild the name slug for each Customer in database.
    */
