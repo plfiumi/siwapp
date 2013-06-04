@@ -10,23 +10,26 @@
  * @property decimal $value
  * @property boolean $active
  * @property boolean $is_default
+ * @property boolean $apply_total
  * @property Company $Company
  * @property Doctrine_Collection $Items
  * 
- * @method integer             getCompanyId()  Returns the current record's "company_id" value
- * @method string              getName()       Returns the current record's "name" value
- * @method decimal             getValue()      Returns the current record's "value" value
- * @method boolean             getActive()     Returns the current record's "active" value
- * @method boolean             getIsDefault()  Returns the current record's "is_default" value
- * @method Company             getCompany()    Returns the current record's "Company" value
- * @method Doctrine_Collection getItems()      Returns the current record's "Items" collection
- * @method Tax                 setCompanyId()  Sets the current record's "company_id" value
- * @method Tax                 setName()       Sets the current record's "name" value
- * @method Tax                 setValue()      Sets the current record's "value" value
- * @method Tax                 setActive()     Sets the current record's "active" value
- * @method Tax                 setIsDefault()  Sets the current record's "is_default" value
- * @method Tax                 setCompany()    Sets the current record's "Company" value
- * @method Tax                 setItems()      Sets the current record's "Items" collection
+ * @method integer             getCompanyId()   Returns the current record's "company_id" value
+ * @method string              getName()        Returns the current record's "name" value
+ * @method decimal             getValue()       Returns the current record's "value" value
+ * @method boolean             getActive()      Returns the current record's "active" value
+ * @method boolean             getIsDefault()   Returns the current record's "is_default" value
+ * @method boolean             getApplyTotal()  Returns the current record's "apply_total" value
+ * @method Company             getCompany()     Returns the current record's "Company" value
+ * @method Doctrine_Collection getItems()       Returns the current record's "Items" collection
+ * @method Tax                 setCompanyId()   Sets the current record's "company_id" value
+ * @method Tax                 setName()        Sets the current record's "name" value
+ * @method Tax                 setValue()       Sets the current record's "value" value
+ * @method Tax                 setActive()      Sets the current record's "active" value
+ * @method Tax                 setIsDefault()   Sets the current record's "is_default" value
+ * @method Tax                 setApplyTotal()  Sets the current record's "apply_total" value
+ * @method Tax                 setCompany()     Sets the current record's "Company" value
+ * @method Tax                 setItems()       Sets the current record's "Items" collection
  * 
  * @package    siwapp
  * @subpackage model
@@ -55,6 +58,10 @@ abstract class BaseTax extends sfDoctrineRecord
              'default' => true,
              ));
         $this->hasColumn('is_default', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('apply_total', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));

@@ -39,6 +39,7 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'office'               => new sfWidgetFormFilterInput(),
       'control_digit'        => new sfWidgetFormFilterInput(),
       'account'              => new sfWidgetFormFilterInput(),
+      'payment_type_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PaymentType'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -68,6 +69,7 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'office'               => new sfValidatorPass(array('required' => false)),
       'control_digit'        => new sfValidatorPass(array('required' => false)),
       'account'              => new sfValidatorPass(array('required' => false)),
+      'payment_type_id'      => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('PaymentType'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('customer_filters[%s]');
@@ -114,6 +116,7 @@ abstract class BaseCustomerFormFilter extends BaseFormFilterDoctrine
       'office'               => 'Text',
       'control_digit'        => 'Text',
       'account'              => 'Text',
+      'payment_type_id'      => 'ForeignKey',
     );
   }
 }

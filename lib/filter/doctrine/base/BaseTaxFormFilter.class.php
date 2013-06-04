@@ -13,21 +13,23 @@ abstract class BaseTaxFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'company_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
-      'name'       => new sfWidgetFormFilterInput(),
-      'value'      => new sfWidgetFormFilterInput(),
-      'active'     => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
-      'is_default' => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
-      'items_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Item')),
+      'company_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
+      'name'        => new sfWidgetFormFilterInput(),
+      'value'       => new sfWidgetFormFilterInput(),
+      'active'      => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'is_default'  => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'apply_total' => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'items_list'  => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Item')),
     ));
 
     $this->setValidators(array(
-      'company_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Company'), 'column' => 'id')),
-      'name'       => new sfValidatorPass(array('required' => false)),
-      'value'      => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
-      'active'     => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
-      'is_default' => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
-      'items_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Item', 'required' => false)),
+      'company_id'  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Company'), 'column' => 'id')),
+      'name'        => new sfValidatorPass(array('required' => false)),
+      'value'       => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
+      'active'      => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'is_default'  => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'apply_total' => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'items_list'  => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Item', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('tax_filters[%s]');
@@ -65,13 +67,14 @@ abstract class BaseTaxFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'         => 'Number',
-      'company_id' => 'ForeignKey',
-      'name'       => 'Text',
-      'value'      => 'Number',
-      'active'     => 'Boolean',
-      'is_default' => 'Boolean',
-      'items_list' => 'ManyKey',
+      'id'          => 'Number',
+      'company_id'  => 'ForeignKey',
+      'name'        => 'Text',
+      'value'       => 'Number',
+      'active'      => 'Boolean',
+      'is_default'  => 'Boolean',
+      'apply_total' => 'Boolean',
+      'items_list'  => 'ManyKey',
     );
   }
 }

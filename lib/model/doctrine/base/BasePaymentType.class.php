@@ -61,7 +61,7 @@ abstract class BasePaymentType extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('Common as PaymentType', array(
+        $this->hasMany('Customer as PaymentType', array(
              'local' => 'id',
              'foreign' => 'payment_type_id'));
     }

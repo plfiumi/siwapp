@@ -31,7 +31,9 @@
  * @property string $office
  * @property string $control_digit
  * @property string $account
+ * @property integer $payment_type_id
  * @property Company $Company
+ * @property PaymentType $PaymentType
  * @property Doctrine_Collection $Commons
  * 
  * @method integer             getCompanyId()            Returns the current record's "company_id" value
@@ -60,7 +62,9 @@
  * @method string              getOffice()               Returns the current record's "office" value
  * @method string              getControlDigit()         Returns the current record's "control_digit" value
  * @method string              getAccount()              Returns the current record's "account" value
+ * @method integer             getPaymentTypeId()        Returns the current record's "payment_type_id" value
  * @method Company             getCompany()              Returns the current record's "Company" value
+ * @method PaymentType         getPaymentType()          Returns the current record's "PaymentType" value
  * @method Doctrine_Collection getCommons()              Returns the current record's "Commons" collection
  * @method Customer            setCompanyId()            Sets the current record's "company_id" value
  * @method Customer            setName()                 Sets the current record's "name" value
@@ -88,7 +92,9 @@
  * @method Customer            setOffice()               Sets the current record's "office" value
  * @method Customer            setControlDigit()         Sets the current record's "control_digit" value
  * @method Customer            setAccount()              Sets the current record's "account" value
+ * @method Customer            setPaymentTypeId()        Sets the current record's "payment_type_id" value
  * @method Customer            setCompany()              Sets the current record's "Company" value
+ * @method Customer            setPaymentType()          Sets the current record's "PaymentType" value
  * @method Customer            setCommons()              Sets the current record's "Commons" collection
  * 
  * @package    siwapp
@@ -203,6 +209,9 @@ abstract class BaseCustomer extends sfDoctrineRecord
              'type' => 'string',
              'length' => 50,
              ));
+        $this->hasColumn('payment_type_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
 
 
         $this->index('cstm', array(
@@ -222,6 +231,11 @@ abstract class BaseCustomer extends sfDoctrineRecord
              'local' => 'company_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasOne('PaymentType', array(
+             'local' => 'payment_type_id',
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $this->hasMany('Common as Commons', array(
              'local' => 'id',

@@ -40,7 +40,7 @@ Company:
       foreignAlias: Users
       refClass: CompanyUser
       local: company_id
-      foreign: sf_guard_user_id    
+      foreign: sf_guard_user_id
 
 CompanyUser:
   columns:
@@ -49,7 +49,7 @@ CompanyUser:
       primary: true
     sf_guard_user_id:
       type: integer(4)
-      primary: true  
+      primary: true
   relations:
     Company:
       local: company_id
@@ -91,6 +91,7 @@ Customer:
     office: string(50)
     control_digit: string(50)
     account: string(50)
+    payment_type_id: integer
   indexes:
     cstm:
       fields: [company_id,name]
@@ -101,6 +102,12 @@ Customer:
       foreign: id
       type: one
       onDelete: CASCADE
+    PaymentType:
+      local: payment_type_id
+      foreign: id
+      foreignAlias: PaymentType
+      type: one
+      onDelete: SET NULL
 
 Supplier:
   columns:
@@ -207,7 +214,7 @@ Common:
       foreign: id
       foreignAlias: PaymentType
       type: one
-      onDelete: SET NULL  
+      onDelete: SET NULL
   indexes:
     compny:
       fields: [company_id]
@@ -219,7 +226,7 @@ Common:
       fields: [company_id,customer_email]
     cntct:
       fields: [company_id,contact_person]
-  
+
 Invoice:
   inheritance:
     extends: Common
@@ -276,7 +283,7 @@ Expense:
       foreignAlias: Invoices
       type: one
       onDelete: SET NULL
-      
+
 Estimate:
   inheritance:
     extends: Common
@@ -289,7 +296,7 @@ Estimate:
     sent_by_email:
       type: boolean
       default: false
-      
+
 # DEFAULT VALUES ARE MANDATORY IN ORDER TO AVOID CALCULATION
 # ERRORS IN VIEWS (ARITHMETIC WITH NULL ALWAYS RETURN NULL)
 Item:
@@ -331,7 +338,7 @@ Item:
       foreign: id
       foreignAlias: Items
       type: one
-      onDelete: SET NULL  
+      onDelete: SET NULL
   indexes:
     desc:
       fields: [company_id,description]
@@ -347,6 +354,9 @@ Tax:
       type: boolean
       default: true
     is_default:
+      type: boolean
+      default: false
+    apply_total:
       type: boolean
       default: false
   relations:
@@ -365,10 +375,10 @@ Tax:
 ItemTax:
   columns:
     company_id: integer
-    item_id: 
+    item_id:
       type: integer
       primary: true
-    tax_id: 
+    tax_id:
       type: integer
       primary: true
   relations:
@@ -397,7 +407,7 @@ Payment:
       foreign: id
       foreignAlias: PaymentType
       type: one
-      onDelete: SET NULL  
+      onDelete: SET NULL
     Company:
       foreignAlias: Company
       local: company_id
@@ -448,14 +458,14 @@ RecurringInvoice:
     last_execution_date:
       type: date
       default: NULL
-  
+
 Profile:
   tableName: sf_guard_user_profile
   columns:
     sf_guard_user_id:   integer(4)
     first_name:         string(50)
     last_name:          string(50)
-    email:              
+    email:
       type:   string(100)
       unique: true
     nb_display_results: integer(2)
@@ -469,7 +479,7 @@ Profile:
       class:  sfGuardUser
       foreignType:  one
       onDelete:     cascade
-      
+
 Template:
   actAs:
     Timestampable:

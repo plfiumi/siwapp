@@ -15,23 +15,25 @@ abstract class BaseTaxForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'         => new sfWidgetFormInputHidden(),
-      'company_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
-      'name'       => new sfWidgetFormInputText(),
-      'value'      => new sfWidgetFormInputText(),
-      'active'     => new sfWidgetFormInputCheckbox(),
-      'is_default' => new sfWidgetFormInputCheckbox(),
-      'items_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Item')),
+      'id'          => new sfWidgetFormInputHidden(),
+      'company_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
+      'name'        => new sfWidgetFormInputText(),
+      'value'       => new sfWidgetFormInputText(),
+      'active'      => new sfWidgetFormInputCheckbox(),
+      'is_default'  => new sfWidgetFormInputCheckbox(),
+      'apply_total' => new sfWidgetFormInputCheckbox(),
+      'items_list'  => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Item')),
     ));
 
     $this->setValidators(array(
-      'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'company_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'required' => false)),
-      'name'       => new sfValidatorString(array('max_length' => 50, 'required' => false)),
-      'value'      => new sfValidatorNumber(array('required' => false)),
-      'active'     => new sfValidatorBoolean(array('required' => false)),
-      'is_default' => new sfValidatorBoolean(array('required' => false)),
-      'items_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Item', 'required' => false)),
+      'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'company_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'required' => false)),
+      'name'        => new sfValidatorString(array('max_length' => 50, 'required' => false)),
+      'value'       => new sfValidatorNumber(array('required' => false)),
+      'active'      => new sfValidatorBoolean(array('required' => false)),
+      'is_default'  => new sfValidatorBoolean(array('required' => false)),
+      'apply_total' => new sfValidatorBoolean(array('required' => false)),
+      'items_list'  => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Item', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('tax[%s]');
