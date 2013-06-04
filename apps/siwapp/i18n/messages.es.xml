@@ -748,6 +748,10 @@
         <target>Predeterminado</target>
       </trans-unit>
       <trans-unit>
+        <source>Def.</source>
+        <target>Pred.</target>
+      </trans-unit>
+      <trans-unit>
         <source>Add a new tax value</source>
         <target>Añadir un nuevo valor de impuesto</target>
       </trans-unit>
@@ -1617,11 +1621,11 @@
       <trans-unit>
         <source>The recurring invoice was created successfully.</source>
         <target>La factura recurrente se ha guardado correctamente.</target>
-      </trans-unit> 
+      </trans-unit>
       <trans-unit>
         <source>The recurring invoice was updated successfully.</source>
         <target>La factura recurrente se ha actualizado correctamente.</target>
-      </trans-unit> 
+      </trans-unit>
       <trans-unit>
         <source>Customer email</source>
         <target>Email del cliente</target>

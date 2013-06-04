@@ -25,7 +25,7 @@ class Common extends BaseCommon
   public function calculate($field,$rounded = false)
   {
     $val = 0;
-    
+
     switch($field)
     {
       case 'paid_amount':
@@ -43,7 +43,7 @@ class Common extends BaseCommon
         }
         break;
     }
-    
+
     if($rounded)
     {
       return round($val,$this->getDecimals());
@@ -51,7 +51,7 @@ class Common extends BaseCommon
 
     return $val;
   }
-  
+
   public function preSave($event)
   {
     $this->checkStatus();
@@ -65,29 +65,33 @@ class Common extends BaseCommon
       Doctrine::getTable('Supplier')->updateSupplier($this);
     }
   }
-  
+
   public function postDelete($event)
   {
       //    $this->Items->delete();
-    
-    
-/*  and it´s over. clients shouldn´t be deleted after their last invoice. 
+
+
+/*  and it´s over. clients shouldn´t be deleted after their last invoice.
 /*  see http://dev.markhaus.com/projects/siwapp/ticket/503
 */
   }
-  
+
   public function setAmounts()
   {
     $this->setBaseAmount($this->calculate('base_amount'));
     $this->setDiscountAmount($this->calculate('discount_amount'));
     $this->setNetAmount($this->getBaseAmount() - $this->getDiscountAmount());
     $this->setTaxAmount($this->calculate('tax_amount'));
+    $tax_ammount = 0.0;
+    foreach($this->getTaxDetails() as $tax_value){
+        $tax_ammount +=$tax_value;
+    }
     $rounded_gross = round(
-                           $this->getNetAmount() + $this->getTaxAmount(), 
+                           $this->getNetAmount() + $tax_ammount,
                            PropertyTable::get('currency_decimals', 2)
                            );
     $this->setGrossAmount($rounded_gross);
-    
+
     return $this;
   }
 
@@ -142,7 +146,7 @@ class Common extends BaseCommon
 
     return $result;
   }
-  
+
   /**
    * Gets tax details of the invoice grupped by tax type.
    * @author: Sergi Almacellas Abellana <sergi.almacellas@btactic.com>
@@ -168,7 +172,7 @@ class Common extends BaseCommon
             $base=$item->getBaseAmount($tax->getName());
             $retencion = 0;$baseRetencion = 0;
             $retencionValue = 0;
-        }        
+        }
         if (isset($result[$name]))
         {
           $result[$name]['tax'] += $ammount;

@@ -752,6 +752,10 @@
         <target>Predeterminat</target>
       </trans-unit>
       <trans-unit>
+        <source>Def.</source>
+        <target>Pred.</target>
+      </trans-unit>
+      <trans-unit>
         <source>Add a new tax value</source>
         <target>Afegir un nou valor d'impost</target>
       </trans-unit>

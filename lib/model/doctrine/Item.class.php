@@ -19,22 +19,22 @@ class Item extends BaseItem
   {
     return $this->getUnitaryCost() * $this->getQuantity();
   }
-  
+
   public function getNetAmount()
   {
     return $this->getBaseAmount() - $this->getDiscountAmount();
   }
-  
+
   public function getDiscountAmount()
   {
     return $this->getBaseAmount() * $this->getDiscount() / 100;
   }
-  
+
   public function getTaxAmount($tax_name = null)
   {
     return round($this->getNetAmount() * $this->getTaxesPercent($tax_name) / 100,$this->getDecimals());
   }
-  
+
   public function getGrossAmount()
   {
     return $this->getNetAmount() + $this->getTaxAmount();
@@ -68,24 +68,25 @@ class Item extends BaseItem
     }
     return parent::__isset($name);
   }
-  
+
   public function getTaxesPercent($tax_names = null)
   {
-    $tax_names = $tax_names ? 
-      ( is_array($tax_names) ? 
-        array_map(array('CustomerTable', 'slugify'), $tax_names) : 
-        array(CustomerTable::slugify($tax_names)) ) : 
+    $tax_names = $tax_names ?
+      ( is_array($tax_names) ?
+        array_map(array('CustomerTable', 'slugify'), $tax_names) :
+        array(CustomerTable::slugify($tax_names)) ) :
       null;
     $total = 0;
     foreach($this->Taxes as $tax)
     {
-      if(!$tax_names || 
+      if(!$tax_names ||
          in_array(CustomerTable::slugify($tax->name), $tax_names))
       {
+        if(!$tax->getApplyTotal())
         $total += $tax->getValue();
       }
     }
-    
+
     return $total;
   }
 
@@ -95,7 +96,10 @@ class Item extends BaseItem
     foreach($this->Taxes as $tax)
     {
       {
-        $detail[$tax->getName()] = $this->getTaxAmount($tax->getName());
+        if($tax->getApplyTotal())
+            $detail[$tax->getName()] = round($this->getGrossAmount() * $tax->getValue($tax_name) / 100,$this->getDecimals());
+        else
+            $detail[$tax->getName()] = $this->getTaxAmount($tax->getName());
       }
     }
 
@@ -108,18 +112,21 @@ class Item extends BaseItem
     foreach($this->Taxes as $tax)
     {
       {
-        $detail[$tax->getName()] = $this->getNetAmount($tax->getName());
+        if($tax->getApplyTotal())
+            $detail[$tax->getName()] = $this->getGrossAmount($tax->getName());
+        else
+            $detail[$tax->getName()] = $this->getNetAmount($tax->getName());
       }
     }
 
     return $detail;
-  }  
+  }
 
   public function getQuantity()
   {
     return (float) $this->_get('quantity');
   }
-  
+
   public function getUnitaryCost()
   {
     return (float) $this->_get('unitary_cost');

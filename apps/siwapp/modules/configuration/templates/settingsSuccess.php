@@ -83,7 +83,8 @@
           <li class="name"><strong><?php echo __('Name')?></strong></li>
           <li class="value text-right"><strong><?php echo __('Value')?></strong></li>
           <li class="active"><strong><?php echo __('Active')?></strong></li>
-          <li class="is_default"><strong><?php echo __('Default')?></strong></li>
+          <li class="is_default"><strong><?php echo __('Def.')?></strong></li>
+          <li class="is_default"><strong><?php echo __('Total')?></strong></li>
         </ul>
         <?php foreach ($form['taxes'] as $tax): ?>
         <?php echo $tax?>
