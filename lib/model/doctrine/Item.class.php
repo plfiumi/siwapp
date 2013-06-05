@@ -97,7 +97,7 @@ class Item extends BaseItem
     {
       {
         if($tax->getApplyTotal())
-            $detail[$tax->getName()] = round($this->getGrossAmount() * $tax->getValue($tax_name) / 100,$this->getDecimals());
+            $detail[$tax->getName()] = round($this->getGrossAmount() * $tax->getValue($tax->getName()) / 100,$this->getDecimals());
         else
             $detail[$tax->getName()] = $this->getTaxAmount($tax->getName());
       }
