@@ -49,10 +49,6 @@ class Expense extends BaseExpense
     {
       return $this->calculate($name, true);
     }
-    if($name == 'tax_details')
-    {
-      return $this->getTaxDetails();
-    }
     return parent::__get($name);
   }
 

@@ -14,7 +14,7 @@ class Invoice extends BaseInvoice
   public function setUp()
   {
     parent::setUp();
-    
+
     $this->_table->removeColumn('days_to_due');
     $this->_table->removeColumn('enabled');
     $this->_table->removeColumn('max_occurrences');
@@ -28,12 +28,12 @@ class Invoice extends BaseInvoice
   {
     return (($this->getStatus() == Invoice::DRAFT) ? '[proforma]' : $this->getNumber());
   }
-  
+
   public function getDueAmount()
   {
     if ($this->getStatus() == Invoice::DRAFT)
       return null;
-      
+
     return $this->getGrossAmount() - $this->getPaidAmount();
   }
 
@@ -48,10 +48,6 @@ class Invoice extends BaseInvoice
     {
       return $this->calculate($name, true);
     }
-    if($name == 'tax_details')
-    {
-      return $this->getTaxDetails();
-    }
     return parent::__get($name);
   }
 
@@ -65,7 +61,7 @@ class Invoice extends BaseInvoice
   public function setSeriesId($value)
   {
       // we check for is_numeric to prevent loading series by name in the tests
-    if($this->getNumber() && $value != $this->series_id && 
+    if($this->getNumber() && $value != $this->series_id &&
        is_numeric($this->series_id) && is_numeric($value))
     {
       $this->series_changed = true;
@@ -85,9 +81,9 @@ class Invoice extends BaseInvoice
     }
     return parent::__isset($name);
   }
-  
+
   public function preSave($event)
-  {  
+  {
     // compute the number of invoice
     if ( (!$this->getNumber() && !$this->getDraft()) ||
          ($this->series_changed && !$this->getDraft())
@@ -96,10 +92,10 @@ class Invoice extends BaseInvoice
       $this->series_changed = false;
       $this->setNumber($this->_table->getNextNumber($this->getSeriesId()));
     }
-    
+
     parent::preSave($event);
   }
-  
+
   /**
    * checks and sets the status
    *
@@ -129,10 +125,10 @@ class Invoice extends BaseInvoice
         }
       }
     }
-    
+
     return $this;
   }
-  
+
   public function getStatusString()
   {
     switch($this->getStatus())
@@ -153,7 +149,7 @@ class Invoice extends BaseInvoice
         $status = 'unknown';
         break;
     }
-    
+
     return $status;
   }
 
@@ -161,9 +157,9 @@ class Invoice extends BaseInvoice
   {
     parent::setAmounts();
     $this->setPaidAmount($this->calculate('paid_amount'));
-    
+
     return $this;
   }
 
-  
+
 }

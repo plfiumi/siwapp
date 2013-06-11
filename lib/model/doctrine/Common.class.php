@@ -5,6 +5,15 @@
  */
 class Common extends BaseCommon
 {
+  public function __get($name)
+  {
+    if($name == 'tax_details')
+    {
+      return $this->getGrupedTaxes(false);
+    }
+    return parent::__get($name);
+  }
+
   private $decimals = null;
   public function getRoundedAmount($concept = 'gross')
   {
@@ -152,24 +161,23 @@ class Common extends BaseCommon
    * @author: Sergi Almacellas Abellana <sergi.almacellas@btactic.com>
    * @return Array
    */
-  public function getGrupedTaxes()
+  public function getGrupedTaxes($ret = true)
   {
     $result = array();
-    foreach ($this->getItems() as $item)
+    $bases = $this->getBasesDetails();
+    foreach ($this->getTaxDetails() as $name => $value)
     {
-      foreach ( $item->getTaxes() as $tax )
-      {
         //Retención
-        if($tax->getValue() < 0) {
-            $retencion = $item->getTaxAmount($tax->getName());
-            $baseRetencion = $item->getBaseAmount($tax->getName());
+        if($ret && $value < 0) {
+            $retencion = $value;
+            $baseRetencion = $bases[$name];
             $ammount= 0;$base = 0;
-            $retencionValue = $tax->getValue();
+            $retencionValue = Doctrine::getTable('Tax')->createQuery('t')
+               ->where('t.name = ?', $name)->fetchOne()->getValue();
         }
         else {
-            $name = $tax->getName();
-            $ammount=$item->getTaxAmount($tax->getName());
-            $base=$item->getBaseAmount($tax->getName());
+            $ammount=$value;
+            $base = $bases[$name];
             $retencion = 0;$baseRetencion = 0;
             $retencionValue = 0;
         }
@@ -191,11 +199,11 @@ class Common extends BaseCommon
             'total' => ($ammount+$base+$retencion),
             'retencion' => $retencion,
             'base_retencion' => $baseRetencion,
-            'tax_value' => $tax->getValue(),
+            'tax_value' => Doctrine::getTable('Tax')->createQuery('t')
+               ->where('t.name = ?', $name)->fetchOne()->getValue(),
             'retencion_value' => $retencionValue,
           );
         }
-      }
     }
     //Round the items so we get no diferencies.
     foreach ( $result as $key => $val)
