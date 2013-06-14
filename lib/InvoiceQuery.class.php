@@ -2,23 +2,23 @@
 
 class InvoiceQuery extends CommonInvoiceQuery
 {
-  
+
   public static function create($conn = null, $class = null)
   {
     $q = new InvoiceQuery($conn);
     $q->from('Invoice i')
       ->orderBy('i.issue_date desc, i.number desc')
       ;
-    
+
     $q->_model = 'Invoice';
-    
+
     return $q;
   }
-  
+
   public function search($search = null)
   {
     parent::search($search);
-    
+
     if($search)
     {
       if(isset($search['from'])) $this->fromDate($search['from']);
@@ -28,39 +28,39 @@ class InvoiceQuery extends CommonInvoiceQuery
 
     return $this;
   }
-  
+
   public function orderBy($order)
   {
     // if $order contains due_amount
     if(strlen(strstr($order, 'due_amount')) > 0)
       $this->addSelect("i.*, i.gross_amount-i.paid_amount AS due_amount");
-    
+
     return parent::orderBy($order);
   }
-  
+
   public function total($field)
   {
     $other = parent::total($field);
-    $result = $other->andWhere('i.draft = 0')->fetchOne()->getTotal();
+    $result = $other->fetchOne()->getTotal();
 
     return $result;
   }
-  
+
   public function total_tax($tax_id)
   {
     $other = clone($this);
     return $other->select("sum(it.quantity*it.unitary_cost*(1-it.discount/100)*tx.value/100) as total_tax")->addFrom('i.Items it,it.Taxes tx')->addWhere('tx.id = ?', $tax_id)->addWhere('i.draft = 0')->limit(0)->fetchOne()->getTotalTax();
   }
 
-  
+
   public function sent($sent)
   {
     if(trim($sent)=='') return $this;
     $this->andWhere('i.sent_by_email = ?', $sent);
-    
+
     return $this;
   }
-  
+
   /**
    * Limits the results to those invoices issued in a date greater or equal than that
    * one passed as parameter.
@@ -79,7 +79,7 @@ class InvoiceQuery extends CommonInvoiceQuery
       return $this->andWhere('i.issue_date >= ?', sfDate::getInstance($date)->to_database());
     }
   }
-  
+
   /**
    * Limits the results to those invoices issued in a date smaller or equal than that
    * one passed as parameter.
@@ -98,7 +98,7 @@ class InvoiceQuery extends CommonInvoiceQuery
       return $this->andWhere('i.issue_date < ?', sfDate::getInstance($date)->addDay(1)->to_database());
     }
   }
-  
+
   /**
    * Internal method to deduce a correct or null date value.
    * @param mixed date; if it is an array it must have the 'year', 'month' and 'day' keys.
@@ -122,5 +122,5 @@ class InvoiceQuery extends CommonInvoiceQuery
         return $date;
     }
   }
-  
+
 }

@@ -2,21 +2,21 @@
 
 class CommonInvoiceQuery extends Doctrine_Query
 {
-  
+
   protected $_model;
-  
+
   public static function create($conn = null, $class = null)
   {
     return new CommonInvoiceQuery($conn);
   }
-  
+
   public function getClone()
   {
     $other = clone($this);
 
     return $other;
   }
-  
+
   public function search($search = null)
   {
     if($search)
@@ -27,13 +27,13 @@ class CommonInvoiceQuery extends Doctrine_Query
       if(isset($search['supplier_id'])) $this->supplier($search['supplier_id']);
       if(isset($search['tags']))        $this->withTags($search['tags']);
       if(isset($search['status']))      $this->status($search['status']);
-      if(isset($search['period_type']) && $search['period_type']) 
+      if(isset($search['period_type']) && $search['period_type'])
         $this->andWhere("i.period_type = ?", $search['period_type']);
     }
-    
+
     return $this;
   }
-  
+
   public function textSearch($text)
   {
     $text = trim($text);
@@ -45,14 +45,14 @@ class CommonInvoiceQuery extends Doctrine_Query
         ->from('item')
         ->where('Description LIKE ?', "%$text%")
         ->execute();
-        
+
       $ids = array();
       foreach ($items as $item)
       {
         if (!in_array($item->getCommonId(), $ids))
           $ids[] = $item->getCommonId();
       }
-        
+
       $itemsOr = $ids ? " OR i.id IN (".implode(',', $ids).")" : null;
 
       $this
@@ -66,10 +66,10 @@ class CommonInvoiceQuery extends Doctrine_Query
           .")"
           );
     }
-    
+
     return $this;
   }
-  
+
   public function series($series_id = null)
   {
     if($series_id)
@@ -79,14 +79,14 @@ class CommonInvoiceQuery extends Doctrine_Query
 
     return $this;
   }
-  
+
   public function customer($customer_id = null)
   {
     if($customer_id)
     {
       $this->andWhere("i.customer_id = ?", $customer_id);
     }
-    
+
     return $this;
   }
 
@@ -96,10 +96,10 @@ class CommonInvoiceQuery extends Doctrine_Query
     {
       $this->andWhere("i.supplier_id = ?", $supplier_id);
     }
-    
+
     return $this;
   }
-  
+
   public function withTags($tags)
   {
     if ($tags)
@@ -108,10 +108,10 @@ class CommonInvoiceQuery extends Doctrine_Query
       $cmp_tags = isset($taggings[$this->_model]) ? $taggings[$this->_model] : array(0);
       $this->andWhereIn('i.id', $cmp_tags);
     }
-    
+
     return $this;
   }
-  
+
   /**
    * adds conditions to status. The parameter $status can be an array
    * of integers status (see Invoice.php)
@@ -135,10 +135,10 @@ class CommonInvoiceQuery extends Doctrine_Query
         $this->andWhere(sprintf('i.status NOT IN (%s)', $statusString));
       }
     }
-        
+
     return $this;
   }
-  
+
   public function total($field)
   {
     $other = clone($this);
@@ -146,7 +146,7 @@ class CommonInvoiceQuery extends Doctrine_Query
     switch($field)
     {
       case 'due_amount':
-        $sum = 'SUM(gross_amount - paid_amount) as total';
+        $sum = 'SUM(CASE WHEN draft = 0 THEN(gross_amount - paid_amount) ELSE 0 END) as total';
         break;
       default:
         $sum = sprintf('SUM(%s) as total', $field);
@@ -154,8 +154,8 @@ class CommonInvoiceQuery extends Doctrine_Query
     }
 
     $other->select($sum)->orderBy('total');
-      
+
     return $other;
   }
-  
+
 }

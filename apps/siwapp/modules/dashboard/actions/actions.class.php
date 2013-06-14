@@ -40,7 +40,7 @@ class dashboardActions extends sfActions
         ELSE it.unitary_cost * it.quantity
         END ) AS base')
 
-            ->Where('company_id = ?',$company_id )->search($search)
+            ->Where('draft = 0 and company_id = ?',$company_id )->search($search)
             ->addGroupBy('t.name')->addGroupBy('t.value');
         $this->fiscal_invoices = $q->fetchArray();
 
@@ -71,7 +71,7 @@ class dashboardActions extends sfActions
         $this->detailed_expenses = $q->fetchArray();
     }
 
-    $q = InvoiceQuery::create()->Where('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
+    $q = InvoiceQuery::create()->Where('draft = 0 and company_id = ?',$company_id )->search($search)->limit($this->maxResults);
 
     $exp = ExpenseQuery::create()->Where('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
 
