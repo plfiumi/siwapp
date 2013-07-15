@@ -164,9 +164,16 @@ class Expense extends BaseExpense
     $result = array();
     foreach ($this->getItems() as $item)
     {
-        $taxname = $item->getTaxes()->getFirst()->getName();
+
+        $tax = $item->getTaxes()->getFirst();
+        if($tax === false){
+            $taxname = '';
+            $ammount=0.0;
+        } else {
+            $taxname = $tax->getName();
+            $ammount=$item->getTaxAmount();
+        }
         $name = $item->getExpenseType()->getName();
-        $ammount=$item->getTaxAmount();
         $base=$item->getBaseAmount();
 
         if (isset($result[$name]))
