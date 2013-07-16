@@ -13,7 +13,7 @@ class SiwappUser extends sfGuardSecurityUser
         parent::signOut();
     }
   }
-  
+
   public function loadCompany($companyid = 0)
   {
     $companyObject = new Company();
@@ -29,13 +29,13 @@ class SiwappUser extends sfGuardSecurityUser
         throw new sfException('This user has no company assigned. Contact system administrator.');
     $this->setAttribute('company_id',''.$companyObject->getId());
     $this->setAttribute('company_name',$companyObject->getName());
-    
+
     $currency = $companyObject->get('currency', 'USD');
     $currency_decimals = $companyObject->get('currency_decimals', 2);
-    
+
     $this->setAttribute('currency', $currency);
     $this->setAttribute('currency_decimals', $currency_decimals);
-   
+
   }
 
   public function loadUserSettings()
@@ -55,16 +55,17 @@ class SiwappUser extends sfGuardSecurityUser
         {
             if(in_array( $module, array('companies','users')))
                 continue;
-            $real_modules[] = $module;    
+            $real_modules[] = $module;
         }
         $siwapp_mandatory_modules = $real_modules;
     }
-    
+
     $com = Doctrine_Query::create()
         ->select('cu.company_id,c.name')
         ->from('CompanyUser cu')
         ->innerJoin('cu.Company c')
-        ->where('sf_guard_user_id = ?', $this->getGuardUser()->getId())->fetchArray();
+        ->where('sf_guard_user_id = ?', $this->getGuardUser()->getId())
+        ->OrderBy('c.name ASC')->fetchArray();
     $available_companies= array();
     foreach($com as $company)
     {
@@ -72,22 +73,22 @@ class SiwappUser extends sfGuardSecurityUser
             "id" => $company['Company']['id'],
             "name" => $company['Company']['name'],
         );
-    }  
+    }
     $this->setAttribute('available_companies',$available_companies);
-    
-    $this->setAttribute('siwapp_modules', 
+
+    $this->setAttribute('siwapp_modules',
                         array_merge(
                                     $siwapp_mandatory_modules,
                                     $siwapp_optional_modules
                                     )
                         );
-    
+
     $culture = $this->getLanguage();
     if($this->getCountry()) $culture .= '_'.$this->getCountry();
 
     $this->setCulture($culture);
   }
-  
+
   /**
    * Search Parameters
    */
@@ -95,13 +96,13 @@ class SiwappUser extends sfGuardSecurityUser
   {
     $changed = false;
     $ns = $request->getParameter('searchNamespace');
-    
+
     // if reset, remove all search parameters from request and user
     if ($request->getParameter('reset'))
     {
       $request->getParameterHolder()->remove('search');
       $this->getAttributeHolder()->remove('search', null, $ns);
-      
+
       $changed = true;
     }
     else
@@ -111,7 +112,7 @@ class SiwappUser extends sfGuardSecurityUser
       foreach ($params as $param)
       {
         $value = $request->getParameter($param, null);
-        
+
         if($value && $this->getAttribute($param, null, $ns) != $value)
         {
           $this->setAttribute($param, $value, $ns);
@@ -119,7 +120,7 @@ class SiwappUser extends sfGuardSecurityUser
         }
       }
     }
-    
+
     // If something has changed we reset page to 1
     if ($changed)
     {
@@ -139,7 +140,7 @@ class SiwappUser extends sfGuardSecurityUser
     {
       $search = $this->getAttribute('search', null, $ns);
     }
-    
+
     // this is to put the customer name in the autocomplete field
     if(isset($search['customer_id']) && $search['customer_id'] > 0)
     {
@@ -153,12 +154,12 @@ class SiwappUser extends sfGuardSecurityUser
         unset($search['customer_id']);
       }
     }
-    
+
     $this->setAttribute('search', $search, $ns);
   }
-  
+
   /**
-   * this function sets the $search array with default settings 
+   * this function sets the $search array with default settings
    * if the user has default settings for the search form
    *
    * @param $search array The search array
@@ -170,17 +171,17 @@ class SiwappUser extends sfGuardSecurityUser
     if($profile = $this->getProfile())
     {
       $from = $to = null;
-      
+
       if (isset($search['from']))
       {
         $from = Tools::sfDateFromArray($search['from']);
       }
-      
+
       if (isset($search['to']))
       {
         $to = Tools::sfDateFromArray($search['to']);
       }
-      
+
       if (!isset($search['quick_dates']) && !$from && !$to && ($searchFilter = $profile->getSearchFilter()))
       {
         $to = sfDate::getInstance();
@@ -246,29 +247,29 @@ class SiwappUser extends sfGuardSecurityUser
             'month' => $from->format('n'),
             'year'  => $from->getYear(),
           );
-        
+
         $search['quick_dates'] = $searchFilter;
       }
     }
-    
+
     return $search;
   }
-  
+
   public function getSelectedTags($search)
   {
     return ((isset($search['tags']) && strlen($search['tags'])) ? explode(',', $search['tags']) : array());
   }
-  
+
   public function getPaginationMaxResults()
   {
     if (!($maxResults = $this->getProfile()->getNbDisplayResults()))
     {
       $maxResults = sfConfig::get('app_pagination_max_results', 10);
     }
-    
+
     return $maxResults;
   }
-  
+
   /**
    * Info Notification Helpers
    * @author Carlos Escribano <carlos@markhaus.com>
@@ -279,21 +280,21 @@ class SiwappUser extends sfGuardSecurityUser
     array_push($arr, $message);
     $this->setFlash('info', $arr, $b);
   }
-  
+
   public function warn($message, $b = true)
   {
     $arr = $this->getFlash('warning') ? $this->getFlash('warning'):array();
     array_push($arr, $message);
     $this->setFlash('warning', $arr, $b);
   }
-  
+
   public function error($message, $b = true)
   {
     $arr = $this->getFlash('error') ? $this->getFlash('error'):array();
     array_push($arr, $message);
     $this->setFlash('error', $arr, $b);
   }
-  
+
   /**
    * Tag Cloud Preference
    */
@@ -301,26 +302,26 @@ class SiwappUser extends sfGuardSecurityUser
   {
     $this->setAttribute('showTags', !$this->getAttribute('showTags'));
   }
-  
+
   public function isTagCloudVisible()
   {
     return $this->getAttribute('showTags', false);
   }
-  
+
   public function getLanguage()
   {
     $lang = $this->getProfile()->getLanguage();
-    
+
     return $lang ? $lang : 'en';
   }
-  
+
   public function getCountry()
   {
     $country = $this->getProfile()->getCountry();
-    
+
     return $country ? $country : null;
   }
-  
+
   public function getCurrency()
   {
     return $this->getAttribute('currency');
