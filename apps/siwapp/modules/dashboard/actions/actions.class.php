@@ -31,31 +31,79 @@ class dashboardActions extends sfActions
     $this->fiscality=$company->fiscality;
     if($this->fiscality){
         //Incoming expenses grouped by Tax id.
-        $q = InvoiceQuery::create()->innerJoin('i.Items it')->innerJoin('it.Taxes t')
-            ->addSelect('t.name as name')->addSelect('t.value as value ')
-            ->addSelect('i.id')->addSelect('it.id')->addSelect('t.id') //Necesary for doctrine
-            ->addSelect('sum(
-        CASE WHEN discount >0
-        THEN ((100-it.discount) / 100) * (it.unitary_cost * it.quantity)
-        ELSE it.unitary_cost * it.quantity
-        END ) AS base')
+        $q = InvoiceQuery::create()->Where('draft = 0 and company_id = ?',$company_id )->search($search);
+        $result=array();
+        foreach($q->execute() as $invoice)
+        {
+            foreach($invoice->getBasesDetails() as $name => $base)
+            {
+                if (isset($result[$name]))
+                {
+                  $result[$name]['base'] += $base;
+                }
+                else
+                {
+                  $result[$name] = array(
+                    'name' => $name,
+                    'base' => $base,
+                    'value' => 0.0,
+                  );
+                }
+            }
+            foreach($invoice->getTaxDetails() as $name => $value)
+            {
+                if (isset($result[$name]))
+                {
+                  $result[$name]['value'] += $value;
+                }
+                else
+                {
+                  $result[$name] = array(
+                    'name' => $name,
+                    'base' => 0.0,
+                    'value' => $value,
+                  );
+                }
+            }
+        }
+        $this->fiscal_invoices = $result;
 
-            ->Where('draft = 0 and company_id = ?',$company_id )->search($search)
-            ->addGroupBy('t.name')->addGroupBy('t.value');
-        $this->fiscal_invoices = $q->fetchArray();
-
-        $q = ExpenseQuery::create()->innerJoin('i.Items it')->innerJoin('it.Taxes t')
-            ->addSelect('t.name as name')->addSelect('t.value as value ')
-            ->addSelect('i.id')->addSelect('it.id')->addSelect('t.id') //Necesary for doctrine
-            ->addSelect('sum(
-        CASE WHEN discount >0
-        THEN ((100-it.discount) /100) * (it.unitary_cost * it.quantity)
-        ELSE it.unitary_cost * it.quantity
-        END ) AS base')
-
-            ->Where('company_id = ?',$company_id )->search($search)
-            ->addGroupBy('t.name')->addGroupBy('t.value');
-        $this->fiscal_expenses = $q->fetchArray();
+        $q = ExpenseQuery::create()->Where('company_id = ?',$company_id )->search($search);
+        $result=array();
+        foreach($q->execute() as $invoice)
+        {
+            foreach($invoice->getBasesDetails() as $name => $base)
+            {
+                if (isset($result[$name]))
+                {
+                  $result[$name]['base'] += $base;
+                }
+                else
+                {
+                  $result[$name] = array(
+                    'name' => $name,
+                    'base' => $base,
+                    'value' => 0.0,
+                  );
+                }
+            }
+            foreach($invoice->getTaxDetails() as $name => $value)
+            {
+                if (isset($result[$name]))
+                {
+                  $result[$name]['value'] += $value;
+                }
+                else
+                {
+                  $result[$name] = array(
+                    'name' => $name,
+                    'base' => 0.0,
+                    'value' => $value,
+                  );
+                }
+            }
+        }
+        $this->fiscal_expenses = $result;
 
         $q = ExpenseQuery::create()->innerJoin('i.Items it')->innerJoin('it.ItemTax itt')->innerJoin('it.Taxes t')->innerJoin('it.ExpenseType et')
             ->addSelect('et.name as name')

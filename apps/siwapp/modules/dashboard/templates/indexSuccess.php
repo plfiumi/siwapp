@@ -118,11 +118,11 @@
       ?><tr>
         <td><?php echo $tax_data['name'] ?></td>
         <td class="right"><?php echo format_currency($tax_data['base'], $currency)?></td>
-        <td class="right"><?php echo format_currency($tax_data['value'] /100 * $tax_data['base'], $currency)?></td>
+        <td class="right"><?php echo format_currency($tax_data['value'], $currency)?></td>
       </tr>
       <?php
            $totalb += $tax_data['base'];
-           $totalv += $tax_data['value'] /100 * $tax_data['base'];
+           $totalv += $tax_data['value'];
       }
       ?><tr>
         <td><?php echo __('Total') ?></td>
@@ -146,11 +146,11 @@
       ?><tr>
         <td><?php echo $tax_data['name'] ?></td>
         <td class="right"><?php echo format_currency($tax_data['base'], $currency)?></td>
-        <td class="right"><?php echo format_currency($tax_data['value'] /100 * $tax_data['base'], $currency)?></td>
+        <td class="right"><?php echo format_currency($tax_data['value'], $currency)?></td>
       </tr>
       <?php
            $totalb += $tax_data['base'];
-           $totalv += $tax_data['value'] /100 * $tax_data['base'];
+           $totalv += $tax_data['value'];
       }
       ?><tr>
         <td><?php echo __('Total') ?></td>
