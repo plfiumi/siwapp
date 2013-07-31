@@ -27,6 +27,7 @@ class CustomerForm extends BaseCustomerForm
                              );
 
 
+    $this->widgetSchema['payment_type_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PaymentType'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
     //Assign company_id from session values.
     $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
     $this->setDefault('company_id' , sfContext::getInstance()->getUser()->getAttribute('company_id'));
@@ -50,7 +51,7 @@ class CustomerForm extends BaseCustomerForm
                               ));
     /*foreach($this->validatorSchema->getPostValidator()->getValidators() as $val)
     {
-      if($val instanceOf sfValidatorDoctrineUnique and 
+      if($val instanceOf sfValidatorDoctrineUnique and
          $val->getOption('column')==array('name_slug') )
         {
           $val->setMessage(
