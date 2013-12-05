@@ -459,6 +459,10 @@
         <target>Dirección de Facturación</target>
       </trans-unit>
       <trans-unit>
+        <source>Invoicing City</source>
+        <target>Población de Facturación</target>
+      </trans-unit>
+      <trans-unit>
         <source>Invoicing Postal code</source>
         <target>Codigo postal de facturación</target>
       </trans-unit>
