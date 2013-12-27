@@ -11,7 +11,10 @@ $customer = $customerForm->getObject();
   <form action="<?php echo url_for("customers/$action") ?>" method="post" <?php $customerForm->isMultipart() and print 'enctype="multipart/form-data" ' ?> class="customer">
   <?php include_partial('common/globalErrors', array('form' => $customerForm)) ?>
   <?php
-  echo $customerForm->renderHiddenFields();
+    echo $customerForm['id'];
+    // here draft, in case were saved as draft, the button must put 1 here
+    echo $customerForm['_csrf_token'];
+    echo $customerForm['company_id'];
   ?>
   <div id="saving-options" class="block right">
     <?php
@@ -156,6 +159,7 @@ $customer = $customerForm->getObject();
     </li>
   </ul>
 </div>
+  <?php include_partial('common/tagsDataBlock', array('invoice' => $customer, 'invoiceForm' => $customerForm)) ?>
   <div id="saving-options" class="block">
     <?php
     if ($customer->getId()) {

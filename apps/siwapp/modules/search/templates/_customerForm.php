@@ -1,4 +1,4 @@
-<?php 
+<?php
 use_helper('Siwapp', 'JavascriptBase');
 ?>
 <form id="searchForm" name="searchForm" class="searchform" action="" method="post">
@@ -8,11 +8,12 @@ use_helper('Siwapp', 'JavascriptBase');
       <ul>
         <?php
         echo $form['query']->renderRow();
-        echo $form['from']->renderRow(); 
+        echo $form['from']->renderRow();
         echo $form['to']->renderRow();
         echo $form['quick_dates']->renderRow();
         ?>
       </ul>
+      <?php include_partial('search/tagsSwitch', array('selected_tags' => $selected_tags)); ?>
     </div>
   </div>
   <span class="buttons">
@@ -23,3 +24,4 @@ use_helper('Siwapp', 'JavascriptBase');
     ?>
   </span>
 </form>
+<?php include_partial('search/tags', array('tags' => $tags, 'selected_tags' => $selected_tags)); ?>

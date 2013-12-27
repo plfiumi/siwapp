@@ -64,6 +64,8 @@ CompanyUser:
       onDelete:     cascade
 
 Customer:
+  actAs:
+    Taggable:
   columns:
     company_id: integer
     name: string(100)

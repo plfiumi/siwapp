@@ -26,11 +26,14 @@ class CustomerForm extends BaseCustomerForm
                              'comments'=> 'Comments',
                              );
 
+    $this->widgetSchema['tags']  = new sfWidgetFormInputHidden();
+    $this->validatorSchema['tags']           = new sfValidatorString(array('required'=>false));
 
     $this->widgetSchema['payment_type_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PaymentType'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
     //Assign company_id from session values.
     $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
     $this->setDefault('company_id' , sfContext::getInstance()->getUser()->getAttribute('company_id'));
+    $this->setDefault('tags', implode(',',$this->object->getTags()));
 
     // validators
     $this->validatorSchema['email'] = new sfValidatorEmail(
@@ -69,5 +72,12 @@ class CustomerForm extends BaseCustomerForm
                                                          $taintedValues['name']
                                                          );
     parent::bind($taintedValues, $taintedFiles);
+  }
+
+  public function doUpdateObject($values)
+  {
+    parent::doUpdateObject($values);
+    $this->getObject()->setTags($values['tags']);
+    $this->getObject()->clearRelated();
   }
 }

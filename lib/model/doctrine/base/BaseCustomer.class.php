@@ -240,5 +240,8 @@ abstract class BaseCustomer extends sfDoctrineRecord
         $this->hasMany('Common as Commons', array(
              'local' => 'id',
              'foreign' => 'customer_id'));
+
+        $taggable0 = new Taggable();
+        $this->actAs($taggable0);
     }
 }
