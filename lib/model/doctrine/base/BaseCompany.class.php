@@ -270,7 +270,7 @@ abstract class BaseCompany extends sfDoctrineRecord
              'local' => 'company_id',
              'foreign' => 'sf_guard_user_id'));
 
-        $this->hasMany('Customer as Company', array(
+        $this->hasMany('Tag as Company', array(
              'local' => 'id',
              'foreign' => 'company_id'));
     }

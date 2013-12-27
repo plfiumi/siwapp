@@ -13,6 +13,7 @@ abstract class BaseTagFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'company_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
       'name'             => new sfWidgetFormFilterInput(),
       'is_triple'        => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'triple_namespace' => new sfWidgetFormFilterInput(),
@@ -21,6 +22,7 @@ abstract class BaseTagFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'company_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Company'), 'column' => 'id')),
       'name'             => new sfValidatorPass(array('required' => false)),
       'is_triple'        => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'triple_namespace' => new sfValidatorPass(array('required' => false)),
@@ -46,6 +48,7 @@ abstract class BaseTagFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'               => 'Number',
+      'company_id'       => 'ForeignKey',
       'name'             => 'Text',
       'is_triple'        => 'Boolean',
       'triple_namespace' => 'Text',

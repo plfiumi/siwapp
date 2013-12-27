@@ -21,7 +21,7 @@ class PluginTagTable extends Doctrine_Table
         {
             $q = Doctrine_Query::create();
         }
-        
+
         if (!$q->getDqlPart('select'))
         {
           $q->select('t.name');
@@ -29,38 +29,39 @@ class PluginTagTable extends Doctrine_Table
         if (!$q->getDqlPart('from'))
         {
           $q->from('Tag t INDEXBY t.name');
-			  }	
+			  }
 
+        $q->addWhere('t.company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'));
         if (isset($options['limit']))
         {
             $q->limit($options['limit']);
         }
-        
+
         if (isset($options['like']))
         {
             $q->addWhere('t.name like ?', $options['like']);
         }
-        
+
         if (isset($options['triple']))
         {
             $q->addWhere('t.is_triple = ?', $options['triple']);
         }
-        
+
         if (isset($options['namespace']))
         {
             $q->addWhere('t.triple_namespace = ?', $options['namespace']);
         }
-        
+
         if (isset($options['key']))
         {
             $q->addWhere('t.triple_key = ?', $options['key']);
         }
-        
+
         if (isset($options['value']))
         {
             $q->addWhere('t.triple_value = ?', $options['value']);
         }
-        
+
 //        return array_keys($q->orderBy('t.name')->execute(array(), Doctrine::HYDRATE_ARRAY));
         return array_keys($q->execute(array(), Doctrine::HYDRATE_ARRAY));
     }
@@ -82,14 +83,15 @@ class PluginTagTable extends Doctrine_Table
         {
             $q = Doctrine_Query::create();
         }
-        
+
         $q->select('tg.tag_id, t.name, COUNT(tg.id) AS t_count');
-        
+
         //allows to pass more complex queries with a lot of joins
         if (!$q->getDqlPart('from'))
         {
-          $q->from('Tagging tg, tg.Tag t');    
+          $q->from('Tagging tg, tg.Tag t');
         }
+        $q->addWhere('t.company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'));
 
         if (isset($options['limit']))
         {
@@ -125,20 +127,20 @@ class PluginTagTable extends Doctrine_Table
         {
             $q->addWhere('t.triple_value = ?', $options['value']);
         }
-        
+
         if (isset($options['min_tags_count']))
         {
             $q->having('t_count >= ?', $options['min_tags_count']);
         }
-        
+
         $q->groupBy('tg.tag_id') // , t.name ?
           ->orderBy('t_count DESC, t.name ASC')
         ;
-        
+
         $rs = $q->execute(array(), Doctrine::HYDRATE_ARRAY);
-        
+
         $tags = array();
-        
+
         foreach($rs as $tag)
         {
             $name = $tag['Tag']['name'];
@@ -174,7 +176,7 @@ class PluginTagTable extends Doctrine_Table
                 $tags = array($tags);
             }
         }
-        
+
         $q = Doctrine_Query::create()
                            ->select('tg.taggable_model, tg.taggable_id')
                            ->from('Tagging tg, Tag t')
@@ -182,12 +184,12 @@ class PluginTagTable extends Doctrine_Table
                            ->having('count(t.id) > ?', count($tags))
                            ->groupBy('tg.taggable_id')
                            ->execute(array(), Doctrine::FETCH_ARRAY);
-                           
+
         foreach($q as $cc)
         {
             $models[] = $cc[1];
         }
-        
+
         return $models;
     }
 
@@ -210,7 +212,7 @@ class PluginTagTable extends Doctrine_Table
         {
             $q = Doctrine_Query::create()->limit(sfConfig::get('app_sfDoctrineActAsTaggablePlugin_limit', 100));
         }
-        
+
         $all_tags = self::getAllTagNameWithCount($q, $options);
         return TaggableToolkit::normalize($all_tags);
     }
@@ -234,22 +236,22 @@ class PluginTagTable extends Doctrine_Table
     public static function getRelatedTags($tags = array(), $options = array())
     {
         $tags = TaggableToolkit::explodeTagString($tags);
-        
+
         if (is_string($tags))
         {
             $tags = array($tags);
         }
-        
+
         $tagging_options = $options;
-        
+
         if (isset($tagging_options['limit']))
         {
           unset($tagging_options['limit']);
         }
-        
+
         $taggings = self::getTaggings($tags, $tagging_options);
         $result = array();
-        
+
         foreach ($taggings as $key => $tagging)
         {
             $tags_rs = Doctrine_Query::create()
@@ -259,16 +261,16 @@ class PluginTagTable extends Doctrine_Table
                                      ->andWhereNotIn('t.name', $tags)
                                      ->andWhereIn('tg.taggable_id', $tagging)
                                      ->execute(array(), Doctrine::HYDRATE_ARRAY);
-            
+
             foreach ($tags_rs as $tag)
             {
                 $tag_name = $tag['name'];
-                
+
                 if (!isset($result[$tag_name]))
                 {
                     $result[$tag_name] = 0;
                 }
-                
+
                 $result[$tag_name]++;
             }
         }
@@ -280,7 +282,7 @@ class PluginTagTable extends Doctrine_Table
         }
 
         ksort($result);
-        
+
         return TaggableToolkit::normalize($result);
     }
 
@@ -302,14 +304,14 @@ class PluginTagTable extends Doctrine_Table
         foreach ($taggings as $key => $tagging)
         {
             $q = Doctrine_Query::create()->from($key . ' t');
-            
+
             if(isset($options['leftJoin']))
             {
                 $q->leftJoin($options['leftJoin']);
             }
-            
+
             $hydration = isset($options['hydrate']) ?  $options['hydrate'] : Doctrine::HYDRATE_RECORD;
-            
+
             $objects = $q->whereIn('t.id', $tagging)->execute(array(), $hydration);
 
             foreach ($objects as $object)
@@ -340,25 +342,25 @@ class PluginTagTable extends Doctrine_Table
     public static function getObjectTaggedWithQuery($model, $tags = array(), Doctrine_Query $q = null, $options = array())
     {
         $tags = TaggableToolkit::explodeTagString($tags);
-    
+
         if (is_string($tags))
         {
             $tags = array($tags);
         }
-        
+
         if (!class_exists($model) || !PluginTagTable::isDoctrineModelClass($model))
         {
             throw new DoctrineException(sprintf('The class "%s" does not exist, or it is not a model class.', $model));
         }
-        
+
         if (!$q instanceof Doctrine_Query)
         {
             $q = Doctrine_Query::create()->from($model);
         }
-        
+
         $taggings = self::getTaggings($tags, array_merge(array('model' => $model), $options));
         $tagging = isset($taggings[$model]) ? $taggings[$model] : array();
-        
+
         if (empty($tagging))
         {
           $q->where('false');
@@ -367,7 +369,7 @@ class PluginTagTable extends Doctrine_Table
         {
           $q->whereIn($model . '.id', $tagging);
         }
-        
+
         return $q;
     }
 
@@ -378,7 +380,7 @@ class PluginTagTable extends Doctrine_Table
     {
         return true;
     }
-    
+
     /**
     * Returns the taggings associated to one tag or a set of tags.
     *
@@ -397,11 +399,11 @@ class PluginTagTable extends Doctrine_Table
         {
             $tags = array($tags);
         }
-        
+
         $q = Doctrine_Query::create()
                            ->select('DISTINCT t.id')
                            ->from('Tag t INDEXBY t.id');
-        
+
         if(count($tags) > 0)
         {
             $q->whereIn('t.name', $tags);
@@ -431,9 +433,9 @@ class PluginTagTable extends Doctrine_Table
         {
             $options['nb_common_tags'] = count($tags);
         }
-        
+
         $tag_ids = $q->execute(array(), Doctrine::HYDRATE_ARRAY);
-        
+
         $q = Doctrine_Query::create()
                            ->select('tg.taggable_id')
                            ->from('Tagging tg')
@@ -449,7 +451,7 @@ class PluginTagTable extends Doctrine_Table
                 throw new DoctrineException(sprintf('The class "%s" does not exist, or it is not a model class.',
                                       $options['model']));
             }
-            
+
             $q->addWhere('tg.taggable_model = ?', $options['model']);
         }
         else
@@ -471,7 +473,7 @@ class PluginTagTable extends Doctrine_Table
             {
                 $model = $rs['taggable_model'];
             }
-            
+
             if (!isset($taggings[$model]))
             {
                 $taggings[$model] = array();
@@ -479,7 +481,7 @@ class PluginTagTable extends Doctrine_Table
 
             $taggings[$model][] = $rs['taggable_id'];
         }
-        
+
         return $taggings;
     }
 
@@ -492,14 +494,16 @@ class PluginTagTable extends Doctrine_Table
     */
     public static function findOrCreateByTagname($tagname)
     {
+        $company_id = sfContext::getInstance()->getUser()->getAttribute('company_id');
         // retrieve or create the tag
-        $tag = Doctrine::getTable('Tag')->findOneByName($tagname);
+        $tag = Doctrine::getTable('Tag')->createQuery()->where('company_id = ?', $company_id)->AndWhere('name = ?', $tagname)->Limit(1)->fetchOne();
 
         if (!$tag)
         {
             $tag = new Tag();
             $tag->name = $tagname;
-            
+            $tag->company_id = $company_id;
+
             $triple = TaggableToolkit::extractTriple($tagname);
             list($tagname, $triple_namespace, $triple_key, $triple_value) = $triple;
 
@@ -508,20 +512,20 @@ class PluginTagTable extends Doctrine_Table
             $tag->triple_value = $triple_value;
             $tag->is_triple = !is_null($triple_namespace);
         }
-        
+
         return $tag;
     }
-    
+
     /**
      * Remove Tags without associations in Tagging table
-     * 
+     *
      * @return array
      */
     public static function purgeOrphans() {
       $q = Doctrine::getTable('Tag')->createQuery('t INDEXBY t.id')
         ->select('t.id')
         ->addWhere('NOT EXISTS (SELECT tg.id FROM Tagging tg WHERE tg.tag_id = t.id)');
-        
+
       $orphans = $q->execute();
       $orphan_data = $orphans->toArray(false);
       $orphans->delete();

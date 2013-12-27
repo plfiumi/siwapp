@@ -16,6 +16,7 @@ abstract class BaseTagForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'               => new sfWidgetFormInputHidden(),
+      'company_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'add_empty' => true)),
       'name'             => new sfWidgetFormInputText(),
       'is_triple'        => new sfWidgetFormInputCheckbox(),
       'triple_namespace' => new sfWidgetFormInputText(),
@@ -25,6 +26,7 @@ abstract class BaseTagForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'               => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'company_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Company'), 'required' => false)),
       'name'             => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'is_triple'        => new sfValidatorBoolean(array('required' => false)),
       'triple_namespace' => new sfValidatorString(array('max_length' => 100, 'required' => false)),

@@ -1,18 +1,19 @@
 Tag:
   columns:
+    company_id: integer
 #    id:
 #      type: integer(4)
 #      primary: true
 #      autoincrement: true
     name:
       type:           string(100)
-    is_triple:        
+    is_triple:
       type:           boolean
-    triple_namespace: 
+    triple_namespace:
       type:           string(100)
-    triple_key:       
+    triple_key:
       type:           string(100)
-    triple_value:     
+    triple_value:
       type:           string(100)
   indexes:
     name:
@@ -28,19 +29,26 @@ Tag:
       fields: [triple_key]
     triple3:
       fields: [triple_value]
-        
+  relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
+
 Tagging:
   columns:
 #    id:
 #      type: integer(4)
 #      primary: true
 #      autoincrement: true
-    tag_id:           
+    tag_id:
       type:           integer
       notnull:        true
-    taggable_model:   
+    taggable_model:
       type:           string(30)
-    taggable_id:      
+    taggable_id:
       type:           integer
   relations:
     Tag:
@@ -50,6 +58,6 @@ Tagging:
     taggable:
       fields: [taggable_model, taggable_id]
   attributes:
-    # don't export constraints. This is necessary because multiple models can 
+    # don't export constraints. This is necessary because multiple models can
     #  join Tagging on taggable_id
-    export: [ all, constraints ] 
+    export: [ all, constraints ]

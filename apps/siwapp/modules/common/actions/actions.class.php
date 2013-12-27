@@ -21,17 +21,17 @@ class commonActions extends sfActions
   {
     $currency = PropertyTable::get('currency');
     $format   = new sfNumberFormat($this->culture);
-    
+
     $data = $request->getParameter('invoice');
     if(!isset($data))
         $data = $request->getParameter('expense');
     $this->getResponse()->setHttpHeader('Content-Type', 'application/json; charset=utf-8');
 
     $invoice = new Invoice();
-    
+
     $items  = array();
     $totals = array();
-    
+
     if (isset($data['Items']))
     {
       foreach ((array) $data['Items'] as $itemId => $itemData)
@@ -44,18 +44,18 @@ class commonActions extends sfActions
         $item->setUnitaryCost($itemData['unitary_cost']);
         $item->setQuantity($itemData['quantity']);
         $item->setDiscount($itemData['discount']);
-        
+
         if (isset($itemData['taxes_list']))
         {
           $taxes = Doctrine::getTable('Tax')->createQuery()->whereIn('id', $itemData['taxes_list'])->execute();
           $item->Taxes = $taxes;
         }
-        
+
         $items[$itemId] = $format->format($item->getNetAmount(), 'c', $currency);
 
         $invoice->Items[] = $item;
       }
-      
+
       $totals['base']     = $format->format($invoice->calculate('base_amount',true), 'c', $currency);
       $totals['discount'] = $format->format($invoice->calculate('discount_amount',true), 'c', $currency);
       $totals['net']      = $format->format($invoice->calculate('net_amount',true), 'c', $currency);
@@ -65,17 +65,17 @@ class commonActions extends sfActions
     else
     {
       $zero = $format->format(0, 'c', $currency);
-      
+
       $totals['base']     = $zero;
       $totals['discount'] = $zero;
       $totals['net']      = $zero;
       $totals['taxes']    = $zero;
       $totals['gross']    = $zero;
     }
-    
+
     return $this->renderText(json_encode(array('items' => $items, 'totals' => $totals)));
   }
-  
+
   /**
    * AJAX action to add new invoice items
    * @param sfWebRequest $request
@@ -97,7 +97,7 @@ class commonActions extends sfActions
                     );
     return $this->renderPartial('invoiceRow', $params);
   }
-  
+
    /**
    * AJAX action to add new invoice items
    * @param sfWebRequest $request
@@ -119,7 +119,7 @@ class commonActions extends sfActions
                     );
     return $this->renderPartial('expenseRow', $params);
   }
-  
+
   public function executeAjaxAddInvoiceItemTax($request)
   {
     $taxIndex = $request->getParameter('item_tax_index');
@@ -129,7 +129,7 @@ class commonActions extends sfActions
 
     $this->rowId  = $invoiceItemKey;
     $this->setTemplate('_tax');
-    
+
     return 'Span';
   }
 
@@ -145,7 +145,7 @@ class commonActions extends sfActions
 
     return 'Span';
   }
-  
+
   /**
    * ajax action for invoice items autocompletion
    *
@@ -161,8 +161,8 @@ class commonActions extends sfActions
     return $this->renderText(json_encode($items));
   }
 
-  
-  
+
+
   /**
    * ajax action for customer name autocompletion
    *
@@ -178,7 +178,7 @@ class commonActions extends sfActions
 
     return $this->renderText(json_encode($items));
   }
-  
+
     /**
    * ajax action for supplier name autocompletion
    *
@@ -194,7 +194,7 @@ class commonActions extends sfActions
 
     return $this->renderText(json_encode($items));
   }
-  
+
   /**
    * ajax action for tags autocompletion
    *
@@ -205,16 +205,17 @@ class commonActions extends sfActions
   {
     $this->getResponse()->setContentType('application/json');
     $q = $request->getParameter('q');
-    $limit = $request->getParameter('limit'); 
-    $items = Doctrine::getTable('Tag')->createQuery()->where('name like ?', "%$q%")->limit($limit)->execute();
-    
+    $limit = $request->getParameter('limit');
+    >)
+    $items = Doctrine::getTable('Tag')->createQuery()->where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id')->AndWhere('name like ?', "%$q%")->limit($limit)->execute();
+
     $res = array();
     foreach ($items as $item)
     {
       $res[$item->getName()] = $item->getName();
     }
-    
+
     return $this->renderText(json_encode($res));
   }
-  
+
 }
