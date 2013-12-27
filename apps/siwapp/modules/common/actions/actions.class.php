@@ -206,8 +206,7 @@ class commonActions extends sfActions
     $this->getResponse()->setContentType('application/json');
     $q = $request->getParameter('q');
     $limit = $request->getParameter('limit');
-    >)
-    $items = Doctrine::getTable('Tag')->createQuery()->where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id')->AndWhere('name like ?', "%$q%")->limit($limit)->execute();
+    $items = Doctrine::getTable('Tag')->createQuery()->where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->AndWhere('name like ?', "%$q%")->limit($limit)->execute();
 
     $res = array();
     foreach ($items as $item)
