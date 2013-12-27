@@ -589,6 +589,10 @@
         <target>Borrador</target>
       </trans-unit>
       <trans-unit>
+        <source>No Drafts</source>
+        <target>No Borrador</target>
+      </trans-unit>
+      <trans-unit>
         <source>Enabled</source>
         <target>Activa</target>
       </trans-unit>

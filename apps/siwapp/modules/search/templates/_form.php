@@ -1,4 +1,4 @@
-<?php 
+<?php
 use_helper('Siwapp', 'JavascriptBase');
 echo javascript_tag("var customer_name_autocomplete = '".$customer_name."'");
 ?>
@@ -8,22 +8,23 @@ echo javascript_tag("var customer_name_autocomplete = '".$customer_name."'");
     <div class="searchSection">
       <ul>
         <?php
-        echo $form['from']->renderRow(); 
+        echo $form['from']->renderRow();
         echo $form['to']->renderRow();
         echo $form['quick_dates']->renderRow();
         ?>
       </ul>
     </div>
-  
+
     <hr class="searchSeparator">
-  
+
     <div class="searchSection">
       <ul class="filters">
         <li><?php echo __('Status');?>: </li>
         <li><?php echo filter_by_status(__('Opened'), Invoice::OPENED, $status = $form['status']->getValue()) ?> |</li>
         <li><?php echo filter_by_status(__('Closed'), Invoice::CLOSED, $status) ?> |</li>
         <li><?php echo filter_by_status(__('Overdue'), Invoice::OVERDUE, $status) ?> |</li>
-        <li><?php echo filter_by_status(__('Drafts'), Invoice::DRAFT, $status) ?></li>
+        <li><?php echo filter_by_status(__('Drafts'), Invoice::DRAFT, $status) ?> |</li>
+        <li><?php echo filter_by_status(__('No Drafts'), -1, $status) ?></li>
       </ul>
       <ul class="series">
       <?php

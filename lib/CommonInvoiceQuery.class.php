@@ -26,7 +26,14 @@ class CommonInvoiceQuery extends Doctrine_Query
       if(isset($search['customer_id'])) $this->customer($search['customer_id']);
       if(isset($search['supplier_id'])) $this->supplier($search['supplier_id']);
       if(isset($search['tags']))        $this->withTags($search['tags']);
-      if(isset($search['status']))      $this->status($search['status']);
+      if(isset($search['status'])){
+          $stat = $search['status'];
+          if ($stat == -1)
+            //All except draft
+            $this->status(array(0), false);
+          else
+            $this->status($search['status']);
+      };
       if(isset($search['period_type']) && $search['period_type'])
         $this->andWhere("i.period_type = ?", $search['period_type']);
     }

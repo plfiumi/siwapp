@@ -589,6 +589,10 @@
         <target>Esborranys</target>
       </trans-unit>
       <trans-unit>
+        <source>No Drafts</source>
+        <target>No Esborranys</target>
+      </trans-unit>
+      <trans-unit>
         <source>Enabled</source>
         <target>Activades</target>
       </trans-unit>
