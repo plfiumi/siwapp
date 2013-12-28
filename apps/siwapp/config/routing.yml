@@ -30,6 +30,10 @@ invoices_remesar:
   url:    /invoices/remesar/
   param:  { module: invoices, action: remesar, tab: invoices, searchForm: false}
 
+invoices_remesarsepa:
+  url:    /invoices/remesarsepa/
+  param:  { module: invoices, action: remesarsepa, tab: invoices, searchForm: false}
+
 expenses:
   url:   /expenses
   param:  { module: expenses, action: index, tab: expenses, searchForm: true, searchNamespace: expenses }
@@ -65,7 +69,7 @@ dashboard:
 dashboard_new:
   url: /invoices/new
   param: { module: invoices, action: new, tab: invoices, searchForm: false}
-  
+
 recurring:
   url:   /recurring
   param:  { module: recurring, action: index, tab: recurring, searchForm: true, searchNamespace: recurring }
@@ -77,7 +81,7 @@ recurring_new:
 recurring_edit:
   url:   /recurring/edit/:id
   param:  { module: recurring, action: edit, tab: recurring, searchForm: false }
-  
+
 estimates:
   url:   /estimates
   param:  { module: estimates, action: index, tab: estimates, searchForm: true, searchNamespace: estimates }
@@ -129,7 +133,7 @@ products_new:
 products_edit:
   url:   /products/edit/:id
   param:  { module: products, action: edit, tab: products, searchForm: false }
-  
+
 companies:
   url:   /companies
   param:  { module: companies, action: index, tab:companies, searchForm: true, searchNamespace: companies }
@@ -165,7 +169,7 @@ settings:
 profile:
   url:   /settings/profile
   param:  { module: configuration, action: profile, searchForm: false, tab: profile }
- 
+
 categories:
   url:   /settings/categories
   param:  { module: configuration, action: productCategories, searchForm: false, tab: categories }

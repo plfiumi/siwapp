@@ -157,6 +157,15 @@ $customer = $customerForm->getObject();
         <label for="<? echo $customerForm['account']->renderId()?>"><?php echo __('Account') ?></label>
         <?php echo render_tag($customerForm['account']) ?></span>
     </li>
+    <li>
+      <span class="_50">
+        <label for="<? echo $customerForm['bic']->renderId()?>"><?php echo __('BIC Code') ?></label>
+        <?php echo render_tag($customerForm['bic'])  ?>
+        </span>
+      <span class="_50">
+        <label for="<? echo $customerForm['iban']->renderId()?>"><?php echo __('IBAN') ?></label>
+        <?php echo render_tag($customerForm['iban']) ?></span>
+    </li>
   </ul>
 </div>
   <?php include_partial('common/tagsDataBlock', array('invoice' => $customer, 'invoiceForm' => $customerForm)) ?>

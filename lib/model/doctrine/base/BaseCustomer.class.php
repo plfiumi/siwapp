@@ -26,6 +26,7 @@
  * @property string $mobile
  * @property string $fax
  * @property clob $comments
+ * @property string $bic
  * @property string $iban
  * @property string $entity
  * @property string $office
@@ -57,6 +58,7 @@
  * @method string              getMobile()               Returns the current record's "mobile" value
  * @method string              getFax()                  Returns the current record's "fax" value
  * @method clob                getComments()             Returns the current record's "comments" value
+ * @method string              getBic()                  Returns the current record's "bic" value
  * @method string              getIban()                 Returns the current record's "iban" value
  * @method string              getEntity()               Returns the current record's "entity" value
  * @method string              getOffice()               Returns the current record's "office" value
@@ -87,6 +89,7 @@
  * @method Customer            setMobile()               Sets the current record's "mobile" value
  * @method Customer            setFax()                  Sets the current record's "fax" value
  * @method Customer            setComments()             Sets the current record's "comments" value
+ * @method Customer            setBic()                  Sets the current record's "bic" value
  * @method Customer            setIban()                 Sets the current record's "iban" value
  * @method Customer            setEntity()               Sets the current record's "entity" value
  * @method Customer            setOffice()               Sets the current record's "office" value
@@ -188,6 +191,10 @@ abstract class BaseCustomer extends sfDoctrineRecord
              ));
         $this->hasColumn('comments', 'clob', null, array(
              'type' => 'clob',
+             ));
+        $this->hasColumn('bic', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
              ));
         $this->hasColumn('iban', 'string', 50, array(
              'type' => 'string',

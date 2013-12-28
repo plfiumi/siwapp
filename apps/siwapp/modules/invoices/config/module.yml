@@ -8,3 +8,4 @@ all:
       printPdf:         @invoices_print?action=pdf
       export:           @invoices_export
       remesar:          @invoices_remesar
+      remesarsepa:      @invoices_remesarsepa

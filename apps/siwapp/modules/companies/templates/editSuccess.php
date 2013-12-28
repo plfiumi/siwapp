@@ -6,7 +6,7 @@ include_javascripts_for_form($companyForm);
 $company = $companyForm->getObject();
 ?>
 <div id="product-container" class="content">
-  
+
   <h2><?php echo $title ?></h2>
   <form action="<?php echo url_for("companies/$action") ?>" method="post" <?php $companyForm->isMultipart() and print 'enctype="multipart/form-data" ' ?> class="companies">
   <div id="saving-options" class="block" style="margin-top: 20px">
@@ -18,7 +18,7 @@ $company = $companyForm->getObject();
         'confirm' => __('Are you sure?'),
         ) , 'button=false')." ";
     }
-    
+
     echo gButton(__('Save'), 'type=submit class=action primary save', 'button=true');
     ?>
   </div>
@@ -31,7 +31,7 @@ $company = $companyForm->getObject();
   <ul>
     <div style="display:none">
         <?php echo $companyForm['logo']->renderRow(array('class' => error_class($companyForm['logo']))) ?>
-    </div>    
+    </div>
     <li>
       <span class="_75">
         <label for="<? echo $companyForm['name']->renderId()?>"><?php echo __('Company name') ?></label>
@@ -56,7 +56,7 @@ $company = $companyForm->getObject();
       <span class="_25">
         <label for="<? echo $companyForm['postalcode']->renderId()?>"><?php echo __('Postal code') ?></label>
         <?php echo render_tag($companyForm['postalcode'])?>
-      </span>  
+      </span>
       <span class="_25">
         <label for="<? echo $companyForm['state']->renderId()?>"><?php echo __('State') ?></label>
         <?php echo render_tag($companyForm['state'])?>
@@ -70,18 +70,18 @@ $company = $companyForm->getObject();
       <span class="_50">
         <label for="<? echo $companyForm['phone']->renderId()?>"><?php echo __('Company phone') ?></label>
         <?php echo render_tag($companyForm['phone'])?>
-      </span>     
+      </span>
       <span class="_50">
         <label for="<? echo $companyForm['fax']->renderId()?>"><?php echo __('Company fax') ?></label>
         <?php echo render_tag($companyForm['fax'])?>
       </span>
     </li>
-    
+
     <li>
       <span class="_50">
         <label for="<? echo $companyForm['email']->renderId()?>"><?php echo __('Company email') ?></label>
         <?php echo render_tag($companyForm['email'])?>
-      </span>     
+      </span>
       <span class="_50">
         <label for="<? echo $companyForm['url']->renderId()?>"><?php echo __('Company Website') ?></label>
         <?php echo render_tag($companyForm['url'])?>
@@ -122,6 +122,15 @@ $company = $companyForm->getObject();
         <label for="<? echo $companyForm['sufix']->renderId()?>"><?php echo __('Sufix') ?></label>
         <?php echo render_tag($companyForm['sufix']) ?></span>
     </li>
+    <li>
+      <span class="_50">
+        <label for="<? echo $companyForm['bic']->renderId()?>"><?php echo __('BIC Code') ?></label>
+        <?php echo render_tag($companyForm['bic'])  ?>
+        </span>
+      <span class="_50">
+        <label for="<? echo $companyForm['iban']->renderId()?>"><?php echo __('IBAN') ?></label>
+        <?php echo render_tag($companyForm['iban']) ?></span>
+    </li>
   </ul>
 </div>
    <div class="global-data block">
@@ -145,7 +154,7 @@ $company = $companyForm->getObject();
     <h3><?php echo __('Assigned Users') ?></h3>
     <ul>
     <li>
-      <span class="_50"><?php echo render_tag($companyForm['company_user_list'])?></span>  
+      <span class="_50"><?php echo render_tag($companyForm['company_user_list'])?></span>
     </li>
   </ul>
 </div>
@@ -158,7 +167,7 @@ $company = $companyForm->getObject();
         'confirm' => __('Are you sure?'),
         ) , 'button=false')." ";
     }
-    
+
     echo gButton(__('Save'), 'type=submit class=action primary save', 'button=true');
     ?>
   </div>

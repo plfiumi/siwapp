@@ -1555,6 +1555,14 @@
         <target>Datos bancarios</target>
       </trans-unit>
       <trans-unit>
+        <source>IBAN</source>
+        <target>IBAN</target>
+      </trans-unit>
+      <trans-unit>
+        <source>BIC Code</source>
+        <target>Código BIC</target>
+      </trans-unit>
+      <trans-unit>
         <source>Entity</source>
         <target>Entidad</target>
       </trans-unit>
@@ -1585,6 +1593,10 @@
       <trans-unit>
         <source>Remit</source>
         <target>Remesar</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Remit (SEPA)</source>
+        <target>Remesar (SEPA)</target>
       </trans-unit>
       <trans-unit>
         <source>Postalcode</source>

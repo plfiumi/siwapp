@@ -20,6 +20,7 @@ Company:
     legal_terms: clob
     pdf_orientation: string(50)
     pdf_size: string(50)
+    bic: string(50)
     iban: string(50)
     entity: string(50)
     office: string(50)
@@ -88,6 +89,7 @@ Customer:
     mobile: string(20)
     fax: string(20)
     comments: clob
+    bic: string(50)
     iban: string(50)
     entity: string(50)
     office: string(50)

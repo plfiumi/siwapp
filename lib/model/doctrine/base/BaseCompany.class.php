@@ -22,6 +22,7 @@
  * @property clob $legal_terms
  * @property string $pdf_orientation
  * @property string $pdf_size
+ * @property string $bic
  * @property string $iban
  * @property string $entity
  * @property string $office
@@ -49,6 +50,7 @@
  * @method clob                getLegalTerms()         Returns the current record's "legal_terms" value
  * @method string              getPdfOrientation()     Returns the current record's "pdf_orientation" value
  * @method string              getPdfSize()            Returns the current record's "pdf_size" value
+ * @method string              getBic()                Returns the current record's "bic" value
  * @method string              getIban()               Returns the current record's "iban" value
  * @method string              getEntity()             Returns the current record's "entity" value
  * @method string              getOffice()             Returns the current record's "office" value
@@ -76,6 +78,7 @@
  * @method Company             setLegalTerms()         Sets the current record's "legal_terms" value
  * @method Company             setPdfOrientation()     Sets the current record's "pdf_orientation" value
  * @method Company             setPdfSize()            Sets the current record's "pdf_size" value
+ * @method Company             setBic()                Sets the current record's "bic" value
  * @method Company             setIban()               Sets the current record's "iban" value
  * @method Company             setEntity()             Sets the current record's "entity" value
  * @method Company             setOffice()             Sets the current record's "office" value
@@ -105,6 +108,7 @@
  * @method clob                getLegalTerms()         Returns the current record's "legal_terms" value
  * @method string              getPdfOrientation()     Returns the current record's "pdf_orientation" value
  * @method string              getPdfSize()            Returns the current record's "pdf_size" value
+ * @method string              getBic()                Returns the current record's "bic" value
  * @method string              getIban()               Returns the current record's "iban" value
  * @method string              getEntity()             Returns the current record's "entity" value
  * @method string              getOffice()             Returns the current record's "office" value
@@ -132,6 +136,7 @@
  * @method Company             setLegalTerms()         Sets the current record's "legal_terms" value
  * @method Company             setPdfOrientation()     Sets the current record's "pdf_orientation" value
  * @method Company             setPdfSize()            Sets the current record's "pdf_size" value
+ * @method Company             setBic()                Sets the current record's "bic" value
  * @method Company             setIban()               Sets the current record's "iban" value
  * @method Company             setEntity()             Sets the current record's "entity" value
  * @method Company             setOffice()             Sets the current record's "office" value
@@ -215,6 +220,10 @@ abstract class BaseCompany extends sfDoctrineRecord
              'length' => 50,
              ));
         $this->hasColumn('pdf_size', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('bic', 'string', 50, array(
              'type' => 'string',
              'length' => 50,
              ));

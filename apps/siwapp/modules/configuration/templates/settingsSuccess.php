@@ -60,6 +60,15 @@
         <label for="<? echo $form['company'][0]['sufix']->renderId()?>"><?php echo __('Suffix') ?></label>
         <?php echo render_tag($form['company'][0]['sufix']) ?></span>
     </li>
+    <li>
+      <span class="_50">
+        <label for="<? echo $form['company'][0]['bic']->renderId()?>"><?php echo __('BIC Code') ?></label>
+        <?php echo render_tag($form['company'][0]['bic'])  ?>
+        </span>
+      <span class="_50">
+        <label for="<? echo $form['company'][0]['iban']->renderId()?>"><?php echo __('IBAN') ?></label>
+        <?php echo render_tag($form['company'][0]['iban']) ?></span>
+    </li>
   </ul>
   </fieldset>
   <fieldset>
