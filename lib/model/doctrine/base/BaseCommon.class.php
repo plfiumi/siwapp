@@ -40,6 +40,7 @@
  * @property decimal $tax_amount
  * @property integer $status
  * @property integer $payment_type_id
+ * @property decimal $discount
  * @property string $type
  * @property boolean $draft
  * @property boolean $closed
@@ -103,6 +104,7 @@
  * @method decimal             getTaxAmount()               Returns the current record's "tax_amount" value
  * @method integer             getStatus()                  Returns the current record's "status" value
  * @method integer             getPaymentTypeId()           Returns the current record's "payment_type_id" value
+ * @method decimal             getDiscount()                Returns the current record's "discount" value
  * @method string              getType()                    Returns the current record's "type" value
  * @method boolean             getDraft()                   Returns the current record's "draft" value
  * @method boolean             getClosed()                  Returns the current record's "closed" value
@@ -165,6 +167,7 @@
  * @method Common              setTaxAmount()               Sets the current record's "tax_amount" value
  * @method Common              setStatus()                  Sets the current record's "status" value
  * @method Common              setPaymentTypeId()           Sets the current record's "payment_type_id" value
+ * @method Common              setDiscount()                Sets the current record's "discount" value
  * @method Common              setType()                    Sets the current record's "type" value
  * @method Common              setDraft()                   Sets the current record's "draft" value
  * @method Common              setClosed()                  Sets the current record's "closed" value
@@ -341,6 +344,13 @@ abstract class BaseCommon extends sfDoctrineRecord
              ));
         $this->hasColumn('payment_type_id', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('discount', 'decimal', 53, array(
+             'type' => 'decimal',
+             'scale' => 2,
+             'notnull' => true,
+             'default' => 0,
+             'length' => 53,
              ));
         $this->hasColumn('type', 'string', 255, array(
              'type' => 'string',

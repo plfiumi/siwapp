@@ -33,6 +33,7 @@
  * @property string $control_digit
  * @property string $account
  * @property integer $payment_type_id
+ * @property decimal $discount
  * @property Company $Company
  * @property PaymentType $PaymentType
  * @property Doctrine_Collection $Commons
@@ -65,6 +66,7 @@
  * @method string              getControlDigit()         Returns the current record's "control_digit" value
  * @method string              getAccount()              Returns the current record's "account" value
  * @method integer             getPaymentTypeId()        Returns the current record's "payment_type_id" value
+ * @method decimal             getDiscount()             Returns the current record's "discount" value
  * @method Company             getCompany()              Returns the current record's "Company" value
  * @method PaymentType         getPaymentType()          Returns the current record's "PaymentType" value
  * @method Doctrine_Collection getCommons()              Returns the current record's "Commons" collection
@@ -96,6 +98,7 @@
  * @method Customer            setControlDigit()         Sets the current record's "control_digit" value
  * @method Customer            setAccount()              Sets the current record's "account" value
  * @method Customer            setPaymentTypeId()        Sets the current record's "payment_type_id" value
+ * @method Customer            setDiscount()             Sets the current record's "discount" value
  * @method Customer            setCompany()              Sets the current record's "Company" value
  * @method Customer            setPaymentType()          Sets the current record's "PaymentType" value
  * @method Customer            setCommons()              Sets the current record's "Commons" collection
@@ -218,6 +221,13 @@ abstract class BaseCustomer extends sfDoctrineRecord
              ));
         $this->hasColumn('payment_type_id', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('discount', 'decimal', 53, array(
+             'type' => 'decimal',
+             'scale' => 2,
+             'notnull' => true,
+             'default' => 0,
+             'length' => 53,
              ));
 
 

@@ -44,6 +44,7 @@ abstract class BaseCustomerForm extends BaseFormDoctrine
       'control_digit'        => new sfWidgetFormInputText(),
       'account'              => new sfWidgetFormInputText(),
       'payment_type_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PaymentType'), 'add_empty' => true)),
+      'discount'             => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -76,6 +77,7 @@ abstract class BaseCustomerForm extends BaseFormDoctrine
       'control_digit'        => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'account'              => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'payment_type_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('PaymentType'), 'required' => false)),
+      'discount'             => new sfValidatorNumber(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('customer[%s]');

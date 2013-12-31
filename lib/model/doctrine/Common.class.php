@@ -88,7 +88,13 @@ class Common extends BaseCommon
   public function setAmounts()
   {
     $this->setBaseAmount($this->calculate('base_amount'));
-    $this->setDiscountAmount($this->calculate('discount_amount'));
+    $lines_discount = $this->calculate('discount_amount');
+    $global_discount = 0.0;
+    $discount = $this->getDiscount();
+    if($discount != null && $discount > 0.0) {
+        $global_discount = round($this->getBaseAmount() * ( $discount / 100.0), 2);
+    }
+    $this->setDiscountAmount($lines_discount + $global_discount);
     $this->setNetAmount($this->getBaseAmount() - $this->getDiscountAmount());
     $this->setTaxAmount($this->calculate('tax_amount'));
     $tax_ammount = 0.0;

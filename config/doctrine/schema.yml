@@ -96,6 +96,7 @@ Customer:
     control_digit: string(50)
     account: string(50)
     payment_type_id: integer
+    discount: { type: decimal(53), scale: 2, notnull: true, default: 0 }
   indexes:
     cstm:
       fields: [company_id,name]
@@ -190,6 +191,7 @@ Common:
     tax_amount:      { type: decimal(53), scale: 15 }
     status: integer(1)
     payment_type_id: integer
+    discount: { type: decimal(53), scale: 2, notnull: true, default: 0 }
   relations:
     Company:
       foreignAlias: Company

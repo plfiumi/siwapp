@@ -134,7 +134,11 @@ $customer = $customerForm->getObject();
     <h3><?php echo __('Bank details') ?></h3>
     <ul>
     <li>
-      <span class="_100">
+      <span class="_50">
+        <label for="<? echo $customerForm['discount']->renderId()?>"><?php echo __('Discount') ?></label>
+        <?php echo render_tag($customerForm['discount'])  ?>
+        </span>
+      <span class="_50">
         <label for="<? echo $customerForm['payment_type_id']->renderId()?>"><?php echo __('Payment type') ?></label>
         <?php echo render_tag($customerForm['payment_type_id'])  ?>
         </span>

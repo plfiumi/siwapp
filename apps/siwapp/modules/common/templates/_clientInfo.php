@@ -108,6 +108,7 @@ echo javascript_tag("
             data[key].shipping_postalcode,
             data[key].shipping_country,
             data[key].payment_type,
+            data[key].discount,
           ], value: data[key].customer, result: data[key].customer };
         }
         return parsed;
@@ -132,6 +133,7 @@ echo javascript_tag("
       $('#".$invoiceForm['shipping_postalcode']->renderId()."').val(item[14]);
       $('#".$invoiceForm['shipping_country']->renderId()."').val(item[15]);
       $('#".$invoiceForm['payment_type_id']->renderId()."').val(item[16]);
+      $('#".$invoiceForm['discount']->renderId()."').val(item[17]);
     });
 ");
 

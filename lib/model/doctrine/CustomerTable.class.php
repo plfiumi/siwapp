@@ -112,6 +112,7 @@ class CustomerTable extends Doctrine_Table
       $res[$i]['customer_fax'] = $item->getFax();
       $res[$i]['comments'] = $item->getComments();
       $res[$i]['payment_type'] = $item->getPaymentType()->getId();
+      $res[$i]['discount'] = $item->getDiscount();
 
       $i++;
     }
