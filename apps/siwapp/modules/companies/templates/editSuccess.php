@@ -200,7 +200,7 @@ echo javascript_tag("
     entity.change(validateDC);
     office.change(validateDC);
     account.change(validateDC);
-");
+    "); ?>
 <?php
 echo javascript_tag(" $('#company-data input[type=text], #company-data textarea').SiwappFormTips();") // See invoice.js
 ?>
