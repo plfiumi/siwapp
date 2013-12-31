@@ -64,6 +64,7 @@ function calcIBANforSpain(banco, entidad, dc, cuenta){
     var ch = code.charAt(i);
     digits += capital2digits(ch);
   }
+  digits += '00';
 
   checksum = 98 - mod97(digits);
   return code + checksum + bban;
