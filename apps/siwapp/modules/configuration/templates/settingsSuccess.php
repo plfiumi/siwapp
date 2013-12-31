@@ -169,6 +169,35 @@
         <?php echo $form['company'][0]['pdf_orientation']->renderRow(array('class' => error_class($form['company'][0]['pdf_orientation']))) ?>
       </ul>
     </fieldset>
+    <?php
+echo javascript_tag("
+  var validateDC = function(){
+      var cd = $('#".$form['company'][0]['control_digit']->renderId()."');
+      var entity = $('#".$form['company'][0]['entity']->renderId()."');
+      var office = $('#".$form['company'][0]['office']->renderId()."');
+      var account = $('#".$form['company'][0]['account']->renderId()."');
+
+      if (entity.val() == '' || office.val() == '' || cd.val() == '' || account.val() == '')
+          return;
+
+      correctcd = calcularDC(entity.val(), office.val(), account.val())
+          if (correctcd != cd.val()){
+                alert('". __('Wrong Control Digit')."');
+              }
+          else {
+            $('#".$form['company'][0]['iban']->renderId()."').val(calcIBANforSpain(entity.val(), office.val(), cd.val(), account.val()));
+          }
+    }
+    var cd = $('#".$form['company'][0]['control_digit']->renderId()."');
+    var entity = $('#".$form['company'][0]['entity']->renderId()."');
+    var office = $('#".$form['company'][0]['office']->renderId()."');
+    var account = $('#".$form['company'][0]['account']->renderId()."');
+    cd.change(validateDC);
+    entity.change(validateDC);
+    office.change(validateDC);
+    account.change(validateDC);
+");
+?>
 
     <?php include_partial('submit') ?>
   </form>

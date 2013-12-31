@@ -3,6 +3,7 @@ all:
 settingsSuccess:
   javascripts:
     - siwapp/settings/global.js
+    - js-digito-control-calculator/calcularDC.js
 productCategoriesSuccess:
   javascripts:
     - siwapp/settings/categories.js

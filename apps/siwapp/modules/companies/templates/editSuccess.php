@@ -173,6 +173,34 @@ $company = $companyForm->getObject();
   </div>
   </form>
 </div>
+    <?php
+echo javascript_tag("
+  var validateDC = function(){
+      var cd = $('#".$companyForm['control_digit']->renderId()."');
+      var entity = $('#".$companyForm['entity']->renderId()."');
+      var office = $('#".$companyForm['office']->renderId()."');
+      var account = $('#".$companyForm['account']->renderId()."');
+
+      if (entity.val() == '' || office.val() == '' || cd.val() == '' || account.val() == '')
+          return;
+
+      correctcd = calcularDC(entity.val(), office.val(), account.val())
+          if (correctcd != cd.val()){
+                alert('". __('Wrong Control Digit')."');
+              }
+          else {
+            $('#".$companyForm['iban']->renderId()."').val(calcIBANforSpain(entity.val(), office.val(), cd.val(), account.val()));
+          }
+    }
+    var cd = $('#".$companyForm['control_digit']->renderId()."');
+    var entity = $('#".$companyForm['entity']->renderId()."');
+    var office = $('#".$companyForm['office']->renderId()."');
+    var account = $('#".$companyForm['account']->renderId()."');
+    cd.change(validateDC);
+    entity.change(validateDC);
+    office.change(validateDC);
+    account.change(validateDC);
+");
 <?php
 echo javascript_tag(" $('#company-data input[type=text], #company-data textarea').SiwappFormTips();") // See invoice.js
 ?>

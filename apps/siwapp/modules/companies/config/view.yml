@@ -3,7 +3,7 @@ all:
     title:     siwapp - Companyies
   components:
     searchForm: [search, companyForm]
-    
+
 indexSuccess:
   stylesheets: [ /sfFormExtraPlugin/css/jquery.autocompleter.css ]
   javascripts:
@@ -11,4 +11,5 @@ indexSuccess:
 editSuccess:
   javascripts:
     - invoice.js
+    - js-digito-control-calculator/calcularDC.js
 

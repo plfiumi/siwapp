@@ -1678,6 +1678,10 @@
         <source>Tax Value</source>
         <target>Import</target>
       </trans-unit>
+      <trans-unit>
+        <source>Wrong Control Digit</source>
+        <target>Dígit de Control invàlid</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

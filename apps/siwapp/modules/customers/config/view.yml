@@ -13,3 +13,4 @@ editSuccess:
   javascripts:
     - invoice
     - tags
+    - js-digito-control-calculator/calcularDC.js
