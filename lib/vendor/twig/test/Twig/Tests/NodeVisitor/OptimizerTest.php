@@ -13,25 +13,39 @@ class Twig_Tests_NodeVisitor_OptimizerTest extends PHPUnit_Framework_TestCase
     public function testRenderBlockOptimizer()
     {
         $env = new Twig_Environment(new Twig_Loader_String(), array('cache' => false, 'autoescape' => false));
-        $env->addExtension(new Twig_Extension_Optimizer());
 
         $stream = $env->parse($env->tokenize('{{ block("foo") }}', 'index'));
 
-        $node = $stream->getNode('body');
+        $node = $stream->getNode('body')->getNode(0);
 
-        $this->assertInstanceOf('Twig_Node_Expression_BlockReference', $node);
+        $this->assertEquals('Twig_Node_Expression_BlockReference', get_class($node));
+        $this->assertTrue($node->getAttribute('output'));
+    }
+
+    public function testRenderParentBlockOptimizer()
+    {
+        $env = new Twig_Environment(new Twig_Loader_String(), array('cache' => false, 'autoescape' => false));
+
+        $stream = $env->parse($env->tokenize('{% extends "foo" %}{% block content %}{{ parent() }}{% endblock %}', 'index'));
+
+        $node = $stream->getNode('blocks')->getNode('content')->getNode(0)->getNode('body');
+
+        $this->assertEquals('Twig_Node_Expression_Parent', get_class($node));
         $this->assertTrue($node->getAttribute('output'));
     }
 
     public function testRenderVariableBlockOptimizer()
     {
+        if (version_compare(phpversion(), '5.4.0RC1', '>=')) {
+            return;
+        }
+
         $env = new Twig_Environment(new Twig_Loader_String(), array('cache' => false, 'autoescape' => false));
-        $env->addExtension(new Twig_Extension_Optimizer());
         $stream = $env->parse($env->tokenize('{{ block(name|lower) }}', 'index'));
 
-        $node = $stream->getNode('body');
+        $node = $stream->getNode('body')->getNode(0)->getNode(1);
 
-        $this->assertInstanceOf('Twig_Node_Expression_BlockReference', $node);
+        $this->assertEquals('Twig_Node_Expression_BlockReference', get_class($node));
         $this->assertTrue($node->getAttribute('output'));
     }
 
@@ -41,7 +55,6 @@ class Twig_Tests_NodeVisitor_OptimizerTest extends PHPUnit_Framework_TestCase
     public function testForOptimizer($template, $expected)
     {
         $env = new Twig_Environment(new Twig_Loader_String(), array('cache' => false));
-        $env->addExtension(new Twig_Extension_Optimizer());
 
         $stream = $env->parse($env->tokenize($template, 'index'));
 
@@ -62,6 +75,10 @@ class Twig_Tests_NodeVisitor_OptimizerTest extends PHPUnit_Framework_TestCase
             array('{% for i in foo %}{% include "foo" %}{% endfor %}', array('i' => true)),
 
             array('{% for i in foo %}{% include "foo" only %}{% endfor %}', array('i' => false)),
+
+            array('{% for i in foo %}{% include "foo" with { "foo": "bar" } only %}{% endfor %}', array('i' => false)),
+
+            array('{% for i in foo %}{% include "foo" with { "foo": loop.index } only %}{% endfor %}', array('i' => true)),
 
             array('{% for i in foo %}{% for j in foo %}{{ loop.index }}{% endfor %}{% endfor %}', array('i' => false, 'j' => true)),
 
