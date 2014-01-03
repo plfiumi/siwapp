@@ -5,14 +5,14 @@ class InvoiceSearchForm extends BaseForm
   {
     $startYear = sfConfig::get('app_year_range_start', date('Y') - 5);
     $years = range($startYear, date('Y') + 5);
-    
+
     $sfWidgetFormI18nJQueryDateOptions = array(
       'culture' => $this->getOption('culture', 'en'),
       'image'   => image_path('icons/calendar.png'),
       'config'  => "{ duration: '' }",
       'years'   => array_combine($years, $years)
     );
-    
+
     $this->setWidgets(array(
       'query'       => new sfWidgetFormInputText(),
       'from'        => new sfWidgetFormI18nJQueryDate($sfWidgetFormI18nJQueryDateOptions),
@@ -47,18 +47,18 @@ class InvoiceSearchForm extends BaseForm
       'tags'        => new sfValidatorString(array('required' => false, 'trim' => true)),
       'status'      => new sfValidatorString(array('required' => false, 'trim' => true)),
     ));
-    
+
     // autocomplete for customer
     $this->widgetSchema['customer_id']->setOption('renderer_class', 'sfWidgetFormJQueryAutocompleter');
     $this->widgetSchema['customer_id']->setOption('renderer_options', array(
       'url'   => url_for('search/ajaxCustomerAutocomplete'),
       'value_callback' => 'CustomerTable::getCustomerName'
     ));
-    
+
     $this->widgetSchema->setNameFormat('search[%s]');
     $this->widgetSchema->setFormFormatterName('list');
   }
-  
+
   public static function getQuickDates()
   {
     return array(
@@ -70,6 +70,8 @@ class InvoiceSearchForm extends BaseForm
       'this_week'      => 'this week',
       'this_month'     => 'this month',
       'this_year'      => 'this year',
+      'past_month'     => 'past month',
+      'past_year'      => 'past year',
       'first_quarter'  => 'first quarter',
       'second_quarter' => 'second quarter',
       'third_quarter'  => 'third quarter',

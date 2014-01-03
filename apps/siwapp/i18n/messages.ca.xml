@@ -553,6 +553,14 @@
         <target>darrer any</target>
       </trans-unit>
       <trans-unit>
+        <source>past month</source>
+        <target>mes anterior</target>
+      </trans-unit>
+      <trans-unit>
+        <source>past year</source>
+        <target>any anterior</target>
+      </trans-unit>
+      <trans-unit>
         <source>last 5 years</source>
         <target>darrers 5 anys</target>
       </trans-unit>

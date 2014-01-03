@@ -553,6 +553,14 @@
         <target>último año</target>
       </trans-unit>
       <trans-unit>
+        <source>past month</source>
+        <target>mes anterior</target>
+      </trans-unit>
+      <trans-unit>
+        <source>past year</source>
+        <target>año anterior</target>
+      </trans-unit>
+      <trans-unit>
         <source>last 5 years</source>
         <target>últimos 5 años</target>
       </trans-unit>
