@@ -148,6 +148,10 @@
         <target>Descuento</target>
       </trans-unit>
       <trans-unit>
+        <source>Global Discount</source>
+        <target>Descuento global</target>
+      </trans-unit>
+      <trans-unit>
         <source>Price</source>
         <target>Precio</target>
       </trans-unit>
@@ -1568,7 +1572,7 @@
       </trans-unit>
       <trans-unit>
         <source>BIC Code</source>
-        <target>Código BIC</target>
+        <target>Código BIC/SWIFT</target>
       </trans-unit>
       <trans-unit>
         <source>Entity</source>
