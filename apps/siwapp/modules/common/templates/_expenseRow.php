@@ -54,6 +54,34 @@ $currency = $sf_user->getAttribute('currency');
         foreach($item_taxes as $taxId):
         include_partial('common/taxExpenseSpan',array('taxKey'=>$taxId,'rowId'=>$rowId,'err'=>$err));
         endforeach?>
+      <?php
+        // if item has no taxes, and there are "default" taxes defined, we add them
+        if(isset($isNew) && !count($item_taxes))
+        {
+          $default_taxes = Doctrine::getTable('Tax')->createQuery()->
+            AndWhere('active = ? ', true)->
+            AndWhere('is_default = ? ', true)->
+            AndWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->execute();
+          foreach($default_taxes as $taxx)
+          {
+            echo javascript_tag(
+                   jq_remote_function(
+                     array(
+                       'update'=> $rowId.'_taxes',
+                       'url'  => 'common/ajaxAddInvoiceItemTax',
+                       'position' => 'bottom',
+                       'method'   => 'post',
+                       'with'     => "{
+                                        item_tax_index:   new_item_tax_index++,
+                                        invoice_item_key: '$rowId',
+                                        selected_tax:     '".$taxx->id."'
+                                      }"
+                       )
+                     )
+                   );
+          }
+        }
+      ?>
 
     </span>
 
