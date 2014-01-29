@@ -148,6 +148,10 @@
         <target>Descompte</target>
       </trans-unit>
       <trans-unit>
+        <source>Discount Percentage</source>
+        <target>Percentatge de Descompte</target>
+      </trans-unit>
+      <trans-unit>
         <source>Global Discount</source>
         <target>Descompte global</target>
       </trans-unit>

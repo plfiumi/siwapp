@@ -135,7 +135,7 @@ $customer = $customerForm->getObject();
     <ul>
     <li>
       <span class="_50">
-        <label for="<? echo $customerForm['discount']->renderId()?>"><?php echo __('Discount') ?></label>
+        <label for="<? echo $customerForm['discount']->renderId()?>"><?php echo __('Discount Percentage') ?></label>
         <?php echo render_tag($customerForm['discount'])  ?>
         </span>
       <span class="_50">
