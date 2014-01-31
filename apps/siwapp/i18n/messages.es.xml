@@ -149,7 +149,7 @@
       </trans-unit>
       <trans-unit>
         <source>Discount Percentage</source>
-        <target>Porcentaje de descuento</target>
+        <target>% Descuento facturación</target>
       </trans-unit>
       <trans-unit>
         <source>Global Discount</source>
