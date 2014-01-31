@@ -173,13 +173,14 @@ class Common extends BaseCommon
     $bases = $this->getBasesDetails();
     foreach ($this->getTaxDetails() as $name => $value)
     {
+        $taxvalue = Doctrine::getTable('Tax')->createQuery('t')
+           ->where('t.name = ?', $name)->fetchOne()->getValue();
         //Retención
-        if($ret && $value < 0) {
+        if($ret && $taxvalue < 0) {
             $retencion = $value;
             $baseRetencion = $bases[$name];
             $ammount= 0;$base = 0;
-            $retencionValue = Doctrine::getTable('Tax')->createQuery('t')
-               ->where('t.name = ?', $name)->fetchOne()->getValue();
+            $retencionValue= $taxvalue;
         }
         else {
             $ammount=$value;
