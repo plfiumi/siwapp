@@ -46,6 +46,7 @@ class ExpenseForm extends CommonForm
                                                      );
 
     $this->validatorSchema['supplier_name']  = new sfValidatorString(array('required' => true));
+    $this->validatorSchema['supplier_identification']  = new sfValidatorString(array('required' => true));
     $this->validatorSchema['supplier_reference']  = new sfValidatorString(array('required' => true));
     $this->validatorSchema['default_expense_type'] = new sfValidatorPass();
 
