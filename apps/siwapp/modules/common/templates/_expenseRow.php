@@ -68,7 +68,7 @@ $currency = $sf_user->getAttribute('currency');
                    jq_remote_function(
                      array(
                        'update'=> $rowId.'_taxes',
-                       'url'  => 'common/ajaxAddInvoiceItemTax',
+                       'url'  => 'common/ajaxAddExpenseItemTax',
                        'position' => 'bottom',
                        'method'   => 'post',
                        'with'     => "{
