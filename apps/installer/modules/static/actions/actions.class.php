@@ -371,12 +371,14 @@ class staticActions extends sfActions
   {
     $dir = sfConfig::get('sf_data_dir').DIRECTORY_SEPARATOR.'sql';
     $sql = explode(';', file_get_contents($dir.DIRECTORY_SEPARATOR.'schema.sql'), -1);
+    //TO Allow entering accents correctly.
+    $sql[] = "SET NAMES 'utf8'";
     $sql[] = file_get_contents($dir.DIRECTORY_SEPARATOR.'migration.schema.sql');
     $sql[] = "INSERT INTO  company (name) VALUES ('Default Company')";
     
     if ($this->getUser()->getAttribute('preload'))
     {
-      $sql[] = "INSERT INTO property VALUES ('sample_data_load', '1')";
+      $sql[] = "INSERT INTO property VALUES (1,'sample_data_load', '1')";
     }
     // if no data preload, insert a default invoice serie
     else
