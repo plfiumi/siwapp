@@ -3,3 +3,4 @@ cache/
 log/
 web/config.php
 web/uploads/
+web/sf/
