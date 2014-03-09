@@ -98,7 +98,7 @@ input:focus { border-color:#DA4722; background-color:#FFF0E1; }
 #invoice-container .show li ._75  { border-color:#DCDCDC; }
 #invoice-container .show label { color:#888; color:#9a9a9a; }
 
-#invoice-container label.tip,#supplier-data label.tip, #customer-data label.tip, #product-data label.tip { background:#DA4722; color:white; }
+#invoice-container label.tip,#supplier-data label.tip, #customer-data label.tip, #customer-bank-data label.tip, #product-data label.tip { background:#DA4722; color:white; }
 
 /* SETTINGS */
 #settings-menu                     { border-color:#DCDCDC; }
@@ -132,3 +132,20 @@ input:focus { border-color:#DA4722; background-color:#FFF0E1; }
 .btn.hover, .btn.hover span, .btn.hover span span, .btn:focus span,
 .btn:focus span span { border-color:#FD9378; color:#DA4722; }
 /* if you want to change the default theme icons don't forget to override those defined in /css/siwapp/buttons.css */
+
+/* Placeholder style definition */
+::-webkit-input-placeholder {
+   color: lightslategray;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: lightslategray;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: lightslategray;  
+}
+
+:-ms-input-placeholder {  
+   color: lightslategray;  
+}

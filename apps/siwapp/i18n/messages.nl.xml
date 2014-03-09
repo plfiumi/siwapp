@@ -51,7 +51,7 @@
         <target>Aantal</target>
       </trans-unit>
       <trans-unit>
-        <source>Customer Name</source>
+        <source>Name/Legal Name</source>
         <target>Klantnaam</target>
       </trans-unit>
       <trans-unit>

@@ -9,10 +9,14 @@
  * @property integer $series_id
  * @property integer $customer_id
  * @property string $customer_name
+ * @property string $customer_business_name
  * @property string $customer_identification
  * @property string $customer_email
  * @property string $customer_phone
  * @property string $customer_fax
+ * @property string $customer_mobile
+ * @property clob $customer_comments
+ * @property string $customer_tax_condition
  * @property integer $supplier_id
  * @property string $supplier_name
  * @property string $supplier_identification
@@ -30,6 +34,8 @@
  * @property string $shipping_state
  * @property string $shipping_country
  * @property string $contact_person
+ * @property string $contact_person_phone
+ * @property string $contact_person_email
  * @property clob $terms
  * @property clob $notes
  * @property decimal $base_amount
@@ -73,10 +79,14 @@
  * @method integer             getSeriesId()                Returns the current record's "series_id" value
  * @method integer             getCustomerId()              Returns the current record's "customer_id" value
  * @method string              getCustomerName()            Returns the current record's "customer_name" value
+ * @method string              getCustomerBusinessName()    Returns the current record's "customer_business_name" value
  * @method string              getCustomerIdentification()  Returns the current record's "customer_identification" value
  * @method string              getCustomerEmail()           Returns the current record's "customer_email" value
  * @method string              getCustomerPhone()           Returns the current record's "customer_phone" value
  * @method string              getCustomerFax()             Returns the current record's "customer_fax" value
+ * @method string              getCustomerMobile()          Returns the current record's "customer_mobile" value
+ * @method clob                getCustomerComments()        Returns the current record's "customer_comments" value
+ * @method string              getCustomerTaxCondition()    Returns the current record's "customer_tax_condition" value
  * @method integer             getSupplierId()              Returns the current record's "supplier_id" value
  * @method string              getSupplierName()            Returns the current record's "supplier_name" value
  * @method string              getSupplierIdentification()  Returns the current record's "supplier_identification" value
@@ -94,6 +104,8 @@
  * @method string              getShippingState()           Returns the current record's "shipping_state" value
  * @method string              getShippingCountry()         Returns the current record's "shipping_country" value
  * @method string              getContactPerson()           Returns the current record's "contact_person" value
+ * @method string              getContactPersonPhone()      Returns the current record's "contact_person_phone" value
+ * @method string              getContactPersonEmail()      Returns the current record's "contact_person_email" value
  * @method clob                getTerms()                   Returns the current record's "terms" value
  * @method clob                getNotes()                   Returns the current record's "notes" value
  * @method decimal             getBaseAmount()              Returns the current record's "base_amount" value
@@ -136,10 +148,14 @@
  * @method Common              setSeriesId()                Sets the current record's "series_id" value
  * @method Common              setCustomerId()              Sets the current record's "customer_id" value
  * @method Common              setCustomerName()            Sets the current record's "customer_name" value
+ * @method Common              setCustomerBusinessName()    Sets the current record's "customer_business_name" value
  * @method Common              setCustomerIdentification()  Sets the current record's "customer_identification" value
  * @method Common              setCustomerEmail()           Sets the current record's "customer_email" value
  * @method Common              setCustomerPhone()           Sets the current record's "customer_phone" value
  * @method Common              setCustomerFax()             Sets the current record's "customer_fax" value
+ * @method Common              setCustomerMobile()          Sets the current record's "customer_mobile" value
+ * @method Common              setCustomerComments()        Sets the current record's "customer_comments" value
+ * @method Common              setCustomerTaxCondition()    Sets the current record's "customer_tax_condition" value
  * @method Common              setSupplierId()              Sets the current record's "supplier_id" value
  * @method Common              setSupplierName()            Sets the current record's "supplier_name" value
  * @method Common              setSupplierIdentification()  Sets the current record's "supplier_identification" value
@@ -157,6 +173,8 @@
  * @method Common              setShippingState()           Sets the current record's "shipping_state" value
  * @method Common              setShippingCountry()         Sets the current record's "shipping_country" value
  * @method Common              setContactPerson()           Sets the current record's "contact_person" value
+ * @method Common              setContactPersonPhone()      Sets the current record's "contact_person_phone" value
+ * @method Common              setContactPersonEmail()      Sets the current record's "contact_person_email" value
  * @method Common              setTerms()                   Sets the current record's "terms" value
  * @method Common              setNotes()                   Sets the current record's "notes" value
  * @method Common              setBaseAmount()              Sets the current record's "base_amount" value
@@ -219,6 +237,10 @@ abstract class BaseCommon extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('customer_business_name', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
         $this->hasColumn('customer_identification', 'string', 50, array(
              'type' => 'string',
              'length' => 50,
@@ -234,6 +256,17 @@ abstract class BaseCommon extends sfDoctrineRecord
         $this->hasColumn('customer_fax', 'string', 20, array(
              'type' => 'string',
              'length' => 20,
+             ));
+        $this->hasColumn('customer_mobile', 'string', 20, array(
+             'type' => 'string',
+             'length' => 20,
+             ));
+        $this->hasColumn('customer_comments', 'clob', null, array(
+             'type' => 'clob',
+             ));
+        $this->hasColumn('customer_tax_condition', 'string', 10, array(
+             'type' => 'string',
+             'length' => 10,
              ));
         $this->hasColumn('supplier_id', 'integer', null, array(
              'type' => 'integer',
@@ -299,6 +332,14 @@ abstract class BaseCommon extends sfDoctrineRecord
              'length' => 255,
              ));
         $this->hasColumn('contact_person', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
+        $this->hasColumn('contact_person_phone', 'string', 20, array(
+             'type' => 'string',
+             'length' => 20,
+             ));
+        $this->hasColumn('contact_person_email', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
              ));

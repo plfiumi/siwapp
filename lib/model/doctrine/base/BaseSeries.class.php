@@ -11,6 +11,7 @@
  * @property integer $first_number
  * @property boolean $enabled
  * @property Company $Company
+ * @property Doctrine_Collection $Series
  * @property Doctrine_Collection $Common
  * 
  * @method integer             getCompanyId()    Returns the current record's "company_id" value
@@ -19,6 +20,7 @@
  * @method integer             getFirstNumber()  Returns the current record's "first_number" value
  * @method boolean             getEnabled()      Returns the current record's "enabled" value
  * @method Company             getCompany()      Returns the current record's "Company" value
+ * @method Doctrine_Collection getSeries()       Returns the current record's "Series" collection
  * @method Doctrine_Collection getCommon()       Returns the current record's "Common" collection
  * @method Series              setCompanyId()    Sets the current record's "company_id" value
  * @method Series              setName()         Sets the current record's "name" value
@@ -26,6 +28,7 @@
  * @method Series              setFirstNumber()  Sets the current record's "first_number" value
  * @method Series              setEnabled()      Sets the current record's "enabled" value
  * @method Series              setCompany()      Sets the current record's "Company" value
+ * @method Series              setSeries()       Sets the current record's "Series" collection
  * @method Series              setCommon()       Sets the current record's "Common" collection
  * 
  * @package    siwapp
@@ -69,6 +72,10 @@ abstract class BaseSeries extends sfDoctrineRecord
              'local' => 'company_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('Customer as Series', array(
+             'local' => 'id',
+             'foreign' => 'series_id'));
 
         $this->hasMany('Common', array(
              'local' => 'id',

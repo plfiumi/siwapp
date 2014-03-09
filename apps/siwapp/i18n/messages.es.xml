@@ -55,10 +55,6 @@
         <target>Número</target>
       </trans-unit>
       <trans-unit>
-        <source>Customer Name</source>
-        <target>Nombre Cliente</target>
-      </trans-unit>
-      <trans-unit>
         <source>Date</source>
         <target>Fecha</target>
       </trans-unit>
@@ -106,10 +102,6 @@
       <trans-unit>
         <source>Edit Invoice</source>
         <target>Editar Factura</target>
-      </trans-unit>
-      <trans-unit>
-        <source>Customer identification</source>
-        <target>Identificación cliente</target>
       </trans-unit>
       <trans-unit>
         <source>Payment details</source>
@@ -443,20 +435,24 @@
         <target>Cliente</target>
       </trans-unit>
       <trans-unit>
-        <source>Client info</source>
+        <source>Customer info</source>
         <target>Información del cliente</target>
       </trans-unit>
       <trans-unit>
-        <source>Client Name</source>
-        <target>Nombre del Cliente</target>
+        <source>Name/Legal Name</source>
+        <target>Nombre/Razón Social</target>
       </trans-unit>
       <trans-unit>
-        <source>Client Legal Id</source>
-        <target>Identificador legal del Cliente</target>
+        <source>Business Name</source>
+        <target>Nombre Comercial</target>
       </trans-unit>
       <trans-unit>
-        <source>Client Address</source>
-        <target>Dirección del Cliente</target>
+        <source>Legal Id</source>
+        <target>Identificador Legal</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Address</source>
+        <target>Dirección</target>
       </trans-unit>
       <trans-unit>
         <source>Contact Person</source>
@@ -467,44 +463,40 @@
         <target>Dirección de Facturación</target>
       </trans-unit>
       <trans-unit>
-        <source>Invoicing City</source>
-        <target>Población de Facturación</target>
+        <source>City</source>
+        <target>Población</target>
       </trans-unit>
       <trans-unit>
-        <source>Invoicing Postal code</source>
-        <target>Codigo postal de facturación</target>
+        <source>Postal code</source>
+        <target>Codigo postal</target>
       </trans-unit>
       <trans-unit>
-        <source>Invoicing State</source>
-        <target>Provincia de facturación</target>
+        <source>State</source>
+        <target>Provincia</target>
       </trans-unit>
       <trans-unit>
-        <source>Invoicing Contry</source>
-        <target>País de facturación</target>
+        <source>Country</source>
+        <target>País</target>
       </trans-unit>
       <trans-unit>
         <source>Shipping Address</source>
         <target>Dirección de Envío</target>
       </trans-unit>
       <trans-unit>
-        <source>Shipping City</source>
-        <target>Población de Envío</target>
+        <source>Shipping Company Data</source>
+        <target>Compañia de Envíos asociada</target>
       </trans-unit>
       <trans-unit>
-        <source>Shipping Postal code</source>
-        <target>Codigo postal de Envío</target>
+        <source>Email</source>
+        <target>Email</target>
       </trans-unit>
       <trans-unit>
-        <source>Shipping State</source>
-        <target>Provincia de Envío</target>
+        <source>Tax condition</source>
+        <target>Condición impositiva</target>
       </trans-unit>
       <trans-unit>
-        <source>Shipping Contry</source>
-        <target>País de Envío</target>
-      </trans-unit>
-      <trans-unit>
-        <source>Client Email</source>
-        <target>Email del Cliente</target>
+        <source>Invoicing series</source>
+        <target>Serie de Facturación</target>
       </trans-unit>
       <trans-unit>
         <source>The customer has not been saved due to some errors.</source>
@@ -1126,26 +1118,6 @@
         <source>Supplier info</source>
         <target>Información del proveedor</target>
       </trans-unit>
-      <trans-unit id="7">
-        <source>Client Phone</source>
-        <target>Teléfono del cliente</target>
-      </trans-unit>
-      <trans-unit id="8">
-        <source>Client Fax</source>
-        <target>Fax del cliente</target>
-      </trans-unit>
-      <trans-unit id="9">
-        <source>Client Email Address</source>
-        <target>Correo electronico del cliente</target>
-      </trans-unit>
-      <trans-unit id="10">
-        <source>Customer Phone</source>
-        <target>Teléfono del cliente</target>
-      </trans-unit>
-      <trans-unit id="11">
-        <source>Customer Fax</source>
-        <target>Fax del cliente</target>
-      </trans-unit>
       <trans-unit id="12">
         <source>Edit Estimate</source>
         <target>Editar presupuesto</target>
@@ -1427,8 +1399,8 @@
         <target>Forma de pago</target>
       </trans-unit>
       <trans-unit>
-        <source>Client Mobile</source>
-        <target>Móvil del cliente</target>
+        <source>Mobile</source>
+        <target>Móvil</target>
       </trans-unit>
       <trans-unit>
         <source>Website</source>
@@ -1571,6 +1543,10 @@
         <target>Datos bancarios</target>
       </trans-unit>
       <trans-unit>
+        <source>Administrative details</source>
+        <target>Datos administrativos</target>
+      </trans-unit>
+      <trans-unit>
         <source>IBAN</source>
         <target>IBAN</target>
       </trans-unit>
@@ -1579,8 +1555,8 @@
         <target>Código BIC/SWIFT</target>
       </trans-unit>
       <trans-unit>
-        <source>Entity</source>
-        <target>Entidad</target>
+        <source>Financial Entity</source>
+        <target>Entidad Financiera</target>
       </trans-unit>
       <trans-unit>
         <source>Office</source>

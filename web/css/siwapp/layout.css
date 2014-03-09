@@ -330,12 +330,25 @@ form.payments-form .buttons { margin:0; padding:0; }
 { display:block; height:0.5em; }
 
 #customer-data  input[type="text"],
+#customer-bank-data  input[type="text"],
 #customer-data textarea,
+#customer-bank-data textarea,
+#customer-bank-data select,
 #supplier-data  input[type="text"],
 #supplier-data textarea,
 #product-data  input[type="text"],
 #product-data textarea
-{ padding:0; }
+{ padding:8px 0 0 0; font-size: 14px; }
+
+#customer-data label,
+#customer-bank-data label
+{ 
+  color: lightslategrey; 
+  opacity: 0.6;
+  font-size: 14px; 
+  font-weight: normal;
+  margin-top: 1em;
+}
 
 #supplier-data ul li,#customer-data ul li, #product-data ul li 
 { margin-bottom:1em; height:1em;}
@@ -381,7 +394,7 @@ form.payments-form .buttons { margin:0; padding:0; }
 #invoice-container table.listing tbody .taxes span input + input { margin-left:0.5em; }
 
 #invoice-container label.tip,
-#customer-data label.tip, #supplier-data label.tip,
+#customer-data label.tip, #customer-bank-data label.tip, #supplier-data label.tip,
 #product-data label.tip {
   position:absolute;
   font-size:10px;

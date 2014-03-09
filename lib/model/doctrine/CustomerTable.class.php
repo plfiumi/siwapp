@@ -95,9 +95,15 @@ class CustomerTable extends Doctrine_Table
     {
       $res[$i]['id'] = $item->getId();
       $res[$i]['customer'] = $item->getName();
-      $res[$i]['customer_identification'] = $item->getIdentification();
-      $res[$i]['customer_email'] = $item->getEmail();
+      $res[$i]['business_name'] = $item->getBusinessName();
+      $res[$i]['identification'] = $item->getIdentification();
+      $res[$i]['phone'] = $item->getPhone();
+      $res[$i]['fax'] = $item->getFax();
+      $res[$i]['mobile'] = $item->getMobile();
+      $res[$i]['email'] = $item->getEmail();
       $res[$i]['contact_person'] = $item->getContactPerson();
+      $res[$i]['contact_person_phone'] = $item->getContactPersonPhone();
+      $res[$i]['contact_person_email'] = $item->getContactPersonEmail();
       $res[$i]['invoicing_address'] = $item->getInvoicingAddress();
       $res[$i]['invoicing_city'] = $item->getInvoicingCity();
       $res[$i]['invoicing_state'] = $item->getInvoicingState();
@@ -108,11 +114,11 @@ class CustomerTable extends Doctrine_Table
       $res[$i]['shipping_state'] = $item->getShippingState();
       $res[$i]['shipping_postalcode'] = $item->getShippingPostalcode();
       $res[$i]['shipping_country'] = $item->getShippingCountry();
-      $res[$i]['customer_phone'] = $item->getPhone();
-      $res[$i]['customer_fax'] = $item->getFax();
       $res[$i]['comments'] = $item->getComments();
+      $res[$i]['tax_condition'] = $item->getTaxCondition();  
       $res[$i]['payment_type'] = $item->getPaymentType()->getId();
       $res[$i]['discount'] = $item->getDiscount();
+      $res[$i]['series'] = $item->getSeries()->getId();
 
       $i++;
     }

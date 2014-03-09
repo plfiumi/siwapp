@@ -41,33 +41,33 @@
     <ul>
     <li>
       <span class="_50">
-        <label for="<? echo $form['company'][0]['entity']->renderId()?>"><?php echo __('Entity') ?></label>
-        <?php echo render_tag($form['company'][0]['entity'])  ?>
+        <label for="<? echo $form['company'][0]['financial_entity']->renderId()?>"><?php echo __('Entity') ?></label>
+        <?php echo render_tag($form['company'][0]['financial_entity'])  ?>
         </span>
       <span class="_50">
-        <label for="<? echo $form['company'][0]['office']->renderId()?>"><?php echo __('Office') ?></label>
-        <?php echo render_tag($form['company'][0]['office']) ?></span>
+        <label for="<? echo $form['company'][0]['financial_entity_office']->renderId()?>"><?php echo __('Office') ?></label>
+        <?php echo render_tag($form['company'][0]['financial_entity_office']) ?></span>
     </li>
     <li>
       <span class="_50">
-        <label for="<? echo $form['company'][0]['control_digit']->renderId()?>"><?php echo __('Control digit') ?></label>
-        <?php echo render_tag($form['company'][0]['control_digit'])  ?>
+        <label for="<? echo $form['company'][0]['financial_entity_control_digit']->renderId()?>"><?php echo __('Control digit') ?></label>
+        <?php echo render_tag($form['company'][0]['financial_entity_control_digit'])  ?>
         </span>
       <span class="_50">
-        <label for="<? echo $form['company'][0]['account']->renderId()?>"><?php echo __('Account') ?></label>
-        <?php echo render_tag($form['company'][0]['account']) ?></span>
+        <label for="<? echo $form['company'][0]['financial_entity_account']->renderId()?>"><?php echo __('Account') ?></label>
+        <?php echo render_tag($form['company'][0]['financial_entity_account']) ?></span>
       <span class="_50">
         <label for="<? echo $form['company'][0]['sufix']->renderId()?>"><?php echo __('Suffix') ?></label>
         <?php echo render_tag($form['company'][0]['sufix']) ?></span>
     </li>
     <li>
       <span class="_50">
-        <label for="<? echo $form['company'][0]['bic']->renderId()?>"><?php echo __('BIC Code') ?></label>
-        <?php echo render_tag($form['company'][0]['bic'])  ?>
+        <label for="<? echo $form['company'][0]['financial_entity_bic']->renderId()?>"><?php echo __('BIC Code') ?></label>
+        <?php echo render_tag($form['company'][0]['financial_entity_bic'])  ?>
         </span>
       <span class="_50">
-        <label for="<? echo $form['company'][0]['iban']->renderId()?>"><?php echo __('IBAN') ?></label>
-        <?php echo render_tag($form['company'][0]['iban']) ?></span>
+        <label for="<? echo $form['company'][0]['financial_entity_iban']->renderId()?>"><?php echo __('IBAN') ?></label>
+        <?php echo render_tag($form['company'][0]['financial_entity_iban']) ?></span>
     </li>
   </ul>
   </fieldset>
@@ -172,10 +172,10 @@
     <?php
 echo javascript_tag("
   var validateDC = function(){
-      var cd = $('#".$form['company'][0]['control_digit']->renderId()."');
-      var entity = $('#".$form['company'][0]['entity']->renderId()."');
-      var office = $('#".$form['company'][0]['office']->renderId()."');
-      var account = $('#".$form['company'][0]['account']->renderId()."');
+      var cd = $('#".$form['company'][0]['financial_entity_control_digit']->renderId()."');
+      var entity = $('#".$form['company'][0]['financial_entity']->renderId()."');
+      var office = $('#".$form['company'][0]['financial_entity_office']->renderId()."');
+      var account = $('#".$form['company'][0]['financial_entity_account']->renderId()."');
 
       if (entity.val() == '' || office.val() == '' || cd.val() == '' || account.val() == '')
           return;
@@ -185,13 +185,13 @@ echo javascript_tag("
                 alert('". __('Wrong Control Digit')."');
               }
           else {
-            $('#".$form['company'][0]['iban']->renderId()."').val(calcIBANforSpain(entity.val(), office.val(), cd.val(), account.val()));
+            $('#".$form['company'][0]['financial_entity_iban']->renderId()."').val(calcIBANforSpain(entity.val(), office.val(), cd.val(), account.val()));
           }
     }
-    var cd = $('#".$form['company'][0]['control_digit']->renderId()."');
-    var entity = $('#".$form['company'][0]['entity']->renderId()."');
-    var office = $('#".$form['company'][0]['office']->renderId()."');
-    var account = $('#".$form['company'][0]['account']->renderId()."');
+    var cd = $('#".$form['company'][0]['financial_entity_control_digit']->renderId()."');
+    var entity = $('#".$form['company'][0]['financial_entity']->renderId()."');
+    var office = $('#".$form['company'][0]['financial_entity_office']->renderId()."');
+    var account = $('#".$form['company'][0]['financial_entity_account']->renderId()."');
     cd.change(validateDC);
     entity.change(validateDC);
     office.change(validateDC);

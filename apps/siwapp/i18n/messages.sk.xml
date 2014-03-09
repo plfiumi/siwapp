@@ -50,7 +50,7 @@
         <target>Číslo</target>
       </trans-unit>
       <trans-unit>
-        <source>Customer Name</source>
+        <source>Name/Legal Name</source>
         <target>Meno zákazníka</target>
       </trans-unit>
       <trans-unit>
