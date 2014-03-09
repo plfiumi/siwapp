@@ -45,17 +45,56 @@ class CommonForm extends BaseCommonForm
 
     $this->widgetSchema['terms'] = new sfWidgetFormTextarea();
 
+    // placeholders
+    $this->widgetSchema['customer_name']->setAttributes(array('placeholder'   => sfContext::getInstance()->getI18N()->__('Name/Legal Name'),
+                                                     'autofocus'     => 'autofocus'));
+    $this->widgetSchema['customer_business_name']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Business Name'));
+    $this->widgetSchema['customer_identification']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Legal Id'));
+    $this->widgetSchema['customer_phone']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Phone'));
+    $this->widgetSchema['customer_fax']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Fax'));
+    $this->widgetSchema['customer_mobile']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Mobile'));
+    $this->widgetSchema['customer_email']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Email'));
+    $this->widgetSchema['contact_person']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Contact Person'));
+    $this->widgetSchema['contact_person_phone']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Phone'));
+    $this->widgetSchema['contact_person_email']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Email'));
+    $this->widgetSchema['invoicing_address']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Invoicing Address'));
+    $this->widgetSchema['invoicing_city']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('City'));
+    $this->widgetSchema['invoicing_postalcode']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Postal code'));
+    $this->widgetSchema['invoicing_state']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('State'));
+    $this->widgetSchema['invoicing_country']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Country'));
+    $this->widgetSchema['shipping_address']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Shipping Address'));
+    $this->widgetSchema['shipping_city']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('City'));
+    $this->widgetSchema['shipping_postalcode']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Postal code'));
+    $this->widgetSchema['shipping_state']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('State'));
+    $this->widgetSchema['shipping_country']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Country'));
+    $this->widgetSchema['customer_comments']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Comments'));
+    $this->widgetSchema['customer_tax_condition']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Tax condition'));
+    
+    // tips
     $common_defaults = array(
-                             'customer_name' => 'Client Name',
-                             'customer_identification'=>'Client Legal Id',
-                             'contact_person'=> 'Contact Person',
-                             'invoicing_address'=> 'Invoicing Address',
-                             'shipping_address'=> 'Shipping Address',
-                             'customer_email'=> 'Client Email Address',
-                             'customer_phone'=> 'Client Phone',
-                             'customer_fax'=> 'Client Fax'
+                            'customer_name'=>'Name/Legal Name',
+                            'customer_business_name'=>'Business Name',
+                            'customer_identification'=>'Legal Id',
+                            'customer_phone'=>'Phone',
+                            'customer_fax'=>'Fax',
+                            'customer_mobile'=>'Mobile',
+                            'customer_email'=> 'Email',
+                            'contact_person'=> 'Contact Person',
+                            'contact_person_phone'=> 'Phone',
+                            'contact_person_email'=> 'Email',
+                            'invoicing_address'=> 'Invoicing Address',
+                            'invoicing_city'=> 'City',
+                            'invoicing_postalcode'=> 'Postal code',
+                            'invoicing_state'=> 'State',
+                            'invoicing_country'=> 'Country',
+                            'shipping_address'=> 'Shipping Address',
+                            'shipping_city'=> 'City',
+                            'shipping_postalcode'=> 'Postal code',
+                            'shipping_state'=> 'State',
+                            'shipping_country'=> 'Country',
+                            'customer_comments'=> 'Comments',
+                            'customer_tax_condition'=> 'Tax condition'
                              );
-
     $this->widgetSchema->setHelps(array_merge($this->widgetSchema->getHelps(),$common_defaults));
 
     $this->setDefault('company_id' , sfContext::getInstance()->getUser()->getAttribute('company_id'));

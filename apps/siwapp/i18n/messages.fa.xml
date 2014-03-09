@@ -51,7 +51,7 @@
         <target>شماره</target>
       </trans-unit>
       <trans-unit>
-        <source>Customer Name</source>
+        <source>Name/Legal Name</source>
         <target>نام مشتري</target>
       </trans-unit>
       <trans-unit>

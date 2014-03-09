@@ -59,7 +59,7 @@ class invoicesActions extends sfActions
   {
     $i18n = $this->getContext()->getI18N();
     $invoice = new Invoice();
-
+    
     $this->invoiceForm = new InvoiceForm($invoice, array('culture'=>$this->culture));
     $this->title       = $i18n->__('New Invoice');
     $this->action      = 'create';

@@ -33,7 +33,7 @@ class InvoiceForm extends CommonForm
       'issue_date'              => time(),
       'draft'                   => 0
       ));
-
+    
     $this->validatorSchema['payment_type_id'] = new sfValidatorString(array('required' => true));
     $this->widgetSchema->setNameFormat('invoice[%s]');
 
