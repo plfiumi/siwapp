@@ -788,6 +788,14 @@
         <target>Textos legales</target>
       </trans-unit>
       <trans-unit>
+        <source>Buy order number</source>
+        <target>Orden de compra número</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Delivery note number</source>
+        <target>Remito número</target>
+      </trans-unit>
+      <trans-unit>
         <source>Terms &amp; Conditions</source>
         <target>Terminos &amp; Condiciones</target>
       </trans-unit>
@@ -1576,7 +1584,7 @@
       </trans-unit>
       <trans-unit>
         <source>Other info</source>
-        <target>Información addicional</target>
+        <target>Información adicional</target>
       </trans-unit>
       <trans-unit>
         <source>Mercantil Registry</source>

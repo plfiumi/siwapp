@@ -33,9 +33,12 @@
  * @property string $shipping_city
  * @property string $shipping_state
  * @property string $shipping_country
+ * @property clob $shipping_company_data
  * @property string $contact_person
  * @property string $contact_person_phone
  * @property string $contact_person_email
+ * @property string $buy_order_number
+ * @property string $delivery_note_number
  * @property clob $terms
  * @property clob $notes
  * @property decimal $base_amount
@@ -103,9 +106,12 @@
  * @method string              getShippingCity()            Returns the current record's "shipping_city" value
  * @method string              getShippingState()           Returns the current record's "shipping_state" value
  * @method string              getShippingCountry()         Returns the current record's "shipping_country" value
+ * @method clob                getShippingCompanyData()     Returns the current record's "shipping_company_data" value
  * @method string              getContactPerson()           Returns the current record's "contact_person" value
  * @method string              getContactPersonPhone()      Returns the current record's "contact_person_phone" value
  * @method string              getContactPersonEmail()      Returns the current record's "contact_person_email" value
+ * @method string              getBuyOrderNumber()          Returns the current record's "buy_order_number" value
+ * @method string              getDeliveryNoteNumber()      Returns the current record's "delivery_note_number" value
  * @method clob                getTerms()                   Returns the current record's "terms" value
  * @method clob                getNotes()                   Returns the current record's "notes" value
  * @method decimal             getBaseAmount()              Returns the current record's "base_amount" value
@@ -172,9 +178,12 @@
  * @method Common              setShippingCity()            Sets the current record's "shipping_city" value
  * @method Common              setShippingState()           Sets the current record's "shipping_state" value
  * @method Common              setShippingCountry()         Sets the current record's "shipping_country" value
+ * @method Common              setShippingCompanyData()     Sets the current record's "shipping_company_data" value
  * @method Common              setContactPerson()           Sets the current record's "contact_person" value
  * @method Common              setContactPersonPhone()      Sets the current record's "contact_person_phone" value
  * @method Common              setContactPersonEmail()      Sets the current record's "contact_person_email" value
+ * @method Common              setBuyOrderNumber()          Sets the current record's "buy_order_number" value
+ * @method Common              setDeliveryNoteNumber()      Sets the current record's "delivery_note_number" value
  * @method Common              setTerms()                   Sets the current record's "terms" value
  * @method Common              setNotes()                   Sets the current record's "notes" value
  * @method Common              setBaseAmount()              Sets the current record's "base_amount" value
@@ -331,6 +340,9 @@ abstract class BaseCommon extends sfDoctrineRecord
              'type' => 'string',
              'length' => 255,
              ));
+        $this->hasColumn('shipping_company_data', 'clob', null, array(
+             'type' => 'clob',
+             ));
         $this->hasColumn('contact_person', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
@@ -342,6 +354,14 @@ abstract class BaseCommon extends sfDoctrineRecord
         $this->hasColumn('contact_person_email', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('buy_order_number', 'string', 10, array(
+             'type' => 'string',
+             'length' => 10,
+             ));
+        $this->hasColumn('delivery_note_number', 'string', 10, array(
+             'type' => 'string',
+             'length' => 10,
              ));
         $this->hasColumn('terms', 'clob', null, array(
              'type' => 'clob',

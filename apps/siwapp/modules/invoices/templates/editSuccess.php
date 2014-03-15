@@ -75,6 +75,10 @@ $invoice = $invoiceForm->getObject();
       ));?>
   </div>  <!-- div#payment-data -->
 
+  <?php include_partial('common/otherInfo', array('invoiceForm' => $invoiceForm)); ?>
+  
+  <?php include_partial('common/shippingCompanyData', array('invoiceForm' => $invoiceForm)); ?>
+  
   <?php include_partial('common/termsAndNotes', array('invoiceForm' => $invoiceForm)); ?>
 
   <?php include_partial('common/tagsDataBlock', array('invoice' => $invoice, 'invoiceForm' => $invoiceForm)) ?>

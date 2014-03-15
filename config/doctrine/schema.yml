@@ -195,9 +195,12 @@ Common:
     shipping_city: string(255)
     shipping_state: string(255)
     shipping_country: string(255)
+    shipping_company_data: clob
     contact_person: string(100)
     contact_person_phone: string(20)
     contact_person_email: string(100)
+    buy_order_number: string(10)
+    delivery_note_number: string(10)
     terms: clob
     notes: clob
     base_amount:     { type: decimal(53), scale: 15 }
