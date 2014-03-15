@@ -12,16 +12,16 @@
   <div class="invoice show">
 
     <div id="customer-data" class="global-data block">
-      <h3><?php echo __('Client info') ?></h3>
+      <h3><?php echo __('Customer info') ?></h3>
       <ul>
         <li>
           <span>
             <span class="_50">
-              <label><?php echo __('Customer') ?>:</label>
+              <label><?php echo __('Name/Legal Name') ?>:</label>
               <?php echo $invoice->getCustomerName() ?>
             </span>
             <span class="_50 _last">
-              <label><?php echo __('Customer identification') ?>:</label>
+              <label><?php echo __('Legal Id') ?>:</label>
               <?php echo $invoice->getCustomerIdentification() ?>
             </span>
           </span>
@@ -30,12 +30,12 @@
         <li>
           <span>
             <span class="_50">
-              <label><?php echo __('Contact person') ?>:</label>
-              <?php echo $invoice->getContactPerson() ?>
+              <label><?php echo __('Business Name') ?>:</label>
+              <?php echo $invoice->getCustomerBusinessName() ?>
             </span>
             <span class="_50 _last">
-              <label><?php echo __('Email') ?>:</label>
-              <?php echo $invoice->getCustomerEmail() ?>
+              <label><?php echo __('Tax condition') ?>:</label>
+              <?php echo $invoice->getCustomerTaxCondition() ?>
             </span>
           </span>
           <span class="clear"></span>
@@ -43,12 +43,12 @@
         <li>
           <span>
             <span class="_50">
-              <label><?php echo __('Customer Phone') ?>:</label>
+              <label><?php echo __('Phone') ?>:</label>
               <?php echo $invoice->getCustomerPhone() ?>
             </span>
             <span class="_50 _last">
-              <label><?php echo __('Customer Fax') ?>:</label>
-              <?php echo $invoice->getCustomerFax() ?>
+              <label><?php echo __('Email') ?>:</label>
+              <?php echo $invoice->getCustomerEmail() ?>
             </span>
           </span>
           <span class="clear"></span>
@@ -136,8 +136,31 @@
       </table>
     </div>  <!-- div#payment-data -->
 
-    <div id="terms-data">
+    <div id="other_info-data">
+      <div class="block">
+        <h3><?php echo __('Buy order number') ?></h3>
+        <div class="textarea">
+          <?php echo $invoice->getBuyOrderNumber() ?>
+        </div>
+      </div>
 
+      <div class="block">
+        <h3><?php echo __('Delivery note number') ?></h3>
+        <div class="textarea">
+          <?php echo $invoice->getDeliveryNoteNumber() ?>
+        </div>
+      </div>
+    </div>
+    
+    <div id="shipping_company-data" class="block">
+      <h3><?php echo __('Shipping Company Data') ?></h3>
+      <div class="textarea">
+        <?php echo $invoice->getShippingCompanyData(); ?>
+      </div>
+    </div>
+    
+    <div id="terms-data">
+    
       <?php if (strlen($invoice->getTerms())): ?>
         <div class="block">
           <h3><?php echo __('Terms & Conditions') ?></h3>

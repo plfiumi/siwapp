@@ -44,6 +44,7 @@ class CommonForm extends BaseCommonForm
       sfContext::getInstance()->getUser()->getProfile()->getSeries());
 
     $this->widgetSchema['terms'] = new sfWidgetFormTextarea();
+    $this->widgetSchema['shipping_company_data'] = new sfWidgetFormTextarea();
 
     // placeholders
     $this->widgetSchema['customer_name']->setAttributes(array('placeholder'   => sfContext::getInstance()->getI18N()->__('Name/Legal Name'),

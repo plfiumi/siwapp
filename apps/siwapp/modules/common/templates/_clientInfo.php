@@ -118,6 +118,7 @@ echo javascript_tag("
             data[key].shipping_state,
             data[key].shipping_postalcode,
             data[key].shipping_country,
+            data[key].shipping_company_data,
             data[key].comments,
             data[key].tax_condition,
             data[key].payment_type,
@@ -150,10 +151,11 @@ echo javascript_tag("
       $('#".$invoiceForm['shipping_state']->renderId()."').val(item[17]);
       $('#".$invoiceForm['shipping_postalcode']->renderId()."').val(item[18]);
       $('#".$invoiceForm['shipping_country']->renderId()."').val(item[19]);
-      $('#".$invoiceForm['customer_comments']->renderId()."').val(item[20]);
-      $('#".$invoiceForm['customer_tax_condition']->renderId()."').val(item[21]);
-      $('#".$invoiceForm['payment_type_id']->renderId()."').val(item[22]);
-      $('#".$invoiceForm['discount']->renderId()."').val(item[23]);
+      $('#".$invoiceForm['shipping_company_data']->renderId()."').val(item[20]);
+      $('#".$invoiceForm['customer_comments']->renderId()."').val(item[21]);
+      $('#".$invoiceForm['customer_tax_condition']->renderId()."').val(item[22]);
+      $('#".$invoiceForm['payment_type_id']->renderId()."').val(item[23]);
+      $('#".$invoiceForm['discount']->renderId()."').val(item[24]);
       
       var customer_series = item[24];
       if(customer_series!=(0||''||null))
