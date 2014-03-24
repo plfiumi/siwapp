@@ -330,18 +330,24 @@ form.payments-form .buttons { margin:0; padding:0; }
 { display:block; height:0.5em; }
 
 #customer-data  input[type="text"],
-#customer-bank-data  input[type="text"],
+#customer-administrative-data  input[type="text"],
 #customer-data textarea,
-#customer-bank-data textarea,
-#customer-bank-data select,
+#customer-administrative-data textarea,
+#customer-administrative-data select,
 #supplier-data  input[type="text"],
 #supplier-data textarea,
 #product-data  input[type="text"],
-#product-data textarea
+#product-data textarea,
+#company-data  input[type="text"],
+#company-data textarea,
+#company-administrative-data  input[type="text"],
+#company-administrative-data textarea
 { padding:8px 0 0 0; font-size: 14px; }
 
 #customer-data label,
-#customer-bank-data label
+#customer-administrative-data label,
+#company-data label,
+#company-administrative-data label
 { 
   color: lightslategrey; 
   opacity: 0.6;
@@ -350,12 +356,12 @@ form.payments-form .buttons { margin:0; padding:0; }
   margin-top: 1em;
 }
 
-#supplier-data ul li,#customer-data ul li, #product-data ul li 
+#supplier-data ul li,#customer-data ul li, #product-data ul li, #company-data ul li 
 { margin-bottom:1em; height:1em;}
 
-#supplier-data ul.error_list li,#customer-data ul.error_list li, #product-data ul.error_list li  
+#supplier-data ul.error_list li,#customer-data ul.error_list li, #product-data ul.error_list li, #company-data ul.error_list li
 { float:right; clear:both; text-align:right; }
-#supplier-data ul.error_list,#customer-data ul.error_list, #product-data ul.error_list{ margin:0; }
+#supplier-data ul.error_list,#customer-data ul.error_list, #product-data ul.error_list, #company-data ul.error_list{ margin:0; }
 
 #invoice-container #terms-data textarea { display:block; width:100%; margin:0 0 1em; }
 
@@ -394,8 +400,8 @@ form.payments-form .buttons { margin:0; padding:0; }
 #invoice-container table.listing tbody .taxes span input + input { margin-left:0.5em; }
 
 #invoice-container label.tip,
-#customer-data label.tip, #customer-bank-data label.tip, #supplier-data label.tip,
-#product-data label.tip {
+#customer-data label.tip, #customer-administrative-data label.tip, #supplier-data label.tip,
+#product-data label.tip, #company-data label.tip, #company-administrative-data label.tip {
   position:absolute;
   font-size:10px;
   line-height:10px;
@@ -467,6 +473,12 @@ div#invoice-container div#recurring-data input { width: auto;}
 #settings-wrapper table, 
 #settings-wrapper table td,
 #settings-wrapper table th { border:none; padding:0.5em;}
+
+#settings-wrapper #company-data label.tip, #company-administrative-data label.tip {
+  font-size:10px;
+  font-weight:normal;
+}
+
 #settings-wrapper label {
   display:block;
   font-weight:bold;
@@ -474,7 +486,8 @@ div#invoice-container div#recurring-data input { width: auto;}
   line-height:1em;
   margin-bottom:0.3em;
 }
- label {
+
+label {
   display:block;
   font-weight:bold;
   font-size:0.85em;
@@ -482,6 +495,15 @@ div#invoice-container div#recurring-data input { width: auto;}
   margin-top:1.2em;
   margin-bottom:0.5em;
 }
+
+/*
+#settings-wrapper #company-data label {
+  display:block;
+  font-weight:normal;
+  font-size:0.85em;
+  margin-bottom:0.5em;
+}*/
+
 
 #settings-wrapper fieldset      { float:left; width:47%; margin:1em 0; }
 #settings-wrapper fieldset > ul { margin:0; list-style-type:none; }
@@ -492,6 +514,7 @@ div#invoice-container div#recurring-data input { width: auto;}
 #settings-wrapper textarea   { resize:none; } /* SAFARI HACK */
 #settings-wrapper textarea,
 #settings-wrapper input.full { width:100%; }
+
 #settings-wrapper input,
 #settings-wrapper textarea   { border:0 solid #DCDCDC; border-bottom-width:1px; line-height:1.2em; }
 #settings-wrapper textarea,
@@ -522,6 +545,28 @@ div#invoice-container div#recurring-data input { width: auto;}
 #settings-wrapper fieldset.taxseries a.xit { margin-right:0.5em;position:relative;top:0.8em; }
 #settings-wrapper fieldset.taxseries ul.head a.xit { visibility:hidden; }
 #settings-wrapper fieldset.taxseries li { display:block;float:left;margin:0.5em 1em;}
+
+#settings-wrapper li ._25,
+#settings-wrapper li ._50,
+#settings-wrapper li ._75 { display:block; float:left; margin-right:1.5%; line-height:1em; vertical-align:middle; }
+
+#settings-wrapper li ._25  { width:24.2%; }
+#settings-wrapper li ._50  { width:50%; }
+#settings-wrapper li ._75  { width:73.5%; }
+
+#settings-wrapper #company-data input, #company-administrative-data input
+{ width:100%; }
+
+#settings-wrapper #company-data li, #company-administrative-data li {clear: both !important;}
+
+/*#settings-wrapper #company-data ul.inline li          { position:relative; } */
+#settings-wrapper #company-data ul .error_list li, #company-administrative-data ul .error_list li {  margin-bottom: 5px; }
+
+#settings-wrapper #company-data input[type="text"],
+#settings-wrapper #company-data textarea,
+#settings-wrapper #company-administrative-data input[type="text"],
+#settings-wrapper #company-administrative-data textarea
+{ margin:8px 0 0; font-size: 14px; }
 
 #settings-wrapper #taxes li.is_default,
 #settings-wrapper #taxes li.active { width:45px; }

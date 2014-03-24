@@ -792,6 +792,14 @@
         <target>Terminos &amp; Condiciones</target>
       </trans-unit>
       <trans-unit>
+        <source>Invoice Terms &amp; Conditions</source>
+        <target>Terminos &amp; Condiciones de Facturación</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Estimate Terms &amp; Conditions</source>
+        <target>Terminos &amp; Condiciones de Presupuestos</target>
+      </trans-unit>
+      <trans-unit>
         <source>Invoicing series</source>
         <target>Series de facturación</target>
       </trans-unit>

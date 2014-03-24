@@ -29,9 +29,13 @@ class InvoiceForm extends CommonForm
 
     $this->widgetSchema['sent_by_email']->setLabel('Sent by email');
 
+    $companyObject = new Company();
+    $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
+    
     $this->setDefaults(array(
       'issue_date'              => time(),
-      'draft'                   => 0
+      'draft'                   => 0,
+      'terms'                   => $companyObject->getInvoiceLegalTerms()
       ));
     
     $this->validatorSchema['payment_type_id'] = new sfValidatorString(array('required' => true));

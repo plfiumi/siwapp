@@ -17,7 +17,8 @@ Company:
     logo: clob
     currency: string(10)
     currency_decimals: integer
-    legal_terms: clob
+    invoice_legal_terms: clob
+    estimate_legal_terms: clob
     pdf_orientation: string(50)
     pdf_size: string(50)
     financial_entity: string(50)

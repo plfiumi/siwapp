@@ -22,6 +22,10 @@ class EstimateForm extends BaseEstimateForm
     $this->widgetSchema['draft'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['status'] = new sfWidgetFormChoice(array('choices'=>Estimate::getStatusArray()));
     
+    $companyObject = new Company();
+    $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
+    $this->setDefault('terms', $companyObject->getEstimateLegalTerms());
+    
     $this->widgetSchema->setNameFormat('invoice[%s]');
 
     parent::configure();
