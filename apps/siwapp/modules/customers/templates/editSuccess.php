@@ -124,7 +124,7 @@ $customer = $customerForm->getObject();
     </li>
   </ul>
 </div>
-  <div id="customer-bank-data" class="global-data block">
+  <div id="customer-administrative-data" class="global-data block">
     <h3><?php echo __('Administrative details') ?></h3>
     <ul>
     <li>
@@ -215,5 +215,5 @@ echo javascript_tag("
 </div>
 <?php
   echo javascript_tag(" $('#customer-data input[type=text], #customer-data textarea').SiwappFormTips();"); // See invoice.js
-  echo javascript_tag(" $('#customer-bank-data input[type=text], #customer-bank-data textarea').SiwappFormTips();"); // See invoice.js
+  echo javascript_tag(" $('#customer-administrative-data input[type=text], #customer-administrative-data textarea').SiwappFormTips();"); // See invoice.js
 ?>

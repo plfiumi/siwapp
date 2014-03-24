@@ -19,7 +19,8 @@
  * @property clob $logo
  * @property string $currency
  * @property integer $currency_decimals
- * @property clob $legal_terms
+ * @property clob $invoice_legal_terms
+ * @property clob $estimate_legal_terms
  * @property string $pdf_orientation
  * @property string $pdf_size
  * @property string $financial_entity
@@ -47,7 +48,8 @@
  * @method clob                getLogo()                           Returns the current record's "logo" value
  * @method string              getCurrency()                       Returns the current record's "currency" value
  * @method integer             getCurrencyDecimals()               Returns the current record's "currency_decimals" value
- * @method clob                getLegalTerms()                     Returns the current record's "legal_terms" value
+ * @method clob                getInvoiceLegalTerms()              Returns the current record's "invoice_legal_terms" value
+ * @method clob                getEstimateLegalTerms()             Returns the current record's "estimate_legal_terms" value
  * @method string              getPdfOrientation()                 Returns the current record's "pdf_orientation" value
  * @method string              getPdfSize()                        Returns the current record's "pdf_size" value
  * @method string              getFinancialEntity()                Returns the current record's "financial_entity" value
@@ -75,7 +77,8 @@
  * @method Company             setLogo()                           Sets the current record's "logo" value
  * @method Company             setCurrency()                       Sets the current record's "currency" value
  * @method Company             setCurrencyDecimals()               Sets the current record's "currency_decimals" value
- * @method Company             setLegalTerms()                     Sets the current record's "legal_terms" value
+ * @method Company             setInvoiceLegalTerms()              Sets the current record's "invoice_legal_terms" value
+ * @method Company             setEstimateLegalTerms()             Sets the current record's "estimate_legal_terms" value
  * @method Company             setPdfOrientation()                 Sets the current record's "pdf_orientation" value
  * @method Company             setPdfSize()                        Sets the current record's "pdf_size" value
  * @method Company             setFinancialEntity()                Sets the current record's "financial_entity" value
@@ -105,7 +108,8 @@
  * @method clob                getLogo()                           Returns the current record's "logo" value
  * @method string              getCurrency()                       Returns the current record's "currency" value
  * @method integer             getCurrencyDecimals()               Returns the current record's "currency_decimals" value
- * @method clob                getLegalTerms()                     Returns the current record's "legal_terms" value
+ * @method clob                getInvoiceLegalTerms()              Returns the current record's "invoice_legal_terms" value
+ * @method clob                getEstimateLegalTerms()             Returns the current record's "estimate_legal_terms" value
  * @method string              getPdfOrientation()                 Returns the current record's "pdf_orientation" value
  * @method string              getPdfSize()                        Returns the current record's "pdf_size" value
  * @method string              getFinancialEntity()                Returns the current record's "financial_entity" value
@@ -133,7 +137,8 @@
  * @method Company             setLogo()                           Sets the current record's "logo" value
  * @method Company             setCurrency()                       Sets the current record's "currency" value
  * @method Company             setCurrencyDecimals()               Sets the current record's "currency_decimals" value
- * @method Company             setLegalTerms()                     Sets the current record's "legal_terms" value
+ * @method Company             setInvoiceLegalTerms()              Sets the current record's "invoice_legal_terms" value
+ * @method Company             setEstimateLegalTerms()             Sets the current record's "estimate_legal_terms" value
  * @method Company             setPdfOrientation()                 Sets the current record's "pdf_orientation" value
  * @method Company             setPdfSize()                        Sets the current record's "pdf_size" value
  * @method Company             setFinancialEntity()                Sets the current record's "financial_entity" value
@@ -212,7 +217,10 @@ abstract class BaseCompany extends sfDoctrineRecord
         $this->hasColumn('currency_decimals', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('legal_terms', 'clob', null, array(
+        $this->hasColumn('invoice_legal_terms', 'clob', null, array(
+             'type' => 'clob',
+             ));
+        $this->hasColumn('estimate_legal_terms', 'clob', null, array(
              'type' => 'clob',
              ));
         $this->hasColumn('pdf_orientation', 'string', 50, array(

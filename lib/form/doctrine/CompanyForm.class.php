@@ -18,27 +18,71 @@ class CompanyForm extends BaseCompanyForm
   public function configure()
   {
     parent::configure();
+    $decorator = new myFormSchemaFormatter($this->getWidgetSchema());
+    $this->widgetSchema->addFormFormatter('custom', $decorator);
+    $this->widgetSchema->setFormFormatterName('custom');
+    
     $culture = $this->getOption('culture', sfConfig::get('sf_default_culture'));
     
     $this->widgetSchema['currency'] = new sfWidgetFormI18nChoiceCurrency(array('culture' => $culture));
-    $this->widgetSchema['legal_terms'] = new sfWidgetFormInputHidden();
+    $this->widgetSchema['invoice_legal_terms'] = new sfWidgetFormInputHidden();
+    $this->widgetSchema['estimate_legal_terms'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['pdf_size'] = new sfWidgetFormSelect(array('choices' => self::$paper_sizes));
     $this->widgetSchema['pdf_orientation'] = new sfWidgetFormSelect(array('choices' => array('portrait', 'landscape')));
     $this->widgetSchema['company_user_list']  = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'expanded' => true, 'model' => 'sfGuardUser'));
 
+    // placeholders
+    $this->widgetSchema['identification']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Identification'));
+    $this->widgetSchema['name']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Name'));
+    $this->widgetSchema['address']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Address'));
+    $this->widgetSchema['postalcode']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Postal code'));
+    $this->widgetSchema['city']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('City'));
+    $this->widgetSchema['state']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('State'));
+    $this->widgetSchema['country']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Country'));
+    $this->widgetSchema['email']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Email'));
+    $this->widgetSchema['phone']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Phone'));
+    $this->widgetSchema['fax']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('FAX'));
+    $this->widgetSchema['url']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Url'));
+    $this->widgetSchema['financial_entity']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Financial Entity'));
+    $this->widgetSchema['financial_entity_office']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Office'));
+    $this->widgetSchema['financial_entity_control_digit']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Control digit'));
+    $this->widgetSchema['financial_entity_account']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Account'));
+    $this->widgetSchema['financial_entity_bic']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('BIC Code'));
+    $this->widgetSchema['financial_entity_iban']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('IBAN'));
+    $this->widgetSchema['mercantil_registry']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Mercantil Registry'));
+    $this->widgetSchema['sufix']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Sufix'));
+    
     $this->widgetSchema->setLabels(array(
-      'name'     => 'Name',
-      'address'  => 'Address',
-      'phone'    => 'Phone',
-      'fax'      => 'FAX',
-      'email'    => 'Email',
-      'url'      => 'Web',
       'currency'         => 'Currency',
-      'legal_terms'      => 'Terms & Conditions',
       'pdf_size'         => 'Page size',
       'pdf_orientation'  => 'Page orientation'
     ));
 
+    // tips
+    $common_defaults = array(
+                             'identification' => 'Identification',
+                             'name' => 'Name',
+                             'address' => 'Address',
+                             'postalcode' => 'Postal code',
+                             'city' => 'City',
+                             'state' => 'State',
+                             'country' => 'Country',
+                             'email' => 'Email',
+                             'phone' => 'Phone',
+                             'fax' => 'FAX',
+                             'url' => 'Url',
+                             'url' => 'Url',
+                             'financial_entity' => 'Financial Entity',
+                             'financial_entity_office' => 'Office',
+                             'financial_entity_control_digit' => 'Control digit',
+                             'financial_entity_account' => 'Account',
+                             'financial_entity_bic' => 'BIC Code',
+                             'financial_entity_iban' => 'IBAN',
+                             'mercantil_registry' => 'Mercantil Registry',
+                             'sufix' => 'Sufix',
+                             );
+    $this->widgetSchema->setHelps($common_defaults);
+    
      $this->validatorSchema['identification'] = new sfValidatorString(array('max_length' => 100, 'required' => true));
      $this->validatorSchema['name'] = new sfValidatorString(array('max_length' => 100, 'required' => true));
 

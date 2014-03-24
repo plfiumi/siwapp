@@ -102,7 +102,7 @@ class CommonForm extends BaseCommonForm
     $this->setDefault('tags', implode(',',$this->object->getTags()));
     $companyObject = new Company();
     $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
-    $this->setDefault('terms', $companyObject->getLegalTerms());
+    //$this->setDefault('terms', $companyObject->getLegalTerms());
     
     // validators
     $this->validatorSchema['tags']           = new sfValidatorString(array('required'=>false));

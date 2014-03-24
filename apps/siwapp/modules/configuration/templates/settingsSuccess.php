@@ -11,77 +11,115 @@
 
     <?php include_partial('common/globalErrors', array('form' => $form));?>
 
-    <fieldset class="left">
+    <fieldset id="company-data" class="left">
       <h3><?php echo __('Company') ?></h3>
       <ul>
-        <?php echo $form['company'][0]['identification']->renderRow(array('class' => 'full '.error_class($form['company'][0]['identification']))) ?>
-        <?php echo $form['company'][0]['name']->renderRow(array('class' => 'full '.error_class($form['company'][0]['name']))) ?>
-        <?php echo $form['company'][0]['address']->renderRow(array('class' => error_class($form['company'][0]['address']))) ?>
-        <?php echo $form['company'][0]['city']->renderRow(array('class' => error_class($form['company'][0]['city']))) ?>
-        <?php echo $form['company'][0]['postalcode']->renderRow(array('class' => error_class($form['company'][0]['postalcode']))) ?>
-        <?php echo $form['company'][0]['state']->renderRow(array('class' => error_class($form['company'][0]['state']))) ?>
-        <?php echo $form['company'][0]['country']->renderRow(array('class' => error_class($form['company'][0]['country']))) ?>
-        <?php echo $form['company'][0]['phone']->renderRow(array('class' => error_class($form['company'][0]['phone']))) ?>
-        <?php echo $form['company'][0]['fax']->renderRow(array('class' => error_class($form['company'][0]['fax']))) ?>
-        <?php echo $form['company'][0]['email']->renderRow(array('class' => 'full '.error_class($form['company'][0]['email']))) ?>
-        <?php echo $form['company'][0]['url']->renderRow(array('class' => 'full '.error_class($form['company'][0]['url']))) ?>
-        <?php echo $form['company'][0]['logo']->renderRow(array('class' => error_class($form['company'][0]['logo']))) ?>
-        <?php echo $form['company'][0]['currency']->renderRow(array('class' => error_class($form['company'][0]['currency']))) ?>
+        <li>
+          <span class="_25">
+            <?php echo render_tag($form['company'][0]['identification'])  ?>
+          </span>
+          <span class="_25">
+            <?php echo render_tag($form['company'][0]['name'])  ?>
+          </span>
+        </li>
+        <li>
+          <span class="_50">
+            <?php echo render_tag($form['company'][0]['address'])  ?>
+          </span>
+        </li>
+        <li>
+          <span class="_25">
+            <?php echo render_tag($form['company'][0]['city'])  ?>
+          </span>
+          <span class="_25">
+            <?php echo render_tag($form['company'][0]['postalcode'])  ?>
+          </span>
+        </li>
+        <li>
+          <span class="_25">
+            <?php echo render_tag($form['company'][0]['state'])  ?>
+          </span>
+          <span class="_25">
+            <?php echo render_tag($form['company'][0]['country'])  ?>
+          </span>
+        </li>
+        <li>
+          <span class="_25">
+            <?php echo render_tag($form['company'][0]['phone'])  ?>
+          </span>
+          <span class="_25">
+            <?php echo render_tag($form['company'][0]['fax'])  ?>
+          </span>
+        </li>
+        <li>
+          <span class="_25">
+            <?php echo render_tag($form['company'][0]['email'])  ?>
+          </span>
+          <span class="_25">
+            <?php echo render_tag($form['company'][0]['url'])  ?>
+          </span>
+        </li>
+        <li>
+          <span class="_50">
+            <label for="<? echo $form['company'][0]['logo']->renderId()?>"><?php echo __('Logo') ?></label>
+            <?php echo render_tag($form['company'][0]['logo'])  ?>
+          </span>
+        </li>
+        <li>
+          <span class="_50">
+            <label for="<? echo $form['company'][0]['currency']->renderId()?>"><?php echo __('Currency') ?></label>
+            <?php echo render_tag($form['company'][0]['currency'])  ?>
+          </span>
+        </li>
       </ul>
     </fieldset>
-
-    <fieldset>
-      <h3><?php echo __('Legal texts') ?></h3>
-      <ul>
-        <?php echo $form['company'][0]['legal_terms']->renderRow(array('class' => error_class($form['company'][0]['legal_terms']))) ?>
-      </ul>
-    </fieldset>
-        <fieldset>
-     <h3><?php echo __('Bank details') ?></h3>
+    
+    <fieldset id="company-administrative-data" >
+     <h3><?php echo __('Administrative details') ?></h3>
     <ul>
     <li>
       <span class="_50">
-        <label for="<? echo $form['company'][0]['financial_entity']->renderId()?>"><?php echo __('Entity') ?></label>
         <?php echo render_tag($form['company'][0]['financial_entity'])  ?>
         </span>
-      <span class="_50">
-        <label for="<? echo $form['company'][0]['financial_entity_office']->renderId()?>"><?php echo __('Office') ?></label>
+      <span class="_25">
         <?php echo render_tag($form['company'][0]['financial_entity_office']) ?></span>
     </li>
     <li>
-      <span class="_50">
-        <label for="<? echo $form['company'][0]['financial_entity_control_digit']->renderId()?>"><?php echo __('Control digit') ?></label>
+      <span class="_25">
         <?php echo render_tag($form['company'][0]['financial_entity_control_digit'])  ?>
         </span>
-      <span class="_50">
-        <label for="<? echo $form['company'][0]['financial_entity_account']->renderId()?>"><?php echo __('Account') ?></label>
+      <span class="_25">
         <?php echo render_tag($form['company'][0]['financial_entity_account']) ?></span>
-      <span class="_50">
-        <label for="<? echo $form['company'][0]['sufix']->renderId()?>"><?php echo __('Suffix') ?></label>
+      <span class="_25">
         <?php echo render_tag($form['company'][0]['sufix']) ?></span>
     </li>
     <li>
-      <span class="_50">
-        <label for="<? echo $form['company'][0]['financial_entity_bic']->renderId()?>"><?php echo __('BIC Code') ?></label>
+      <span class="_25">
         <?php echo render_tag($form['company'][0]['financial_entity_bic'])  ?>
         </span>
       <span class="_50">
-        <label for="<? echo $form['company'][0]['financial_entity_iban']->renderId()?>"><?php echo __('IBAN') ?></label>
-        <?php echo render_tag($form['company'][0]['financial_entity_iban']) ?></span>
+        <?php echo render_tag($form['company'][0]['financial_entity_iban']) ?>
+      </span>
     </li>
-  </ul>
-  </fieldset>
-  <fieldset>
-    <h3><?php echo __('Other info') ?></h3>
-    <ul>
     <li>
       <span class="_50">
-        <label for="<? echo $form['company'][0]['mercantil_registry']->renderId()?>"><?php echo __('Mercantil Registry') ?></label>
         <?php echo render_tag($form['company'][0]['mercantil_registry'])  ?>
-        </span>
-    </li>
+      </span>
   </ul>
   </fieldset>
+    
+  <fieldset>
+      <h3><?php echo __('Legal texts') ?></h3>
+      <ul>
+        <label for="<? echo $form['company'][0]['invoice_legal_terms']->renderId()?>"><?php echo __('Invoice Terms & Conditions') ?></label>
+        <?php echo render_tag($form['company'][0]['invoice_legal_terms'])  ?>
+      </ul>
+      <ul>
+        <label for="<? echo $form['company'][0]['estimate_legal_terms']->renderId()?>"><?php echo __('Estimate Terms & Conditions') ?></label>
+        <?php echo render_tag($form['company'][0]['estimate_legal_terms'])  ?>
+      </ul>
+  </fieldset>
+  
 
 
     <fieldset class="left taxes taxseries">
@@ -202,3 +240,8 @@ echo javascript_tag("
     <?php include_partial('submit') ?>
   </form>
 </div>
+
+<?php
+  echo javascript_tag(" $('#company-data input[type=text], #company-data textarea').SiwappFormTips();"); // See invoice.js
+  echo javascript_tag(" $('#company-administrative-data input[type=text], #company-administrative-data textarea').SiwappFormTips();"); // See invoice.js
+?>
