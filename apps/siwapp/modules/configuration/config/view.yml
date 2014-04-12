@@ -5,9 +5,12 @@ settingsSuccess:
     - invoice
     - siwapp/settings/global.js
     - js-digito-control-calculator/calcularDC.js
-productCategoriesSuccess:
+productsSettingsSuccess:
   javascripts:
     - siwapp/settings/categories.js
+expensesSettingsSuccess:
+  javascripts:
+    - siwapp/settings/global.js
 profileSuccess:
   javascripts:
     - siwapp/lang.selector.js

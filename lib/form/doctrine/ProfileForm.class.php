@@ -85,6 +85,7 @@ class ProfileForm extends BaseProfileForm
         'nb_display_results'  => 'Results to display in listings',
         'language'            => 'Interface language',
         'series'              => 'Default invoicing series',
+        'time_to_due'         => 'Default invoicing time to due',
         'old_password'        => 'Old password',
         'new_password'        => 'New password',
         'new_password2'       => 'New password (confirmation)',

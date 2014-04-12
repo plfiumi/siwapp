@@ -500,6 +500,7 @@ Profile:
     country:            string(2)
     search_filter:      string(30)
     series:             string(50)
+    time_to_due:        string(10)
     hash:               string(50)
   relations:
     User:

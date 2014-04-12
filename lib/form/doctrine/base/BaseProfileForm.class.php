@@ -25,6 +25,7 @@ abstract class BaseProfileForm extends BaseFormDoctrine
       'country'            => new sfWidgetFormInputText(),
       'search_filter'      => new sfWidgetFormInputText(),
       'series'             => new sfWidgetFormInputText(),
+      'time_to_due'        => new sfWidgetFormInputText(),
       'hash'               => new sfWidgetFormInputText(),
     ));
 
@@ -39,6 +40,7 @@ abstract class BaseProfileForm extends BaseFormDoctrine
       'country'            => new sfValidatorString(array('max_length' => 2, 'required' => false)),
       'search_filter'      => new sfValidatorString(array('max_length' => 30, 'required' => false)),
       'series'             => new sfValidatorString(array('max_length' => 50, 'required' => false)),
+      'time_to_due'        => new sfValidatorString(array('max_length' => 10, 'required' => false)),
       'hash'               => new sfValidatorString(array('max_length' => 50, 'required' => false)),
     ));
 

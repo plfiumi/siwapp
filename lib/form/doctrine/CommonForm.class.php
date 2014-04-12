@@ -63,7 +63,7 @@ class CommonForm extends BaseCommonForm
     $this->widgetSchema['invoicing_postalcode']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Postal code'));
     $this->widgetSchema['invoicing_state']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('State'));
     $this->widgetSchema['invoicing_country']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Country'));
-    $this->widgetSchema['shipping_address']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Shipping Address'));
+    //$this->widgetSchema['shipping_address']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Shipping Address'));
     $this->widgetSchema['shipping_city']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('City'));
     $this->widgetSchema['shipping_postalcode']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Postal code'));
     $this->widgetSchema['shipping_state']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('State'));

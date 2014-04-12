@@ -163,24 +163,6 @@
       </small>
     </fieldset>
 
-     <fieldset class="expenses taxseries">
-      <h3><?php echo __('Expenses Type') ?></h3>
-      <div id="expenses">
-        <ul class="head">
-          <a href="#" class="xit"></a>
-          <li class="name"><strong><?php echo __('Name')?></strong></li>
-          <li class="active"><strong><?php echo __('Enabled')?></strong></li>
-        </ul>
-        <?php foreach ($form['expenses'] as $s): ?>
-        <?php echo $s?>
-        <?php endforeach ?>
-      </div>
-      <div class="clear"></div>
-      <small>
-        <a id="addNewExpenses" href="#" class="to:expenses"><?php echo __('Add a new expense type') ?></a><br/>
-      </small>
-    </fieldset>
-
    <fieldset class="payments taxseries right">
       <h3><?php echo __('Payments Type') ?></h3>
       <div id="payments">
