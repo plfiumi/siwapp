@@ -22,6 +22,7 @@ abstract class BaseProfileFormFilter extends BaseFormFilterDoctrine
       'country'            => new sfWidgetFormFilterInput(),
       'search_filter'      => new sfWidgetFormFilterInput(),
       'series'             => new sfWidgetFormFilterInput(),
+      'time_to_due'        => new sfWidgetFormFilterInput(),
       'hash'               => new sfWidgetFormFilterInput(),
     ));
 
@@ -35,6 +36,7 @@ abstract class BaseProfileFormFilter extends BaseFormFilterDoctrine
       'country'            => new sfValidatorPass(array('required' => false)),
       'search_filter'      => new sfValidatorPass(array('required' => false)),
       'series'             => new sfValidatorPass(array('required' => false)),
+      'time_to_due'        => new sfValidatorPass(array('required' => false)),
       'hash'               => new sfValidatorPass(array('required' => false)),
     ));
 
@@ -65,6 +67,7 @@ abstract class BaseProfileFormFilter extends BaseFormFilterDoctrine
       'country'            => 'Text',
       'search_filter'      => 'Text',
       'series'             => 'Text',
+      'time_to_due'        => 'Text',
       'hash'               => 'Text',
     );
   }

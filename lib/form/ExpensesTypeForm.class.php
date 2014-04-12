@@ -19,5 +19,4 @@ class ExpensesTypeForm extends FormsContainer
   {
     $this->widgetSchema->setNameFormat('expenses[%s]');
   }
-
 }

@@ -3,28 +3,31 @@
 <?php include_partial('configuration/navigation') ?>
 
 <div id="settings-wrapper" class="content">
-  <form action="<?php echo url_for('@categories') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+  <form action="<?php echo url_for('@expenses_settings') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
     <?php echo $form['_csrf_token']?>
     
         <?php include_partial('submit') ?>
     
     <?php include_partial('common/globalErrors', array('form' => $form));?>
-    <fieldset class="left categories taxseries">
-      <h3><?php echo __('Product Categories') ?></h3>
-      <div id="product_categories">
+    
+    <fieldset class="left expenses taxseries">
+      <h3><?php echo __('Expenses Type') ?></h3>
+      <div id="expenses">
         <ul class="head">
           <a href="#" class="xit"></a>
           <li class="name"><strong><?php echo __('Name')?></strong></li>
+          <li class="active"><strong><?php echo __('Enabled')?></strong></li>
         </ul>
-        <?php foreach ($form['product_categories'] as $category): ?>
-        <?php echo $category ?>
+        <?php foreach ($form['expenses'] as $s): ?>
+        <?php echo $s?>
         <?php endforeach ?>
       </div>
       <div class="clear"></div>
       <small>
-        <a id="addNewCategory" href="#" class="to:product_categories"><?php echo __('Add a new category') ?></a>
+        <a id="addNewExpenses" href="#" class="to:expenses"><?php echo __('Add a new expense type') ?></a><br/>
       </small>
     </fieldset>
+    
     <?php include_partial('submit') ?>
   </form>
 </div>

@@ -695,6 +695,14 @@
         <target>Mi configuración</target>
       </trans-unit>
       <trans-unit>
+        <source>Products configuration</source>
+        <target>Configuración Productos</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Expenses configuration</source>
+        <target>Configuración Gastos</target>
+      </trans-unit>
+      <trans-unit>
         <source>Printing templates</source>
         <target>Plantillas de Impresión</target>
       </trans-unit>
@@ -871,6 +879,10 @@
       <trans-unit>
         <source>Default invoicing series</source>
         <target>Serie de facturación por defecto</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Default invoicing time to due</source>
+        <target>Días por defecto hasta el vencimiento de la factura</target>
       </trans-unit>
       <trans-unit>
         <source>Change your password</source>

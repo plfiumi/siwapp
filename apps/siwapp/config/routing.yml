@@ -170,9 +170,13 @@ profile:
   url:   /settings/profile
   param:  { module: configuration, action: profile, searchForm: false, tab: profile }
 
-categories:
-  url:   /settings/categories
-  param:  { module: configuration, action: productCategories, searchForm: false, tab: categories }
+products_settings:
+  url:   /settings/products
+  param:  { module: configuration, action: productsSettings, searchForm: false, tab: products }
+  
+expenses_settings:
+  url:   /settings/expenses
+  param:  { module: configuration, action: expensesSettings, searchForm: false, tab: expenses }
 
 templates_edit:
   url:   /settings/templates/edit/:id

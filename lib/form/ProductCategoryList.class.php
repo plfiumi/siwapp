@@ -3,7 +3,7 @@
  * Product Categories List
  * @author Sergi Almacellas <sergi.almacellas@btactic.com>
  */
-class ProductCategoryList extends FormsContainer
+class ProductsSettingsForm extends FormsContainer
 {
   
   public function configure()
@@ -21,7 +21,7 @@ class ProductCategoryList extends FormsContainer
             )),
         )));
     
-    $this->widgetSchema->setNameFormat('product_categories[%s]');
+    $this->widgetSchema->setNameFormat('products_settings[%s]');
 
   }
 
@@ -36,7 +36,7 @@ class ProductCategoryList extends FormsContainer
     parent::save();
   }
   
-    /**
+  /**
    * Finds the categories to be deleted and if they are still linked to items throws
    * a global error to tell it to the user.
    */
@@ -64,8 +64,9 @@ class ProductCategoryList extends FormsContainer
       $invalid = array();
       foreach($toDelete as $k => $category)
       {
-        $this->taintedValues['product_categories']['old_'.$category->id]['remove'] = '';
-        $invalid[] = $category->name;
+        $categoryToDelete = Doctrine_Core::getTable('ProductCategory')->find($category->category_id);
+        $this->taintedValues['product_categories']['old_'.$categoryToDelete->id]['remove'] = '';
+        $invalid[] = $categoryToDelete->name;
       }
       throw new sfValidatorErrorSchema($validator, 
                                        array(

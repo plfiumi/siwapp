@@ -59,12 +59,12 @@ class configurationActions extends sfActions
    * @return void
    * @author Sergi Almacellas  <sergi.almacellas@btactic.com>
    **/
-  public function executeProductCategories(sfWebRequest $request)
+  public function executeProductsSettings(sfWebRequest $request)
   {
     $user = $this->getUser();
     $i18n = $this->getContext()->getI18N();
     
-    $form = new ProductCategoryList(array(),null, array('culture' => $user->getCulture()));
+    $form = new ProductsSettingsForm(array(),null, array('culture' => $user->getCulture()));
     if ($request->isMethod('post'))
     {
   
@@ -76,7 +76,40 @@ class configurationActions extends sfActions
         
         $user->info($i18n->__('Your settings were successfully saved.'));
         
-        $this->redirect('@categories');
+        $this->redirect('@products_settings');
+      }
+      else
+      {
+        $user->error($i18n->__('Settings could not be saved. Please, check entered values and try to correct them.'), false);
+      }
+    }
+    $this->form = $form;
+  }
+  
+  /**
+   * Expenses settings
+   * 
+   * @param sfWebRequest $request
+   * @author Pablo L. Fiumidinisi <plfiumi@gmail.com>
+   */
+  public function executeExpensesSettings(sfWebRequest $request)
+  {
+    $user = $this->getUser();
+    $i18n = $this->getContext()->getI18N();
+    
+    $form = new ExpensesSettingsForm(array(),null, array('culture' => $user->getCulture()));
+    if ($request->isMethod('post'))
+    {
+  
+      $form->bind($request->getParameter($form->getName()));
+
+      if ($form->isValid())
+      {
+        $form->save();
+        
+        $user->info($i18n->__('Your settings were successfully saved.'));
+        
+        $this->redirect('@expenses_settings');
       }
       else
       {
@@ -163,13 +196,14 @@ class configurationActions extends sfActions
         $subform = new FormsContainer(array($index=>new SeriesForm()),'SeriesForm');
         break;
       case 'expenses':
+        $configForm->getWidgetSchema()->setNameFormat('expenses_settings[%s]');
         $subform = new FormsContainer(array($index=>new ExpenseTypeForm()),'ExpenseTypeForm');
         break;
       case 'payments':
         $subform = new FormsContainer(array($index=>new PaymentTypeForm()),'PaymentTypeForm');
         break;  
       case 'product_categories':
-        $configForm->getWidgetSchema()->setNameFormat('product_categories[%s]');
+        $configForm->getWidgetSchema()->setNameFormat('products_settings[%s]');
         $subform = new FormsContainer(array($index=>new ProductCategoryForm()),'ProductCategoryForm');
         break;  
     }

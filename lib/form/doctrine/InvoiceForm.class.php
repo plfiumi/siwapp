@@ -32,11 +32,25 @@ class InvoiceForm extends CommonForm
     $companyObject = new Company();
     $companyObject = $companyObject->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
     
-    $this->setDefaults(array(
+    $default_values = array(
       'issue_date'              => time(),
       'draft'                   => 0,
       'terms'                   => $companyObject->getInvoiceLegalTerms()
-      ));
+      );
+    
+    /*
+     * Get user default time to due.
+     */
+    $days_to_plus = 0;
+  	$time_to_due = sfContext::getInstance()->getUser()->getProfile()->getTimeToDue();
+    if(($time_to_due != null) && ($time_to_due != "0")){
+	    $days_to_plus = sfContext::getInstance()->getUser()->getProfile()->getTimeToDue();
+	    $date_today = time();
+	    $date_with_plus = sfDate::getInstance($date_today)->addDay($days_to_plus)->to_human();
+	    $default_values['due_date'] = $date_with_plus;
+    }
+    
+    $this->setDefaults($default_values);
     
     $this->validatorSchema['payment_type_id'] = new sfValidatorString(array('required' => true));
     $this->widgetSchema->setNameFormat('invoice[%s]');

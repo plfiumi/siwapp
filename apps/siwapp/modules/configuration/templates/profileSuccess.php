@@ -43,6 +43,7 @@
           echo $form['nb_display_results']->renderRow(array('class' => error_class($form['nb_display_results'])));
           echo $form['search_filter']->renderRow(array('class' => error_class($form['search_filter'])));
           echo $form['series']->renderRow(array('class' => error_class($form['series'])));
+          echo $form['time_to_due']->renderRow(array('class' => error_class($form['time_to_due'])));
         ?>
       </ul>
     </fieldset>
