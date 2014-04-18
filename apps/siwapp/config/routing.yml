@@ -133,6 +133,10 @@ products_new:
 products_edit:
   url:   /products/edit/:id
   param:  { module: products, action: edit, tab: products, searchForm: false }
+  
+products_show_stock_alerts:
+  url:   /products/stockAlerts
+  param:  { module: products, action: showStockAlerts, tab: products, searchForm: true, searchNamespace: products }
 
 companies:
   url:   /companies

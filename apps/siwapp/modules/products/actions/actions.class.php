@@ -197,4 +197,29 @@ class productsActions extends sfActions
 
     return $this->renderText(json_encode($items));
   }
+  
+  public function executeShowStockAlerts(sfWebRequest $request)
+  {
+    $namespace  = $request->getParameter('searchNamespace');
+    $search     = $this->getUser()->getAttribute('search', null, $namespace);
+    $sort       = $this->getUser()->getAttribute('sort', array('reference', 'desc'), $namespace);
+    $page       = $this->getUser()->getAttribute('page', 1, $namespace);
+    $maxResults = $this->getUser()->getPaginationMaxResults();
+       
+    $q = ProductQuery::create()->stockAlarmsSearch($search)->orderBy("$sort[0] $sort[1], reference $sort[1]");
+    // totals
+    $this->quantity = $q->total('quantity');
+    $this->sold     = $q->total('sold');
+
+    $this->pager = new sfDoctrinePager('Product', $maxResults);
+    $this->pager->setQuery($q);
+    $this->pager->setPage($page);
+    $this->pager->init();
+   
+    $this->getUser()->setAttribute('page', $request->getParameter('page'));
+    
+    $this->sort = $sort;
+    
+    $this->setTemplate("index");
+  }
 }

@@ -15,6 +15,7 @@
  * @property string $search_filter
  * @property string $series
  * @property string $time_to_due
+ * @property integer $min_stock_level
  * @property string $hash
  * @property sfGuardUser $User
  * 
@@ -28,6 +29,7 @@
  * @method string      getSearchFilter()       Returns the current record's "search_filter" value
  * @method string      getSeries()             Returns the current record's "series" value
  * @method string      getTimeToDue()          Returns the current record's "time_to_due" value
+ * @method integer     getMinStockLevel()      Returns the current record's "min_stock_level" value
  * @method string      getHash()               Returns the current record's "hash" value
  * @method sfGuardUser getUser()               Returns the current record's "User" value
  * @method Profile     setSfGuardUserId()      Sets the current record's "sf_guard_user_id" value
@@ -40,6 +42,7 @@
  * @method Profile     setSearchFilter()       Sets the current record's "search_filter" value
  * @method Profile     setSeries()             Sets the current record's "series" value
  * @method Profile     setTimeToDue()          Sets the current record's "time_to_due" value
+ * @method Profile     setMinStockLevel()      Sets the current record's "min_stock_level" value
  * @method Profile     setHash()               Sets the current record's "hash" value
  * @method Profile     setUser()               Sets the current record's "User" value
  * 
@@ -93,6 +96,9 @@ abstract class BaseProfile extends sfDoctrineRecord
         $this->hasColumn('time_to_due', 'string', 10, array(
              'type' => 'string',
              'length' => 10,
+             ));
+        $this->hasColumn('min_stock_level', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('hash', 'string', 50, array(
              'type' => 'string',

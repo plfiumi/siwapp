@@ -520,16 +520,44 @@
         <target>Información del producto</target>
       </trans-unit>
       <trans-unit>
-        <source>Product reference</source>
-        <target>Referencia del producto</target>
+        <source>Default min stock level</source>
+        <target>Nivel mínimo de stock por defecto</target>
       </trans-unit>
       <trans-unit>
-        <source>Product description</source>
-        <target>Descripción del producto</target>
+        <source>Stock Alerts</source>
+        <target>Alertas de Stock</target>
       </trans-unit>
       <trans-unit>
-        <source>Product price</source>
-        <target>Precio del producto</target>
+        <source>Low stock</source>
+        <target>Stock bajo</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Very low stock</source>
+        <target>Stock muy bajo</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Reference</source>
+        <target>Referencia</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Description</source>
+        <target>Descripción</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Price</source>
+        <target>Precio</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Stock</source>
+        <target>Stock</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Min stock level</source>
+        <target>Nivel de stock mínimo</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Sold Units</source>
+        <target>Unidades vendidas</target>
       </trans-unit>
       <!-- ##### SEARCH ##### -->
       <trans-unit>

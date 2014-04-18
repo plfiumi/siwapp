@@ -92,6 +92,22 @@ class ProductQuery extends Doctrine_Query
     }
     return $this;
   }
+  
+  public function stockAlarmsSearch($search = null)
+  {
+    $this
+      ->addWhere("stock <= min_stock_level");
+    
+    if($search)
+    {
+      if(isset($search['query']))  $this->textSearch($search['query']);
+      if(isset($search['category']))  $this->categorySearch($search['category']);
+      if(isset($search['from'])) $this->fromDate($search['from']);
+      if(isset($search['to'])) $this->toDate($search['to']);
+      //TODO MCY adding other query
+    }
+    return $this;
+  }
 
   public function total($field)
   {

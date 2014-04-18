@@ -33,6 +33,7 @@
     <ul id="hd-top-menu" class="inline content">
       <li><?php echo __('Welcome, [1]!', array('[1]' => $sf_user->getUsername())) ?> |</li>
       <!--<li><?php // echo link_to(__('Help'), '@homepage') ?> |</li>-->
+      <?php include_component('products', 'checkStock') ?>
       <li>
           <?php echo __('Current Company:') ?>
           <select id="session_company" name="session_company" onchange="javascript:changeCompany(this);">
@@ -44,14 +45,14 @@
           <?php endforeach ?>
          </select> |
       </li>
+
       <li><?php echo link_to(__('Settings'), 'configuration/settings', array('accesskey' => "s")) ?> |</li>
       <li><?php echo link_to(__('Logout'), '@sf_guard_signout') ?></li>
     </ul>
-    
-    </div>
-
-    <?php include_partial('global/notifications') ?>
   </div>
+    
+    <?php include_partial('global/notifications') ?>
+</div>
   
    <div id="hd-navbar" class="content">
    <?php 
