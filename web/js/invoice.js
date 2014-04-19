@@ -122,11 +122,33 @@
         form.find('tbody').append('<tr class="fake"><td colspan="6"></td></tr>');
       }
     });
+
+    $(document).bind('checkProductsStock', function() {
+      var form = $('form.invoice:first');
+      $.post(
+        //common/checkProductsStock
+        window.siwapp_urls.checkProductsStock,  // url
+        form.serialize(),    // data
+        function(data, status) {
+          if ('success' == status) {
+            var tr;
+            $.each(data.outOfStock, function(key, val) {
+              $("#dialog2").attr("title", data.message['title']);
+              var body = sprintf(data.message['body'], key, val);
+              $("#dialog2").html(body);
+              alert(body, data.message['title']);
+            });
+          }
+        },
+        'json'
+      );
+    });
     
     // Listen for a change event triggered for 'observable' elements
     // (it binds also for dynamically generated 'observable' elements)
     $('.observable').live('change', function() {
       $(document).trigger('GlobalUpdateEvent');
+      $(document).trigger('checkProductsStock');
     });
 
     

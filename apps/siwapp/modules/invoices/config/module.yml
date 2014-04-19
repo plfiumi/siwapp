@@ -4,6 +4,7 @@ all:
     variables:
       editRow:          invoices/edit
       calculateInvoice: common/calculate
+      checkProductsStock: common/checkProductsStock
       printHtml:        @invoices_print?action=print
       printPdf:         @invoices_print?action=pdf
       export:           @invoices_export

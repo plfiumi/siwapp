@@ -520,6 +520,18 @@
         <target>Información del producto</target>
       </trans-unit>
       <trans-unit>
+        <source>Warning</source>
+        <target>Advertencia</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Stock limit overloaded for the following product</source>
+        <target>Ha sido superado el límite de stock para el siguiente producto</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Current stock: %s units.</source>
+        <target>Stock actual: %s unidades.</target>
+      </trans-unit>
+      <trans-unit>
         <source>Default min stock level</source>
         <target>Nivel mínimo de stock por defecto</target>
       </trans-unit>

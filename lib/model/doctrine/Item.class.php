@@ -131,4 +131,39 @@ class Item extends BaseItem
   {
     return (float) $this->_get('unitary_cost');
   }
+  
+  public function preSave($event)
+  {
+    // compute the stock
+    if ( $this->isNew() && ( $this->getQuantity() > 0) )
+    {
+      $product = Doctrine::getTable('Product')->find($this->getProductId());
+
+      if ($product) {
+        $product->setStock($product->getStock() - $this->getQuantity());
+        $product->save();
+      }
+    }
+    
+   parent::preSave($event);
+  }
+  
+  public function preUpdate($event)
+  { 
+    // compute the stock
+    $oldQuantity = $this->getModified(true);
+    
+    if ($oldQuantity && array_key_exists("quantity", $oldQuantity)) {
+      $newQuantity = (int) $this->getQuantity() - (int) $oldQuantity["quantity"];
+
+      $product = Doctrine::getTable('Product')->find($this->getProductId());
+
+      if ($product) {
+        $product->setStock($product->getStock() - $newQuantity);
+        $product->save();
+      }
+    }
+    
+    parent::preUpdate($event);
+  }
 }
