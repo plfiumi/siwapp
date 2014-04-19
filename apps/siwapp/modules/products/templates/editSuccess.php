@@ -32,14 +32,27 @@ $product = $productForm->getObject();
   <ul>
     <li>
       <span class="_25">
-                <label for="<? echo $productForm['reference']->renderId()?>"><?php echo __('Product reference') ?></label><?php echo render_tag($productForm['reference'])?></span>
-      <span class="_75"><label for="<? echo $productForm['description']->renderId()?>"><?php echo __('Product description') ?></label><?php echo render_tag($productForm['description'])?></span>
+        <label for="<? echo $productForm['reference']->renderId()?>"><?php echo __('Reference') ?></label>
+        <?php echo render_tag($productForm['reference'])?>
+      </span>
+      <span class="_25">
+        <label for="<? echo $productForm['price']->renderId()?>"><?php echo __('Product price') ?></label>
+        <?php echo render_tag($productForm['price'])?>
+      </span>
+      <span class="_25">
+        <label for="<? echo $productForm['stock']->renderId()?>"><?php echo __('Stock') ?></label>      
+        <?php echo render_tag($productForm['stock'])?>
+      </span>
+      <span class="_25">
+        <label for="<? echo $productForm['min_stock_level']->renderId()?>"><?php echo __('Min stock level') ?></label>
+        <?php echo render_tag($productForm['min_stock_level'])?>
+      </span>
     </li>
-    <li></li>
-    <li></li>
     <li>
-      <span class="_25"><label for="<? echo $productForm['price']->renderId()?>"><?php echo __('Product price') ?></label><?php echo render_tag($productForm['price'])?></span>
-      <span class="_50"><label for="<? echo $productForm['reference']->renderId()?>"><?php echo __('Category') ?></label><?php echo render_tag($productForm['category_id'])?></span> 
+      <span class="_75">
+        <label for="<? echo $productForm['description']->renderId()?>"><?php echo __('Description') ?></label>
+        <?php echo render_tag($productForm['description'])?>
+      </span>     
     </li>
   </ul>
 </div>

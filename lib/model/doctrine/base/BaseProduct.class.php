@@ -10,6 +10,8 @@
  * @property clob $description
  * @property decimal $price
  * @property integer $category_id
+ * @property integer $stock
+ * @property integer $min_stock_level
  * @property Company $Company
  * @property ProductCategory $ProductCategory
  * @property Doctrine_Collection $Items
@@ -19,6 +21,8 @@
  * @method clob                getDescription()     Returns the current record's "description" value
  * @method decimal             getPrice()           Returns the current record's "price" value
  * @method integer             getCategoryId()      Returns the current record's "category_id" value
+ * @method integer             getStock()           Returns the current record's "stock" value
+ * @method integer             getMinStockLevel()   Returns the current record's "min_stock_level" value
  * @method Company             getCompany()         Returns the current record's "Company" value
  * @method ProductCategory     getProductCategory() Returns the current record's "ProductCategory" value
  * @method Doctrine_Collection getItems()           Returns the current record's "Items" collection
@@ -27,6 +31,8 @@
  * @method Product             setDescription()     Sets the current record's "description" value
  * @method Product             setPrice()           Sets the current record's "price" value
  * @method Product             setCategoryId()      Sets the current record's "category_id" value
+ * @method Product             setStock()           Sets the current record's "stock" value
+ * @method Product             setMinStockLevel()   Sets the current record's "min_stock_level" value
  * @method Product             setCompany()         Sets the current record's "Company" value
  * @method Product             setProductCategory() Sets the current record's "ProductCategory" value
  * @method Product             setItems()           Sets the current record's "Items" collection
@@ -60,6 +66,12 @@ abstract class BaseProduct extends sfDoctrineRecord
              'length' => 53,
              ));
         $this->hasColumn('category_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('stock', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('min_stock_level', 'integer', null, array(
              'type' => 'integer',
              ));
 

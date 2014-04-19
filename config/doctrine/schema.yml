@@ -501,6 +501,7 @@ Profile:
     search_filter:      string(30)
     series:             string(50)
     time_to_due:        string(10)
+    min_stock_level:    integer
     hash:               string(50)
   relations:
     User:
@@ -568,6 +569,8 @@ Product:
     description: clob
     price: {type: decimal(53), scale: 15, notnull: true, default: 0}
     category_id: integer
+    stock: integer
+    min_stock_level: integer  # alert user when stock equals this value
   relations:
     Company:
       foreignAlias: Company

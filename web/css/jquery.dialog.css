@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* CSS Document */
+.ui-widget-content {
+	color:#666;
+	font-size:14px;
+  background: repeat-x scroll 50% top #FFF3DF;
+  border:1px solid #FF9900;
+}

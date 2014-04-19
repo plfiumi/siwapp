@@ -26,6 +26,7 @@ abstract class BaseProfileForm extends BaseFormDoctrine
       'search_filter'      => new sfWidgetFormInputText(),
       'series'             => new sfWidgetFormInputText(),
       'time_to_due'        => new sfWidgetFormInputText(),
+      'min_stock_level'    => new sfWidgetFormInputText(),
       'hash'               => new sfWidgetFormInputText(),
     ));
 
@@ -41,6 +42,7 @@ abstract class BaseProfileForm extends BaseFormDoctrine
       'search_filter'      => new sfValidatorString(array('max_length' => 30, 'required' => false)),
       'series'             => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'time_to_due'        => new sfValidatorString(array('max_length' => 10, 'required' => false)),
+      'min_stock_level'    => new sfValidatorInteger(array('required' => false)),
       'hash'               => new sfValidatorString(array('max_length' => 50, 'required' => false)),
     ));
 

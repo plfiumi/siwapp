@@ -86,6 +86,7 @@ class ProfileForm extends BaseProfileForm
         'language'            => 'Interface language',
         'series'              => 'Default invoicing series',
         'time_to_due'         => 'Default invoicing time to due',
+        'min_stock_level'     => 'Default min stock level',
         'old_password'        => 'Old password',
         'new_password'        => 'New password',
         'new_password2'       => 'New password (confirmation)',

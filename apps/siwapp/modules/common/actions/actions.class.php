@@ -216,5 +216,36 @@ class commonActions extends sfActions
 
     return $this->renderText(json_encode($res));
   }
-
+  
+  public function executeCheckProductsStock(sfWebRequest $request)
+  {
+    $i18n = $this->getContext()->getI18N();
+    $data = $request->getParameter('invoice');
+    $this->getResponse()->setHttpHeader('Content-Type', 'application/json; charset=utf-8');
+    
+    $outOfStock  = array();
+    
+    if (isset($data['Items']))
+    {
+      foreach ((array) $data['Items'] as $itemId => $itemData)
+      {
+        if($itemData['remove'])
+        {
+          continue;
+        }
+        $product = Doctrine::getTable('Product')->find($itemData['product_id']);
+        if ($product && !is_null($product->getStock()) && ((int) $itemData['quantity'] > $product->getStock())){
+          $outOfStock[$product->getReference()."-"."'".$product->getDescription()."'"] = $product->getStock();
+        }
+      }
+      
+      $message['title'] = $i18n->__('Warning');
+      $message['body'] = $i18n->__('Stock limit overloaded for the following product').": <code>%s</code>. ".$i18n->__('Current stock: %s units.');
+    } else {
+      return null;
+    }
+    
+    return $this->renderText(json_encode(array('outOfStock' => $outOfStock, 'message' => $message)));
+  }
+  
 }
