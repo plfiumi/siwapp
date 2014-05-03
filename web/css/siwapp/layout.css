@@ -335,7 +335,10 @@ form.payments-form .buttons { margin:0; padding:0; }
 #customer-administrative-data textarea,
 #customer-administrative-data select,
 #supplier-data  input[type="text"],
+#supplier-administrative-data  input[type="text"],
 #supplier-data textarea,
+#supplier-administrative-data textarea,
+#supplier-administrative-data select,
 #product-data  input[type="text"],
 #product-data textarea,
 #company-data  input[type="text"],
@@ -344,10 +347,11 @@ form.payments-form .buttons { margin:0; padding:0; }
 #company-administrative-data textarea
 { padding:8px 0 0 0; font-size: 14px; }
 
-#customer-data label,
-#customer-administrative-data label,
-#company-data label,
-#company-administrative-data label
+#customer-data label.light,
+#customer-administrative-data label.light,
+#supplier-administrative-data label.light,
+#company-data label.light,
+#company-administrative-data label.light
 { 
   color: lightslategrey; 
   opacity: 0.6;
@@ -400,7 +404,7 @@ form.payments-form .buttons { margin:0; padding:0; }
 #invoice-container table.listing tbody .taxes span input + input { margin-left:0.5em; }
 
 #invoice-container label.tip,
-#customer-data label.tip, #customer-administrative-data label.tip, #supplier-data label.tip,
+#customer-data label.tip, #customer-administrative-data label.tip, #supplier-data label.tip, #supplier-administrative-data label.tip,
 #product-data label.tip, #company-data label.tip, #company-administrative-data label.tip {
   position:absolute;
   font-size:10px;

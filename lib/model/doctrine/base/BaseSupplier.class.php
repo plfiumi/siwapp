@@ -8,9 +8,12 @@
  * @property integer $company_id
  * @property string $name
  * @property string $name_slug
+ * @property string $business_name
  * @property string $identification
  * @property string $email
  * @property string $contact_person
+ * @property string $contact_person_phone
+ * @property string $contact_person_email
  * @property string $invoicing_address
  * @property string $invoicing_postalcode
  * @property string $invoicing_city
@@ -21,57 +24,81 @@
  * @property string $mobile
  * @property string $fax
  * @property clob $comments
+ * @property string $tax_condition
+ * @property string $financial_entity
+ * @property string $financial_entity_office
+ * @property string $financial_entity_account
+ * @property integer $payment_type_id
  * @property string $login
  * @property string $password
  * @property integer $expense_type_id
  * @property Company $Company
+ * @property PaymentType $PaymentType
  * @property ExpenseType $ExpenseType
  * @property Doctrine_Collection $Commons
  * 
- * @method integer             getCompanyId()            Returns the current record's "company_id" value
- * @method string              getName()                 Returns the current record's "name" value
- * @method string              getNameSlug()             Returns the current record's "name_slug" value
- * @method string              getIdentification()       Returns the current record's "identification" value
- * @method string              getEmail()                Returns the current record's "email" value
- * @method string              getContactPerson()        Returns the current record's "contact_person" value
- * @method string              getInvoicingAddress()     Returns the current record's "invoicing_address" value
- * @method string              getInvoicingPostalcode()  Returns the current record's "invoicing_postalcode" value
- * @method string              getInvoicingCity()        Returns the current record's "invoicing_city" value
- * @method string              getInvoicingState()       Returns the current record's "invoicing_state" value
- * @method string              getInvoicingCountry()     Returns the current record's "invoicing_country" value
- * @method string              getWebsite()              Returns the current record's "website" value
- * @method string              getPhone()                Returns the current record's "phone" value
- * @method string              getMobile()               Returns the current record's "mobile" value
- * @method string              getFax()                  Returns the current record's "fax" value
- * @method clob                getComments()             Returns the current record's "comments" value
- * @method string              getLogin()                Returns the current record's "login" value
- * @method string              getPassword()             Returns the current record's "password" value
- * @method integer             getExpenseTypeId()        Returns the current record's "expense_type_id" value
- * @method Company             getCompany()              Returns the current record's "Company" value
- * @method ExpenseType         getExpenseType()          Returns the current record's "ExpenseType" value
- * @method Doctrine_Collection getCommons()              Returns the current record's "Commons" collection
- * @method Supplier            setCompanyId()            Sets the current record's "company_id" value
- * @method Supplier            setName()                 Sets the current record's "name" value
- * @method Supplier            setNameSlug()             Sets the current record's "name_slug" value
- * @method Supplier            setIdentification()       Sets the current record's "identification" value
- * @method Supplier            setEmail()                Sets the current record's "email" value
- * @method Supplier            setContactPerson()        Sets the current record's "contact_person" value
- * @method Supplier            setInvoicingAddress()     Sets the current record's "invoicing_address" value
- * @method Supplier            setInvoicingPostalcode()  Sets the current record's "invoicing_postalcode" value
- * @method Supplier            setInvoicingCity()        Sets the current record's "invoicing_city" value
- * @method Supplier            setInvoicingState()       Sets the current record's "invoicing_state" value
- * @method Supplier            setInvoicingCountry()     Sets the current record's "invoicing_country" value
- * @method Supplier            setWebsite()              Sets the current record's "website" value
- * @method Supplier            setPhone()                Sets the current record's "phone" value
- * @method Supplier            setMobile()               Sets the current record's "mobile" value
- * @method Supplier            setFax()                  Sets the current record's "fax" value
- * @method Supplier            setComments()             Sets the current record's "comments" value
- * @method Supplier            setLogin()                Sets the current record's "login" value
- * @method Supplier            setPassword()             Sets the current record's "password" value
- * @method Supplier            setExpenseTypeId()        Sets the current record's "expense_type_id" value
- * @method Supplier            setCompany()              Sets the current record's "Company" value
- * @method Supplier            setExpenseType()          Sets the current record's "ExpenseType" value
- * @method Supplier            setCommons()              Sets the current record's "Commons" collection
+ * @method integer             getCompanyId()                Returns the current record's "company_id" value
+ * @method string              getName()                     Returns the current record's "name" value
+ * @method string              getNameSlug()                 Returns the current record's "name_slug" value
+ * @method string              getBusinessName()             Returns the current record's "business_name" value
+ * @method string              getIdentification()           Returns the current record's "identification" value
+ * @method string              getEmail()                    Returns the current record's "email" value
+ * @method string              getContactPerson()            Returns the current record's "contact_person" value
+ * @method string              getContactPersonPhone()       Returns the current record's "contact_person_phone" value
+ * @method string              getContactPersonEmail()       Returns the current record's "contact_person_email" value
+ * @method string              getInvoicingAddress()         Returns the current record's "invoicing_address" value
+ * @method string              getInvoicingPostalcode()      Returns the current record's "invoicing_postalcode" value
+ * @method string              getInvoicingCity()            Returns the current record's "invoicing_city" value
+ * @method string              getInvoicingState()           Returns the current record's "invoicing_state" value
+ * @method string              getInvoicingCountry()         Returns the current record's "invoicing_country" value
+ * @method string              getWebsite()                  Returns the current record's "website" value
+ * @method string              getPhone()                    Returns the current record's "phone" value
+ * @method string              getMobile()                   Returns the current record's "mobile" value
+ * @method string              getFax()                      Returns the current record's "fax" value
+ * @method clob                getComments()                 Returns the current record's "comments" value
+ * @method string              getTaxCondition()             Returns the current record's "tax_condition" value
+ * @method string              getFinancialEntity()          Returns the current record's "financial_entity" value
+ * @method string              getFinancialEntityOffice()    Returns the current record's "financial_entity_office" value
+ * @method string              getFinancialEntityAccount()   Returns the current record's "financial_entity_account" value
+ * @method integer             getPaymentTypeId()            Returns the current record's "payment_type_id" value
+ * @method string              getLogin()                    Returns the current record's "login" value
+ * @method string              getPassword()                 Returns the current record's "password" value
+ * @method integer             getExpenseTypeId()            Returns the current record's "expense_type_id" value
+ * @method Company             getCompany()                  Returns the current record's "Company" value
+ * @method PaymentType         getPaymentType()              Returns the current record's "PaymentType" value
+ * @method ExpenseType         getExpenseType()              Returns the current record's "ExpenseType" value
+ * @method Doctrine_Collection getCommons()                  Returns the current record's "Commons" collection
+ * @method Supplier            setCompanyId()                Sets the current record's "company_id" value
+ * @method Supplier            setName()                     Sets the current record's "name" value
+ * @method Supplier            setNameSlug()                 Sets the current record's "name_slug" value
+ * @method Supplier            setBusinessName()             Sets the current record's "business_name" value
+ * @method Supplier            setIdentification()           Sets the current record's "identification" value
+ * @method Supplier            setEmail()                    Sets the current record's "email" value
+ * @method Supplier            setContactPerson()            Sets the current record's "contact_person" value
+ * @method Supplier            setContactPersonPhone()       Sets the current record's "contact_person_phone" value
+ * @method Supplier            setContactPersonEmail()       Sets the current record's "contact_person_email" value
+ * @method Supplier            setInvoicingAddress()         Sets the current record's "invoicing_address" value
+ * @method Supplier            setInvoicingPostalcode()      Sets the current record's "invoicing_postalcode" value
+ * @method Supplier            setInvoicingCity()            Sets the current record's "invoicing_city" value
+ * @method Supplier            setInvoicingState()           Sets the current record's "invoicing_state" value
+ * @method Supplier            setInvoicingCountry()         Sets the current record's "invoicing_country" value
+ * @method Supplier            setWebsite()                  Sets the current record's "website" value
+ * @method Supplier            setPhone()                    Sets the current record's "phone" value
+ * @method Supplier            setMobile()                   Sets the current record's "mobile" value
+ * @method Supplier            setFax()                      Sets the current record's "fax" value
+ * @method Supplier            setComments()                 Sets the current record's "comments" value
+ * @method Supplier            setTaxCondition()             Sets the current record's "tax_condition" value
+ * @method Supplier            setFinancialEntity()          Sets the current record's "financial_entity" value
+ * @method Supplier            setFinancialEntityOffice()    Sets the current record's "financial_entity_office" value
+ * @method Supplier            setFinancialEntityAccount()   Sets the current record's "financial_entity_account" value
+ * @method Supplier            setPaymentTypeId()            Sets the current record's "payment_type_id" value
+ * @method Supplier            setLogin()                    Sets the current record's "login" value
+ * @method Supplier            setPassword()                 Sets the current record's "password" value
+ * @method Supplier            setExpenseTypeId()            Sets the current record's "expense_type_id" value
+ * @method Supplier            setCompany()                  Sets the current record's "Company" value
+ * @method Supplier            setPaymentType()              Sets the current record's "PaymentType" value
+ * @method Supplier            setExpenseType()              Sets the current record's "ExpenseType" value
+ * @method Supplier            setCommons()                  Sets the current record's "Commons" collection
  * 
  * @package    siwapp
  * @subpackage model
@@ -94,6 +121,10 @@ abstract class BaseSupplier extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('business_name', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
         $this->hasColumn('identification', 'string', 50, array(
              'type' => 'string',
              'length' => 50,
@@ -103,6 +134,14 @@ abstract class BaseSupplier extends sfDoctrineRecord
              'length' => 100,
              ));
         $this->hasColumn('contact_person', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
+        $this->hasColumn('contact_person_phone', 'string', 20, array(
+             'type' => 'string',
+             'length' => 20,
+             ));
+        $this->hasColumn('contact_person_email', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
              ));
@@ -145,6 +184,25 @@ abstract class BaseSupplier extends sfDoctrineRecord
         $this->hasColumn('comments', 'clob', null, array(
              'type' => 'clob',
              ));
+        $this->hasColumn('tax_condition', 'string', 10, array(
+             'type' => 'string',
+             'length' => 10,
+             ));
+        $this->hasColumn('financial_entity', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('financial_entity_office', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('financial_entity_account', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('payment_type_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('login', 'string', 50, array(
              'type' => 'string',
              'length' => 50,
@@ -175,6 +233,11 @@ abstract class BaseSupplier extends sfDoctrineRecord
              'local' => 'company_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasOne('PaymentType', array(
+             'local' => 'payment_type_id',
+             'foreign' => 'id',
+             'onDelete' => 'SET NULL'));
 
         $this->hasOne('ExpenseType', array(
              'local' => 'expense_type_id',

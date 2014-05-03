@@ -23,6 +23,7 @@ abstract class BaseProductForm extends BaseFormDoctrine
       'category_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ProductCategory'), 'add_empty' => true)),
       'stock'           => new sfWidgetFormInputText(),
       'min_stock_level' => new sfWidgetFormInputText(),
+      'tax_id'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Tax'), 'add_empty' => true)),
       'created_at'      => new sfWidgetFormDateTime(),
       'updated_at'      => new sfWidgetFormDateTime(),
     ));
@@ -36,6 +37,7 @@ abstract class BaseProductForm extends BaseFormDoctrine
       'category_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ProductCategory'), 'required' => false)),
       'stock'           => new sfValidatorInteger(array('required' => false)),
       'min_stock_level' => new sfValidatorInteger(array('required' => false)),
+      'tax_id'          => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Tax'), 'required' => false)),
       'created_at'      => new sfValidatorDateTime(),
       'updated_at'      => new sfValidatorDateTime(),
     ));

@@ -124,26 +124,26 @@ $customer = $customerForm->getObject();
     </li>
   </ul>
 </div>
-  <div id="customer-administrative-data" class="global-data block">
+<div id="customer-administrative-data" class="global-data block">
     <h3><?php echo __('Administrative details') ?></h3>
     <ul>
     <li>
       <span class="_50">
-        <label for="<? echo $customerForm['tax_condition']->renderId()?>"><?php echo __('Tax condition') ?></label>
+        <label class="light" for="<? echo $customerForm['tax_condition']->renderId()?>"><?php echo __('Tax condition') ?></label>
         <?php echo render_tag($customerForm['tax_condition'])  ?>
         </span>
       <span class="_50">
-        <label for="<? echo $customerForm['series_id']->renderId()?>"><?php echo __('Invoicing series') ?></label>
+        <label class="light" for="<? echo $customerForm['series_id']->renderId()?>"><?php echo __('Invoicing series') ?></label>
         <?php echo render_tag($customerForm['series_id'])  ?>
         </span>
     </li>
     <li>
       <span class="_50">
-        <label for="<? echo $customerForm['discount']->renderId()?>"><?php echo __('Discount Percentage') ?></label>
+        <label class="light" for="<? echo $customerForm['discount']->renderId()?>"><?php echo __('Discount Percentage') ?></label>
         <?php echo render_tag($customerForm['discount'])  ?>
         </span>
       <span class="_50">
-        <label for="<? echo $customerForm['payment_type_id']->renderId()?>"><?php echo __('Payment type') ?></label>
+        <label class="light" for="<? echo $customerForm['payment_type_id']->renderId()?>"><?php echo __('Payment type') ?></label>
         <?php echo render_tag($customerForm['payment_type_id'])  ?>
         </span>
     </li>

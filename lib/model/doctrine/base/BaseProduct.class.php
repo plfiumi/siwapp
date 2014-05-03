@@ -12,8 +12,10 @@
  * @property integer $category_id
  * @property integer $stock
  * @property integer $min_stock_level
+ * @property integer $tax_id
  * @property Company $Company
  * @property ProductCategory $ProductCategory
+ * @property Tax $Tax
  * @property Doctrine_Collection $Items
  * 
  * @method integer             getCompanyId()       Returns the current record's "company_id" value
@@ -23,8 +25,10 @@
  * @method integer             getCategoryId()      Returns the current record's "category_id" value
  * @method integer             getStock()           Returns the current record's "stock" value
  * @method integer             getMinStockLevel()   Returns the current record's "min_stock_level" value
+ * @method integer             getTaxId()           Returns the current record's "tax_id" value
  * @method Company             getCompany()         Returns the current record's "Company" value
  * @method ProductCategory     getProductCategory() Returns the current record's "ProductCategory" value
+ * @method Tax                 getTax()             Returns the current record's "Tax" value
  * @method Doctrine_Collection getItems()           Returns the current record's "Items" collection
  * @method Product             setCompanyId()       Sets the current record's "company_id" value
  * @method Product             setReference()       Sets the current record's "reference" value
@@ -33,8 +37,10 @@
  * @method Product             setCategoryId()      Sets the current record's "category_id" value
  * @method Product             setStock()           Sets the current record's "stock" value
  * @method Product             setMinStockLevel()   Sets the current record's "min_stock_level" value
+ * @method Product             setTaxId()           Sets the current record's "tax_id" value
  * @method Product             setCompany()         Sets the current record's "Company" value
  * @method Product             setProductCategory() Sets the current record's "ProductCategory" value
+ * @method Product             setTax()             Sets the current record's "Tax" value
  * @method Product             setItems()           Sets the current record's "Items" collection
  * 
  * @package    siwapp
@@ -74,6 +80,9 @@ abstract class BaseProduct extends sfDoctrineRecord
         $this->hasColumn('min_stock_level', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('tax_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
 
         $this->option('charset', 'utf8');
     }
@@ -90,6 +99,10 @@ abstract class BaseProduct extends sfDoctrineRecord
              'local' => 'category_id',
              'foreign' => 'id',
              'onDelete' => 'SET NULL'));
+
+        $this->hasOne('Tax', array(
+             'local' => 'tax_id',
+             'foreign' => 'id'));
 
         $this->hasMany('Item as Items', array(
              'local' => 'id',

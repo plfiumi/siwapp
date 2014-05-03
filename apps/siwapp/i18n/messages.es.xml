@@ -571,6 +571,10 @@
         <source>Sold Units</source>
         <target>Unidades vendidas</target>
       </trans-unit>
+      <trans-unit>
+        <source>Tax</source>
+        <target>Impuesto</target>
+      </trans-unit>
       <!-- ##### SEARCH ##### -->
       <trans-unit>
         <source>from</source>

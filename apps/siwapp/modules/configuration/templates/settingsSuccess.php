@@ -61,13 +61,13 @@
         </li>
         <li>
           <span class="_50">
-            <label for="<? echo $form['company'][0]['logo']->renderId()?>"><?php echo __('Logo') ?></label>
+            <label class="light" for="<? echo $form['company'][0]['logo']->renderId()?>"><?php echo __('Logo') ?></label>
             <?php echo render_tag($form['company'][0]['logo'])  ?>
           </span>
         </li>
         <li>
           <span class="_50">
-            <label for="<? echo $form['company'][0]['currency']->renderId()?>"><?php echo __('Currency') ?></label>
+            <label class="light" for="<? echo $form['company'][0]['currency']->renderId()?>"><?php echo __('Currency') ?></label>
             <?php echo render_tag($form['company'][0]['currency'])  ?>
           </span>
         </li>

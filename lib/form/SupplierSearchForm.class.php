@@ -14,17 +14,19 @@ class SupplierSearchForm extends BaseForm
     );
     
     $this->setWidgets(array(
-      'query'       => new sfWidgetFormInputText(),
-      'from'        => new sfWidgetFormI18nJQueryDate($sfWidgetFormI18nJQueryDateOptions),
-      'to'          => new sfWidgetFormI18nJQueryDate($sfWidgetFormI18nJQueryDateOptions),
-      'quick_dates' => new sfWidgetFormChoice(array('choices' => InvoiceSearchForm::getQuickDates())),
+      'query'        => new sfWidgetFormInputText(),
+      'from'         => new sfWidgetFormI18nJQueryDate($sfWidgetFormI18nJQueryDateOptions),
+      'to'           => new sfWidgetFormI18nJQueryDate($sfWidgetFormI18nJQueryDateOptions),
+      'quick_dates'  => new sfWidgetFormChoice(array('choices' => InvoiceSearchForm::getQuickDates())),
+      'expense_type' => new sfWidgetFormChoice(array('choices' => array(''=>'') + ExpenseTypeTable::getChoicesForSelect(true))),
     ));
 
     $this->widgetSchema->setLabels(array(
-      'query'       => 'Search',
-      'from'        => 'from',
-      'to'          => 'to',
-      'quick_dates' => 'Period',
+      'query'        => 'Search',
+      'from'         => 'from',
+      'to'           => 'to',
+      'quick_dates'  => 'Period',
+      'expense_type' => 'Expense Type'
     ));
 
     $dateRangeValidatorOptions = array(

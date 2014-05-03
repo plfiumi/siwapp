@@ -38,6 +38,8 @@ class ProductForm extends BaseProductForm
                              'min_stock_level'=> 'Min stock level'
                              );
     $this->widgetSchema->setHelps($common_defaults);
+
+    $this->widgetSchema['tax_id']->setDefault(Doctrine::getTable('Tax')->getDefault());
     
     $min_stock_level = sfContext::getInstance()->getUser()->getProfile()->getMinStockLevel();
     if (($min_stock_level != null) && is_numeric($min_stock_level)) {
@@ -50,6 +52,7 @@ class ProductForm extends BaseProductForm
     
     $this->setDefaults($default_values);
   }
+  
 }
 
 

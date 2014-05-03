@@ -86,6 +86,7 @@ class ProductTable extends Doctrine_Table
         $res[$i]['reference'] = $item->getReference();
         $res[$i]['description'] = $item->getDescription();
         $res[$i]['price'] = $item->getPrice();
+        $res[$i]['tax'] = $item->getTaxId();
         $i++;
       }
       

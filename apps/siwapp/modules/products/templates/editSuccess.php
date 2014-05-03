@@ -53,6 +53,10 @@ $product = $productForm->getObject();
         <label for="<? echo $productForm['price']->renderId()?>"><?php echo __('Price') ?></label>
         <?php echo render_tag($productForm['price'])?>
       </span>
+      <span class="_25">
+        <label for="<? echo $productForm['tax_id']->renderId()?>"><?php echo __('Tax') ?></label>
+        <?php echo render_tag($productForm['tax_id'])?>
+      </span>
     </li>
     <li>
       <span class="_75">

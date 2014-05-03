@@ -13,6 +13,7 @@
  * @property boolean $apply_total
  * @property Company $Company
  * @property Doctrine_Collection $Items
+ * @property Doctrine_Collection $Product
  * 
  * @method integer             getCompanyId()   Returns the current record's "company_id" value
  * @method string              getName()        Returns the current record's "name" value
@@ -22,6 +23,7 @@
  * @method boolean             getApplyTotal()  Returns the current record's "apply_total" value
  * @method Company             getCompany()     Returns the current record's "Company" value
  * @method Doctrine_Collection getItems()       Returns the current record's "Items" collection
+ * @method Doctrine_Collection getProduct()     Returns the current record's "Product" collection
  * @method Tax                 setCompanyId()   Sets the current record's "company_id" value
  * @method Tax                 setName()        Sets the current record's "name" value
  * @method Tax                 setValue()       Sets the current record's "value" value
@@ -30,6 +32,7 @@
  * @method Tax                 setApplyTotal()  Sets the current record's "apply_total" value
  * @method Tax                 setCompany()     Sets the current record's "Company" value
  * @method Tax                 setItems()       Sets the current record's "Items" collection
+ * @method Tax                 setProduct()     Sets the current record's "Product" collection
  * 
  * @package    siwapp
  * @subpackage model
@@ -81,5 +84,9 @@ abstract class BaseTax extends sfDoctrineRecord
              'refClass' => 'ItemTax',
              'local' => 'tax_id',
              'foreign' => 'item_id'));
+
+        $this->hasMany('Product', array(
+             'local' => 'id',
+             'foreign' => 'tax_id'));
     }
 }

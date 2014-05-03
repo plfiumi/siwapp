@@ -34,6 +34,10 @@ class SupplierQuery extends Doctrine_Query
       {
         $this->toDate($search['to']);
       }
+      if(isset($search['expense_type']))
+      {
+        $this->expenseTypeSearch($search['expense_type']);
+      }
     }
     return $this;
   }
@@ -126,6 +130,24 @@ class SupplierQuery extends Doctrine_Query
       return $this->andWhere('i.customer_id = id')
         ->andWhere('i.issue_date < ?', sfDate::getInstance($date)->addDay(1)->to_database());
     }
+  }
+  
+  /**
+   * Limits the results to those suppliers whose expense type
+   * matchs the passed as parameter.
+   * @param string expense type value
+   * @return InvoiceFinder the same instance
+   * @author Pablo Fiumidinisi <plfiumi@gmail.com>
+   */
+  public function expenseTypeSearch($expenseType)
+  {
+    if($expenseType)
+    {
+      $this
+        ->addWhere("(s.expense_type_id = '$expenseType')");
+
+    }
+    return $this;
   }
   
   /**

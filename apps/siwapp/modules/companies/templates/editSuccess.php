@@ -34,66 +34,66 @@ $company = $companyForm->getObject();
     </div>
     <li>
       <span class="_75">
-        <label for="<? echo $companyForm['name']->renderId()?>"><?php echo __('Company name') ?></label>
+        <label class="light" for="<? echo $companyForm['name']->renderId()?>"><?php echo __('Company name') ?></label>
         <?php echo render_tag($companyForm['name'])?>
         </span>
       <span class="_25">
-        <label for="<? echo $companyForm['identification']->renderId()?>"><?php echo __('Legal Id') ?></label>
+        <label class="light" for="<? echo $companyForm['identification']->renderId()?>"><?php echo __('Legal Id') ?></label>
         <?php echo render_tag($companyForm['identification'])?>
       </span>
     </li>
-<li>
+    <li>
       <span class="_50">
-        <label for="<? echo $companyForm['address']->renderId()?>"><?php echo __('Address') ?></label>
+        <label class="light" for="<? echo $companyForm['address']->renderId()?>"><?php echo __('Address') ?></label>
         <?php echo render_tag($companyForm['address'])?>
       </span>
       <span class="_50">
-        <label for="<? echo $companyForm['city']->renderId()?>"><?php echo __('City') ?></label>
+        <label class="light" for="<? echo $companyForm['city']->renderId()?>"><?php echo __('City') ?></label>
         <?php echo render_tag($companyForm['city'])?>
       </span>
     </li>
     <li>
       <span class="_25">
-        <label for="<? echo $companyForm['postalcode']->renderId()?>"><?php echo __('Postal code') ?></label>
+        <label class="light" for="<? echo $companyForm['postalcode']->renderId()?>"><?php echo __('Postal code') ?></label>
         <?php echo render_tag($companyForm['postalcode'])?>
       </span>
       <span class="_25">
-        <label for="<? echo $companyForm['state']->renderId()?>"><?php echo __('State') ?></label>
+        <label class="light" for="<? echo $companyForm['state']->renderId()?>"><?php echo __('State') ?></label>
         <?php echo render_tag($companyForm['state'])?>
       </span>
         <span class="_25">
-        <label for="<? echo $companyForm['country']->renderId()?>"><?php echo __('Country') ?></label>
+        <label class="light" for="<? echo $companyForm['country']->renderId()?>"><?php echo __('Country') ?></label>
         <?php echo render_tag($companyForm['country'])?>
       </span>
     </li>
     <li>
       <span class="_50">
-        <label for="<? echo $companyForm['phone']->renderId()?>"><?php echo __('Company phone') ?></label>
+        <label class="light" for="<? echo $companyForm['phone']->renderId()?>"><?php echo __('Company phone') ?></label>
         <?php echo render_tag($companyForm['phone'])?>
       </span>
       <span class="_50">
-        <label for="<? echo $companyForm['fax']->renderId()?>"><?php echo __('Company fax') ?></label>
+        <label class="light" for="<? echo $companyForm['fax']->renderId()?>"><?php echo __('Company fax') ?></label>
         <?php echo render_tag($companyForm['fax'])?>
       </span>
     </li>
 
     <li>
       <span class="_50">
-        <label for="<? echo $companyForm['email']->renderId()?>"><?php echo __('Company email') ?></label>
+        <label class="light" for="<? echo $companyForm['email']->renderId()?>"><?php echo __('Company email') ?></label>
         <?php echo render_tag($companyForm['email'])?>
       </span>
       <span class="_50">
-        <label for="<? echo $companyForm['url']->renderId()?>"><?php echo __('Company Website') ?></label>
+        <label class="light" for="<? echo $companyForm['url']->renderId()?>"><?php echo __('Company Website') ?></label>
         <?php echo render_tag($companyForm['url'])?>
       </span>
     </li>
     <li>
       <span class="_50">
-        <label for="<? echo $companyForm['currency']->renderId()?>"><?php echo __('Currency') ?></label>
+        <label class="light" for="<? echo $companyForm['currency']->renderId()?>"><?php echo __('Currency') ?></label>
         <?php echo render_tag($companyForm['currency'])  ?>
         </span>
       <span class="_50">
-        <label for="<? echo $companyForm['pdf_size']->renderId()?>"><?php echo __('Page size') ?></label>
+        <label class="light" for="<? echo $companyForm['pdf_size']->renderId()?>"><?php echo __('Page size') ?></label>
         <?php echo render_tag($companyForm['pdf_size']) ?></span>
     </li>
   </ul>
