@@ -26,4 +26,32 @@ class ExpenseTypeTable extends Doctrine_Table
         return $result;
     }
     
+  /**
+   * Returns an associative array with all expense types or those enabled only
+   * depending on the param value.
+   *
+   * @param boolean Return only enabled expense types (default=true)
+   * @return array
+   * @author Pablo Fiumidinisi <plfiumi@gmail.com>
+   **/
+  public static function getChoicesForSelect($enabled_only = true)
+  {
+    $expenseTypes = array();
+    $finder = Doctrine_Core::getTable('ExpenseType')->createQuery();
+    
+    if ($enabled_only)
+    {
+      $finder->addWhere('enabled = ?', '1');
+    }
+    
+    $finder->addWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'));
+    
+    foreach ($finder->execute() as $s)
+    {
+      $expenseTypes[$s->id] = $s->name;
+    }
+    
+    return $expenseTypes;
+  }
+    
 }

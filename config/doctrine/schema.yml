@@ -95,7 +95,7 @@ Customer:
     mobile: string(20)
     fax: string(20)
     comments: clob
-    tax_condition: string(10)
+    tax_condition_id: integer
     financial_entity: string(50)
     financial_entity_office: string(50)
     financial_entity_control_digit: string(50)
@@ -125,15 +125,23 @@ Customer:
       foreign: id
       foreignAlias: Series
       onDelete: set null
+    TaxCondition:
+      local: tax_condition_id
+      foreign: id
+      foreignAlias: TaxCondition
+      onDelete: set null
 
 Supplier:
   columns:
     company_id: integer
     name: string(100)
     name_slug: string(100)
+    business_name: string(100)
     identification: string(50)
     email: string(100)
     contact_person: string(100)
+    contact_person_phone: string(20)
+    contact_person_email: string(100)
     invoicing_address: string(255)
     invoicing_postalcode: string(255)
     invoicing_city: string(255)
@@ -144,6 +152,11 @@ Supplier:
     mobile: string(20)
     fax: string(20)
     comments: clob
+    tax_condition_id: integer
+    financial_entity: string(50)
+    financial_entity_office: string(50)
+    financial_entity_account: string(50)
+    payment_type_id: integer
     login: string(50)
     password: string(50)
     expense_type_id: integer
@@ -157,12 +170,24 @@ Supplier:
       foreign: id
       type: one
       onDelete: CASCADE
+    PaymentType:
+      local: payment_type_id
+      foreign: id
+      foreignAlias: PaymentType
+      type: one
+      onDelete: SET NULL
     ExpenseType:
       foreignAlias: Supplier
       local: expense_type_id
       foreign: id
       type: one
       onDelete: SET NULL
+    TaxCondition:
+      local: tax_condition_id
+      foreign: id
+      foreignAlias: TaxCondition
+      onDelete: set null
+      
 Common:
   actAs:
     Timestampable:
@@ -399,6 +424,22 @@ Tax:
       foreign: item_id
       refClass: ItemTax
 
+TaxCondition:
+  columns:
+    company_id: integer
+    name:   string(255)
+    description:   clob
+    enabled:
+      type: boolean
+      default: true
+  relations:
+    Company:
+      foreignAlias: Company
+      local: company_id
+      foreign: id
+      type: one
+      onDelete: CASCADE
+      
 ItemTax:
   columns:
     company_id: integer
@@ -571,6 +612,7 @@ Product:
     category_id: integer
     stock: integer
     min_stock_level: integer  # alert user when stock equals this value
+    tax_id: integer 
   relations:
     Company:
       foreignAlias: Company
@@ -584,6 +626,10 @@ Product:
       foreignAlias: ProductCategory
       type: one
       onDelete: SET NULL
+    Tax:
+      local: tax_id
+      foreign: id
+      type: one
 
 ExpenseType:
   columns:

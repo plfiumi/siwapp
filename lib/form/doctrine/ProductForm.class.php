@@ -17,9 +17,7 @@ class ProductForm extends BaseProductForm
     $this->widgetSchema->addFormFormatter('custom', $decorator);
     $this->widgetSchema->setFormFormatterName('custom');
 
-    //Assign company_id from session values.
     $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
-    $this->setDefault('company_id' , sfContext::getInstance()->getUser()->getAttribute('company_id'));
 
     //Filter categories to the ones that belong to the current company
     $this->widgetSchema['category_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ProductCategory'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
@@ -40,13 +38,21 @@ class ProductForm extends BaseProductForm
                              'min_stock_level'=> 'Min stock level'
                              );
     $this->widgetSchema->setHelps($common_defaults);
+
+    $this->widgetSchema['tax_id']->setDefault(Doctrine::getTable('Tax')->getDefault());
     
     $min_stock_level = sfContext::getInstance()->getUser()->getProfile()->getMinStockLevel();
     if (($min_stock_level != null) && is_numeric($min_stock_level)) {
 	    $default_values['min_stock_level'] = $min_stock_level;
-      $this->setDefaults($default_values);
+      
     }
+    
+    //Assign company_id from session values.
+    $default_values['company_id'] = sfContext::getInstance()->getUser()->getAttribute('company_id');
+    
+    $this->setDefaults($default_values);
   }
+  
 }
 
 

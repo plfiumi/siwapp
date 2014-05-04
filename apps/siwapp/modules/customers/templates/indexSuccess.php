@@ -36,7 +36,8 @@ $csrf     = new sfForm();
               // sort parameter => array (Name, default order)
               renderHeaders(array(
                 'identification'    => array('Identification', 'desc'),
-                'name' => array('Customer Name', 'asc'),
+                'name' => array('Name', 'asc'),
+                'business_name' => array('Business Name', 'asc'),
                 'email'    => array('Email', 'desc'),
                 'phone'    => array('Phone', 'desc'),
                 'due_amount'    => array('Due', 'desc'),
@@ -57,6 +58,7 @@ $csrf     = new sfForm();
               <td class="check"><input rel="item" type="checkbox" value="<?php echo $id ?>" name="ids[]"></td>
               <td><?php echo $customer->getIdentification() ?></td>
               <td><?php echo $customer ?></td>
+              <td><?php echo $customer->getBusinessName() ?></td>
               <td><?php echo $customer->getEmail() ?></td>
               <td><?php echo $customer->getPhone() ?></td>
             <td class="right"><?php if ($customer->getDueAmount($sf_data->getRaw('date_range')) != 0) echo format_currency($customer->getDueAmount($sf_data->getRaw('date_range')), $currency) ?></td>

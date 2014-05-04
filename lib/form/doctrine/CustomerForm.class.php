@@ -18,8 +18,10 @@ class CustomerForm extends BaseCustomerForm
     $this->widgetSchema['tags']    = new sfWidgetFormInputHidden();
     $this->validatorSchema['tags'] = new sfValidatorString(array('required'=>false));
 
-    $this->widgetSchema['payment_type_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PaymentType'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
-    $this->widgetSchema['series_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Series'), 'add_empty' => true));
+    $this->widgetSchema['payment_type_id'] = new sfWidgetFormChoice(array('choices' => array(''=>'') + PaymentTypeTable::getChoicesForSelect()));
+    $this->widgetSchema['series_id'] = new sfWidgetFormChoice(array('choices' => array(''=>'') + SeriesTable::getChoicesForSelect()));
+    $this->widgetSchema['tax_condition_id'] = new sfWidgetFormChoice(array('choices' => array(''=>'') + TaxConditionTable::getChoicesForSelect()));
+    
     //Assign company_id from session values.
     $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
     $this->setDefault('company_id' , sfContext::getInstance()->getUser()->getAttribute('company_id'));

@@ -495,6 +495,14 @@
         <target>Condición impositiva</target>
       </trans-unit>
       <trans-unit>
+        <source>Tax Conditions</source>
+        <target>Condición impositiva</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Add a new tax condition</source>
+        <target>Añadir un nueva condición impositiva</target>
+      </trans-unit>
+      <trans-unit>
         <source>Invoicing series</source>
         <target>Serie de Facturación</target>
       </trans-unit>
@@ -570,6 +578,10 @@
       <trans-unit>
         <source>Sold Units</source>
         <target>Unidades vendidas</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Tax</source>
+        <target>Impuesto</target>
       </trans-unit>
       <!-- ##### SEARCH ##### -->
       <trans-unit>

@@ -31,7 +31,7 @@
  * @property string $mobile
  * @property string $fax
  * @property clob $comments
- * @property string $tax_condition
+ * @property integer $tax_condition_id
  * @property string $financial_entity
  * @property string $financial_entity_office
  * @property string $financial_entity_control_digit
@@ -43,6 +43,7 @@
  * @property Company $Company
  * @property PaymentType $PaymentType
  * @property Series $Series
+ * @property TaxCondition $TaxCondition
  * @property Doctrine_Collection $Commons
  * 
  * @method integer             getCompanyId()                      Returns the current record's "company_id" value
@@ -71,7 +72,7 @@
  * @method string              getMobile()                         Returns the current record's "mobile" value
  * @method string              getFax()                            Returns the current record's "fax" value
  * @method clob                getComments()                       Returns the current record's "comments" value
- * @method string              getTaxCondition()                   Returns the current record's "tax_condition" value
+ * @method integer             getTaxConditionId()                 Returns the current record's "tax_condition_id" value
  * @method string              getFinancialEntity()                Returns the current record's "financial_entity" value
  * @method string              getFinancialEntityOffice()          Returns the current record's "financial_entity_office" value
  * @method string              getFinancialEntityControlDigit()    Returns the current record's "financial_entity_control_digit" value
@@ -83,6 +84,7 @@
  * @method Company             getCompany()                        Returns the current record's "Company" value
  * @method PaymentType         getPaymentType()                    Returns the current record's "PaymentType" value
  * @method Series              getSeries()                         Returns the current record's "Series" value
+ * @method TaxCondition        getTaxCondition()                   Returns the current record's "TaxCondition" value
  * @method Doctrine_Collection getCommons()                        Returns the current record's "Commons" collection
  * @method Customer            setCompanyId()                      Sets the current record's "company_id" value
  * @method Customer            setName()                           Sets the current record's "name" value
@@ -110,7 +112,7 @@
  * @method Customer            setMobile()                         Sets the current record's "mobile" value
  * @method Customer            setFax()                            Sets the current record's "fax" value
  * @method Customer            setComments()                       Sets the current record's "comments" value
- * @method Customer            setTaxCondition()                   Sets the current record's "tax_condition" value
+ * @method Customer            setTaxConditionId()                 Sets the current record's "tax_condition_id" value
  * @method Customer            setFinancialEntity()                Sets the current record's "financial_entity" value
  * @method Customer            setFinancialEntityOffice()          Sets the current record's "financial_entity_office" value
  * @method Customer            setFinancialEntityControlDigit()    Sets the current record's "financial_entity_control_digit" value
@@ -122,6 +124,7 @@
  * @method Customer            setCompany()                        Sets the current record's "Company" value
  * @method Customer            setPaymentType()                    Sets the current record's "PaymentType" value
  * @method Customer            setSeries()                         Sets the current record's "Series" value
+ * @method Customer            setTaxCondition()                   Sets the current record's "TaxCondition" value
  * @method Customer            setCommons()                        Sets the current record's "Commons" collection
  * 
  * @package    siwapp
@@ -234,9 +237,8 @@ abstract class BaseCustomer extends sfDoctrineRecord
         $this->hasColumn('comments', 'clob', null, array(
              'type' => 'clob',
              ));
-        $this->hasColumn('tax_condition', 'string', 10, array(
-             'type' => 'string',
-             'length' => 10,
+        $this->hasColumn('tax_condition_id', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('financial_entity', 'string', 50, array(
              'type' => 'string',
@@ -299,6 +301,11 @@ abstract class BaseCustomer extends sfDoctrineRecord
 
         $this->hasOne('Series', array(
              'local' => 'series_id',
+             'foreign' => 'id',
+             'onDelete' => 'set null'));
+
+        $this->hasOne('TaxCondition', array(
+             'local' => 'tax_condition_id',
              'foreign' => 'id',
              'onDelete' => 'set null'));
 

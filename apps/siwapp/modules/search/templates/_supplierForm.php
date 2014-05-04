@@ -11,6 +11,7 @@ use_helper('Siwapp', 'JavascriptBase');
         echo $form['from']->renderRow(); 
         echo $form['to']->renderRow();
         echo $form['quick_dates']->renderRow();
+        echo $form['expense_type']->renderRow();
         ?>
       </ul>
     </div>

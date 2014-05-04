@@ -118,6 +118,8 @@ echo javascript_tag("
       $('#".$invoiceItemForm['product_autocomplete']->renderId()."').val(item[1]);
       $('#".$invoiceItemForm['unitary_cost']->renderId()."').val(item[2]);
       $('#".$invoiceItemForm['product_id']->renderId()."').val(item[3]);
+        
+      //$('#"."item_taxes_list_". $rowId ."_". $taxKey ."').val(item[4]);
       $(document).trigger('GlobalUpdateEvent');
     });
     
@@ -132,7 +134,8 @@ echo javascript_tag("
             data[key].description,
             data[key].reference,  
             data[key].price,
-            data[key].id
+            data[key].id,
+            data[key].tax
           ], value: data[key].description, result: data[key].description };
         }
         return parsed;
@@ -145,6 +148,11 @@ echo javascript_tag("
       $('#".$invoiceItemForm['product_autocomplete']->renderId()."').val(item[1]);
       $('#".$invoiceItemForm['unitary_cost']->renderId()."').val(item[2]);
       $('#".$invoiceItemForm['product_id']->renderId()."').val(item[3]);
+        
+      var taxSelectName = 'invoice[Items][".$rowId."][taxes_list][]';
+      var taxSelect = 'select[name='+ '\"' + taxSelectName + '\"' + ']';
+      $(taxSelect).val(item[4]);
+
       $(document).trigger('GlobalUpdateEvent');
     });
 ");

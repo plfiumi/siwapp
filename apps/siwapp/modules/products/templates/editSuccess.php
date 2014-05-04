@@ -31,13 +31,9 @@ $product = $productForm->getObject();
   <h3><?php echo __('Product info') ?></h3>
   <ul>
     <li>
-      <span class="_25">
+      <span class="_50">
         <label for="<? echo $productForm['reference']->renderId()?>"><?php echo __('Reference') ?></label>
         <?php echo render_tag($productForm['reference'])?>
-      </span>
-      <span class="_25">
-        <label for="<? echo $productForm['price']->renderId()?>"><?php echo __('Product price') ?></label>
-        <?php echo render_tag($productForm['price'])?>
       </span>
       <span class="_25">
         <label for="<? echo $productForm['stock']->renderId()?>"><?php echo __('Stock') ?></label>      
@@ -46,6 +42,20 @@ $product = $productForm->getObject();
       <span class="_25">
         <label for="<? echo $productForm['min_stock_level']->renderId()?>"><?php echo __('Min stock level') ?></label>
         <?php echo render_tag($productForm['min_stock_level'])?>
+      </span>
+    </li>
+    <li>
+      <span class="_50">
+        <label for="<? echo $productForm['category']->renderId()?>"><?php echo __('Category') ?></label>
+        <?php echo render_tag($productForm['category_id'])?>
+      </span> 
+      <span class="_25">
+        <label for="<? echo $productForm['price']->renderId()?>"><?php echo __('Price') ?></label>
+        <?php echo render_tag($productForm['price'])?>
+      </span>
+      <span class="_25">
+        <label for="<? echo $productForm['tax_id']->renderId()?>"><?php echo __('Tax') ?></label>
+        <?php echo render_tag($productForm['tax_id'])?>
       </span>
     </li>
     <li>
@@ -72,5 +82,5 @@ $product = $productForm->getObject();
   </form>
 </div>
 <?php
-echo javascript_tag(" $('#product-data input[type=text], #product-data textarea').SiwappFormTips();") // See invoice.js
+  //echo javascript_tag(" $('#product-data input[type=text], #product-data textarea').SiwappFormTips();") // See invoice.js
 ?>

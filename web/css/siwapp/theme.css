@@ -98,7 +98,7 @@ input:focus { border-color:#DA4722; background-color:#FFF0E1; }
 #invoice-container .show li ._75  { border-color:#DCDCDC; }
 #invoice-container .show label { color:#888; color:#9a9a9a; }
 
-#invoice-container label.tip,#supplier-data label.tip, #customer-data label.tip, #customer-administrative-data label.tip, #product-data label.tip, #company-data label.tip, #company-administrative-data label.tip { background:#DA4722; color:white; }
+#invoice-container label.tip,#supplier-data label.tip, #customer-data label.tip, #customer-administrative-data label.tip, #supplier-administrative-data label.tip, #product-data label.tip, #company-data label.tip, #company-administrative-data label.tip { background:#DA4722; color:white; }
 
 /* SETTINGS */
 #settings-menu                     { border-color:#DCDCDC; }

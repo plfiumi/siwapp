@@ -61,13 +61,13 @@
         </li>
         <li>
           <span class="_50">
-            <label for="<? echo $form['company'][0]['logo']->renderId()?>"><?php echo __('Logo') ?></label>
+            <label class="light" for="<? echo $form['company'][0]['logo']->renderId()?>"><?php echo __('Logo') ?></label>
             <?php echo render_tag($form['company'][0]['logo'])  ?>
           </span>
         </li>
         <li>
           <span class="_50">
-            <label for="<? echo $form['company'][0]['currency']->renderId()?>"><?php echo __('Currency') ?></label>
+            <label class="light" for="<? echo $form['company'][0]['currency']->renderId()?>"><?php echo __('Currency') ?></label>
             <?php echo render_tag($form['company'][0]['currency'])  ?>
           </span>
         </li>
@@ -120,67 +120,84 @@
       </ul>
   </fieldset>
   
+  <fieldset class="left taxes taxseries">
+    <h3><?php echo __('Invoicing taxes') ?></h3>
+    <div id="taxes">
+      <ul class="head">
+        <a href="#" class="xit"></a>
+        <li class="name"><strong><?php echo __('Name')?></strong></li>
+        <li class="value text-right"><strong><?php echo __('Value')?></strong></li>
+        <li class="active"><strong><?php echo __('Active')?></strong></li>
+        <li class="is_default"><strong><?php echo __('Def.')?></strong></li>
+        <li class="is_default"><strong><?php echo __('Total')?></strong></li>
+      </ul>
+      <?php foreach ($form['taxes'] as $tax): ?>
+      <?php echo $tax?>
+      <?php endforeach ?>
+    </div>
+    <div class="clear"></div>
+    <small>
+      <a id="addNewTax" href="#" class="to:taxes"><?php echo __('Add a new tax value') ?></a>
+    </small>
+  </fieldset>
 
+  <fieldset class="seriess taxseries">
+    <h3><?php echo __('Invoicing series') ?></h3>
+    <div id="seriess">
+      <ul class="head">
+        <a href="#" class="xit"></a>
+        <li class="name"><strong><?php echo __('Label')?></strong></li>
+        <li class="value"><strong><?php echo __('Value') ?></strong></li>
+        <li class="first_number"><strong><?php echo __('Initial value')?></strong></li>
+      </ul>
+      <?php foreach ($form['seriess'] as $s): ?>
+      <?php echo $s?>
+      <?php endforeach ?>
+    </div>
+    <div class="clear"></div>
+    <small>
+      <a id="addNewSeries" href="#" class="to:seriess"><?php echo __('Add a new series value') ?></a><br/>
+      <?php echo __('The initial value will only be used for the first saved invoice of the series if there are no invoices assigned.') ?>
+    </small>
+  </fieldset>
 
-    <fieldset class="left taxes taxseries">
-      <h3><?php echo __('Invoicing taxes') ?></h3>
-      <div id="taxes">
-        <ul class="head">
-          <a href="#" class="xit"></a>
-          <li class="name"><strong><?php echo __('Name')?></strong></li>
-          <li class="value text-right"><strong><?php echo __('Value')?></strong></li>
-          <li class="active"><strong><?php echo __('Active')?></strong></li>
-          <li class="is_default"><strong><?php echo __('Def.')?></strong></li>
-          <li class="is_default"><strong><?php echo __('Total')?></strong></li>
-        </ul>
-        <?php foreach ($form['taxes'] as $tax): ?>
-        <?php echo $tax?>
-        <?php endforeach ?>
-      </div>
-      <div class="clear"></div>
-      <small>
-        <a id="addNewTax" href="#" class="to:taxes"><?php echo __('Add a new tax value') ?></a>
-      </small>
-    </fieldset>
-
-    <fieldset class="seriess taxseries">
-      <h3><?php echo __('Invoicing series') ?></h3>
-      <div id="seriess">
-        <ul class="head">
-          <a href="#" class="xit"></a>
-          <li class="name"><strong><?php echo __('Label')?></strong></li>
-          <li class="value"><strong><?php echo __('Value') ?></strong></li>
-          <li class="first_number"><strong><?php echo __('Initial value')?></strong></li>
-        </ul>
-        <?php foreach ($form['seriess'] as $s): ?>
-        <?php echo $s?>
-        <?php endforeach ?>
-      </div>
-      <div class="clear"></div>
-      <small>
-        <a id="addNewSeries" href="#" class="to:seriess"><?php echo __('Add a new series value') ?></a><br/>
-        <?php echo __('The initial value will only be used for the first saved invoice of the series if there are no invoices assigned.') ?>
-      </small>
-    </fieldset>
-
-   <fieldset class="payments taxseries right">
-      <h3><?php echo __('Payments Type') ?></h3>
-      <div id="payments">
-        <ul class="head">
-          <a href="#" class="xit"></a>
-          <li class="name"><strong><?php echo __('Name')?></strong></li>
-          <li class="name"><strong><?php echo __('Description')?></strong></li>
-          <li class="active"><strong><?php echo __('Enabled')?></strong></li>
-        </ul>
-        <?php foreach ($form['payments'] as $s): ?>
-        <?php echo $s?>
-        <?php endforeach ?>
-      </div>
-      <div class="clear"></div>
-      <small>
-        <a id="addNewPayment" href="#" class="to:payments"><?php echo __('Add a new payment type') ?></a><br/>
-      </small>
-    </fieldset>
+  <fieldset class="taxConditions taxseries left">
+    <h3><?php echo __('Tax Conditions') ?></h3>
+    <div id="taxConditions">
+      <ul class="head">
+        <a href="#" class="xit"></a>
+        <li class="name"><strong><?php echo __('Name')?></strong></li>
+        <li class="name"><strong><?php echo __('Description')?></strong></li>
+        <li class="active"><strong><?php echo __('Enabled')?></strong></li>
+      </ul>
+      <?php foreach ($form['taxConditions'] as $s): ?>
+      <?php echo $s?>
+      <?php endforeach ?>
+    </div>
+    <div class="clear"></div>
+    <small>
+      <a id="addNewTaxCondition" href="#" class="to:taxConditions"><?php echo __('Add a new tax condition') ?></a><br/>
+    </small>
+  </fieldset>
+    
+  <fieldset class="payments taxseries right">
+     <h3><?php echo __('Payments Type') ?></h3>
+     <div id="payments">
+       <ul class="head">
+         <a href="#" class="xit"></a>
+         <li class="name"><strong><?php echo __('Name')?></strong></li>
+         <li class="name"><strong><?php echo __('Description')?></strong></li>
+         <li class="active"><strong><?php echo __('Enabled')?></strong></li>
+       </ul>
+       <?php foreach ($form['payments'] as $s): ?>
+       <?php echo $s?>
+       <?php endforeach ?>
+     </div>
+     <div class="clear"></div>
+     <small>
+       <a id="addNewPayment" href="#" class="to:payments"><?php echo __('Add a new payment type') ?></a><br/>
+     </small>
+  </fieldset>
 
     <fieldset class="left">
       <h3><?php echo __('PDF Settings') ?></h3>

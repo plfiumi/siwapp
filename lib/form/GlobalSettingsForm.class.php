@@ -17,6 +17,8 @@ class GlobalSettingsForm extends FormsContainer
     $this->embedForm('seriess',new SeriessForm());
     /* Expenses Type */
 //    $this->embedForm('expenses',new ExpensesTypeForm());
+    $this->embedForm('taxConditions',new TaxConditionsForm());
+    
     $this->embedForm('payments',new PaymentsTypeForm());
 
     $this->validatorSchema->setPostValidator(new sfValidatorAnd(
@@ -40,6 +42,11 @@ class GlobalSettingsForm extends FormsContainer
               'callback' => array($this, 'validatePayments')
             ), array(
               'invalid' => 'Some payments have not been deleted because they are currently in use: <strong>%invalid_payments%</strong>.'
+            )),
+         new sfValidatorCallback(array(
+              'callback' => array($this, 'validateTaxConditions')
+            ), array(
+              'invalid' => 'Some tax conditions have not been deleted because they are currently in use: <strong>%invalid_tax_conditions%</strong>.'
             )),
         )));
 
@@ -187,6 +194,53 @@ class GlobalSettingsForm extends FormsContainer
                                                               'invalid',
                                                               array(
                                                                 'invalid_payments'=>
+                                                                implode(', ',$invalid)))));
+    }
+
+    return $values;
+  }
+  
+  /**
+   * Finds the TaxCondition to be deleted and if they are still linked to Common instances throws
+   * a global error to tell it to the user.
+   */
+  public function validateTaxConditions(sfValidatorBase $validator, $values, $arguments)
+  {
+    $deleted_ids = array();
+    foreach($values['taxConditions'] as $key => $expense)
+    {
+      if($expense['remove'])
+      {
+        $deleted_ids[] = $expense['id'];
+      }
+    }
+    if(!count($deleted_ids))
+    {
+      return $values;
+    }
+
+    return $values;
+
+    $toDelete = Doctrine_Core::getTable('TaxCondition')
+      ->createQuery()
+      ->from('TaxCondition s')
+      ->innerJoin('s.Common c')
+      ->addWhere('s.id IN (?)',implode(',',$deleted_ids))->execute();
+
+    if(count($toDelete))
+    {
+      $invalid = array();
+      foreach($toDelete as $k => $expense)
+      {
+        $this->taintedValues['taxConditions']['old_'.$expense->id]['remove'] = '';
+        $invalid[] = $expense->name;
+      }
+      throw new sfValidatorErrorSchema($validator,
+                                       array(
+                                         new sfValidatorError($validator,
+                                                              'invalid',
+                                                              array(
+                                                                'invalid_tax_conditions'=>
                                                                 implode(', ',$invalid)))));
     }
 
