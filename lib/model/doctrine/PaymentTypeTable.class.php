@@ -25,4 +25,32 @@ class PaymentTypeTable extends Doctrine_Table
         $result = $query->execute();
         return $result;
     }
+    
+  /**
+   * Returns an associative array with all payment types or those enabled only
+   * depending on the param value.
+   *
+   * @param boolean Return only enabled payment types (default=true)
+   * @return array
+   * @author Pablo Fiumidinisi <plfiumi@gmail.com>
+   **/
+  public static function getChoicesForSelect($enabled_only = true)
+  {
+    $paymentTypes = array();
+    $finder = Doctrine_Core::getTable('PaymentType')->createQuery();
+    
+    if ($enabled_only)
+    {
+      $finder->addWhere('enabled = ?', '1');
+    }
+    
+    $finder->addWhere('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'));
+    
+    foreach ($finder->execute() as $s)
+    {
+      $paymentTypes[$s->id] = $s->name;
+    }
+    
+    return $paymentTypes;
+  }
 }

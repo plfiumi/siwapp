@@ -104,8 +104,8 @@ $supplier = $supplierForm->getObject();
     <ul>
     <li>
       <span class="_50">
-        <label class="light" for="<? echo $supplierForm['tax_condition']->renderId()?>"><?php echo __('Tax condition') ?></label>
-        <?php echo render_tag($supplierForm['tax_condition'])  ?>
+        <label class="light" for="<? echo $supplierForm['tax_condition_id']->renderId()?>"><?php echo __('Tax condition') ?></label>
+        <?php echo render_tag($supplierForm['tax_condition_id'])  ?>
       </span>
       <span class="_50">
         <!--<label for="<? //echo $supplierForm['series_id']->renderId()?>"><?php echo __('Invoicing series') ?></label>

@@ -24,7 +24,7 @@
  * @property string $mobile
  * @property string $fax
  * @property clob $comments
- * @property string $tax_condition
+ * @property integer $tax_condition_id
  * @property string $financial_entity
  * @property string $financial_entity_office
  * @property string $financial_entity_account
@@ -35,6 +35,7 @@
  * @property Company $Company
  * @property PaymentType $PaymentType
  * @property ExpenseType $ExpenseType
+ * @property TaxCondition $TaxCondition
  * @property Doctrine_Collection $Commons
  * 
  * @method integer             getCompanyId()                Returns the current record's "company_id" value
@@ -56,7 +57,7 @@
  * @method string              getMobile()                   Returns the current record's "mobile" value
  * @method string              getFax()                      Returns the current record's "fax" value
  * @method clob                getComments()                 Returns the current record's "comments" value
- * @method string              getTaxCondition()             Returns the current record's "tax_condition" value
+ * @method integer             getTaxConditionId()           Returns the current record's "tax_condition_id" value
  * @method string              getFinancialEntity()          Returns the current record's "financial_entity" value
  * @method string              getFinancialEntityOffice()    Returns the current record's "financial_entity_office" value
  * @method string              getFinancialEntityAccount()   Returns the current record's "financial_entity_account" value
@@ -67,6 +68,7 @@
  * @method Company             getCompany()                  Returns the current record's "Company" value
  * @method PaymentType         getPaymentType()              Returns the current record's "PaymentType" value
  * @method ExpenseType         getExpenseType()              Returns the current record's "ExpenseType" value
+ * @method TaxCondition        getTaxCondition()             Returns the current record's "TaxCondition" value
  * @method Doctrine_Collection getCommons()                  Returns the current record's "Commons" collection
  * @method Supplier            setCompanyId()                Sets the current record's "company_id" value
  * @method Supplier            setName()                     Sets the current record's "name" value
@@ -87,7 +89,7 @@
  * @method Supplier            setMobile()                   Sets the current record's "mobile" value
  * @method Supplier            setFax()                      Sets the current record's "fax" value
  * @method Supplier            setComments()                 Sets the current record's "comments" value
- * @method Supplier            setTaxCondition()             Sets the current record's "tax_condition" value
+ * @method Supplier            setTaxConditionId()           Sets the current record's "tax_condition_id" value
  * @method Supplier            setFinancialEntity()          Sets the current record's "financial_entity" value
  * @method Supplier            setFinancialEntityOffice()    Sets the current record's "financial_entity_office" value
  * @method Supplier            setFinancialEntityAccount()   Sets the current record's "financial_entity_account" value
@@ -98,6 +100,7 @@
  * @method Supplier            setCompany()                  Sets the current record's "Company" value
  * @method Supplier            setPaymentType()              Sets the current record's "PaymentType" value
  * @method Supplier            setExpenseType()              Sets the current record's "ExpenseType" value
+ * @method Supplier            setTaxCondition()             Sets the current record's "TaxCondition" value
  * @method Supplier            setCommons()                  Sets the current record's "Commons" collection
  * 
  * @package    siwapp
@@ -184,9 +187,8 @@ abstract class BaseSupplier extends sfDoctrineRecord
         $this->hasColumn('comments', 'clob', null, array(
              'type' => 'clob',
              ));
-        $this->hasColumn('tax_condition', 'string', 10, array(
-             'type' => 'string',
-             'length' => 10,
+        $this->hasColumn('tax_condition_id', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('financial_entity', 'string', 50, array(
              'type' => 'string',
@@ -243,6 +245,11 @@ abstract class BaseSupplier extends sfDoctrineRecord
              'local' => 'expense_type_id',
              'foreign' => 'id',
              'onDelete' => 'SET NULL'));
+
+        $this->hasOne('TaxCondition', array(
+             'local' => 'tax_condition_id',
+             'foreign' => 'id',
+             'onDelete' => 'set null'));
 
         $this->hasMany('Common as Commons', array(
              'local' => 'id',

@@ -202,6 +202,9 @@ class configurationActions extends sfActions
       case 'payments':
         $subform = new FormsContainer(array($index=>new PaymentTypeForm()),'PaymentTypeForm');
         break;  
+      case 'taxConditions':
+        $subform = new FormsContainer(array($index=>new TaxConditionForm()),'TaxConditionForm');
+        break;  
       case 'product_categories':
         $configForm->getWidgetSchema()->setNameFormat('products_settings[%s]');
         $subform = new FormsContainer(array($index=>new ProductCategoryForm()),'ProductCategoryForm');

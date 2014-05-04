@@ -129,8 +129,8 @@ $customer = $customerForm->getObject();
     <ul>
     <li>
       <span class="_50">
-        <label class="light" for="<? echo $customerForm['tax_condition']->renderId()?>"><?php echo __('Tax condition') ?></label>
-        <?php echo render_tag($customerForm['tax_condition'])  ?>
+        <label class="light" for="<? echo $customerForm['tax_condition_id']->renderId()?>"><?php echo __('Tax condition') ?></label>
+        <?php echo render_tag($customerForm['tax_condition_id'])  ?>
         </span>
       <span class="_50">
         <label class="light" for="<? echo $customerForm['series_id']->renderId()?>"><?php echo __('Invoicing series') ?></label>
