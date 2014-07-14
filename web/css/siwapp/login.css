@@ -34,7 +34,7 @@ html, #bd, #bd-content {
   padding:120px 3em 3em;
   background-image:url(../../images/logo2.gif); 
   background-repeat:no-repeat;
-  background-position:2em 0.8em;
+  background-position:0em 0.8em;
 }
 
 #login-form li.row { margin-top:1em; }

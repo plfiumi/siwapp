@@ -30,7 +30,7 @@ $customer = $customerForm->getObject();
     ?>
   </div>
   <div id="customer-data" class="global-data block">
-  <h3><?php echo __('Client info') ?></h3>
+  <h3><?php echo __('Customer info') ?></h3>
   <ul>
     <li>
       <span class="_50">
