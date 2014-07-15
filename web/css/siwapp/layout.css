@@ -37,7 +37,7 @@ a.xit:hover { background-position:-10px center; }
   position:relative;
   display:block;
   float:left;
-  margin:0 0 0 2em;
+  margin:0 0 0 0em;
   text-decoration:none;
   color:inherit;
 }
@@ -45,7 +45,7 @@ a.xit:hover { background-position:-10px center; }
   position:absolute;
   display:inline-block;
   width:100px;
-  top:75px;
+  top:82px;
   left:200px;
 }
 #hd-top-menu { float:right; padding:1em 2em 1em 1em; }
@@ -491,7 +491,9 @@ div#invoice-container div#recurring-data input { width: auto;}
   margin-bottom:0.3em;
 }
 
-label {
+#invoice-container label,
+#customer-data label, #customer-administrative-data label, #supplier-data label, #supplier-administrative-data label,
+#product-data label, #company-data label, #company-administrative-data label {
   display:block;
   font-weight:bold;
   font-size:0.85em;

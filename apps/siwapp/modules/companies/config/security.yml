@@ -1,0 +1,17 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/08-Security
+
+all:
+  is_secure: on
+  
+index:
+  credentials: can_access_companies
+  
+new:
+  credentials: can_create_companies
+  
+edit:
+  credentials: can_edit_companies
+  
+delete:
+  credentials: can_delete_companies

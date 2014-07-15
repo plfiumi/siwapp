@@ -1,0 +1,17 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/08-Security
+
+all:
+  is_secure: on
+  
+index:
+  credentials: can_access_recurring_invoices
+  
+new:
+  credentials: can_create_recurring_invoices
+  
+edit:
+  credentials: can_edit_recurring_invoices
+  
+delete:
+  credentials: can_delete_recurring_invoices
