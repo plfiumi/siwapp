@@ -86,9 +86,19 @@ class SupplierForm extends BaseSupplierForm
                                               'required'  =>false
                                               ),
                                             array(
-                                              'invalid' => 'Invalid email address'
+                                              'invalid' => sfContext::getInstance()->getI18N()->__('Invalid email address')
                                               )
                                             );
+    $this->validatorSchema['contact_person_email'] = new sfValidatorEmail(
+                                            array(
+                                              'max_length'=>100,
+                                              'required'  =>false
+                                              ),
+                                            array(
+                                              'invalid' => sfContext::getInstance()->getI18N()->__('Invalid email address')
+                                              )
+                                            );
+    
     $this->validatorSchema['name']->setOption('required', true);
     $this->validatorSchema['identification']->setOption('required', true);
     $this->validatorSchema['name_slug']->

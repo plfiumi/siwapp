@@ -47,6 +47,7 @@ class CustomerQuery extends Doctrine_Query
       $this
         ->addWhere("(c.name LIKE '%$text%'".
                    "OR c.identification LIKE '%$text%' ".
+                   "OR c.business_name LIKE '%$text%' ".
                    "OR c.contact_person LIKE '%$text%')");
 
     }

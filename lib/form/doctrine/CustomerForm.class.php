@@ -15,6 +15,14 @@ class CustomerForm extends BaseCustomerForm
     $this->widgetSchema->addFormFormatter('custom', $decorator);
     $this->widgetSchema->setFormFormatterName('custom');
     
+    // if the property is not set, disable extra fields at all
+    if(!PropertyTable::getRaw('customer_extra_fields')) {
+      $enabledFields = array();
+    } else {
+      $customer_extra_fields = PropertyTable::getRaw('customer_extra_fields');
+      $enabledFields = json_decode($customer_extra_fields);
+    }
+    
     $this->widgetSchema['tags']    = new sfWidgetFormInputHidden();
     $this->validatorSchema['tags'] = new sfValidatorString(array('required'=>false));
 
@@ -58,10 +66,26 @@ class CustomerForm extends BaseCustomerForm
     $this->widgetSchema['payment_type_id']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Payment type'));
     $this->widgetSchema['financial_entity']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Financial Entity'));
     $this->widgetSchema['financial_entity_office']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Office'));
-    $this->widgetSchema['financial_entity_control_digit']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Control digit'));
+    
+    if (is_integer(array_search("financial_entity_control_digit", $enabledFields))) {
+      $this->widgetSchema['financial_entity_control_digit']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Control digit'));
+    } else {
+      unset($this['financial_entity_control_digit']);
+    }
+    
     $this->widgetSchema['financial_entity_account']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Account'));
-    $this->widgetSchema['financial_entity_bic']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('BIC Code'));
-    $this->widgetSchema['financial_entity_iban']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('IBAN'));
+    
+    if (is_integer(array_search("financial_entity_bic", $enabledFields))) {
+      $this->widgetSchema['financial_entity_bic']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('BIC Code'));
+    } else {
+      unset($this['financial_entity_bic']);
+    }
+    
+    if (is_integer(array_search("financial_entity_iban", $enabledFields))) {
+      $this->widgetSchema['financial_entity_iban']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('IBAN'));
+    } else {
+      unset($this['financial_entity_iban']);
+    }
     
     // tips
     $common_defaults = array(
@@ -109,9 +133,19 @@ class CustomerForm extends BaseCustomerForm
                                               'required'  =>false
                                               ),
                                             array(
-                                              'invalid' => 'Invalid email address'
+                                              'invalid' => sfContext::getInstance()->getI18N()->__('Invalid email address')
                                               )
                                             );
+    $this->validatorSchema['contact_person_email'] = new sfValidatorEmail(
+                                            array(
+                                              'max_length'=>100,
+                                              'required'  =>false
+                                              ),
+                                            array(
+                                              'invalid' => sfContext::getInstance()->getI18N()->__('Invalid email address')
+                                              )
+                                            );
+    
     $this->validatorSchema['name']->setOption('required', true);
     $this->validatorSchema['identification']->setOption('required', true);
     $this->validatorSchema['name_slug']->

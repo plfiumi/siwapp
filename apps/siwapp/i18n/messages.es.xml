@@ -436,7 +436,7 @@
       </trans-unit>
       <trans-unit>
         <source>Customer info</source>
-        <target>Información del cliente</target>
+        <target>Información del Cliente</target>
       </trans-unit>
       <trans-unit>
         <source>Name/Legal Name</source>
@@ -468,7 +468,7 @@
       </trans-unit>
       <trans-unit>
         <source>Postal code</source>
-        <target>Codigo postal</target>
+        <target>Código Postal</target>
       </trans-unit>
       <trans-unit>
         <source>State</source>
@@ -484,7 +484,7 @@
       </trans-unit>
       <trans-unit>
         <source>Shipping Company Data</source>
-        <target>Compañia de Envíos asociada</target>
+        <target>Compañía de Envíos Asociada</target>
       </trans-unit>
       <trans-unit>
         <source>Email</source>
@@ -492,15 +492,15 @@
       </trans-unit>
       <trans-unit>
         <source>Tax condition</source>
-        <target>Condición impositiva</target>
+        <target>Condición Impositiva</target>
       </trans-unit>
       <trans-unit>
         <source>Tax Conditions</source>
-        <target>Condición impositiva</target>
+        <target>Condición Impositiva</target>
       </trans-unit>
       <trans-unit>
         <source>Add a new tax condition</source>
-        <target>Añadir un nueva condición impositiva</target>
+        <target>Añadir una nueva Condición Impositiva</target>
       </trans-unit>
       <trans-unit>
         <source>Invoicing series</source>
@@ -508,11 +508,15 @@
       </trans-unit>
       <trans-unit>
         <source>The customer has not been saved due to some errors.</source>
-        <target>El cliente no ha podido ser salvado.</target>
+        <target>El Cliente no ha podido ser salvado.</target>
       </trans-unit>
       <trans-unit>
         <source>%d customers were successfully deleted.</source>
         <target>%d clientes han sido borrados.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invalid email address</source>
+        <target>Dirección de Email inválida.</target>
       </trans-unit>
       <!-- ##### PRODUCTS ##### -->
       <trans-unit>
@@ -525,7 +529,7 @@
       </trans-unit>
       <trans-unit>
         <source>Product info</source>
-        <target>Información del producto</target>
+        <target>Información del Producto</target>
       </trans-unit>
       <trans-unit>
         <source>Warning</source>
@@ -618,19 +622,19 @@
       </trans-unit>
       <trans-unit>
         <source>first quarter</source>
-        <target>primer trimerstre</target>
+        <target>primer trimestre</target>
       </trans-unit>
       <trans-unit>
         <source>second quarter</source>
-        <target>segundo trimerstre</target>
+        <target>segundo trimestre</target>
       </trans-unit>
       <trans-unit>
         <source>third quarter</source>
-        <target>tercer trimerstre</target>
+        <target>tercer trimestre</target>
       </trans-unit>
       <trans-unit>
         <source>fourth quarter</source>
-        <target>cuarto trimerstre</target>
+        <target>cuarto trimestre</target>
       </trans-unit>
       <trans-unit>
         <source>Status</source>

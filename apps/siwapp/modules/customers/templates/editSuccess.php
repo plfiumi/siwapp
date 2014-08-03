@@ -155,24 +155,33 @@ $customer = $customerForm->getObject();
         <?php echo render_tag($customerForm['financial_entity_office']) ?></span>
     </li>
     <li>
-      <span class="_50">
-        <?php echo render_tag($customerForm['financial_entity_control_digit'])  ?>
+      <?php $customerFormFields = $customerForm->getWidgetSchema()->getFields();
+        
+        if (array_key_exists('financial_entity_control_digit', $customerFormFields)):  ?>
+        <span class="_50">
+          <?php echo render_tag($customerForm['financial_entity_control_digit'])  ?>
         </span>
+      <?php endif; ?>
       <span class="_50">
         <?php echo render_tag($customerForm['financial_entity_account']) ?></span>
     </li>
     <li>
-      <span class="_50">
-        <?php echo render_tag($customerForm['financial_entity_bic'])  ?>
+      <?php if (array_key_exists("financial_entity_bic", $customerFormFields)):  ?>
+        <span class="_50">
+          <?php echo render_tag($customerForm['financial_entity_bic'])  ?>
         </span>
-      <span class="_50">
-        <?php echo render_tag($customerForm['financial_entity_iban']) ?></span>
+      <?php endif; ?>
+      <?php if (array_key_exists("financial_entity_iban", $customerFormFields)):  ?>
+        <span class="_50">
+          <?php echo render_tag($customerForm['financial_entity_iban']) ?></span>
+        </span>
+      <?php endif; ?>
     </li>
   </ul>
 </div>
   <?php include_partial('common/tagsDataBlock', array('invoice' => $customer, 'invoiceForm' => $customerForm)) ?>
   <div id="saving-options" class="block">
-    <?php
+    <?php if (array_key_exists("financial_entity_control_digit", $customerForm)) {
 echo javascript_tag("
   var validateDC = function(){
       var cd = $('#".$customerForm['financial_entity_control_digit']->renderId()."');
@@ -199,7 +208,7 @@ echo javascript_tag("
     entity.change(validateDC);
     office.change(validateDC);
     account.change(validateDC);
-");
+    "); };
     if ($customer->getId()) {
       echo gButton_to(__('Delete'), "customers/delete?id=" . $customer->getId(), array(
         'class' => 'action delete',

@@ -4,3 +4,5 @@ log/
 web/config.php
 web/uploads/
 web/sf/
+web/config.php
+symfony.bat
