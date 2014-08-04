@@ -577,11 +577,11 @@
       </trans-unit>
       <trans-unit>
         <source>Min stock level</source>
-        <target>Nivel de stock mínimo</target>
+        <target>Nivel de Stock Mínimo</target>
       </trans-unit>
       <trans-unit>
         <source>Sold Units</source>
-        <target>Unidades vendidas</target>
+        <target>Unidades Vendidas</target>
       </trans-unit>
       <trans-unit>
         <source>Tax</source>
@@ -1400,7 +1400,7 @@
       </trans-unit>
       <trans-unit id="61">
         <source>Edit Product</source>
-        <target>Editar producto</target>
+        <target>Editar Producto</target>
       </trans-unit>
       <trans-unit id="62">
         <source>The product could not be deleted. </source>
