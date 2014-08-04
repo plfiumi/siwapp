@@ -107,7 +107,7 @@ class SupplierQuery extends Doctrine_Query
     }
     else
     {
-      return $this->andWhere('i.customer_id = id')
+      return $this->andWhere('i.supplier_id = id')
         ->andWhere('i.issue_date >= ?', sfDate::getInstance($date)->to_database());
     }
   }
@@ -127,7 +127,7 @@ class SupplierQuery extends Doctrine_Query
     }
     else
     {
-      return $this->andWhere('i.customer_id = id')
+      return $this->andWhere('i.supplier_id = id')
         ->andWhere('i.issue_date < ?', sfDate::getInstance($date)->addDay(1)->to_database());
     }
   }

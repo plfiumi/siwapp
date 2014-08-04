@@ -133,19 +133,21 @@ $supplier = $supplierForm->getObject();
     </li>
   </ul>
 </div>
+<!-- on hold until grant access to customer users
 <div id="supplier-data" class="global-data block">  
-  <h3><?php echo __('Online Access') ?></h3>
+  <h3><?php //echo __('Online Access') ?></h3>
   <ul>
     <li>
       <span class="_50">
-        <?php echo render_tag($supplierForm['login'])?>
+        <?php //echo render_tag($supplierForm['login'])?>
       </span>
       <span class="_50">
-        <?php echo render_tag($supplierForm['password'])?>
+        <?php //echo render_tag($supplierForm['password'])?>
       </span>
     </li>
   </ul> 
 </div>
+-->
 <div id="supplier-data" class="global-data block">  
   <h3><?php echo __('Expense Type') ?></h3>
   <ul>

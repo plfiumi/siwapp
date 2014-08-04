@@ -7,7 +7,7 @@
       <!-- ##### LOGIN/OUT ##### -->
       <trans-unit>
         <source>Login</source>
-        <target>Nombre de usuario</target>
+        <target>Nombre de Usuario</target>
       </trans-unit>
       <trans-unit>
         <source>Username</source>
@@ -1184,7 +1184,7 @@
       </trans-unit>
       <trans-unit id="2">
         <source>Expense Type</source>
-        <target>Tipo de gasto</target>
+        <target>Tipo de Gasto</target>
       </trans-unit>
       <trans-unit id="3">
         <source>Amount</source>
@@ -1200,7 +1200,7 @@
       </trans-unit>
       <trans-unit id="6">
         <source>Supplier info</source>
-        <target>Información del proveedor</target>
+        <target>Información del Proveedor</target>
       </trans-unit>
       <trans-unit id="12">
         <source>Edit Estimate</source>
@@ -1232,39 +1232,39 @@
       </trans-unit>
       <trans-unit id="19">
         <source>Supplier Name</source>
-        <target>Nombre del proveedor</target>
+        <target>Nombre del Proveedor</target>
       </trans-unit>
       <trans-unit id="20">
         <source>Supplier Legal Id</source>
-        <target>Identificacion legal del proveedor</target>
+        <target>Identificación Legal del Proveedor</target>
       </trans-unit>
       <trans-unit id="21">
         <source>Supplier Person</source>
-        <target>Persona de contacto del proveedor</target>
+        <target>Persona de Contacto del Proveedor</target>
       </trans-unit>
       <trans-unit id="22">
         <source>Supplier Address</source>
-        <target>Direccion del proveedor</target>
+        <target>Dirección del Proveedor</target>
       </trans-unit>
       <trans-unit id="23">
         <source>Supplier Phone</source>
-        <target>Telefono del proveedor</target>
+        <target>Teléfono del Proveedor</target>
       </trans-unit>
       <trans-unit id="24">
         <source>Supplier Fax</source>
-        <target>Fax del proveedor</target>
+        <target>Fax del Proveedor</target>
       </trans-unit>
       <trans-unit id="25">
         <source>Supplier Email Address</source>
-        <target>Correo electronico del proveedor</target>
+        <target>Correo Electrónico del Proveedor</target>
       </trans-unit>
       <trans-unit id="26">
         <source>New Expense</source>
-        <target>Nuevo gasto</target>
+        <target>Nuevo Gasto</target>
       </trans-unit>
       <trans-unit id="27">
         <source>Edit Expense</source>
-        <target>Editar gasto</target>
+        <target>Editar Gasto</target>
       </trans-unit>
       <trans-unit id="28">
         <source>%d expenses were successfully deleted.</source>
@@ -1280,11 +1280,11 @@
       </trans-unit>
       <trans-unit id="31">
         <source>Supplier identification</source>
-        <target>Identificacion del proveedor</target>
+        <target>Identificación del Proveedor</target>
       </trans-unit>
       <trans-unit id="32">
         <source>Supplier reference</source>
-        <target>Numero factura proveedor</target>
+        <target>Número de Factura del Proveedor</target>
       </trans-unit>
       <trans-unit id="33">
         <source>Comments</source>
@@ -1296,11 +1296,11 @@
       </trans-unit>
       <trans-unit id="35">
         <source>Company name</source>
-        <target>Nombre de la empresa</target>
+        <target>Nombre de la Empresa</target>
       </trans-unit>
       <trans-unit id="36">
         <source>Company address</source>
-        <target>Direccion de la empresa</target>
+        <target>Dirección de la empresa</target>
       </trans-unit>
       <trans-unit id="37">
         <source>Company email</source>
@@ -1424,15 +1424,15 @@
       </trans-unit>
       <trans-unit id="66">
         <source>Supplier Email</source>
-        <target>Correo electronico del proveedor</target>
+        <target>Correo Electrónico del Proveedor</target>
       </trans-unit>
       <trans-unit id="67">
         <source>New Supplier</source>
-        <target>Nuevo proveedor</target>
+        <target>Nuevo Proveedor</target>
       </trans-unit>
       <trans-unit id="68">
         <source>Edit Supplier</source>
-        <target>Editar proveedor</target>
+        <target>Editar Proveedor</target>
       </trans-unit>
       <trans-unit id="69">
         <source>The supplier could not be deleted. </source>
@@ -1488,15 +1488,15 @@
       </trans-unit>
       <trans-unit>
         <source>Website</source>
-        <target>Pagina web</target>
+        <target>Página web</target>
       </trans-unit>
       <trans-unit>
         <source>Supplier Mobile</source>
-        <target>Movil del proveedor</target>
+        <target>Móvil del Proveedor</target>
       </trans-unit>
       <trans-unit>
         <source>Online Access</source>
-        <target>Datos de acceso Online</target>
+        <target>Datos de Acceso Online</target>
       </trans-unit>
       <trans-unit>
         <source>Company Legal Id</source>
@@ -1592,7 +1592,7 @@
       </trans-unit>
       <trans-unit>
         <source>Period</source>
-        <target>Periodo</target>
+        <target>Período</target>
       </trans-unit>
       <trans-unit>
         <source>No related Estimate</source>
@@ -1628,7 +1628,7 @@
       </trans-unit>
       <trans-unit>
         <source>Administrative details</source>
-        <target>Datos administrativos</target>
+        <target>Datos Administrativos</target>
       </trans-unit>
       <trans-unit>
         <source>IBAN</source>
@@ -1652,7 +1652,7 @@
       </trans-unit>
       <trans-unit>
         <source>Account</source>
-        <target>Cuenta corriente</target>
+        <target>Cuenta Corriente</target>
       </trans-unit>
       <trans-unit>
         <source>Export</source>

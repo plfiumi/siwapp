@@ -54,7 +54,7 @@ class SupplierForm extends BaseSupplierForm
     // placeholders
     $this->widgetSchema['name']->setAttributes(array('placeholder'   => sfContext::getInstance()->getI18N()->__('Name/Legal Name'),
                                                      'autofocus'     => 'autofocus'));
-    $this->widgetSchema['business_name']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Legal Id'));
+    $this->widgetSchema['business_name']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Business Name'));
     $this->widgetSchema['identification']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Legal Id'));
     $this->widgetSchema['phone']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Phone'));
     $this->widgetSchema['fax']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Fax'));
@@ -106,7 +106,7 @@ class SupplierForm extends BaseSupplierForm
                               $this->validatorSchema['name_slug']->
                                 getMessages()
                               ));
-    $this->validatorSchema['expense_type_id']->setOption('required', true);                       
+    $this->validatorSchema['expense_type_id']->setOption('required', false);                       
     /* TODO: Commented because it breaks 
     foreach($this->validatorSchema->getPostValidator()->getValidators() as $val)
     {
