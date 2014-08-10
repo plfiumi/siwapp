@@ -9,6 +9,9 @@ class ExpensesSettingsForm extends FormsContainer
   
   public function configure()
   {
+    $i18n = sfContext::getInstance()->getI18N();
+    $invalid_message = $i18n->__('Some expenses types have not been deleted because they are currently in use').": <strong>%invalid_expenses%</strong>. ";
+    
     $culture = $this->getOption('culture', sfConfig::get('sf_default_culture'));
 
     $this->embedForm('expenses',new ExpensesTypeForm());
@@ -18,7 +21,7 @@ class ExpensesSettingsForm extends FormsContainer
               new sfValidatorCallback(array(
                 'callback' => array($this, 'validateExpense')
               ), array(
-                'invalid' => 'Some expenses have not been deleted because they are currently in use: <strong>%invalid_expenses%</strong>.'
+                'invalid' => $invalid_message
               )),
              )));
     

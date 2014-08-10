@@ -8,6 +8,12 @@ class GlobalSettingsForm extends FormsContainer
 
   public function configure()
   {
+    $i18n = sfContext::getInstance()->getI18N();
+    $invalid_taxes_message = $i18n->__('Some taxes have not been deleted because they are currently in use').": <strong>%invalid_taxes%</strong>. ";
+    $invalid_series_message = $i18n->__('Some series have not been deleted because they are currently in use').": <strong>%invalid_series%</strong>. ";
+    $invalid_payments_message = $i18n->__('Some payments have not been deleted because they are currently in use').": <strong>%invalid_payments%</strong>. ";
+    $invalid_tax_conditions_message = $i18n->__('Some tax conditions have not been deleted because they are currently in use').": <strong>%invalid_tax_conditions%</strong>. ";
+    
     $culture = $this->getOption('culture', sfConfig::get('sf_default_culture'));
     
     //Embed Company Form:
@@ -26,12 +32,12 @@ class GlobalSettingsForm extends FormsContainer
           new sfValidatorCallback(array(
               'callback' => array($this, 'validateTaxes')
             ), array(
-              'invalid' => 'Some taxes have not been deleted because they are currently in use: <strong>%invalid_taxes%</strong>.'
+              'invalid' => $invalid_taxes_message
             )),
           new sfValidatorCallback(array(
               'callback' => array($this, 'validateSeries')
             ), array(
-              'invalid' => 'Some series have not been deleted because they are currently in use: <strong>%invalid_series%</strong>.'
+              'invalid' => $invalid_series_message
             )),
 //          new sfValidatorCallback(array(
 //              'callback' => array($this, 'validateExpense')
@@ -41,12 +47,12 @@ class GlobalSettingsForm extends FormsContainer
          new sfValidatorCallback(array(
               'callback' => array($this, 'validatePayments')
             ), array(
-              'invalid' => 'Some payments have not been deleted because they are currently in use: <strong>%invalid_payments%</strong>.'
+              'invalid' => $invalid_payments_message
             )),
          new sfValidatorCallback(array(
               'callback' => array($this, 'validateTaxConditions')
             ), array(
-              'invalid' => 'Some tax conditions have not been deleted because they are currently in use: <strong>%invalid_tax_conditions%</strong>.'
+              'invalid' => $invalid_tax_conditions_message
             )),
         )));
 
@@ -159,34 +165,36 @@ class GlobalSettingsForm extends FormsContainer
    */
   public function validatePayments(sfValidatorBase $validator, $values, $arguments)
   {
+    
     $deleted_ids = array();
-    foreach($values['payments'] as $key => $expense)
+    foreach($values['payments'] as $key => $payment)
     {
-      if($expense['remove'])
+      if($payment['remove'])
       {
-        $deleted_ids[] = $expense['id'];
+        $deleted_ids[] = $payment['id'];
       }
     }
     if(!count($deleted_ids))
     {
       return $values;
     }
-
-    return $values;
-
-    $toDelete = Doctrine_Core::getTable('PaymentType')
-      ->createQuery()
-      ->from('PaymentType s')
-      ->innerJoin('s.Common c')
-      ->addWhere('s.id IN (?)',implode(',',$deleted_ids))->execute();
+    
+    $toDelete = Doctrine_Query::create()
+      ->select('p.id')
+      ->from('PaymentType p')
+      ->leftJoin('Customer cu')
+      ->leftJoin('Common c')
+      ->addWhere('p.id = cu.payment_type_id')
+      ->orWhere('p.id = c.payment_type_id')
+      ->addWhere('p.id IN (?)',implode(',',$deleted_ids))->execute();
 
     if(count($toDelete))
     {
       $invalid = array();
-      foreach($toDelete as $k => $expense)
+      foreach($toDelete as $k => $payment)
       {
-        $this->taintedValues['payment']['old_'.$expense->id]['remove'] = '';
-        $invalid[] = $expense->name;
+        $this->taintedValues['payment']['old_'.$payment->id]['remove'] = '';
+        $invalid[] = $payment->name;
       }
       throw new sfValidatorErrorSchema($validator,
                                        array(
@@ -207,33 +215,32 @@ class GlobalSettingsForm extends FormsContainer
   public function validateTaxConditions(sfValidatorBase $validator, $values, $arguments)
   {
     $deleted_ids = array();
-    foreach($values['taxConditions'] as $key => $expense)
+    foreach($values['taxConditions'] as $key => $taxCondition)
     {
-      if($expense['remove'])
+      if($taxCondition['remove'])
       {
-        $deleted_ids[] = $expense['id'];
+        $deleted_ids[] = $taxCondition['id'];
       }
     }
     if(!count($deleted_ids))
     {
       return $values;
     }
-
-    return $values;
-
-    $toDelete = Doctrine_Core::getTable('TaxCondition')
-      ->createQuery()
-      ->from('TaxCondition s')
-      ->innerJoin('s.Common c')
-      ->addWhere('s.id IN (?)',implode(',',$deleted_ids))->execute();
+    
+    $toDelete = Doctrine_Query::create()
+      ->select('t.id')
+      ->from('TaxCondition t')
+      ->leftJoin('Customer cu')
+      ->addWhere('t.id = cu.tax_condition_id')
+      ->addWhere('t.id IN (?)',implode(',',$deleted_ids))->execute();
 
     if(count($toDelete))
     {
       $invalid = array();
-      foreach($toDelete as $k => $expense)
+      foreach($toDelete as $k => $taxCondition)
       {
-        $this->taintedValues['taxConditions']['old_'.$expense->id]['remove'] = '';
-        $invalid[] = $expense->name;
+        $this->taintedValues['taxConditions']['old_'.$taxCondition->id]['remove'] = '';
+        $invalid[] = $taxCondition->name;
       }
       throw new sfValidatorErrorSchema($validator,
                                        array(

@@ -8,6 +8,9 @@ class ProductsSettingsForm extends FormsContainer
   
   public function configure()
   {
+    $i18n = sfContext::getInstance()->getI18N();
+    $invalid_message = $i18n->__('Some categories have not been deleted because they are currently in use').": <strong>%invalid_categories%</strong>. ";
+    
     $culture = $this->getOption('culture', sfConfig::get('sf_default_culture'));
 
     $this->embedForm('product_categories',new ProductCategoriesForm());
@@ -17,7 +20,7 @@ class ProductsSettingsForm extends FormsContainer
           new sfValidatorCallback(array(
               'callback' => array($this, 'validateCategories')
             ), array(
-              'invalid' => 'Some categories have not been deleted because they are currently in use: <strong>%invalid_categories%</strong>.'
+              'invalid' => $invalid_message
             )),
         )));
     
@@ -68,6 +71,7 @@ class ProductsSettingsForm extends FormsContainer
         $this->taintedValues['product_categories']['old_'.$categoryToDelete->id]['remove'] = '';
         $invalid[] = $categoryToDelete->name;
       }
+      $invalid = array_unique($invalid);
       throw new sfValidatorErrorSchema($validator, 
                                        array(
                                              new sfValidatorError($validator, 

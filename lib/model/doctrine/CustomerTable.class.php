@@ -116,7 +116,7 @@ class CustomerTable extends Doctrine_Table
       $res[$i]['shipping_country'] = $item->getShippingCountry();
       $res[$i]['shipping_company_data'] = $item->getShippingCompanyData();
       $res[$i]['comments'] = $item->getComments();
-      $res[$i]['tax_condition'] = $item->getTaxCondition();  
+      $res[$i]['tax_condition'] = $item->getTaxCondition()->getName();  
       $res[$i]['payment_type'] = $item->getPaymentType()->getId();
       $res[$i]['discount'] = $item->getDiscount();
       $res[$i]['series'] = $item->getSeries()->getId();

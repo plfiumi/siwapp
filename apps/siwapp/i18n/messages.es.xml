@@ -587,6 +587,10 @@
         <source>Tax</source>
         <target>Impuesto</target>
       </trans-unit>
+      <trans-unit>
+        <source>Some categories have not been deleted because they are currently in use</source>
+        <target>Algunas categorías no han sido eliminadas debido a que se encuentran en uso</target>
+      </trans-unit>
       <!-- ##### SEARCH ##### -->
       <trans-unit>
         <source>from</source>
@@ -744,7 +748,7 @@
       </trans-unit>
       <trans-unit>
         <source>Global settings</source>
-        <target>Configuración global</target>
+        <target>Configuración Global</target>
       </trans-unit>
       <trans-unit>
         <source>My settings</source>
@@ -813,7 +817,7 @@
       </trans-unit>
       <trans-unit>
         <source>Invoicing taxes</source>
-        <target>Impuestos de facturación</target>
+        <target>Impuestos de Facturación</target>
       </trans-unit>
       <trans-unit>
         <source>Value</source>
@@ -849,7 +853,7 @@
       </trans-unit>
       <trans-unit>
         <source>Legal texts</source>
-        <target>Textos legales</target>
+        <target>Textos Legales</target>
       </trans-unit>
       <trans-unit>
         <source>Buy order number</source>
@@ -898,7 +902,7 @@
       <!-- ##### SETTINGS - MY SETTINGS ##### -->
       <trans-unit>
         <source>About you</source>
-        <target>Sobre usted</target>
+        <target>Sobre Usted</target>
       </trans-unit>
       <trans-unit>
         <source>First Name</source>
@@ -910,7 +914,7 @@
       </trans-unit>
       <trans-unit>
         <source>Translate the application</source>
-        <target>Traduzca la aplicación</target>
+        <target>Traduzca la Aplicación</target>
       </trans-unit>
       <trans-unit>
         <source>Interface language</source>
@@ -918,7 +922,7 @@
       </trans-unit>
       <trans-unit>
         <source>Make it easy</source>
-        <target>Hágalo simple</target>
+        <target>Hágalo Simple</target>
       </trans-unit>
       <trans-unit>
         <source>Results to display in listings</source>
@@ -942,7 +946,7 @@
       </trans-unit>
       <trans-unit>
         <source>Change your password</source>
-        <target>Cambie su contraseña</target>
+        <target>Cambie su Contraseña</target>
       </trans-unit>
       <trans-unit>
         <source>Old password</source>
@@ -1376,7 +1380,7 @@
       </trans-unit>
       <trans-unit id="55">
         <source>Expenses Type</source>
-        <target>Tipos de gasto</target>
+        <target>Tipos de Gasto</target>
       </trans-unit>
       <trans-unit id="56">
         <source>Add a new expense type</source>
@@ -1384,7 +1388,7 @@
       </trans-unit>
       <trans-unit id="57">
         <source>Payments Type</source>
-        <target>Formas de pago</target>
+        <target>Formas de Pago</target>
       </trans-unit>
       <trans-unit id="58">
         <source>Add a new payment type</source>
@@ -1392,7 +1396,7 @@
       </trans-unit>
       <trans-unit id="59">
         <source>Product Categories</source>
-        <target>Categoria de producto</target>
+        <target>Categoría de Producto</target>
       </trans-unit>
       <trans-unit id="60">
         <source>Add a new category</source>
@@ -1525,6 +1529,26 @@
       <trans-unit>
         <source>Expense Taxes detail</source>
         <target>Resumen impuestos despeses</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Some tax conditions have not been deleted because they are currently in use</source>
+        <target>Algunas condiciones impositivas no han sido eliminadas debido a que se encuentran en uso</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Some payments have not been deleted because they are currently in use</source>
+        <target>Algunos tipos de pago no han sido eliminados debido a que se encuentran en uso</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Some series have not been deleted because they are currently in use</source>
+        <target>Algunas series de facturación no han sido eliminadas debido a que se encuentran en uso</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Some taxes have not been deleted because they are currently in use</source>
+        <target>Algunos tipos de impuesto no han sido eliminados debido a que se encuentran en uso</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Some expenses types have not been deleted because they are currently in use</source>
+        <target>Algunos tipos de gasto no han sido eliminados debido a que se encuentran en uso</target>
       </trans-unit>
       <trans-unit>
         <source>Profit and Loss</source>

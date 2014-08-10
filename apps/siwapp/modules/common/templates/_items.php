@@ -85,20 +85,30 @@
       </td>
     </tr>
     <?php endif; ?>
-    <?php foreach ($invoice->getBasesDetails() as $name => $amount): ?>
-    <tr>
-      <td><?php echo __('Base')." ".$name ?></td>
-      <td class="net right">
-        <?php echo format_currency($amount, $currency)?>
-      </td>
-    </tr>
-    <?php endforeach ?>
-    <?php foreach ($invoice->getTaxDetails() as $name => $amount): ?>
+    <?php 
+    if (is_array($invoice->getBasesDetails()->getRawValue())):
+      foreach ($invoice->getBasesDetails() as $name => $amount): ?>
       <tr>
-        <td><?php echo __('Total')." ".$name ?></td>
-        <td class="taxes right"><?php echo format_currency($amount,$currency)?></td>
+        <td><?php echo __('Base')." ".$name ?></td>
+        <td class="net right">
+          <?php echo format_currency($amount, $currency)?>
+        </td>
+      </tr>
+      <?php endforeach ?>
+      <?php foreach ($invoice->getTaxDetails() as $name => $amount): ?>
+        <tr>
+          <td><?php echo __('Total')." ".$name ?></td>
+          <td class="taxes right"><?php echo format_currency($amount,$currency)?></td>
+        <tr>
+      <?php endforeach; 
+    else: ?>
       <tr>
-    <?php endforeach ?>
+       <td><?php echo __('Taxes') ?></td>
+       <td class="taxes right">
+         <?php echo format_currency($invoice->getTaxAmount(), $currency) ?>
+       </td>
+      </tr>
+   <?php endif; ?>
     <tr class="strong">
       <td><?php echo __('Total') ?></td>
       <td class="gross right">
