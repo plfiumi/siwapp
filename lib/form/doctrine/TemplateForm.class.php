@@ -32,7 +32,7 @@ class TemplateForm extends BaseTemplateForm
       'replace_tab_by_spaces' => true,
       'toolbar'    => 'save, |, fullscreen, search, go_to_line, |, undo, redo, |, change_smooth_selection, highlight, reset_highlight, word_wrap',
       'save_callback' => "editarea_save_callback"
-      )));
+      )), array("rows"=>"40"));
     
     $this->validatorSchema['name']->setOption('required', true);
     $this->validatorSchema['template']->setOption('required', true);

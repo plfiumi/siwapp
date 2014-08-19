@@ -73,6 +73,14 @@ class Common extends BaseCommon
     {
       Doctrine::getTable('Supplier')->updateSupplier($this);
     }
+    
+    /*
+     * Handle bug on empty payment_type_id
+     * Manejo bug al llegar vacÃ­o payment_type_id
+     */
+    if ($this->getPaymentTypeId() == "") {
+      $this->setPaymentTypeId(null);
+    }
   }
 
   public function postDelete($event)
@@ -80,7 +88,7 @@ class Common extends BaseCommon
       //    $this->Items->delete();
 
 
-/*  and it´s over. clients shouldn´t be deleted after their last invoice.
+/*  and it's over. clients shouldn't be deleted after their last invoice.
 /*  see http://dev.markhaus.com/projects/siwapp/ticket/503
 */
   }
@@ -175,7 +183,7 @@ class Common extends BaseCommon
     {
         $taxvalue = Doctrine::getTable('Tax')->createQuery('t')
            ->where('t.name = ?', $name)->fetchOne()->getValue();
-        //Retención
+        //RetenciÃ³n
         if($ret && $taxvalue < 0) {
             $retencion = $value;
             $baseRetencion = $bases[$name];

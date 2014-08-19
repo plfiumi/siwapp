@@ -105,7 +105,7 @@
       </trans-unit>
       <trans-unit>
         <source>Payment details</source>
-        <target>Detalles del pago</target>
+        <target>Detalles del Pago</target>
       </trans-unit>
       <trans-unit>
         <source>Payments were saved successfully.</source>
@@ -1480,7 +1480,7 @@
       </trans-unit>
       <trans-unit id="79">
         <source>Pending Estimates</source>
-        <target>Pressupuestos pendientes</target>
+        <target>Presupuestos pendientes</target>
       </trans-unit>
       <trans-unit>
         <source>Payment type</source>
@@ -1684,7 +1684,7 @@
       </trans-unit>
       <trans-unit>
         <source>Other info</source>
-        <target>Información adicional</target>
+        <target>Información Adicional</target>
       </trans-unit>
       <trans-unit>
         <source>Mercantil Registry</source>

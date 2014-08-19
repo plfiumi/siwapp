@@ -119,7 +119,6 @@ echo javascript_tag("
       $('#".$invoiceItemForm['unitary_cost']->renderId()."').val(item[2]);
       $('#".$invoiceItemForm['product_id']->renderId()."').val(item[3]);
         
-      //$('#"."item_taxes_list_". $rowId ."_". $taxKey ."').val(item[4]);
       $(document).trigger('GlobalUpdateEvent');
     });
     

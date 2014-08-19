@@ -35,7 +35,7 @@
             </span>
             <span class="_50 _last">
               <label><?php echo __('Tax condition') ?>:</label>
-              <?php echo $invoice->getCustomerTaxCondition() ?>
+              <?php echo ($invoice->getCustomerTaxCondition() == "") ?  "-" : $invoice->getCustomerTaxCondition(); ?>
             </span>
           </span>
           <span class="clear"></span>
@@ -104,21 +104,29 @@
           <?php endif ?>
         </tbody>
         <tfoot id="global_calculations">
+          <tr>
+            <td colspan="4" rowspan="7" class="noborder"></td>
+            <td><?php echo __('Subtotal') ?></td>
+            <td id="td_subtotal" class="right">
+              <?php echo format_currency($invoice->getNetAmount(), $currency) ?>
+            </td>
+          </tr>
           <?php foreach ($invoice->getBasesDetails() as $name => $amount): ?>
           <tr>
-            <td colspan="4" class="noborder"></td>
             <td><?php echo __('Base')." ".$name ?></td>
-            <td id="td_subtotal" class="right">
+            <td class="right">
               <?php echo format_currency($amount, $currency) ?>
             </td>
           </tr>
           <?php endforeach ?>
+	  
           <?php foreach ($invoice->getTaxDetails() as $name => $amount): ?>
           <tr>
-            <td colspan="4" class="noborder"></td>
+	    
             <td><?php echo __('Total')." ".$name ?></td>
             <td class="right"><?php echo format_currency($amount,$currency)?></td>
           </tr>
+	  
           <?php endforeach ?>
           <tr>
             <td><?php echo __('Discount') ?></td>
@@ -202,7 +210,9 @@
   <div id="saving-options">
     <?php echo gButton_to_function(__('Print'), "Tools.popup(siwapp_urls.printHtml + '?ids[]=".$invoice->getId()."')", 'class=action print') ?>
     <?php echo gButton_to_function(__('PDF'), "window.location=siwapp_urls.printPdf + '?ids[]=".$invoice->getId()."'", 'class=action pdf') ?>
-    <?php echo gButton_to(__('Send'), 'invoices/send?id=' .$invoice->getId(), 'class=action send') ?>
+    <?php if ($sf_user->hasCredential("can_send_invoices")) {
+            echo gButton_to(__('Send'), 'invoices/send?id=' .$invoice->getId(), 'class=action send');
+          } ?>
     <?php echo gButton_to(__('Edit'), 'invoices/edit?id=' .$invoice->getId(), 'class=action edit');  ?>
   </div>
 

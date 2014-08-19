@@ -35,7 +35,7 @@ $csrf     = new sfForm();
               renderHeaders(array(
                 'series_id'        => array('Serie', 'desc'),
                 'number'        => array('Number', 'desc'),
-                'customer_name' => array('Customer Name', 'asc'),
+                'customer_name' => array('Name/Legal Name', 'asc'),
                 'issue_date'    => array('Date', 'desc'),
                 'due_date'      => array('Due Date', 'asc'),
                 'status'        => array('Status', 'asc'),

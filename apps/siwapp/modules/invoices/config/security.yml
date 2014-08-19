@@ -15,3 +15,9 @@ edit:
   
 delete:
   credentials: can_delete_invoices
+  
+send:
+  credentials: can_send_invoices
+  
+export:
+  credentials: can_export_invoices

@@ -101,8 +101,11 @@ $invoice = $invoiceForm->getObject();
     {
       echo gButton_to_function(__('Save as draft'), "\$('form.invoice').saveInvoiceAsDraft()", 'class=action save-draft', 'button=true')."&nbsp;&nbsp;";
     }
-    echo gButton_to_function(__('Save and send by e-mail'),"\$('form.invoice').saveInvoiceAndEmail();", 'class=action send save-email', 'button=true')."&nbsp;&nbsp;";
-
+    
+    if ($sf_user->hasCredential("can_send_invoices")) {
+      echo gButton_to_function(__('Save and send by e-mail'),"\$('form.invoice').saveInvoiceAndEmail();", 'class=action send save-email', 'button=true')."&nbsp;&nbsp;";
+    }
+    
     echo gButton(__('Save'), 'type=submit class=action primary save', 'button=true');
     ?>
   </div>

@@ -52,7 +52,7 @@ class InvoiceForm extends CommonForm
     
     $this->setDefaults($default_values);
     
-    $this->validatorSchema['payment_type_id'] = new sfValidatorString(array('required' => true));
+    $this->validatorSchema['payment_type_id'] = new sfValidatorString(array('required' => false));
     $this->widgetSchema->setNameFormat('invoice[%s]');
 
     parent::configure();
