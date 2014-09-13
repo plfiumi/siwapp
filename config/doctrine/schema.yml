@@ -207,10 +207,14 @@ Common:
     customer_tax_condition: string(10)
     supplier_id: integer
     supplier_name: string(100)
+    supplier_business_name: string(100)
     supplier_identification: string(50)
     supplier_email: string(100)
     supplier_phone: string(20)
     supplier_fax: string(20)
+    supplier_mobile: string(20)
+    supplier_comments: clob
+    supplier_tax_condition: string(10)
     invoicing_address: string(255)
     invoicing_postalcode: string(255)
     invoicing_city: string(255)

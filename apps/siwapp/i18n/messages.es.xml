@@ -1240,19 +1240,19 @@
       </trans-unit>
       <trans-unit id="20">
         <source>Supplier Legal Id</source>
-        <target>Identificación Legal del Proveedor</target>
+        <target>Identificación Legal</target>
       </trans-unit>
       <trans-unit id="21">
         <source>Supplier Person</source>
-        <target>Persona de Contacto del Proveedor</target>
+        <target>Persona de Contacto</target>
       </trans-unit>
       <trans-unit id="22">
         <source>Supplier Address</source>
-        <target>Dirección del Proveedor</target>
+        <target>Dirección</target>
       </trans-unit>
       <trans-unit id="23">
         <source>Supplier Phone</source>
-        <target>Teléfono del Proveedor</target>
+        <target>Teléfono</target>
       </trans-unit>
       <trans-unit id="24">
         <source>Supplier Fax</source>
@@ -1260,7 +1260,7 @@
       </trans-unit>
       <trans-unit id="25">
         <source>Supplier Email Address</source>
-        <target>Correo Electrónico del Proveedor</target>
+        <target>Correo Electrónico</target>
       </trans-unit>
       <trans-unit id="26">
         <source>New Expense</source>
@@ -1284,7 +1284,7 @@
       </trans-unit>
       <trans-unit id="31">
         <source>Supplier identification</source>
-        <target>Identificación del Proveedor</target>
+        <target>Identificación</target>
       </trans-unit>
       <trans-unit id="32">
         <source>Supplier reference</source>

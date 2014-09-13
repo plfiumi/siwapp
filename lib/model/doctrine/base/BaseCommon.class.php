@@ -19,10 +19,14 @@
  * @property string $customer_tax_condition
  * @property integer $supplier_id
  * @property string $supplier_name
+ * @property string $supplier_business_name
  * @property string $supplier_identification
  * @property string $supplier_email
  * @property string $supplier_phone
  * @property string $supplier_fax
+ * @property string $supplier_mobile
+ * @property clob $supplier_comments
+ * @property string $supplier_tax_condition
  * @property string $invoicing_address
  * @property string $invoicing_postalcode
  * @property string $invoicing_city
@@ -92,10 +96,14 @@
  * @method string              getCustomerTaxCondition()    Returns the current record's "customer_tax_condition" value
  * @method integer             getSupplierId()              Returns the current record's "supplier_id" value
  * @method string              getSupplierName()            Returns the current record's "supplier_name" value
+ * @method string              getSupplierBusinessName()    Returns the current record's "supplier_business_name" value
  * @method string              getSupplierIdentification()  Returns the current record's "supplier_identification" value
  * @method string              getSupplierEmail()           Returns the current record's "supplier_email" value
  * @method string              getSupplierPhone()           Returns the current record's "supplier_phone" value
  * @method string              getSupplierFax()             Returns the current record's "supplier_fax" value
+ * @method string              getSupplierMobile()          Returns the current record's "supplier_mobile" value
+ * @method clob                getSupplierComments()        Returns the current record's "supplier_comments" value
+ * @method string              getSupplierTaxCondition()    Returns the current record's "supplier_tax_condition" value
  * @method string              getInvoicingAddress()        Returns the current record's "invoicing_address" value
  * @method string              getInvoicingPostalcode()     Returns the current record's "invoicing_postalcode" value
  * @method string              getInvoicingCity()           Returns the current record's "invoicing_city" value
@@ -164,10 +172,14 @@
  * @method Common              setCustomerTaxCondition()    Sets the current record's "customer_tax_condition" value
  * @method Common              setSupplierId()              Sets the current record's "supplier_id" value
  * @method Common              setSupplierName()            Sets the current record's "supplier_name" value
+ * @method Common              setSupplierBusinessName()    Sets the current record's "supplier_business_name" value
  * @method Common              setSupplierIdentification()  Sets the current record's "supplier_identification" value
  * @method Common              setSupplierEmail()           Sets the current record's "supplier_email" value
  * @method Common              setSupplierPhone()           Sets the current record's "supplier_phone" value
  * @method Common              setSupplierFax()             Sets the current record's "supplier_fax" value
+ * @method Common              setSupplierMobile()          Sets the current record's "supplier_mobile" value
+ * @method Common              setSupplierComments()        Sets the current record's "supplier_comments" value
+ * @method Common              setSupplierTaxCondition()    Sets the current record's "supplier_tax_condition" value
  * @method Common              setInvoicingAddress()        Sets the current record's "invoicing_address" value
  * @method Common              setInvoicingPostalcode()     Sets the current record's "invoicing_postalcode" value
  * @method Common              setInvoicingCity()           Sets the current record's "invoicing_city" value
@@ -284,6 +296,10 @@ abstract class BaseCommon extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('supplier_business_name', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
         $this->hasColumn('supplier_identification', 'string', 50, array(
              'type' => 'string',
              'length' => 50,
@@ -299,6 +315,17 @@ abstract class BaseCommon extends sfDoctrineRecord
         $this->hasColumn('supplier_fax', 'string', 20, array(
              'type' => 'string',
              'length' => 20,
+             ));
+        $this->hasColumn('supplier_mobile', 'string', 20, array(
+             'type' => 'string',
+             'length' => 20,
+             ));
+        $this->hasColumn('supplier_comments', 'clob', null, array(
+             'type' => 'clob',
+             ));
+        $this->hasColumn('supplier_tax_condition', 'string', 10, array(
+             'type' => 'string',
+             'length' => 10,
              ));
         $this->hasColumn('invoicing_address', 'string', 255, array(
              'type' => 'string',

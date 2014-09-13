@@ -35,7 +35,7 @@ $csrf     = new sfForm();
               // sort parameter => array (Name, default order)
               renderHeaders(array(
                 'number'        => array('Number', 'desc'),
-                'customer_name' => array('Customer Name', 'asc'),
+                'customer_name' => array('Customer', 'asc'),
                 'issue_date'    => array('Date', 'desc'),
                 'status'        => array('Status', 'asc'),
                 'gross_amount'  => array('Total', 'desc'),

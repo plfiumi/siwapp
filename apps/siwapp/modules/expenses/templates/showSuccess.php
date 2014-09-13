@@ -16,11 +16,11 @@
         <li>
           <span>
             <span class="_50">
-              <label><?php echo __('Supplier') ?>:</label>
+              <label><?php echo __('Name/Legal Name') ?>:</label>
               <?php echo $invoice->getSupplierName() ?>
             </span>
             <span class="_50 _last">
-              <label><?php echo __('Supplier identification') ?>:</label>
+              <label><?php echo __('Legal Id') ?>:</label>
               <?php echo $invoice->getSupplierIdentification() ?>
             </span>
           </span>
@@ -29,8 +29,21 @@
         <li>
           <span>
             <span class="_50">
-              <label><?php echo __('Contact person') ?>:</label>
-              <?php echo $invoice->getContactPerson() ?>
+              <label><?php echo __('Business Name') ?>:</label>
+              <?php echo $invoice->getSupplierBusinessName() ?>
+            </span>
+            <span class="_50 _last">
+              <label><?php echo __('Tax condition') ?>:</label>
+              <?php echo ($invoice->getSupplierTaxCondition() == "") ?  "-" : $invoice->getSupplierTaxCondition(); ?>
+            </span>
+          </span>
+          <span class="clear"></span>
+        </li>
+        <li>
+          <span>
+            <span class="_50">
+              <label><?php echo __('Phone') ?>:</label>
+              <?php echo $invoice->getSupplierPhone() ?>
             </span>
             <span class="_50 _last">
               <label><?php echo __('Email') ?>:</label>
@@ -42,21 +55,12 @@
         <li>
           <span>
             <span class="_50">
-              <label><?php echo __('Supplier Phone') ?>:</label>
-              <?php echo $invoice->getSupplierPhone() ?>
-            </span>
-            <span class="_50 _last">
-              <label><?php echo __('Supplier Fax') ?>:</label>
-              <?php echo $invoice->getSupplierFax() ?>
-            </span>
-          </span>
-          <span class="clear"></span>
-        </li>
-        <li>
-          <span>
-            <span class="_75 _last">
               <label><?php echo __('Invoicing address') ?>:</label>
               <?php echo simple_format_text($invoice->getInvoicingAddress().'<br>'.$invoice->getInvoicingPostalcode().' '.$invoice->getInvoicingCity().'<br>'.$invoice->getInvoicingState().' '.$invoice->getInvoicingCountry()) ?></span>
+            <span class="_50 _last">
+              <label><?php echo __('Contact person') ?>:</label>
+              <?php echo $invoice->getContactPerson() ?>
+            </span>
           </span>
           <span class="clear"></span>
         </li>
@@ -124,7 +128,45 @@
       </table>
     </div>  <!-- div#payment-data -->
 
+    <div id="other_info-data">
+      <div class="block">
+        <h3><?php echo __('Buy order number') ?></h3>
+        <div class="textarea">
+          <?php echo $invoice->getBuyOrderNumber() ?>
+        </div>
+      </div>
 
+      <div class="block">
+        <h3><?php echo __('Delivery note number') ?></h3>
+        <div class="textarea">
+          <?php echo $invoice->getDeliveryNoteNumber() ?>
+        </div>
+      </div>
+    </div>
+    
+    <div id="terms-data">
+    
+      <?php if (strlen($invoice->getTerms())): ?>
+        <div class="block">
+          <h3><?php echo __('Terms & Conditions') ?></h3>
+          <div class="textarea">
+            <?php echo $invoice->getTerms() ?>
+          </div>
+        </div>
+      <?php endif ?>
+
+      <?php if (strlen($invoice->getNotes())): ?>
+        <div class="block">
+          <h3><?php echo __('Notes') ?></h3>
+          <div class="textarea">
+            <?php echo $invoice->getNotes() ?>
+          </div>
+        </div>
+      <?php endif ?>
+
+    </div>
+    
+    
     <?php
       $tags  = $invoice->getTags();
       $ctags = count($tags);

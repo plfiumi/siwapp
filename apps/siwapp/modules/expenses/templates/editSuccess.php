@@ -56,6 +56,7 @@ $invoice = $invoiceForm->getObject();
     <ul class="inline">
       <?php echo $invoiceForm['series_id']->renderRow() ?><br>
       <?php echo $invoiceForm['supplier_reference']->renderRow() ?>
+      <?php echo $invoiceForm['payment_type_id']->renderRow() ?><br>
       <?php echo $invoiceForm['issue_date']->renderRow() ?>
       <?php echo $invoiceForm['due_date']->renderRow() ?>
     </ul>
@@ -68,6 +69,12 @@ $invoice = $invoiceForm->getObject();
       ));?>
   </div>  <!-- div#payment-data -->
 
+  <?php include_partial('common/otherInfo', array('invoiceForm' => $invoiceForm)); ?>
+  
+  <?php include_partial('common/shippingCompanyData', array('invoiceForm' => $invoiceForm)); ?>
+  
+  <?php include_partial('common/termsAndNotes', array('invoiceForm' => $invoiceForm)); ?>
+  
   <?php include_partial('common/tagsDataBlock', array('invoice' => $invoice, 'invoiceForm' => $invoiceForm)) ?>
 
   <div id="saving-options" class="block">

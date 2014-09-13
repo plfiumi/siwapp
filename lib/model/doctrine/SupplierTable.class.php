@@ -95,17 +95,23 @@ class SupplierTable extends Doctrine_Table
     {
       $res[$i]['id'] = $item->getId();
       $res[$i]['supplier'] = $item->getName();
-      $res[$i]['supplier_identification'] = $item->getIdentification();
-      $res[$i]['supplier_email'] = $item->getEmail();
+      $res[$i]['business_name'] = $item->getBusinessName();
+      $res[$i]['identification'] = $item->getIdentification();
+      $res[$i]['phone'] = $item->getPhone();
+      $res[$i]['fax'] = $item->getFax();
+      $res[$i]['mobile'] = $item->getMobile();
+      $res[$i]['email'] = $item->getEmail();
       $res[$i]['contact_person'] = $item->getContactPerson();
+      $res[$i]['contact_person_phone'] = $item->getContactPersonPhone();
+      $res[$i]['contact_person_email'] = $item->getContactPersonEmail();
       $res[$i]['invoicing_address'] = $item->getInvoicingAddress();
       $res[$i]['invoicing_city'] = $item->getInvoicingCity();
       $res[$i]['invoicing_state'] = $item->getInvoicingState();
       $res[$i]['invoicing_postalcode'] = $item->getInvoicingPostalcode();
       $res[$i]['invoicing_country'] = $item->getInvoicingCountry();
-      $res[$i]['supplier_phone'] = $item->getPhone();
-      $res[$i]['supplier_fax'] = $item->getFax();
       $res[$i]['comments'] = $item->getComments();
+      $res[$i]['tax_condition'] = $item->getTaxCondition()->getName();  
+      $res[$i]['payment_type'] = $item->getPaymentType()->getId();
       $res[$i]['expense_type'] = $item->getExpenseType()->getId();
 
       $i++;

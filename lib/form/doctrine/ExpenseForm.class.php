@@ -16,8 +16,18 @@ class ExpenseForm extends CommonForm
     unset($this['number'], $this['created_at'], $this['updated_at']);
     // we unset paid_amount so the system don't "nullify" the field on every expense editing.
     unset($this['paid_amount']);
-    unset($this['shipping_address']);
-
+    //unset($this['shipping_address']);
+    $this->widgetSchema['supplier_business_name']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Business Name'));
+    $this->widgetSchema['supplier_email']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Supplier Email Address'));
+    $this->widgetSchema['supplier_name']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Name/Legal Name'));
+    $this->widgetSchema['supplier_identification']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Supplier Legal Id'));
+    $this->widgetSchema['supplier_phone']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Phone'));
+    $this->widgetSchema['supplier_fax']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Fax'));
+    $this->widgetSchema['supplier_mobile']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Mobile'));
+    $this->widgetSchema['supplier_comments']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Comments'));
+    $this->widgetSchema['supplier_tax_condition']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Tax condition'));
+    
+    
     $this->number = $this->getObject()->getNumber();
     $this->widgetSchema['issue_date'] =
       new sfWidgetFormI18nJQueryDate($this->JQueryDateOptions);

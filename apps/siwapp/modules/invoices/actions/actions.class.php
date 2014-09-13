@@ -266,9 +266,9 @@ class invoicesActions extends sfActions
             }
               $objPHPExcel->getActiveSheet()->setCellValue('A'. ($n+2),$invoice->getSeries()->getName()); //SERIE
               $objPHPExcel->getActiveSheet()->setCellValue('B'. ($n+2),date('d/m/Y',strtotime($invoice->getIssueDate()))); //FECHA
-              $objPHPExcel->getActiveSheet()->setCellValue('C'. ($n+2),date('d/m/Y',strtotime($invoice->getDueDate()))); //FECHA VENCIMIENTO
+              $objPHPExcel->getActiveSheet()->setCellValue('C'. ($n+2),($invoice->getDueDate()) ? date('d/m/Y',strtotime($invoice->getDueDate())) : ""); //FECHA VENCIMIENTO
               $objPHPExcel->getActiveSheet()->setCellValue('D'. ($n+2), $invoice.''); //REGISTRO
-              $objPHPExcel->getActiveSheet()->setCellValue('E'. ($n+2), 'FACTURA'.$invoice); //DESCRIPCIÓN
+              $objPHPExcel->getActiveSheet()->setCellValue('E'. ($n+2), 'GASTO '.$invoice); //DESCRIPCIÓN
               $objPHPExcel->getActiveSheet()->setCellValue('F'. ($n+2), $invoice->getCustomerIdentification()); //IDENTIFICACION CLIENTE
               $objPHPExcel->getActiveSheet()->setCellValue('G'. ($n+2), $invoice->getCustomerName()); //NOMBRE CLIENTE
               $objPHPExcel->getActiveSheet()->setCellValue('H'. ($n+2), $invoice->getBaseAmount()); //SUBTOTAL

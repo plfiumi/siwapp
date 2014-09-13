@@ -27,7 +27,7 @@ class ExpenseSearchForm extends BaseForm
       'query'       => 'Search',
       'from'        => 'from',
       'to'          => 'to',
-      'quick_dates' => 'Periode',
+      'quick_dates' => 'Period',
       'series_id'   => 'Series',
       'supplier_id' => 'Supplier',
       'sent'        => 'Sent',

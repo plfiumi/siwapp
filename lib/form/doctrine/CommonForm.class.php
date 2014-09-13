@@ -34,7 +34,7 @@ class CommonForm extends BaseCommonForm
     $this->widgetSchema['recurring_invoice_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['estimate_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['tags']  = new sfWidgetFormInputHidden();
-    $this->widgetSchema['payment_type_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PaymentType'), 'add_empty' => true)); //new sfWidgetFormChoice(array('choices' => array(''=>'') + PaymentTypeTable::getChoicesForSelect()));
+    $this->widgetSchema['payment_type_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('PaymentType'), 'add_empty' => true));
     $this->widgetSchema['type']  = new sfWidgetFormInputHidden(array(),
       array('value'=>$this->getModelName()));
     
@@ -63,7 +63,11 @@ class CommonForm extends BaseCommonForm
     $this->widgetSchema['invoicing_postalcode']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Postal code'));
     $this->widgetSchema['invoicing_state']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('State'));
     $this->widgetSchema['invoicing_country']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Country'));
-    $this->widgetSchema['shipping_address']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Shipping Address'));
+    
+    //hack to resolve bug when create/edit expense
+    if ($expense != true) {
+      $this->widgetSchema['shipping_address']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Shipping Address'));
+    }
     $this->widgetSchema['shipping_city']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('City'));
     $this->widgetSchema['shipping_postalcode']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Postal code'));
     $this->widgetSchema['shipping_state']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('State'));
