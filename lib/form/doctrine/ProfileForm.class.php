@@ -33,6 +33,16 @@ class ProfileForm extends BaseProfileForm
                                                         CultureTools::getAvailableLanguages(),
                                                       )
                                                     );
+    $this->widgetSchema['country']          = new sfWidgetFormI18nChoiceCountry(
+                                                    array(
+							  'add_empty' => true,
+                                                      'culture' => $user->getLanguage(),
+                                                      'countries' => 
+                                                        CultureTools::getCountriesForLanguage(
+                                                          $this->getOption('language')
+                                                          ),
+                                                      )
+                                                    );
     $this->widgetSchema['search_filter']    = new sfWidgetFormSelect(
                                                     array(
                                                       'choices'   => InvoiceSearchForm::getQuickDates()
@@ -93,7 +103,7 @@ class ProfileForm extends BaseProfileForm
         'first_name'          => 'First Name',
         'last_name'          => 'Last Name'
       ));
-      
+      //var_dump($this->getOption("username"));exit();
     $this->setDefaults(array(
         'nb_display_results'  => 10,
         'language'            => $user->getLanguage(),
@@ -102,7 +112,7 @@ class ProfileForm extends BaseProfileForm
         'superadmin'          => $this->getOption('superadmin'),
       ));
      
-    $this->widgetSchema->setNameFormat('profile[%s]');
+    $this->widgetSchema->setNameFormat('config[%s]');
     //Allow extra fields
     $this->validatorSchema->setOption('allow_extra_fields', true);
     
@@ -110,8 +120,10 @@ class ProfileForm extends BaseProfileForm
 
   public function save($con = null, $currentUser = false)
   {
-    $id = parent::save($con);
+    
     $values=$this->getValues();
+    //var_dump($values); exit();
+    $id = parent::save($con);
     if(!$currentUser)
     {
         $name = $values['username'];

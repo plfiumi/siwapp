@@ -95,7 +95,7 @@ class Printer
     return $q->getPdf();
   }
   
-  public function getInvoiceData($model,$ids)
+  static public function getInvoiceData($model,$ids)
   {
     $data   = array();
     // explicit all the relations so they are already loaded for the template

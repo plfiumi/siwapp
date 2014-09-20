@@ -7,7 +7,7 @@
       <!-- ##### LOGIN/OUT ##### -->
       <trans-unit>
         <source>Login</source>
-        <target>Nombre de usuario</target>
+        <target>Nombre de Usuario</target>
       </trans-unit>
       <trans-unit>
         <source>Username</source>
@@ -44,11 +44,11 @@
       </trans-unit>
       <trans-unit>
         <source>Recent invoices</source>
-        <target>Facturas recientes</target>
+        <target>Facturas Recientes</target>
       </trans-unit>
       <trans-unit>
         <source>Past due invoices</source>
-        <target>Facturas atrasadas</target>
+        <target>Facturas Atrasadas</target>
       </trans-unit>
       <trans-unit>
         <source>Number</source>
@@ -105,7 +105,7 @@
       </trans-unit>
       <trans-unit>
         <source>Payment details</source>
-        <target>Detalles del pago</target>
+        <target>Detalles del Pago</target>
       </trans-unit>
       <trans-unit>
         <source>Payments were saved successfully.</source>
@@ -262,7 +262,7 @@
       <!-- ##### RECURRING INVOICES ##### -->
       <trans-unit>
         <source>Recurring Invoices</source>
-        <target>Facturas periódicas</target>
+        <target>Facturas Periódicas</target>
       </trans-unit>
       <trans-unit>
         <source>New Recurring Invoice</source>
@@ -274,7 +274,7 @@
       </trans-unit>
       <trans-unit>
         <source>Period Type</source>
-        <target>Tipo de período</target>
+        <target>Tipo de Período</target>
       </trans-unit>
       <trans-unit>
         <source>Frequency</source>
@@ -310,7 +310,7 @@
       </trans-unit>
       <trans-unit>
         <source>Average turnover</source>
-        <target>Promedio de facturación</target>
+        <target>Promedio de Facturación</target>
       </trans-unit>
       <trans-unit>
         <source>Generate pending invoices now</source>
@@ -436,7 +436,7 @@
       </trans-unit>
       <trans-unit>
         <source>Customer info</source>
-        <target>Información del cliente</target>
+        <target>Información del Cliente</target>
       </trans-unit>
       <trans-unit>
         <source>Name/Legal Name</source>
@@ -468,7 +468,7 @@
       </trans-unit>
       <trans-unit>
         <source>Postal code</source>
-        <target>Codigo postal</target>
+        <target>Código Postal</target>
       </trans-unit>
       <trans-unit>
         <source>State</source>
@@ -484,7 +484,7 @@
       </trans-unit>
       <trans-unit>
         <source>Shipping Company Data</source>
-        <target>Compañia de Envíos asociada</target>
+        <target>Compañía de Envíos Asociada</target>
       </trans-unit>
       <trans-unit>
         <source>Email</source>
@@ -492,7 +492,15 @@
       </trans-unit>
       <trans-unit>
         <source>Tax condition</source>
-        <target>Condición IVA</target>
+        <target>Condición Impositiva</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Tax Conditions</source>
+        <target>Condición Impositiva</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Add a new tax condition</source>
+        <target>Añadir una nueva Condición Impositiva</target>
       </trans-unit>
       <trans-unit>
         <source>Invoicing series</source>
@@ -500,11 +508,15 @@
       </trans-unit>
       <trans-unit>
         <source>The customer has not been saved due to some errors.</source>
-        <target>El cliente no ha podido ser salvado.</target>
+        <target>El Cliente no ha podido ser salvado.</target>
       </trans-unit>
       <trans-unit>
         <source>%d customers were successfully deleted.</source>
         <target>%d clientes han sido borrados.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Invalid email address</source>
+        <target>Dirección de Email inválida.</target>
       </trans-unit>
       <!-- ##### PRODUCTS ##### -->
       <trans-unit>
@@ -517,19 +529,67 @@
       </trans-unit>
       <trans-unit>
         <source>Product info</source>
-        <target>Información del producto</target>
+        <target>Información del Producto</target>
       </trans-unit>
       <trans-unit>
-        <source>Product reference</source>
-        <target>Referencia del producto</target>
+        <source>Warning</source>
+        <target>Advertencia</target>
       </trans-unit>
       <trans-unit>
-        <source>Product description</source>
-        <target>Descripción del producto</target>
+        <source>Stock limit overloaded for the following product</source>
+        <target>Ha sido superado el límite de stock para el siguiente producto</target>
       </trans-unit>
       <trans-unit>
-        <source>Product price</source>
-        <target>Precio del producto</target>
+        <source>Current stock: %s units.</source>
+        <target>Stock actual: %s unidades.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Default min stock level</source>
+        <target>Nivel mínimo de stock por defecto</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Stock Alerts</source>
+        <target>Alertas de Stock</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Low stock</source>
+        <target>Stock bajo</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Very low stock</source>
+        <target>Stock muy bajo</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Reference</source>
+        <target>Referencia</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Description</source>
+        <target>Descripción</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Price</source>
+        <target>Precio</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Stock</source>
+        <target>Stock</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Min stock level</source>
+        <target>Nivel de Stock Mínimo</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Sold Units</source>
+        <target>Unidades Vendidas</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Tax</source>
+        <target>Impuesto</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Some categories have not been deleted because they are currently in use</source>
+        <target>Algunas categorías no han sido eliminadas debido a que se encuentran en uso</target>
       </trans-unit>
       <!-- ##### SEARCH ##### -->
       <trans-unit>
@@ -566,19 +626,19 @@
       </trans-unit>
       <trans-unit>
         <source>first quarter</source>
-        <target>primer trimerstre</target>
+        <target>primer trimestre</target>
       </trans-unit>
       <trans-unit>
         <source>second quarter</source>
-        <target>segundo trimerstre</target>
+        <target>segundo trimestre</target>
       </trans-unit>
       <trans-unit>
         <source>third quarter</source>
-        <target>tercer trimerstre</target>
+        <target>tercer trimestre</target>
       </trans-unit>
       <trans-unit>
         <source>fourth quarter</source>
-        <target>cuarto trimerstre</target>
+        <target>cuarto trimestre</target>
       </trans-unit>
       <trans-unit>
         <source>Status</source>
@@ -688,11 +748,19 @@
       </trans-unit>
       <trans-unit>
         <source>Global settings</source>
-        <target>Configuración global</target>
+        <target>Configuración Global</target>
       </trans-unit>
       <trans-unit>
         <source>My settings</source>
         <target>Mi configuración</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Products configuration</source>
+        <target>Configuración Productos</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Expenses configuration</source>
+        <target>Configuración Gastos</target>
       </trans-unit>
       <trans-unit>
         <source>Printing templates</source>
@@ -749,7 +817,7 @@
       </trans-unit>
       <trans-unit>
         <source>Invoicing taxes</source>
-        <target>Impuestos de facturación</target>
+        <target>Impuestos de Facturación</target>
       </trans-unit>
       <trans-unit>
         <source>Value</source>
@@ -785,7 +853,15 @@
       </trans-unit>
       <trans-unit>
         <source>Legal texts</source>
-        <target>Textos legales</target>
+        <target>Textos Legales</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Buy order number</source>
+        <target>Orden de compra número</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Delivery note number</source>
+        <target>Remito número</target>
       </trans-unit>
       <trans-unit>
         <source>Terms &amp; Conditions</source>
@@ -826,7 +902,7 @@
       <!-- ##### SETTINGS - MY SETTINGS ##### -->
       <trans-unit>
         <source>About you</source>
-        <target>Sobre usted</target>
+        <target>Sobre Usted</target>
       </trans-unit>
       <trans-unit>
         <source>First Name</source>
@@ -838,7 +914,7 @@
       </trans-unit>
       <trans-unit>
         <source>Translate the application</source>
-        <target>Traduzca la aplicación</target>
+        <target>Traduzca la Aplicación</target>
       </trans-unit>
       <trans-unit>
         <source>Interface language</source>
@@ -846,7 +922,7 @@
       </trans-unit>
       <trans-unit>
         <source>Make it easy</source>
-        <target>Hágalo simple</target>
+        <target>Hágalo Simple</target>
       </trans-unit>
       <trans-unit>
         <source>Results to display in listings</source>
@@ -865,8 +941,12 @@
         <target>Serie de facturación por defecto</target>
       </trans-unit>
       <trans-unit>
+        <source>Default invoicing time to due</source>
+        <target>Días por defecto hasta el vencimiento de la factura</target>
+      </trans-unit>
+      <trans-unit>
         <source>Change your password</source>
-        <target>Cambie su contraseña</target>
+        <target>Cambie su Contraseña</target>
       </trans-unit>
       <trans-unit>
         <source>Old password</source>
@@ -1108,7 +1188,7 @@
       </trans-unit>
       <trans-unit id="2">
         <source>Expense Type</source>
-        <target>Tipo de gasto</target>
+        <target>Tipo de Gasto</target>
       </trans-unit>
       <trans-unit id="3">
         <source>Amount</source>
@@ -1124,7 +1204,7 @@
       </trans-unit>
       <trans-unit id="6">
         <source>Supplier info</source>
-        <target>Información del proveedor</target>
+        <target>Información del Proveedor</target>
       </trans-unit>
       <trans-unit id="12">
         <source>Edit Estimate</source>
@@ -1156,39 +1236,39 @@
       </trans-unit>
       <trans-unit id="19">
         <source>Supplier Name</source>
-        <target>Nombre del proveedor</target>
+        <target>Nombre del Proveedor</target>
       </trans-unit>
       <trans-unit id="20">
         <source>Supplier Legal Id</source>
-        <target>Identificacion legal del proveedor</target>
+        <target>Identificación Legal</target>
       </trans-unit>
       <trans-unit id="21">
         <source>Supplier Person</source>
-        <target>Persona de contacto del proveedor</target>
+        <target>Persona de Contacto</target>
       </trans-unit>
       <trans-unit id="22">
         <source>Supplier Address</source>
-        <target>Direccion del proveedor</target>
+        <target>Dirección</target>
       </trans-unit>
       <trans-unit id="23">
         <source>Supplier Phone</source>
-        <target>Telefono del proveedor</target>
+        <target>Teléfono</target>
       </trans-unit>
       <trans-unit id="24">
         <source>Supplier Fax</source>
-        <target>Fax del proveedor</target>
+        <target>Fax del Proveedor</target>
       </trans-unit>
       <trans-unit id="25">
         <source>Supplier Email Address</source>
-        <target>Correo electronico del proveedor</target>
+        <target>Correo Electrónico</target>
       </trans-unit>
       <trans-unit id="26">
         <source>New Expense</source>
-        <target>Nuevo gasto</target>
+        <target>Nuevo Gasto</target>
       </trans-unit>
       <trans-unit id="27">
         <source>Edit Expense</source>
-        <target>Editar gasto</target>
+        <target>Editar Gasto</target>
       </trans-unit>
       <trans-unit id="28">
         <source>%d expenses were successfully deleted.</source>
@@ -1204,11 +1284,11 @@
       </trans-unit>
       <trans-unit id="31">
         <source>Supplier identification</source>
-        <target>Identificacion del proveedor</target>
+        <target>Identificación</target>
       </trans-unit>
       <trans-unit id="32">
         <source>Supplier reference</source>
-        <target>Numero factura proveedor</target>
+        <target>Número de Factura del Proveedor</target>
       </trans-unit>
       <trans-unit id="33">
         <source>Comments</source>
@@ -1220,11 +1300,11 @@
       </trans-unit>
       <trans-unit id="35">
         <source>Company name</source>
-        <target>Nombre de la empresa</target>
+        <target>Nombre de la Empresa</target>
       </trans-unit>
       <trans-unit id="36">
         <source>Company address</source>
-        <target>Direccion de la empresa</target>
+        <target>Dirección de la empresa</target>
       </trans-unit>
       <trans-unit id="37">
         <source>Company email</source>
@@ -1268,7 +1348,7 @@
       </trans-unit>
       <trans-unit id="47">
         <source>Assigned Users</source>
-        <target>Usuarios assignados</target>
+        <target>Usuarios asignados</target>
       </trans-unit>
       <trans-unit id="48">
         <source>New User</source>
@@ -1300,7 +1380,7 @@
       </trans-unit>
       <trans-unit id="55">
         <source>Expenses Type</source>
-        <target>Tipos de gasto</target>
+        <target>Tipos de Gasto</target>
       </trans-unit>
       <trans-unit id="56">
         <source>Add a new expense type</source>
@@ -1308,7 +1388,7 @@
       </trans-unit>
       <trans-unit id="57">
         <source>Payments Type</source>
-        <target>Formas de pago</target>
+        <target>Formas de Pago</target>
       </trans-unit>
       <trans-unit id="58">
         <source>Add a new payment type</source>
@@ -1316,7 +1396,7 @@
       </trans-unit>
       <trans-unit id="59">
         <source>Product Categories</source>
-        <target>Categoria de producto</target>
+        <target>Categoría de Producto</target>
       </trans-unit>
       <trans-unit id="60">
         <source>Add a new category</source>
@@ -1324,7 +1404,7 @@
       </trans-unit>
       <trans-unit id="61">
         <source>Edit Product</source>
-        <target>Editar producto</target>
+        <target>Editar Producto</target>
       </trans-unit>
       <trans-unit id="62">
         <source>The product could not be deleted. </source>
@@ -1348,15 +1428,15 @@
       </trans-unit>
       <trans-unit id="66">
         <source>Supplier Email</source>
-        <target>Correo electronico del proveedor</target>
+        <target>Correo Electrónico del Proveedor</target>
       </trans-unit>
       <trans-unit id="67">
         <source>New Supplier</source>
-        <target>Nuevo proveedor</target>
+        <target>Nuevo Proveedor</target>
       </trans-unit>
       <trans-unit id="68">
         <source>Edit Supplier</source>
-        <target>Editar proveedor</target>
+        <target>Editar Proveedor</target>
       </trans-unit>
       <trans-unit id="69">
         <source>The supplier could not be deleted. </source>
@@ -1400,7 +1480,7 @@
       </trans-unit>
       <trans-unit id="79">
         <source>Pending Estimates</source>
-        <target>Pressupuestos pendientes</target>
+        <target>Presupuestos pendientes</target>
       </trans-unit>
       <trans-unit>
         <source>Payment type</source>
@@ -1412,15 +1492,15 @@
       </trans-unit>
       <trans-unit>
         <source>Website</source>
-        <target>Pagina web</target>
+        <target>Página web</target>
       </trans-unit>
       <trans-unit>
         <source>Supplier Mobile</source>
-        <target>Movil del proveedor</target>
+        <target>Móvil del Proveedor</target>
       </trans-unit>
       <trans-unit>
         <source>Online Access</source>
-        <target>Datos de acceso Online</target>
+        <target>Datos de Acceso Online</target>
       </trans-unit>
       <trans-unit>
         <source>Company Legal Id</source>
@@ -1449,6 +1529,26 @@
       <trans-unit>
         <source>Expense Taxes detail</source>
         <target>Resumen impuestos despeses</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Some tax conditions have not been deleted because they are currently in use</source>
+        <target>Algunas condiciones impositivas no han sido eliminadas debido a que se encuentran en uso</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Some payments have not been deleted because they are currently in use</source>
+        <target>Algunos tipos de pago no han sido eliminados debido a que se encuentran en uso</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Some series have not been deleted because they are currently in use</source>
+        <target>Algunas series de facturación no han sido eliminadas debido a que se encuentran en uso</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Some taxes have not been deleted because they are currently in use</source>
+        <target>Algunos tipos de impuesto no han sido eliminados debido a que se encuentran en uso</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Some expenses types have not been deleted because they are currently in use</source>
+        <target>Algunos tipos de gasto no han sido eliminados debido a que se encuentran en uso</target>
       </trans-unit>
       <trans-unit>
         <source>Profit and Loss</source>
@@ -1480,7 +1580,7 @@
       </trans-unit>
       <trans-unit>
         <source>Global Situation</source>
-        <target>Situación global</target>
+        <target>Situación Global</target>
       </trans-unit>
       <trans-unit>
         <source>Use for Expenses</source>
@@ -1516,7 +1616,7 @@
       </trans-unit>
       <trans-unit>
         <source>Period</source>
-        <target>Periodo</target>
+        <target>Período</target>
       </trans-unit>
       <trans-unit>
         <source>No related Estimate</source>
@@ -1552,7 +1652,7 @@
       </trans-unit>
       <trans-unit>
         <source>Administrative details</source>
-        <target>Datos administrativos</target>
+        <target>Datos Administrativos</target>
       </trans-unit>
       <trans-unit>
         <source>IBAN</source>
@@ -1576,7 +1676,7 @@
       </trans-unit>
       <trans-unit>
         <source>Account</source>
-        <target>Cuenta corriente</target>
+        <target>Cuenta Corriente</target>
       </trans-unit>
       <trans-unit>
         <source>Export</source>
@@ -1584,7 +1684,7 @@
       </trans-unit>
       <trans-unit>
         <source>Other info</source>
-        <target>Información adicional</target>
+        <target>Información Adicional</target>
       </trans-unit>
       <trans-unit>
         <source>Mercantil Registry</source>

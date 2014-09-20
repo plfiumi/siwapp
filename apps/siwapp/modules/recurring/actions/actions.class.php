@@ -20,6 +20,9 @@ class recurringActions extends sfActions
   {
     $this->forward404Unless($invoice = Doctrine::getTable('RecurringInvoice')->find($request->getParameter('id')), 
       sprintf('Object recurring_invoice does not exist with id %s', $request->getParameter('id')));
+    
+    $this->forward404Unless($invoice->getCompanyId() == $this->getUser()->getAttribute('company_id'),
+      sprintf('Object recurring_invoice does not exist with id %s', $request->getParameter('id')));
       
     return $invoice;
   }

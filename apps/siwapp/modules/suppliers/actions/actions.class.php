@@ -20,6 +20,9 @@ class suppliersActions extends sfActions
   {
     $this->forward404Unless($supplier = Doctrine::getTable('Supplier')->find($request->getParameter('id')),
       sprintf('Object supplier does not exist with id %s', $request->getParameter('id')));
+    
+    $this->forward404Unless($supplier->getCompanyId() == $this->getUser()->getAttribute('company_id'),
+      sprintf('Object supplier does not exist with id %s', $request->getParameter('id')));
       
     return $supplier;
   }

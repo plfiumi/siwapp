@@ -20,6 +20,9 @@ class estimatesActions extends sfActions
   {
     $this->forward404Unless($estimate = Doctrine::getTable('Estimate')->find($request->getParameter('id')),
       sprintf('Object estimate does not exist with id %s', $request->getParameter('id')));
+    
+    $this->forward404Unless($estimate->getCompanyId() == $this->getUser()->getAttribute('company_id'),
+      sprintf('Object estimate does not exist with id %s', $request->getParameter('id')));
       
     return $estimate;
   }

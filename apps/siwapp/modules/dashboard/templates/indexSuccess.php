@@ -171,7 +171,7 @@
       <tr>
         <th class="number"><?php echo __('Serie') ?></th>
         <th class="number"><?php echo __('Number') ?></th>
-        <th><?php echo __('Customer Name') ?></th>
+        <th><?php echo __('Customer') ?></th>
         <th class="date"><?php echo __('Date') ?></th>
         <th class="date"><?php echo __('Due Date') ?></th>
         <th class="status"><?php echo __('Status') ?></th>
@@ -229,7 +229,7 @@
     <thead>
       <tr>
         <th class="number"><?php echo __('Number') ?></th>
-        <th><?php echo __('Customer Name') ?></th>
+        <th><?php echo __('Customer') ?></th>
         <th><?php echo __('Date') ?></th>
         <th class="right total"><?php echo __('Total') ?></th>
       </tr>

@@ -20,6 +20,9 @@ class productsActions extends sfActions
   {
     $this->forward404Unless($product = Doctrine::getTable('Product')->find($request->getParameter('id')),
       sprintf('Object product does not exist with id %s', $request->getParameter('id')));
+    
+    $this->forward404Unless($product->getCompanyId() == $this->getUser()->getAttribute('company_id'),
+      sprintf('Object product does not exist with id %s', $request->getParameter('id')));
       
     return $product;
   }

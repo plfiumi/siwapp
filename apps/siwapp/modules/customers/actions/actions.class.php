@@ -20,6 +20,9 @@ class customersActions extends sfActions
   {
     $this->forward404Unless($customer = Doctrine::getTable('Customer')->find($request->getParameter('id')),
       sprintf('Object customer does not exist with id %s', $request->getParameter('id')));
+    
+    $this->forward404Unless($customer->getCompanyId() == $this->getUser()->getAttribute('company_id'),
+      sprintf('Object customer does not exist with id %s', $request->getParameter('id')));
       
     return $customer;
   }

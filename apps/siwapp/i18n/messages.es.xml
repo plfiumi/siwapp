@@ -44,11 +44,11 @@
       </trans-unit>
       <trans-unit>
         <source>Recent invoices</source>
-        <target>Facturas recientes</target>
+        <target>Facturas Recientes</target>
       </trans-unit>
       <trans-unit>
         <source>Past due invoices</source>
-        <target>Facturas atrasadas</target>
+        <target>Facturas Atrasadas</target>
       </trans-unit>
       <trans-unit>
         <source>Number</source>
@@ -262,7 +262,7 @@
       <!-- ##### RECURRING INVOICES ##### -->
       <trans-unit>
         <source>Recurring Invoices</source>
-        <target>Facturas periódicas</target>
+        <target>Facturas Periódicas</target>
       </trans-unit>
       <trans-unit>
         <source>New Recurring Invoice</source>
@@ -906,11 +906,11 @@
       </trans-unit>
       <trans-unit>
         <source>First Name</source>
-        <target>Nombre</target>
+        <target>Nombre/s</target>
       </trans-unit>
       <trans-unit>
         <source>Last Name</source>
-        <target>Apellidos</target>
+        <target>Apellido/s</target>
       </trans-unit>
       <trans-unit>
         <source>Translate the application</source>
@@ -1580,7 +1580,7 @@
       </trans-unit>
       <trans-unit>
         <source>Global Situation</source>
-        <target>Situación global</target>
+        <target>Situación Global</target>
       </trans-unit>
       <trans-unit>
         <source>Use for Expenses</source>

@@ -20,6 +20,9 @@ class invoicesActions extends sfActions
   {
     $this->forward404Unless($invoice = Doctrine::getTable('Invoice')->find($request->getParameter('id')),
       sprintf('Object invoice does not exist with id %s', $request->getParameter('id')));
+    
+    $this->forward404Unless($invoice->getCompanyId() == $this->getUser()->getAttribute('company_id'),
+      sprintf('Object invoice does not exist with id %s', $request->getParameter('id')));
 
     return $invoice;
   }
