@@ -18,7 +18,7 @@ input[type=checkbox].checkbox { position:relative; top:2px; }
 #searchForm select { border-width:1px; border-style:solid; line-height:1.2em; height:1.6em; }
 
 #searchForm ul { float:left; }
-#searchForm li { float:left; margin-right:0.5em; padding-bottom:10px; }
+#searchForm li { float:left; margin-right:0.5em; }
 #searchForm .ui-datepicker-trigger {
   margin:0 0 0 0.5em;
   padding:0;
@@ -99,7 +99,7 @@ input[type=checkbox].checkbox { position:relative; top:2px; }
 }
 #searchFilters {
   float: left;
-  /*width: 80%;*/
+  width: 80%;
 }
 
 

@@ -1,6 +1,6 @@
 all:
   metas:
-    title:     siwapp - Expenses
+    title:     hera - Expenses
   components:
     searchForm: [search, expenseForm]
 

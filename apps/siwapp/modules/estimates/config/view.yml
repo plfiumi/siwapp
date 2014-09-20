@@ -1,6 +1,6 @@
 all:
   metas:
-    title:     siwapp - Estimates
+    title:     hera - Estimates
   components:
     searchForm: [search, estimateForm]
 

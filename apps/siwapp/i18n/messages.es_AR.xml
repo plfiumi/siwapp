@@ -37,6 +37,10 @@
         <source>Logout</source>
         <target>Salir</target>
       </trans-unit>
+      <trans-unit>
+        <source>Hera Invoice System</source>
+        <target>Hera Facturación</target>
+      </trans-unit>
       <!-- ##### DASHBOARD ##### -->
       <trans-unit>
         <source>Dashboard</source>

@@ -1,6 +1,6 @@
 all:
   metas:
-    title:     siwapp - Products
+    title:     hera - Products
   components:
     searchForm: [search, productForm]
     

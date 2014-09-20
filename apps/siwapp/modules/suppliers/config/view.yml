@@ -1,6 +1,6 @@
 all:
   metas:
-    title:     siwapp - Suppliers
+    title:     hera - Suppliers
   components:
     searchForm: [search, supplierForm]
     

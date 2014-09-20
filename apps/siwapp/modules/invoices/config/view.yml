@@ -1,6 +1,6 @@
 all:
   metas:
-    title:     siwapp - Invoices
+    title:     hera - Invoices
 
 indexSuccess:
   stylesheets: [ /sfFormExtraPlugin/css/jquery.autocompleter.css ]

@@ -1,6 +1,6 @@
 all:
   metas:
-    title:     siwapp - Companyies
+    title:     hera - Companyies
   components:
     searchForm: [search, companyForm]
 

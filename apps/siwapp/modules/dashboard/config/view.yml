@@ -1,6 +1,6 @@
 indexSuccess:
   metas:
-    title:     siwapp - Dashboard
+    title:     hera - Dashboard
   stylesheets: [ /sfFormExtraPlugin/css/jquery.autocompleter.css ]
   javascripts:
     - core/table.js

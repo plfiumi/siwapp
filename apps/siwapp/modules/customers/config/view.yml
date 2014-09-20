@@ -1,6 +1,6 @@
 all:
   metas:
-    title:     siwapp - Customers
+    title:     hera - Customers
   components:
     searchForm: [search, customerForm]
 

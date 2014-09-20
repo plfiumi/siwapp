@@ -1,6 +1,6 @@
 all:
   metas:
-    title:     siwapp - Users
+    title:     hera - Users
   components:
     searchForm: [search, userForm]
     
