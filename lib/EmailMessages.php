@@ -60,10 +60,9 @@ class PasswordMessage extends SiwappMessage
       $body[] = $i18n->__("Sorry, some error has occurred.");
     }
 
-
     $this
       ->setTo($profile->email,$profile->first_name.' '.$profile->last_name)
-      ->setSubject(PropertyTable::get('company_name').': '.$i18n->__('Hera Invoice System').$i18n->__('Password recovery'))
+      ->setSubject($i18n->__('Hera Invoice System').$i18n->__('Password recovery'))
       ->setBody(implode("\r\n",$body));
   }
 }

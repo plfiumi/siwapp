@@ -51,13 +51,17 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
         where('sfGuardUser.Username = ?', $user_email)->
         orWhere('Profile.Email LIKE ?', $user_email)->
         fetchOne();
-
+      
       if($userObject)
       {
         $profile = $userObject->Profile;
         $userObject->Profile->hash = md5($userObject->Profile->email.time());
         $userObject->save();
-        $this->sendEmail($userObject->Profile,null);
+        $result = $this->sendEmail($userObject->Profile,null);
+        
+        if ($result != true) {
+          throw new Exception("Email not sent");
+        }
       }
     }
     return sfView::SUCCESS;
