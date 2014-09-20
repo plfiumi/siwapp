@@ -4,7 +4,6 @@ prod:
     param:
       level:   err
       loggers: ~
-
   mailer:
     param:
       delivery_strategy: realtime
@@ -20,8 +19,16 @@ cli:
 dev:
   mailer:
     param:
-      delivery_strategy: single_address
-      delivery_address:  sergi.almacellas@btactic.com
+      delivery_strategy: single_address            # this means that any mail will be send to "delivery_address"
+      delivery_address:  demo@sistemashera.com.ar
+      transport:
+        class: Swift_MailTransport
+        param:
+        host:  smtp.sistemashera.com.ar
+        port:    587
+        encryption: 
+        username:   
+        password:  
 
           
       
