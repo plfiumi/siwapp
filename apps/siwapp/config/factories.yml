@@ -7,6 +7,15 @@ prod:
   mailer:
     param:
       delivery_strategy: realtime
+      delivery_address:  demo@sistemashera.com.ar
+      transport:
+        class: Swift_MailTransport
+        param:
+        host:  smtp.sistemashera.com.ar
+        port:    587
+        encryption: 
+        username:   
+        password:  
 
 cli:
   controller:
