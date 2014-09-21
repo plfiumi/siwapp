@@ -6,6 +6,10 @@
     <body>
       <!-- ##### LOGIN/OUT ##### -->
       <trans-unit>
+        <source>The username and/or password is invalid.</source>
+        <target>El usuario y/o la clave es inválido.</target>
+      </trans-unit>
+      <trans-unit>
         <source>Login</source>
         <target>Nombre de Usuario</target>
       </trans-unit>
