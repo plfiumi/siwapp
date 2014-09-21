@@ -7,10 +7,13 @@ class SiwappMessage extends Swift_Message
   public function __construct()
   {
     parent::__construct();
-    $company = new Company();
-    $company = $company->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
-    $this->setFrom($company->getEmail(), $company->getName());
-    $this->company_name = $company->getName();
+    
+    if (sfContext::getInstance()->getUser()) {
+      $company = new Company();
+      $company = $company->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
+      $this->setFrom($company->getEmail(), $company->getName());
+      $this->company_name = $company->getName();
+    }
   }
 }
 
@@ -39,21 +42,21 @@ class PasswordMessage extends SiwappMessage
     $body = array();
 
     $body[]  = $i18n->__("Dear %1%",array('%1%'=>$profile->first_name));
-    $body[]  = $i18n->__("You claim to have lost your password");
+    $body[]  = $i18n->__("You claim to have lost your password.");
     // if activation_link, then this is the activation message
     if($activation_link)
     {
       $body[] = $i18n->__("Please click the link below to activate the process and have a new password sent to you");
       $body[] = $activation_link;
-      $body[] = $i18n->__("If you can not click that link, please copy/paste it into a browser's location bar");
+      $body[] = $i18n->__("If you can not click that link, please copy/paste it into a browser's location bar.");
     }
     // if password, then this is the password recovery message
     else if($password)
     {
       $body[] = $i18n->__("This is your login info");
-      $body[] = "Username: ".$profile->User->username;
-      $body[] = "Password: ".$password;
-      $body[] = $i18n->__("Once you've logged in, you can change your password in the \"Settings / My settings\" section");
+      $body[] = $i18n->__("Username").": ".$profile->User->username;
+      $body[] = $i18n->__("Password").": ".$password;
+      $body[] = $i18n->__("Once you've logged in, you can change your password in the 'Settings / My settings' section");
     }
     else
     {
@@ -62,7 +65,7 @@ class PasswordMessage extends SiwappMessage
 
     $this
       ->setTo($profile->email,$profile->first_name.' '.$profile->last_name)
-      ->setSubject($i18n->__('Hera Invoice System').$i18n->__('Password recovery'))
+      ->setSubject($i18n->__('Hera Invoice System')." - ".$i18n->__('Password recovery'))
       ->setBody(implode("\r\n",$body));
   }
 }

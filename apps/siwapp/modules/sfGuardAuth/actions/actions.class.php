@@ -78,9 +78,11 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
       $this->redirect('@homepage');
     }
 
-    $userObject = Doctrine::getTable('sfGuardUser')->createQuery()->
-      where('Profile.Hash != ?', '')->
-      where('Profile.Hash = ?', $hash)->fetchOne();
+    $userId = Doctrine::getTable('Profile')->createQuery()->
+      where('hash = ?', $hash)->fetchOne();
+    
+    $userObject = Doctrine::getTable('sfGuardUser')->find($userId->sf_guard_user_id);
+    
     $new_password = '';
 
     if($userObject)
