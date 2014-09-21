@@ -37,6 +37,10 @@
         <source>Logout</source>
         <target>Salir</target>
       </trans-unit>
+      <trans-unit>
+        <source>Hera Invoice System</source>
+        <target>Hera Facturación</target>
+      </trans-unit>
       <!-- ##### DASHBOARD ##### -->
       <trans-unit>
         <source>Dashboard</source>
@@ -1023,6 +1027,38 @@
         <target>Hash incorrecto</target>
       </trans-unit>
       <trans-unit>
+        <source>Password recovery</source>
+        <target>Recuperación de contraseña</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Dear %1%</source>
+        <target>Estimado %1%</target>
+      </trans-unit>
+      <trans-unit>
+        <source>You claim to have lost your password.</source>
+        <target>Has informado haber perdido tu contraseña.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Please click the link below to activate the process and have a new password sent to you</source>
+        <target>Por favor, clickea el siguiente link para activar el proceso y obtener una nueva contraseña</target>
+      </trans-unit>
+      <trans-unit>
+        <source>If you can not click that link, please copy/paste it into a browser's location bar.</source>
+        <target>Si no puedes clickear el link, por favor, copialo y pegalo en la barra de direcciones del navegador.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>This is your login info</source>
+        <target>Esta es tu información de ingreso</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Once you've logged in, you can change your password in the 'Settings / My settings' section</source>
+        <target>Una vez que hayas ingresado, puedes cambiar tu contraseña desde la sección 'Configuración / Mi configuración'</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Sorry, some error has occurred.</source>
+        <target>Disculpe, ha ocurrido un error.</target>
+      </trans-unit>
+      <trans-unit>
         <source>Sample data has been loaded.</source>
         <target>Han sido cargados los datos de ejemplo.</target>
       </trans-unit>
@@ -1480,7 +1516,7 @@
       </trans-unit>
       <trans-unit id="79">
         <source>Pending Estimates</source>
-        <target>Presupuestos pendientes</target>
+        <target>Presupuestos Pendientes</target>
       </trans-unit>
       <trans-unit>
         <source>Payment type</source>
