@@ -23,7 +23,9 @@ class sfGuardValidatorUser extends sfValidatorBase
     $this->addOption('password_field', 'password');
     $this->addOption('throw_global_error', false);
 
-    $this->setMessage('invalid', 'The username and/or password is invalid.');
+    $sf_i18n = sfContext::getInstance()->getI18n();
+    $message = $sf_i18n->__('The username and/or password is invalid.');
+    $this->setMessage('invalid', $message);
   }
 
   protected function doClean($values)
@@ -37,6 +39,13 @@ class sfGuardValidatorUser extends sfValidatorBase
       // password is ok?
       if ($user->checkPassword($password))
       {
+         if (!Doctrine::getTable('sfGuardUser')->findOneByUsername($username)->getIsActive())
+        {
+         $sf_i18n = sfContext::getInstance()->getI18n();
+         $message = $sf_i18n->__('Your license is expired.');
+      	 $this->setMessage('invalid', $message);
+      	 throw new sfValidatorErrorSchema($this, array($this->getOption('username_field') => new sfValidatorError($this, 'invalid')));
+        }
         return array_merge($values, array('user' => $user));
       }
     }

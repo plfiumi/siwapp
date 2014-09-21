@@ -10,6 +10,10 @@
         <target>El usuario y/o la clave es inválido.</target>
       </trans-unit>
       <trans-unit>
+        <source>Your license is expired.</source>
+        <target>Tu licencia ha expirado.</target>
+      </trans-unit>
+      <trans-unit>
         <source>Login</source>
         <target>Nombre de Usuario</target>
       </trans-unit>
