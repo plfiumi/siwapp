@@ -51,13 +51,17 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
         where('sfGuardUser.Username = ?', $user_email)->
         orWhere('Profile.Email LIKE ?', $user_email)->
         fetchOne();
-
+      
       if($userObject)
       {
         $profile = $userObject->Profile;
         $userObject->Profile->hash = md5($userObject->Profile->email.time());
         $userObject->save();
-        $this->sendEmail($userObject->Profile,null);
+        $result = $this->sendEmail($userObject->Profile,null);
+        
+        if ($result != true) {
+          throw new Exception("Email not sent");
+        }
       }
     }
     return sfView::SUCCESS;
@@ -74,9 +78,11 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
       $this->redirect('@homepage');
     }
 
-    $userObject = Doctrine::getTable('sfGuardUser')->createQuery()->
-      where('Profile.Hash != ?', '')->
-      where('Profile.Hash = ?', $hash)->fetchOne();
+    $userId = Doctrine::getTable('Profile')->createQuery()->
+      where('hash = ?', $hash)->fetchOne();
+    
+    $userObject = Doctrine::getTable('sfGuardUser')->find($userId->sf_guard_user_id);
+    
     $new_password = '';
 
     if($userObject)
