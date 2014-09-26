@@ -14,8 +14,8 @@ prod:
         host:  smtp.sistemashera.com.ar
         port:    587
         encryption: 
-        username:   
-        password:  
+        username: demo@sistemashera.com.ar
+        password: Madanaitso99
 
 cli:
   controller:
