@@ -8,11 +8,14 @@ class SiwappMessage extends Swift_Message
   {
     parent::__construct();
     
-    if (sfContext::getInstance()->getUser()) {
+    if (sfContext::getInstance()->getUser() && sfContext::getInstance()->getUser()->isAuthenticated()) {
       $company = new Company();
+      //var_dump(sfContext::getInstance()->getUser()->getAttribute('company_id')); exit();
       $company = $company->loadById(sfContext::getInstance()->getUser()->getAttribute('company_id'));
       $this->setFrom($company->getEmail(), $company->getName());
       $this->company_name = $company->getName();
+    } else {
+      $this->setFrom(sfConfig::get("app_system_mail"));
     }
   }
 }
