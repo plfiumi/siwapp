@@ -204,7 +204,7 @@ Common:
     customer_fax: string(20)
     customer_mobile: string(20)
     customer_comments: clob
-    customer_tax_condition: string(10)
+    customer_tax_condition: string(255)
     supplier_id: integer
     supplier_name: string(100)
     supplier_business_name: string(100)
@@ -214,7 +214,7 @@ Common:
     supplier_fax: string(20)
     supplier_mobile: string(20)
     supplier_comments: clob
-    supplier_tax_condition: string(10)
+    supplier_tax_condition: string(255)
     invoicing_address: string(255)
     invoicing_postalcode: string(255)
     invoicing_city: string(255)
