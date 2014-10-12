@@ -285,9 +285,9 @@ abstract class BaseCommon extends sfDoctrineRecord
         $this->hasColumn('customer_comments', 'clob', null, array(
              'type' => 'clob',
              ));
-        $this->hasColumn('customer_tax_condition', 'string', 10, array(
+        $this->hasColumn('customer_tax_condition', 'string', 255, array(
              'type' => 'string',
-             'length' => 10,
+             'length' => 255,
              ));
         $this->hasColumn('supplier_id', 'integer', null, array(
              'type' => 'integer',
@@ -323,9 +323,9 @@ abstract class BaseCommon extends sfDoctrineRecord
         $this->hasColumn('supplier_comments', 'clob', null, array(
              'type' => 'clob',
              ));
-        $this->hasColumn('supplier_tax_condition', 'string', 10, array(
+        $this->hasColumn('supplier_tax_condition', 'string', 255, array(
              'type' => 'string',
-             'length' => 10,
+             'length' => 255,
              ));
         $this->hasColumn('invoicing_address', 'string', 255, array(
              'type' => 'string',
