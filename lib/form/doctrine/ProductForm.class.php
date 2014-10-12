@@ -22,6 +22,9 @@ class ProductForm extends BaseProductForm
     //Filter categories to the ones that belong to the current company
     $this->widgetSchema['category_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ProductCategory'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
     
+    //set tax_id filtered by current company
+    $this->widgetSchema['tax_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Tax'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
+    
     // placeholders
     $this->widgetSchema['reference']->setAttributes(array('placeholder'   => sfContext::getInstance()->getI18N()->__('Reference'),
                                                           'autofocus'     => 'autofocus'));
