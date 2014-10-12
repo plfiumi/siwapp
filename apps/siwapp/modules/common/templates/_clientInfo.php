@@ -157,7 +157,7 @@ echo javascript_tag("
       $('#".$invoiceForm['payment_type_id']->renderId()."').val(item[23]);
       $('#".$invoiceForm['discount']->renderId()."').val(item[24]);
       
-      var customer_series = item[24];
+      var customer_series = item[25];
       if(customer_series!=(0||''||null))
         $('#".$invoiceForm['series_id']->renderId()."').val(customer_series);
     });
