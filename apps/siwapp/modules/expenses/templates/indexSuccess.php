@@ -33,7 +33,7 @@ $csrf     = new sfForm();
             <?php
               // sort parameter => array (Name, default order)
               renderHeaders(array(
-                'reference'        => array('Supplier reference', 'desc'),
+                'number'        => array('Number', 'desc'),
                 'supplier_name' => array('Supplier Name', 'asc'),
                 'issue_date'    => array('Date', 'desc'),
                 'due_date'      => array('Due Date', 'asc'),
@@ -55,7 +55,7 @@ $csrf     = new sfForm();
             ?>
             <tr id="expense-<?php echo $id ?>" class="<?php echo "$parity link expense-$id" ?>">
               <td class="check"><input rel="item" type="checkbox" value="<?php echo $id ?>" name="ids[]"></td>
-              <td><?php echo $expense->getSupplierReference() ?></td>
+              <td><?php echo $expense ?></td>
               <td class="<?php echo $expense->getSentByEmail() ? 'sent' : null ?>"><?php echo $expense->getSupplierName() ?></td>
               <td><?php echo format_date($expense->getIssueDate()) ?></td>
               <td><?php echo format_date($expense->getDueDate()) ?></td>

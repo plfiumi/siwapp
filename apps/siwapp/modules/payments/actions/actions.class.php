@@ -66,7 +66,7 @@ class paymentsActions extends sfActions
     $invoice = Doctrine::getTable('Common')->find($request->getParameter('invoice_id'));
     $payment->setAmount($invoice->getGrossAmount() - $invoice->getPaidAmount());
     // insert a PaymentForm with csrf protection disabled 
-    $form = new PaymentForm($payment, array('culture'=>$this->getUser()->getCulture()), false);
+    $form = new PaymentForm($payment, array('culture'=>$this->getUser()->getCulture(), 'default_payment_type_id' => $invoice->getPaymentTypeId()), false);
     $form->getWidgetSchema()->setNameFormat('payments[new_'.$index.'][%s]');
     
     return $this->renderText('<li><ul><a href="#" class="xit"/>'.$form.'</ul></li>');

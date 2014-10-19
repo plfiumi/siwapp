@@ -22,13 +22,11 @@ class ItemForm extends BaseItemForm
     $this->widgetSchema['quantity'] = new sfWidgetFormInputText(array(), array('size'=>'5', 'class'=>'observable quantity'));
     $this->widgetSchema['unitary_cost'] = new sfWidgetFormInputText(array(), array('size'=>'10', 'class'=>'observable unitary_cost'));
     $this->widgetSchema['description'] = new sfWidgetFormTextarea(array(), array('rows'=>'1', 'class'=>'resizable'));
-    $this->widgetSchema['expense_type_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'),'table_method' => 'getCurrentCompany', 'add_empty' => true));
+    $this->widgetSchema['expense_type_id'] = new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ExpenseType'),'table_method' => 'getCurrentCompany'));
     
     //Assign company_id from session values.
     $this->widgetSchema['company_id'] = new sfWidgetFormInputHidden();
     $this->setDefault('company_id' , sfContext::getInstance()->getUser()->getAttribute('company_id'));
-
-
     $this->validatorSchema['taxes_list']->addMessage('invalid',"Can't duplicate taxes");
     $this->validatorSchema->setOption('allow_extra_fields', true);
   }
