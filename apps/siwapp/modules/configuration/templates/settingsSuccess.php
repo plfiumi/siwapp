@@ -59,12 +59,14 @@
             <?php echo render_tag($form['company'][0]['url'])  ?>
           </span>
         </li>
+        <?php if($sf_user->hasCredential("can_upload_logo")) { ?>
         <li>
           <span class="_50">
             <label class="light" for="<? echo $form['company'][0]['logo']->renderId()?>"><?php echo __('Logo') ?></label>
             <?php echo render_tag($form['company'][0]['logo'])  ?>
           </span>
         </li>
+        <?php } ?>
         <li>
           <span class="_50">
             <label class="light" for="<? echo $form['company'][0]['currency']->renderId()?>"><?php echo __('Currency') ?></label>
