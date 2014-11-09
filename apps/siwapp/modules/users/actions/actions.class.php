@@ -80,7 +80,7 @@ class UsersActions extends sfActions
 
   public function executeUpdate(sfWebRequest $request)
   {
-    $UserObject_params = $request->getParameter('profile');
+    $UserObject_params = $request->getParameter('config');
     $request->setParameter('id', $UserObject_params['id']);
     $this->forward404Unless($request->isMethod('post'));
     $UserObject = $this->getProfile($request);

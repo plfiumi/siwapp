@@ -14,6 +14,50 @@ class CompaniesActions extends sfActions
   {
     $this->currency = $this->getUser()->getAttribute('currency');
     $this->culture  = $this->getUser()->getCulture();
+    
+    /*
+     * Delete can_create_companies permission if user arrives to
+     * maximum allowed.
+     */
+    $companiesCount = Doctrine_Query::create()
+        ->select('cu.company_id,c.name')
+        ->from('CompanyUser cu')
+        ->innerJoin('cu.Company c')
+        ->where('sf_guard_user_id = ?', $this->getUser()->getGuardUser()->getId())
+        ->count();
+
+      if($this->getUser()->hasGroup('professional')) {
+        if ($companiesCount > 2) {
+          $this->getUser()->removeCredential('can_create_companies');
+        } else {
+          if (!$this->getUser()->hasCredential('can_create_companies'))
+            $this->getUser()->addCredential('can_create_companies');
+        }
+      }
+
+      if($this->getUser()->hasGroup('corporate')) {
+        if ($companiesCount > 9) {
+          $this->getUser()->removeCredential('can_create_companies');
+        } else {
+          if (!$this->getUser()->hasCredential('can_create_companies'))
+            $this->getUser()->addCredential('can_create_companies');
+        }
+      }
+      
+      if (!$this->getUser()->isSuperAdmin()) {
+        $userCompaniesData = Doctrine_Query::create()
+          ->select('cu.company_id')
+          ->from('CompanyUser cu')
+          ->innerJoin('cu.Company c')
+          ->where('sf_guard_user_id = ?', $this->getUser()->getGuardUser()->getId())
+          ->orderBy("c.name ASC")->fetchArray();
+
+        foreach($userCompaniesData as $userCompany)
+        {
+          $userCompanies[] = $userCompany['company_id'];
+        }
+        $this->userCompanies = $userCompanies;
+      }
   }
   
   private function getCompany(sfWebRequest $request)
@@ -21,6 +65,9 @@ class CompaniesActions extends sfActions
     $this->forward404Unless($Company = Doctrine::getTable('Company')->find($request->getParameter('id')),
       sprintf('Object Company does not exist with id %s', $request->getParameter('id')));
       
+    if (!$this->getUser()->isSuperAdmin()) {
+      $this->forward404Unless(in_array($request->getParameter('id'), $this->userCompanies));
+    }
     return $Company;
   }
   
@@ -32,8 +79,13 @@ class CompaniesActions extends sfActions
     $page       = $this->getUser()->getAttribute('page', 1, $namespace);
     $maxResults = $this->getUser()->getPaginationMaxResults();
     
-    $q = CompanyQuery::create()->search($search)
+    if (!$this->getUser()->isSuperAdmin()) {
+      $q = CompanyQuery::create()->search($search)->whereIn('id',$this->userCompanies)
         ->orderBy("$sort[0] $sort[1], name $sort[1]");
+    } else {
+      $q = CompanyQuery::create()->search($search)
+        ->orderBy("$sort[0] $sort[1], name $sort[1]");
+    }
 
     $this->pager = new sfDoctrinePager('Company', $maxResults);
     $this->pager->setQuery($q);

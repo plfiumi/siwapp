@@ -14,6 +14,29 @@ class customersActions extends sfActions
   {
     $this->currency = $this->getUser()->getAttribute('currency');
     $this->culture  = $this->getUser()->getCulture();
+    
+    /*
+     * Delete can_create_customers permission if user arrives to
+     * maximum allowed.
+     */
+    $customersCount = CustomerQuery::create()->where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))->count();
+    if($this->getUser()->hasGroup('personal')) {
+      if ($customersCount > 9) {
+        $this->getUser()->removeCredential('can_create_customers');
+      } else {
+        if (!$this->getUser()->hasCredential('can_create_customers'))
+          $this->getUser()->addCredential('can_create_customers');
+      }
+    }
+    
+    if($this->getUser()->hasGroup('professional')) {
+      if ($customersCount > 500) {
+        $this->getUser()->removeCredential('can_create_customers');
+      } else {
+        if (!$this->getUser()->hasCredential('can_create_customers'))
+          $this->getUser()->addCredential('can_create_customers');
+      }
+    }
   }
   
   private function getCustomer(sfWebRequest $request)

@@ -48,7 +48,7 @@ class SiwappUser extends sfGuardSecurityUser
                                                   array()
                                                   );
     /* If the user is not a super admin don't show the companies and users options. */
-    if(!($this->getGuardUser()->getIsSuperAdmin()))
+    if(!($this->getGuardUser()->getIsSuperAdmin()) && !$this->hasGroup("professional") && !$this->hasGroup("corporate"))
     {
         $real_modules= array();
         foreach ($siwapp_mandatory_modules as $module)
