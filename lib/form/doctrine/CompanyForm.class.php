@@ -29,7 +29,19 @@ class CompanyForm extends BaseCompanyForm
     $this->widgetSchema['estimate_legal_terms'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['pdf_size'] = new sfWidgetFormSelect(array('choices' => self::$paper_sizes));
     $this->widgetSchema['pdf_orientation'] = new sfWidgetFormSelect(array('choices' => array('portrait', 'landscape')));
-    $this->widgetSchema['company_user_list']  = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'expanded' => true, 'model' => 'sfGuardUser'));
+    
+    // if user is not superadmin, get only users created by him
+    if (!sfContext::getInstance()->getUser()->isSuperAdmin()) {
+      $usersCreated = ProfileTable::getUsersCreated();
+      
+      $query = Doctrine_Query::create()->from('sfGuardUser u')
+                ->whereIn('u.id', $usersCreated)
+                ->orderBy('u.username asc');
+      
+      $this->widgetSchema['company_user_list']  = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'expanded' => true, 'model' => 'sfGuardUser', 'query' => $query));
+    } else {
+      $this->widgetSchema['company_user_list']  = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'expanded' => true, 'model' => 'sfGuardUser'));
+    }
 
     // placeholders
     $this->widgetSchema['identification']->setAttribute('placeholder', sfContext::getInstance()->getI18N()->__('Identification'));

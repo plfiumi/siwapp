@@ -121,7 +121,7 @@ class UsersActions extends sfActions
       $message  = $form->getObject()->isNew() ? 'created' : 'updated';
       $suffix   = null;
       $method   = 'info';
-      
+
       $UserObject = $form->save();
       
       $this->getUser()->$method($i18n->__(sprintf($template, $message, $suffix)));
