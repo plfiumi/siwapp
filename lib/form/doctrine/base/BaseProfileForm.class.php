@@ -28,6 +28,7 @@ abstract class BaseProfileForm extends BaseFormDoctrine
       'time_to_due'        => new sfWidgetFormInputText(),
       'min_stock_level'    => new sfWidgetFormInputText(),
       'hash'               => new sfWidgetFormInputText(),
+      'created_by_user_id' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -44,6 +45,7 @@ abstract class BaseProfileForm extends BaseFormDoctrine
       'time_to_due'        => new sfValidatorString(array('max_length' => 10, 'required' => false)),
       'min_stock_level'    => new sfValidatorInteger(array('required' => false)),
       'hash'               => new sfValidatorString(array('max_length' => 50, 'required' => false)),
+      'created_by_user_id' => new sfValidatorInteger(array('required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(

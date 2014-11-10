@@ -80,7 +80,7 @@ class UsersActions extends sfActions
 
   public function executeUpdate(sfWebRequest $request)
   {
-    $UserObject_params = $request->getParameter('profile');
+    $UserObject_params = $request->getParameter('config');
     $request->setParameter('id', $UserObject_params['id']);
     $this->forward404Unless($request->isMethod('post'));
     $UserObject = $this->getProfile($request);
@@ -121,7 +121,7 @@ class UsersActions extends sfActions
       $message  = $form->getObject()->isNew() ? 'created' : 'updated';
       $suffix   = null;
       $method   = 'info';
-      
+
       $UserObject = $form->save();
       
       $this->getUser()->$method($i18n->__(sprintf($template, $message, $suffix)));

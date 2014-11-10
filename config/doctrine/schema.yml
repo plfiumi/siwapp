@@ -548,6 +548,7 @@ Profile:
     time_to_due:        string(10)
     min_stock_level:    integer
     hash:               string(50)
+    created_by_user_id: integer(4)
   relations:
     User:
       class:  sfGuardUser

@@ -25,6 +25,7 @@ class ProfileForm extends BaseProfileForm
     $this->widgetSchema['superadmin'] = new sfWidgetFormInputCheckbox(array(),array('value'=>1));
 
     $this->widgetSchema['sf_guard_user_id'] = new sfWidgetFormInputHidden();
+    $this->widgetSchema['created_by_user_id'] = new sfWidgetFormInputHidden();
       
     $this->widgetSchema['language']         = new sfWidgetFormI18nChoiceLanguage(
                                                     array(
@@ -110,6 +111,7 @@ class ProfileForm extends BaseProfileForm
         'country'             => $user->getCountry(),
         'username'            => $this->getOption('username'),
         'superadmin'          => $this->getOption('superadmin'),
+        'created_by_user_id'  => sfContext::getInstance()->getUser()->getGuardUser()->getId(),
       ));
      
     $this->widgetSchema->setNameFormat('config[%s]');

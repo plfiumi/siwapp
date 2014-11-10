@@ -17,6 +17,7 @@
  * @property string $time_to_due
  * @property integer $min_stock_level
  * @property string $hash
+ * @property integer $created_by_user_id
  * @property sfGuardUser $User
  * 
  * @method integer     getSfGuardUserId()      Returns the current record's "sf_guard_user_id" value
@@ -31,6 +32,7 @@
  * @method string      getTimeToDue()          Returns the current record's "time_to_due" value
  * @method integer     getMinStockLevel()      Returns the current record's "min_stock_level" value
  * @method string      getHash()               Returns the current record's "hash" value
+ * @method integer     getCreatedByUserId()    Returns the current record's "created_by_user_id" value
  * @method sfGuardUser getUser()               Returns the current record's "User" value
  * @method Profile     setSfGuardUserId()      Sets the current record's "sf_guard_user_id" value
  * @method Profile     setFirstName()          Sets the current record's "first_name" value
@@ -44,6 +46,7 @@
  * @method Profile     setTimeToDue()          Sets the current record's "time_to_due" value
  * @method Profile     setMinStockLevel()      Sets the current record's "min_stock_level" value
  * @method Profile     setHash()               Sets the current record's "hash" value
+ * @method Profile     setCreatedByUserId()    Sets the current record's "created_by_user_id" value
  * @method Profile     setUser()               Sets the current record's "User" value
  * 
  * @package    siwapp
@@ -103,6 +106,10 @@ abstract class BaseProfile extends sfDoctrineRecord
         $this->hasColumn('hash', 'string', 50, array(
              'type' => 'string',
              'length' => 50,
+             ));
+        $this->hasColumn('created_by_user_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => 4,
              ));
 
         $this->option('charset', 'utf8');

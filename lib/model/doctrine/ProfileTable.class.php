@@ -5,4 +5,23 @@
 class ProfileTable extends Doctrine_Table
 {
 
+  /**
+   * Shorthand to get users created (ids) by some user
+   * 
+   * @return array
+   */
+  public static function getUsersCreated($userId = null)
+  {
+    $usersCreated = null;
+    $userId = ($userId == null) ? sfContext::getInstance()->getUser()->getGuardUser()->getId() : $userId; 
+    
+    $results = Doctrine::getTable('Profile')->findBy('created_by_user_id', $userId)->toArray();
+    
+    foreach ($results as $result) {
+      $usersCreated[] = $result['id'];
+    }
+    
+    return $usersCreated;
+  }
+  
 }

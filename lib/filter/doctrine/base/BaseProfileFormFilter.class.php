@@ -25,6 +25,7 @@ abstract class BaseProfileFormFilter extends BaseFormFilterDoctrine
       'time_to_due'        => new sfWidgetFormFilterInput(),
       'min_stock_level'    => new sfWidgetFormFilterInput(),
       'hash'               => new sfWidgetFormFilterInput(),
+      'created_by_user_id' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -40,6 +41,7 @@ abstract class BaseProfileFormFilter extends BaseFormFilterDoctrine
       'time_to_due'        => new sfValidatorPass(array('required' => false)),
       'min_stock_level'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'hash'               => new sfValidatorPass(array('required' => false)),
+      'created_by_user_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('profile_filters[%s]');
@@ -72,6 +74,7 @@ abstract class BaseProfileFormFilter extends BaseFormFilterDoctrine
       'time_to_due'        => 'Text',
       'min_stock_level'    => 'Number',
       'hash'               => 'Text',
+      'created_by_user_id' => 'Number',
     );
   }
 }
