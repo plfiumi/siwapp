@@ -14,6 +14,7 @@ class CompaniesActions extends sfActions
   {
     $this->currency = $this->getUser()->getAttribute('currency');
     $this->culture  = $this->getUser()->getCulture();
+    $this->usersCreated = ProfileTable::getUsersCreated();
     
     /*
      * Delete can_create_companies permission if user arrives to
@@ -24,6 +25,7 @@ class CompaniesActions extends sfActions
         ->from('CompanyUser cu')
         ->innerJoin('cu.Company c')
         ->where('sf_guard_user_id = ?', $this->getUser()->getGuardUser()->getId())
+        ->orWhereIn('sf_guard_user_id',$this->usersCreated)
         ->count();
 
       if($this->getUser()->hasGroup('professional')) {
@@ -50,6 +52,7 @@ class CompaniesActions extends sfActions
           ->from('CompanyUser cu')
           ->innerJoin('cu.Company c')
           ->where('sf_guard_user_id = ?', $this->getUser()->getGuardUser()->getId())
+          ->orWhereIn('sf_guard_user_id',$this->usersCreated)
           ->orderBy("c.name ASC")->fetchArray();
 
         foreach($userCompaniesData as $userCompany)

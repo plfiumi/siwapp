@@ -35,9 +35,9 @@ class CompanyForm extends BaseCompanyForm
       $usersCreated = ProfileTable::getUsersCreated();
       
       $query = Doctrine_Query::create()->from('sfGuardUser u')
-                ->whereIn('u.id', $usersCreated)
-                ->orderBy('u.username asc');
-      
+                  ->whereIn('u.id', $usersCreated)
+                  ->orderBy('u.username asc');
+
       $this->widgetSchema['company_user_list']  = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'expanded' => true, 'model' => 'sfGuardUser', 'query' => $query));
     } else {
       $this->widgetSchema['company_user_list']  = new sfWidgetFormDoctrineChoice(array('multiple' => true, 'expanded' => true, 'model' => 'sfGuardUser'));

@@ -14,12 +14,31 @@ class UsersActions extends sfActions
   {
     $this->currency = $this->getUser()->getAttribute('currency');
     $this->culture  = $this->getUser()->getCulture();
+    $this->usersCreated = ProfileTable::getUsersCreated();
+    
+    /*
+     * Delete can_create_users permission if user arrives to
+     * maximum allowed.
+     */
+    $usersCount = count($this->usersCreated);
+    if($this->getUser()->hasGroup('professional')) {
+      if ($usersCount > 5) {
+        $this->getUser()->removeCredential('can_create_users');
+      } else {
+        if (!$this->getUser()->hasCredential('can_create_users'))
+          $this->getUser()->addCredential('can_create_users');
+      }
+    }
   }
   
   private function getProfile(sfWebRequest $request)
   {
     $this->forward404Unless($UserObject = Doctrine::getTable('Profile')->find($request->getParameter('id')),
       sprintf('Object Profile does not exist with id %s', $request->getParameter('id')));
+    
+    if (!$this->getUser()->isSuperAdmin()) {
+      $this->forward404Unless(in_array($request->getParameter('id'), $this->usersCreated));
+    }
       
     return $UserObject;
   }
@@ -32,8 +51,13 @@ class UsersActions extends sfActions
     $page       = $this->getUser()->getAttribute('page', 1, $namespace);
     $maxResults = $this->getUser()->getPaginationMaxResults();
     
-    $q = UserQuery::create()->search($search)
+    if (!$this->getUser()->isSuperAdmin()) {
+      $q = UserQuery::create()->search($search)->whereIn('id',$this->usersCreated)
         ->orderBy("$sort[0] $sort[1], last_name $sort[1]");
+    } else {
+      $q = UserQuery::create()->search($search)
+        ->orderBy("$sort[0] $sort[1], last_name $sort[1]");
+    }
 
     $this->pager = new sfDoctrinePager('UserObject', $maxResults);
     $this->pager->setQuery($q);
@@ -123,6 +147,15 @@ class UsersActions extends sfActions
       $method   = 'info';
 
       $UserObject = $form->save();
+
+      if (!$this->getUser()->isSuperAdmin() && $message == 'created') {
+        //$userGroup = new sfGuardUserGroup();
+        $userGroup = new sfGuardUserGroup();
+        $userGroup->setUserId($UserObject->_data['id']);
+        $userGroup->setGroupId(1); // set operator group by default
+        $userGroup->save();
+      }
+      
       
       $this->getUser()->$method($i18n->__(sprintf($template, $message, $suffix)));
       $this->redirect('users/edit?id='.$UserObject->id);

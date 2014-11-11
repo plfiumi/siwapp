@@ -22,7 +22,12 @@ class ProfileForm extends BaseProfileForm
 
     
     $this->widgetSchema['username'] = new sfWidgetFormInputText();
-    $this->widgetSchema['superadmin'] = new sfWidgetFormInputCheckbox(array(),array('value'=>1));
+    
+    if ($user->isSuperAdmin()) {
+      $this->widgetSchema['superadmin'] = new sfWidgetFormInputCheckbox(array(),array('value'=>1));
+    } else {
+      $this->widgetSchema['superadmin'] = new sfWidgetFormInputHidden();
+    }
 
     $this->widgetSchema['sf_guard_user_id'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['created_by_user_id'] = new sfWidgetFormInputHidden();
@@ -52,7 +57,10 @@ class ProfileForm extends BaseProfileForm
     
 
     $this->widgetSchema['new_password']    = new sfWidgetFormInputPassword();
-    $this->validatorSchema['superadmin']   = new sfValidatorPass();
+    if ($user->isSuperAdmin()) {
+      $this->validatorSchema['superadmin']   = new sfValidatorPass();
+    }
+   
     $this->validatorSchema['username']= new sfValidatorString(array('max_length' => 128));
 
     $this->validatorSchema['language']         = new sfValidatorI18nChoiceLanguage(

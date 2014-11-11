@@ -32,7 +32,7 @@ $user = $UserObjectForm->getObject();
       <ul>
         <?php echo $form['username']->renderRow(array('class'=>error_class($form['username'])))?>
         <?php echo $form['new_password']->renderRow(array('class'=>error_class($form['new_password'])))?>
-        <?php echo $form['superadmin']->renderRow(array('class'=>error_class($form['superadmin'])))?>
+        <?php if ($sf_user->isSuperAdmin()) { echo $form['superadmin']->renderRow(array('class'=>error_class($form['superadmin']))); };?>
       </ul>
     </fieldset>
     
