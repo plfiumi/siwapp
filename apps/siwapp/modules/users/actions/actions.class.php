@@ -22,7 +22,15 @@ class UsersActions extends sfActions
      */
     $usersCount = count($this->usersCreated);
     if($this->getUser()->hasGroup('professional')) {
-      if ($usersCount > 5) {
+      if ($usersCount > 9) {
+        $this->getUser()->removeCredential('can_create_users');
+      } else {
+        if (!$this->getUser()->hasCredential('can_create_users'))
+          $this->getUser()->addCredential('can_create_users');
+      }
+    }
+    if($this->getUser()->hasGroup('corporate')) {
+      if ($usersCount > 29) {
         $this->getUser()->removeCredential('can_create_users');
       } else {
         if (!$this->getUser()->hasCredential('can_create_users'))

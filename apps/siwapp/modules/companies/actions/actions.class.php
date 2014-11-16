@@ -29,7 +29,7 @@ class CompaniesActions extends sfActions
         ->count();
 
       if($this->getUser()->hasGroup('professional')) {
-        if ($companiesCount > 2) {
+        if ($companiesCount > 1) {
           $this->getUser()->removeCredential('can_create_companies');
         } else {
           if (!$this->getUser()->hasCredential('can_create_companies'))
@@ -38,7 +38,7 @@ class CompaniesActions extends sfActions
       }
 
       if($this->getUser()->hasGroup('corporate')) {
-        if ($companiesCount > 9) {
+        if ($companiesCount > 2) {
           $this->getUser()->removeCredential('can_create_companies');
         } else {
           if (!$this->getUser()->hasCredential('can_create_companies'))
