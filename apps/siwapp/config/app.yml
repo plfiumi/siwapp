@@ -9,7 +9,7 @@ all:
   .listings:
     dashboard_max_results:    5
     pagination_max_results:   10
-    notification_timeout:     10000
+    notification_timeout:     5000
 
   sfDateTimePlugin:
     format_database: "%Y-%m-%d %H:%M:%S"

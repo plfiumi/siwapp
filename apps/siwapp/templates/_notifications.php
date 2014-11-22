@@ -7,6 +7,8 @@
 use_helper('JavascriptBase', 'Text');
 
 $triggers = null;
+$notificationTimeout = sfConfig::get('app_notification_timeout', 5000);
+
 foreach (array('error', 'warning', 'info') as $type)
 {
   if ($sf_user->hasFlash($type))
@@ -39,6 +41,11 @@ $(document).bind('NotificationEvent', function(e, data) {
   });
 }).bind('NotificationRemoveEvent', function() {
   notifications--;
+});
+
+$('#bd').live('mouseout', function() {
+  $('#hd-notifications .notification').slideUp(1000);
+  $(document).trigger('NotificationRemoveEvent');
 });
 
 $('#hd-notifications .notification').live('click', function() {

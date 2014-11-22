@@ -49,9 +49,9 @@
       <li><?php echo link_to(__('Settings'), 'configuration/settings', array('accesskey' => "s")) ?> |</li>
       <li><?php echo link_to(__('Logout'), '@sf_guard_signout') ?></li>
     </ul>
-  </div>
     
-    <?php include_partial('global/notifications') ?>
+     <?php include_partial('global/notifications') ?>
+  </div>
 </div>
   
    <div id="hd-navbar" class="content">

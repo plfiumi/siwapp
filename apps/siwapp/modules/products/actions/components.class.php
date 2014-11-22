@@ -17,7 +17,8 @@ class productsComponents extends sfComponents
     $q = Doctrine_Core::getTable('Product')
           ->createQuery()
           ->select('COUNT(id)')
-          ->where('stock <= min_stock_level');
+          ->where('company_id = ?', sfContext::getInstance()->getUser()->getAttribute('company_id'))
+          ->addWhere('stock <= min_stock_level');
     
     $stockAlerts = $q->execute(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
     
