@@ -8,6 +8,7 @@ class ProductQuery extends Doctrine_Query
                         IF(
                            inv.draft=1 
                            OR inv.type='RecurringInvoice' 
+                           OR inv.type='Expense' 
                            OR i.quantity IS NULL,
                            0, 
                            i.quantity
@@ -22,6 +23,7 @@ class ProductQuery extends Doctrine_Query
           IF(
              inv.draft = 1
              OR inv.type = 'RecurringInvoice'
+             OR inv.type='Expense' 
              OR i.quantity IS NULL
              OR i.unitary_cost IS NULL,
              0, 

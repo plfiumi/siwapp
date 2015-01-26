@@ -46,7 +46,23 @@
     </tbody>
   </table>
   </div>
-
+  <div class="left">
+  <h3><?php echo __('Taxes'); ?></h3>
+  <table class="dashboard-info">
+    <tbody>
+      <tr>
+        <th><?php echo __('Total') ?></th>
+        <th id="total" class="right"><?php echo format_currency($taxes,$currency);?></th>
+        <?php foreach($total_taxes as $ttname=>$ttvalue):?>
+          <tr>
+            <td><?php echo $ttname?>:</td>
+            <td><?php echo format_currency($ttvalue,$currency)?></td>
+          </tr>
+        <?php endforeach ?>
+      </tr>
+    </tbody>
+  </table>
+  </div>
   <div class="left">
   <h3><?php echo __('Expenses'); ?></h3>
   <table class="dashboard-info">

@@ -3,7 +3,7 @@
 /**
  * dashboard actions.
  *
- * @package    siwapp
+ * @package    siwapptax_amount
  * @subpackage dashboard
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 12479 2008-10-31 10:54:40Z fabien $
@@ -120,7 +120,8 @@ class dashboardActions extends sfActions
     }
 
     $q = InvoiceQuery::create()->Where('draft = 0 and company_id = ?',$company_id )->search($search)->limit($this->maxResults);
-
+    $q_taxes = Doctrine_Query::create()->select('t.id, t.name')->from('Tax t')->Where('company_id = ?',$company_id)->execute();
+    
     $exp = ExpenseQuery::create()->Where('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
 
     $eqp = EstimateQuery::create()->Where('status = 2')->AndWhere('company_id = ?',$company_id )->search($search)->limit($this->maxResults);
@@ -160,6 +161,19 @@ class dashboardActions extends sfActions
     $this->taxes  = $q->total('tax_amount');
     if(empty($this->taxes))
         $this->taxes = 0;
+    
+    // split taxes
+    $total_taxes = array();
+    foreach($q_taxes as $t)
+    {
+      if($q->total_tax($t->id))
+      {
+        $total_taxes[$t->name] = $q->total_tax($t->id);
+      }
+    }
+    $this->total_taxes = $total_taxes;
+    
+    
     $this->net    = $q->total('net_amount');
     if(empty($this->net))
         $this->net = 0;

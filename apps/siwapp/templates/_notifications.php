@@ -43,10 +43,14 @@ $(document).bind('NotificationEvent', function(e, data) {
   notifications--;
 });
 
+
 $('#bd').live('mouseout', function() {
-  $('#hd-notifications .notification').slideUp(1000);
-  $(document).trigger('NotificationRemoveEvent');
+  if (notifications == 1) {
+    $('#hd-notifications .notification').slideUp(1000);
+    $(document).trigger('NotificationRemoveEvent');
+  }
 });
+
 
 $('#hd-notifications .notification').live('click', function() {
   $(this).slideUp(500);
