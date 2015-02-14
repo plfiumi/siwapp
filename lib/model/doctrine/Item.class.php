@@ -140,7 +140,11 @@ class Item extends BaseItem
       $product = Doctrine::getTable('Product')->find($this->getProductId());
 
       if ($product) {
+        if ($this->getExpenseTypeId() < 1) {
         $product->setStock($product->getStock() - $this->getQuantity());
+        } else if ($this->getExpenseTypeId() > 0){
+          $product->setStock($product->getStock() + $this->getQuantity());
+        }
         $product->save();
       }
     }
@@ -159,7 +163,11 @@ class Item extends BaseItem
       $product = Doctrine::getTable('Product')->find($this->getProductId());
 
       if ($product) {
+        if ($this->getExpenseTypeId() < 1) {
         $product->setStock($product->getStock() - $newQuantity);
+        } else if ($this->getExpenseTypeId() > 0){
+          $product->setStock($product->getStock() + $newQuantity);
+        }
         $product->save();
       }
     }
